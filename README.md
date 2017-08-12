@@ -5,6 +5,7 @@ Generate and upload the SLDL and SLDU map tiles for openstates.org.
 ### Dependencies
 
 - `pip install -r requirements.txt`
+- `npm install`
 - `gdal`
 - `tippecanoe`
 - [`Mapbox CLI`](https://github.com/mapbox/mapbox-cli-py)
