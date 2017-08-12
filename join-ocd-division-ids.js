@@ -23,6 +23,9 @@ let first = true
 fs.createReadStream(GEOJSON)
   .pipe(parser)
   .on('data', f => {
+    // Remove water-only placeholder districts
+    if (f.properties.GEOID.endsWith('ZZZ')) { return }
+
     const chamber = f.properties.LSAD.slice(1, 2).toLowerCase()
     const geoid = `sld${chamber}-${f.properties.GEOID}`
 
