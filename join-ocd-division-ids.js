@@ -5,12 +5,12 @@ const geojsonStream = require('geojson-stream')
 const parse = require('d3-dsv').csvParse
 
 const GEOJSON = './data/sld.geojson'
-const SLDL_CSV = './data/sldl-ocd-ids.csv'
-const SLDU_CSV = './data/sldu-ocd-ids.csv'
+const SLDU_CSV = './data/sldu-ocdid.csv'
+const SLDL_CSV = './data/sldl-ocdid.csv'
 const OUTPUT = './data/sld-with-ocdid.geojson'
 
-const sldl = parse(fs.readFileSync(SLDL_CSV, 'utf-8'))
 const sldu = parse(fs.readFileSync(SLDU_CSV, 'utf-8'))
+const sldl = parse(fs.readFileSync(SLDL_CSV, 'utf-8'))
 
 const parser = geojsonStream.parse()
 
@@ -26,15 +26,19 @@ fs.createReadStream(GEOJSON)
     // Remove water-only placeholder districts
     if (f.properties.GEOID.endsWith('ZZZ')) { return }
 
-    const chamber = f.properties.LSAD.slice(1, 2).toLowerCase()
-    const geoid = `sld${chamber}-${f.properties.GEOID}`
+    // The properties do not indicate which chamber/file was the source
+    // and it would be tough to add a source-filename property in earlier
+    // So, use knowledge of the `LSAD` codes:
+    // L1 is DC, L2 is Nevada, L8 is Vermont, 07 is Massachusetts
+    const type = ['LU', 'L1', 'L2', 'L8', '07'].includes(f.properties.LSAD) ? 'sldu' : 'sldl'
+    const geoid = `${type}-${f.properties.GEOID}`
 
     const slduId = sldu.find(d => d.census_geoid_14 === geoid)
     const sldlId = sldl.find(d => d.census_geoid_14 === geoid)
     const ocdid = slduId ? slduId.id :
       sldlId ? sldlId.id :
       null
-    f.properties = { ocdid }
+    f.properties = { ocdid, type }
 
     if (first) {
       first = false
