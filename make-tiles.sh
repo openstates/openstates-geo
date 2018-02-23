@@ -5,7 +5,7 @@ set -e
 echo "Downloading TIGER/Line shapefiles"
 ./get-all-sld-shapefiles.py
 
-echo "Additional shapefiles should be downloaded here, but none are yet"
+echo "Additional shapefiles, such as New Hampshire floterials, should be downloaded here in the future"
 
 echo "Unzip the shapefiles"
 for f in ./data/*.zip; do
@@ -25,7 +25,7 @@ echo "Concatenate the shapefiles into one file"
 # This should be the purview of `@mapbox/geojson-merge`,
 # but that tool isn't working properly on this volume of files
 echo '{ "type": "FeatureCollection", "features": [' > ./data/sld.geojson
-cat ./data/tl_2016_*.geojson >> ./data/sld.geojson
+cat ./data/tl_*.geojson >> ./data/sld.geojson
 sed -i '' '/^{$/d' ./data/sld.geojson
 sed -i '' '/^}$/d' ./data/sld.geojson
 sed -i '' '/^"type": "FeatureCollection",$/d' ./data/sld.geojson

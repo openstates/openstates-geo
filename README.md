@@ -20,4 +20,6 @@ npm install
 
 ### Running
 
-Run `./make-tiles.sh` to create the map tiles, and upload them to Mapbox. The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables.
+Run `./make-tiles.sh` to create the map tiles, and upload them to Mapbox.
+
+The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
