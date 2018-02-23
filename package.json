@@ -6,7 +6,8 @@
   "dependencies": {
     "d3-dsv": "^1.0.5",
     "geojson-join": "^1.0.0",
-    "geojson-stream": "0.0.1"
+    "geojson-stream": "0.0.1",
+    "us": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {

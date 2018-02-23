@@ -3,6 +3,7 @@
 const fs = require('fs')
 const geojsonStream = require('geojson-stream')
 const parse = require('d3-dsv').csvParse
+const us = require('us')
 
 const GEOJSON = './data/sld.geojson'
 const SLDU_CSV = './data/sldu-ocdid.csv'
@@ -23,7 +24,7 @@ let first = true
 fs.createReadStream(GEOJSON)
   .pipe(parser)
   .on('data', f => {
-    // Remove water-only placeholder districts
+    // Remove water-only placeholder areas
     if (f.properties.GEOID.endsWith('ZZZ')) { return }
 
     // The properties do not indicate which chamber/file was the source
@@ -38,7 +39,14 @@ fs.createReadStream(GEOJSON)
     const ocdid = slduId ? slduId.id :
       sldlId ? sldlId.id :
       null
-    f.properties = { ocdid, type }
+
+    // Parsing an OCD ID to determine structured data is bad practice,
+    // so add a standalone state postal abbreviation
+    const state = us.STATES_AND_TERRITORIES.find(
+      s => s.fips === f.properties.STATEFP
+    ).abbr.toLowerCase()
+
+    f.properties = { ocdid, type, state }
 
     if (first) {
       first = false

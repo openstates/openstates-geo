@@ -1,14 +1,22 @@
 ## Open States district maps
 
-Generate and upload the SLDL and SLDU map tiles for openstates.org.
+Generate and upload map tiles for the state-level legislative district maps on openstates.org.
 
 ### Dependencies
 
-- `pip install -r requirements.txt`
-- `npm install`
-- `gdal`
+- Python 3
+- Node.js 8
+- GDAL
+- `sed`
+- `awk`
 - `tippecanoe`
-- [`Mapbox CLI`](https://github.com/mapbox/mapbox-cli-py)
+
+To install the Python and Node libraries, run:
+
+```
+pip install -r requirements.txt
+npm install
+```
 
 ### Running
 
