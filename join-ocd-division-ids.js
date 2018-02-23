@@ -5,7 +5,7 @@ const geojsonStream = require('geojson-stream')
 const parse = require('d3-dsv').csvParse
 const us = require('us')
 
-const GEOJSON = './data/sld.geojson'
+const GEOJSON = './data/sld-clipped.geojson'
 const SLDU_CSV = './data/sldu-ocdid.csv'
 const SLDL_CSV = './data/sldl-ocdid.csv'
 const OUTPUT = './data/sld-with-ocdid.geojson'
