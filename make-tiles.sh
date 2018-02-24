@@ -10,7 +10,7 @@ echo "Additional shapefiles, such as New Hampshire floterials, should be downloa
 echo "Unzip the shapefiles"
 for f in ./data/*.zip; do
 	# Catch cases where the ZIP file doesn't function, like DC SLDL
-	unzip -q -o -d ./data "$f" || echo "Failed to unzip $f"
+	unzip -q -o -d ./data "$f" || echo "Failed to unzip $f; this is probably a non-existant chamber"
 done
 
 echo "Convert to GeoJSON"
@@ -49,7 +49,7 @@ unzip -q -o -d ./data ./data/cb_2016_us_nation_5m.zip
 rm -f ./data/sld-clipped.geojson
 ogr2ogr \
 	-clipsrc ./data/cb_2016_us_nation_5m.shp \
-	-nlt MULTIPOLYGON \
+	-nlt POLYGON \
 	-f GeoJSON \
 	./data/sld-clipped.geojson \
 	./data/sld.geojson
