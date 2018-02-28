@@ -14,11 +14,16 @@ for f in ./data/*.zip; do
 done
 
 echo "Convert to GeoJSON"
-for f in ./data/*.shp; do
+count=0
+total="$(find ./data/tl_*.shp | wc -l | xargs)"
+for f in ./data/tl_*.shp; do
 	# OGR's GeoJSON driver cannot overwrite files, so make sure
 	# the file doesn't already exist
 	rm -f "${f}.geojson"
 	ogr2ogr -f GeoJSON "${f}.geojson" "$f"
+
+	echo -ne "    ${count} of ${total} shapefiles converted\\r"
+	(( count++ ))
 done
 
 echo "Concatenate the shapefiles into one file"
@@ -36,7 +41,7 @@ sed -i '' '/^\]$/d' ./data/sld.geojson
 sed -i '' 's/,$//g' ./data/sld.geojson
 sed -i '' 's/}$/},/g' ./data/sld.geojson
 # Strip empty lines
-# The macOS sed `/d` fails to do this, and it doesn't hurt on
+# The macOS Homebrew sed `/d` fails to do this, and it doesn't hurt on
 # other *nix platforms
 awk 'NF' ./data/sld.geojson > ./data/tmp.txt
 mv ./data/tmp.txt ./data/sld.geojson
@@ -47,9 +52,10 @@ curl --silent --output ./data/cb_2016_us_nation_5m.zip https://www2.census.gov/g
 unzip -q -o -d ./data ./data/cb_2016_us_nation_5m.zip
 # Ensure that the output file doesn't already exist
 rm -f ./data/sld-clipped.geojson
+# Water-only placeholder areas end in `ZZZ`
 ogr2ogr \
 	-clipsrc ./data/cb_2016_us_nation_5m.shp \
-	-nlt POLYGON \
+	-where "GEOID NOT LIKE '%ZZZ'" \
 	-f GeoJSON \
 	./data/sld-clipped.geojson \
 	./data/sld.geojson

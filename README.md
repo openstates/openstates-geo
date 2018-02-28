@@ -2,6 +2,10 @@
 
 Generate and upload map tiles for the state-level legislative district maps on openstates.org.
 
+- Source: SLDL and SLDU shapefiles from the Census's TIGER/Line database
+- Output: a single nationwide MBTiles vector tile set, uploaded to Mapbox for hosting
+  - Intermediate files are also built locally, stored in the `data` directory for debugging and other uses
+
 ### Dependencies
 
 - Python 3

@@ -24,9 +24,6 @@ let first = true
 fs.createReadStream(GEOJSON)
   .pipe(parser)
   .on('data', f => {
-    // Remove water-only placeholder areas
-    if (f.properties.GEOID.endsWith('ZZZ')) { return }
-
     // The properties do not indicate which chamber/file was the source
     // and it would be tough to add a source-filename property in earlier
     // So, use knowledge of the `LSAD` codes:

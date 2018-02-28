@@ -7,7 +7,7 @@ import us
 # The Census download URLs are case-sensitive
 URL = 'https://www2.census.gov/geo/tiger/TIGER2017/SLD{chamber_uppercase}/tl_2017_{fips}_sld{chamber}.zip'
 
-for state in us.STATES:
+for state in us.STATES + [us.states.PR]:
     print("Fetching shapefiles for {}".format(state.name))
     for chamber in ['l', 'u']:
         fips = state.fips
