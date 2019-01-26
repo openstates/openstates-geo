@@ -24,11 +24,7 @@ let first = true
 fs.createReadStream(GEOJSON)
   .pipe(parser)
   .on('data', f => {
-    // The properties do not indicate which chamber/file was the source
-    // and it would be tough to add a source-filename property in earlier
-    // So, use knowledge of the `LSAD` codes:
-    // L1 is DC, L2 is Nevada, L8 is Vermont, 07 is Massachusetts
-    const type = ['LU', 'L1', 'L2', 'L8', '07'].includes(f.properties.LSAD) ? 'sldu' : 'sldl'
+    const type = f.properties.MTFCC === 'G5210' ? 'sldu' : 'sldl'
     const geoid = `${type}-${f.properties.GEOID}`
 
     const slduId = sldu.find(d => d.census_geoid_14 === geoid)
