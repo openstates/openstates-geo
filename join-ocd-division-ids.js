@@ -33,9 +33,9 @@ fs.createReadStream(GEOJSON)
 
     const slduId = sldu.find(d => d.census_geoid_14 === geoid)
     const sldlId = sldl.find(d => d.census_geoid_14 === geoid)
-    const ocdid = slduId ? slduId.id :
-      sldlId ? sldlId.id :
-      null
+    const ocdid = slduId
+      ? slduId.id
+      : sldlId ? sldlId.id : null
 
     // Parsing an OCD ID to determine structured data is bad practice,
     // so add a standalone state postal abbreviation

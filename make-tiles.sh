@@ -34,6 +34,8 @@ cat ./data/tl_*.geojson >> ./data/sld.geojson
 sed -i '' '/^{$/d' ./data/sld.geojson
 sed -i '' '/^}$/d' ./data/sld.geojson
 sed -i '' '/^"type": "FeatureCollection",$/d' ./data/sld.geojson
+sed -i '' '/^"name": .*$/d' ./data/sld.geojson
+sed -i '' '/^"crs": .*$/d' ./data/sld.geojson
 sed -i '' '/^"features": \[$/d' ./data/sld.geojson
 sed -i '' '/^\]$/d' ./data/sld.geojson
 # Now, all lines are GeoJSON Feature objects
@@ -48,13 +50,13 @@ mv ./data/tmp.txt ./data/sld.geojson
 echo ']}' >> ./data/sld.geojson
 
 echo "Clip districts to the coastline and Great Lakes"
-curl --silent --output ./data/cb_2016_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2016/shp/cb_2016_us_nation_5m.zip
-unzip -q -o -d ./data ./data/cb_2016_us_nation_5m.zip
+curl --silent --output ./data/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip
+unzip -q -o -d ./data ./data/cb_2017_us_nation_5m.zip
 # Ensure that the output file doesn't already exist
 rm -f ./data/sld-clipped.geojson
 # Water-only placeholder areas end in `ZZZ`
 ogr2ogr \
-	-clipsrc ./data/cb_2016_us_nation_5m.shp \
+	-clipsrc ./data/cb_2017_us_nation_5m.shp \
 	-where "GEOID NOT LIKE '%ZZZ'" \
 	-f GeoJSON \
 	./data/sld-clipped.geojson \
