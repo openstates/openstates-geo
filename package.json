@@ -4,9 +4,9 @@
   "description": "Generate and upload the SLDL and SLDU map tiles for openstates.org.",
   "main": "make-tiles.sh",
   "dependencies": {
-    "d3-dsv": "^1.0.5",
+    "d3-dsv": "^1.0.10",
     "geojson-join": "^1.0.0",
-    "geojson-stream": "0.0.1",
+    "geojson-stream": "^0.1.0",
     "us": "^2.0.0"
   },
   "devDependencies": {},
