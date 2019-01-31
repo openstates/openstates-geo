@@ -8,12 +8,14 @@ Generate and upload map tiles for the state-level legislative district maps on o
 
 ### Dependencies
 
-- Python 3
-- Node.js 10
-- GDAL
-- `sed`
+- Python 3 and `pip`
+- Node.js 10 and `npm`
+- GDAL/OGR
+- `curl`
 - `gawk`
+- `sed`
 - `tippecanoe`
+- `unzip`
 
 To install the Python and Node libraries, run:
 
