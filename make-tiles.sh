@@ -2,6 +2,8 @@
 
 set -e
 
+mkdir -p data
+
 echo "Downloading TIGER/Line shapefiles"
 ./get-all-sld-shapefiles.py
 
@@ -22,8 +24,8 @@ for f in ./data/tl_*.shp; do
 	rm -f "${f}.geojson"
 	ogr2ogr -f GeoJSON "${f}.geojson" "$f"
 
+	((++count))
 	echo -ne "    ${count} of ${total} shapefiles converted\\r"
-	(( count++ ))
 done
 
 echo "Concatenate the shapefiles into one file"
@@ -31,21 +33,21 @@ echo "Concatenate the shapefiles into one file"
 # but that tool isn't working properly on this volume of files
 echo '{ "type": "FeatureCollection", "features": [' > ./data/sld.geojson
 cat ./data/tl_*.geojson >> ./data/sld.geojson
-sed -i '' '/^{$/d' ./data/sld.geojson
-sed -i '' '/^}$/d' ./data/sld.geojson
-sed -i '' '/^"type": "FeatureCollection",$/d' ./data/sld.geojson
-sed -i '' '/^"name": .*$/d' ./data/sld.geojson
-sed -i '' '/^"crs": .*$/d' ./data/sld.geojson
-sed -i '' '/^"features": \[$/d' ./data/sld.geojson
-sed -i '' '/^\]$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^{$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^}$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^"type": "FeatureCollection",$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^"name": .*$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^"crs": .*$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^"features": \[$/d' ./data/sld.geojson
+sed -i'.bak' -e '/^\]$/d' ./data/sld.geojson
 # Now, all lines are GeoJSON Feature objects
 # Make sure all of them have trailing commas, except for the last
-sed -i '' 's/,$//g' ./data/sld.geojson
-sed -i '' 's/}$/},/g' ./data/sld.geojson
+sed -i'.bak' -e 's/,$//g' ./data/sld.geojson
+sed -i'.bak' -e 's/}$/},/g' ./data/sld.geojson
 # Strip empty lines
 # The macOS Homebrew sed `/d` fails to do this, and it doesn't hurt on
 # other *nix platforms
-awk 'NF' ./data/sld.geojson > ./data/tmp.txt
+gawk 'NF' ./data/sld.geojson > ./data/tmp.txt
 mv ./data/tmp.txt ./data/sld.geojson
 echo ']}' >> ./data/sld.geojson
 
