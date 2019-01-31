@@ -6,4 +6,8 @@ jobs:
     working_directory: ~/openstates-district-maps
     steps:
       - checkout
+      - run:
+          command: |
+            pip install -r requirements.txt
+            npm install
       - run: ./make-tiles.sh
