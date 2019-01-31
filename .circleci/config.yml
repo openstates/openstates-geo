@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: nikolaik/python-nodejs
+    working_directory: ~/openstates-district-maps
+    steps:
+      - checkout
+      - run: ./make-tiles.sh
