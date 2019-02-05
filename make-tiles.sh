@@ -33,6 +33,7 @@ echo "Concatenate the shapefiles into one file"
 # but that tool isn't working properly on this volume of files
 echo '{ "type": "FeatureCollection", "features": [' > ./data/sld.geojson
 cat ./data/tl_*.geojson >> ./data/sld.geojson
+# Remove unnecessary lines coming in from each GeoJSON file
 sed -i'.bak' -e '/^{$/d' ./data/sld.geojson
 sed -i'.bak' -e '/^}$/d' ./data/sld.geojson
 sed -i'.bak' -e '/^"type": "FeatureCollection",$/d' ./data/sld.geojson
@@ -40,9 +41,8 @@ sed -i'.bak' -e '/^"name": .*$/d' ./data/sld.geojson
 sed -i'.bak' -e '/^"crs": .*$/d' ./data/sld.geojson
 sed -i'.bak' -e '/^"features": \[$/d' ./data/sld.geojson
 sed -i'.bak' -e '/^\]$/d' ./data/sld.geojson
-# Now, all lines are GeoJSON Feature objects
+# Now, all lines besides the first are GeoJSON Feature objects
 # Make sure all of them have trailing commas, except for the last
-sed -i'.bak' -e 's/,$//g' ./data/sld.geojson
 sed -i'.bak' -e 's/}$/},/g' ./data/sld.geojson
 # Strip empty lines
 # The macOS Homebrew sed `/d` fails to do this, and it doesn't hurt on
