@@ -16,6 +16,7 @@ jobs:
       # for CircleCI 2, so all layers must be rebuilt during
       # each CI run
       # https://circleci.com/docs/2.0/docker-layer-caching/
+      - setup_remote_docker
       - run: |
           docker build -t openstates-district-maps .
           docker run openstates-district-maps
