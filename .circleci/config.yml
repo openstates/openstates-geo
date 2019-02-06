@@ -2,9 +2,15 @@ version: 2
 
 jobs:
   build:
-    machine: true
+    docker:
+      # Running docker within Docker isn't typically recommended
+      # However, this setup within CircleCI allows us to avoid
+      # having to push the image to a Docker registry
+      - image: docker
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: |
-          docker-compose build make-tiles
-          docker-compose up make-tiles
+          docker build -t openstates-district-maps .
+          docker run openstates-district-maps
