@@ -11,7 +11,9 @@ echo "Additional shapefiles, such as New Hampshire floterials, should be downloa
 
 echo "Unzip the shapefiles"
 for f in ./data/*.zip; do
-	# Catch cases where the ZIP file doesn't function, like DC SLDL
+	# Catch cases where the ZIP file doesn't function, like DC SLDL;
+	# this prevents the `unzip` and `ogr2ogr` from easily
+	# coexisting within the same `for` loop
 	unzip -q -o -d ./data "$f" || echo "Failed to unzip $f; this is probably a non-existant chamber"
 done
 
