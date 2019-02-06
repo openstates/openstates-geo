@@ -19,4 +19,4 @@ jobs:
       - setup_remote_docker
       - run: |
           docker build -t openstates-district-maps .
-          docker run openstates-district-maps
+          docker run -e MAPBOX_ACCOUNT -e MAPBOX_ACCESS_TOKEN openstates-district-maps
