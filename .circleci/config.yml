@@ -17,6 +17,4 @@ jobs:
       # each CI run
       # https://circleci.com/docs/2.0/docker-layer-caching/
       - setup_remote_docker
-      - run: |
-          docker build -t openstates-district-maps .
-          docker run -e MAPBOX_ACCOUNT -e MAPBOX_ACCESS_TOKEN openstates-district-maps
+      - run: docker-compose up make-tiles
