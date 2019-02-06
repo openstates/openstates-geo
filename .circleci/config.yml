@@ -3,6 +3,6 @@ jobs:
   build:
     docker:
       - image: openstates/openstates-district-maps
-    working_directory: ~/openstates-district-maps
+    working_directory: /opt/openstates-district-maps
     steps:
       - run: ./make-tiles.sh
