@@ -3,14 +3,19 @@ version: 2
 jobs:
   build:
     docker:
-      # Running docker within Docker isn't typically recommended
+      # Running docker within Docker isn't typically recommended.
       # However, this setup within CircleCI allows us to avoid
-      # having to push the image to a Docker registry
-      - image: docker
+      # having to push the image to a Docker registry, and the
+      # subsequent webhook to run the completed image; CircleCI's
+      # standard steps don't allow building and running a Docker
+      # image in-place.
+      - image: docker:git
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      # Unfortunately, Docker layer caching is a premium feature
+      # for CircleCI 2, so all layers must be rebuilt during
+      # each CI run
+      # https://circleci.com/docs/2.0/docker-layer-caching/
       - run: |
           docker build -t openstates-district-maps .
           docker run openstates-district-maps

@@ -39,7 +39,7 @@ for f in ./data/tl_*.shp; do
 		"$f"
 
 	((++count))
-	echo -ne "    ${count} of ${total} shapefiles clipped and converted\\r"
+	echo -e "    ${count} of ${total} shapefiles clipped and converted"
 done
 
 echo "Concatenate the shapefiles into one file"
