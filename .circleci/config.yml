@@ -9,7 +9,7 @@ jobs:
       # subsequent webhook to run the completed image; CircleCI's
       # standard steps don't allow building and running a Docker
       # image in-place.
-      - image: docker:git
+      - image: docker/compose:1.23.2
     steps:
       - checkout
       # Unfortunately, Docker layer caching is a premium feature
