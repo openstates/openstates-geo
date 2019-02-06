@@ -7,7 +7,7 @@ mkdir -p data
 echo "Downloading TIGER/Line shapefiles"
 ./get-all-sld-shapefiles.py
 
-echo "Additional shapefiles, such as New Hampshire floterials, should be downloaded here in the future"
+echo "Additional shapefiles, such as New Hampshire floterials and DC at-large, should be downloaded here in the future"
 
 echo "Unzip the shapefiles"
 for f in ./data/*.zip; do
@@ -25,6 +25,10 @@ unzip -q -o -d ./data ./data/cb_2017_us_nation_5m.zip
 
 count=0
 total="$(find ./data/tl_*.shp | wc -l | xargs)"
+if (( total != 102 )); then
+	echo "Found an incorrect number of shapefiles ($total instead of 102)" 1>&2
+	exit 1
+fi
 for f in ./data/tl_*.shp; do
 	# OGR's GeoJSON driver cannot overwrite files, so make sure
 	# the file doesn't already exist
