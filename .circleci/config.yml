@@ -2,8 +2,9 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: openstates/openstates-district-maps
-    working_directory: /opt/openstates-district-maps
+    machine: true
     steps:
-      - run: ./make-tiles.sh
+      - checkout
+      - run: |
+          docker-compose build make-tiles
+          docker-compose up make-tiles

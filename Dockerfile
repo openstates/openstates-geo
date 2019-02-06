@@ -1,6 +1,6 @@
 # Since build time and size isn't a priority, we'll just use
-# ubuntu, instead of debian or alpine, since ubuntu's apt-get
-# installations are simpler
+# `ubuntu`, instead of `debian` or `alpine`, since
+# Ubuntu's apt-get installations are simpler
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y \
