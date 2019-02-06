@@ -15,7 +15,7 @@ for f in ./data/*.zip; do
 	unzip -q -o -d ./data "$f" || echo "Failed to unzip $f; this is probably a non-existant chamber"
 done
 
-echo "Convert to GeoJSON"
+echo "Convert to GeoJSON and clip boundaries to shorelines"
 # Prepare the national boundary, to use to clip boundaries to
 # the coastline and Great Lakes
 curl --silent --output ./data/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip

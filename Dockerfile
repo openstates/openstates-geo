@@ -1,5 +1,6 @@
 # Since build time and size isn't a priority, we'll just use
-# ubuntu, instead of debian or alpine
+# ubuntu, instead of debian or alpine, since ubuntu's apt-get
+# installations are simpler
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y \
@@ -19,6 +20,9 @@ RUN git clone https://github.com/mapbox/tippecanoe.git && \
 	cd tippecanoe && \
 	make -j && \
 	make install
+# CircleCI requires a few packages for "primary containers,"
+# which already come with Ubuntu, or are installed above
+# https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
 
 ADD ./requirements.txt /opt/openstates-district-maps/requirements.txt
 ADD ./package.json /opt/openstates-district-maps/package.json
