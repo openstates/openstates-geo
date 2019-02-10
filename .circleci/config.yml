@@ -9,9 +9,8 @@ jobs:
       # subsequent webhook to run the completed image; CircleCI's
       # standard steps don't allow building and running a Docker
       # image in-place.
-      - image: docker/compose:1.23.2
+      - image: docker/compose:1.24.0-rc1
     steps:
-      - run: echo "$MAPBOX_ACCOUNT"
       - checkout
       # Unfortunately, Docker layer caching is a premium feature
       # for CircleCI 2, so all layers must be rebuilt during
