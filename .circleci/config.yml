@@ -11,6 +11,7 @@ jobs:
       # image in-place.
       - image: docker/compose:1.23.2
     steps:
+      - run: echo "$MAPBOX_ACCOUNT"
       - checkout
       # Unfortunately, Docker layer caching is a premium feature
       # for CircleCI 2, so all layers must be rebuilt during
