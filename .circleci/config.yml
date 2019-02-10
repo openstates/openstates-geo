@@ -16,6 +16,7 @@ jobs:
       # for CircleCI 2, so all layers must be rebuilt during
       # each CI run
       # https://circleci.com/docs/2.0/docker-layer-caching/
+      - run: env | grep "^DOCKER"
       - setup_remote_docker
       # Was having difficulty getting the environment variables
       # to transfer to the remote Docker environment, so ensure
@@ -23,5 +24,4 @@ jobs:
       # that the `MAPBOX_*` environment variables are present
       - run: |
           docker build -t make-tiles . &&
-          unset DOCKER_HOST &&
           docker run -e MAPBOX_ACCOUNT -e MAPBOX_ACCESS_TOKEN make-tiles
