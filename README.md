@@ -1,5 +1,7 @@
 ## Open States district maps
 
+[![CircleCI](https://circleci.com/gh/openstates/openstates-district-maps/tree/master.svg?style=svg)](https://circleci.com/gh/openstates/openstates-district-maps/tree/master)
+
 Generate and upload map tiles for the state-level legislative district maps on openstates.org.
 
 - Source: SLDL and SLDU shapefiles from the Census's TIGER/Line database
