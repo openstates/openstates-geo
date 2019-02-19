@@ -2,6 +2,9 @@ version: 2
 
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: openstates/openstates-district-maps
     steps:
