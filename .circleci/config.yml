@@ -3,25 +3,11 @@ version: 2
 jobs:
   build:
     docker:
-      # Running docker within Docker isn't typically recommended.
-      # However, this setup within CircleCI allows us to avoid
-      # having to push the image to a Docker registry, and the
-      # subsequent webhook to run the completed image; CircleCI's
-      # standard steps don't allow building and running a Docker
-      # image in-place.
-      - image: docker:18.09-git
+      - image: openstates/openstates-district-maps
     steps:
-      - checkout
-      # Unfortunately, Docker layer caching is a premium feature
-      # for CircleCI 2, so all layers must be rebuilt during
-      # each CI run
-      # https://circleci.com/docs/2.0/docker-layer-caching/
-      - run: env | grep "^DOCKER"
-      - setup_remote_docker
-      # Was having difficulty getting the environment variables
-      # to transfer to the remote Docker environment, so ensure
-      # that the execution runs locally, where we have confirmed
-      # that the `MAPBOX_*` environment variables are present
+      # Since the CircleCI image will be from a previous commit,
+      # do a fresh clone of the repository; see README for more info
       - run: |
-          docker build -t make-tiles . &&
-          docker run -e MAPBOX_ACCOUNT -e MAPBOX_ACCESS_TOKEN make-tiles
+          git clone https://github.com/openstates/openstates-district-maps.git &&
+          cd openstates-district-maps &&
+          ./make-tiles.sh
