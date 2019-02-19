@@ -9,5 +9,6 @@ jobs:
       # do a fresh clone of the repository; see README for more info
       - run: |
           git clone https://github.com/openstates/openstates-district-maps.git &&
+          mv /opt/openstates-district-maps/node_modules ./openstates-district-maps/node_modules &&
           cd openstates-district-maps &&
           ./make-tiles.sh
