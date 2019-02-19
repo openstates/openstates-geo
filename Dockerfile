@@ -3,6 +3,11 @@
 # Ubuntu's apt-get installations are simpler
 FROM ubuntu:18.04
 
+# These environment variables are required to fix a bug when
+# running Mapbox CLI within CircleCI. See end of build log here:
+# https://circleci.com/gh/openstates/openstates-district-maps/38
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+
 RUN apt-get update && apt-get install -y \
 	python3 \
 	python3-pip \
