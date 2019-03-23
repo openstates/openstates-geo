@@ -11,17 +11,8 @@ echo "Additional shapefiles, such as New Hampshire floterials and DC at-large, s
 
 echo "Unzip the shapefiles"
 for f in ./data/*.zip; do
-	# Catch cases where the ZIP file doesn't function, like DC SLDL;
-	# this prevents the `unzip` and `ogr2ogr` from easily
-	# coexisting within the same `for` loop
-	unzip -q -o -d ./data "$f" || echo "Failed to unzip $f; this is probably a non-existant chamber"
+	unzip -q -o -d ./data "$f"
 done
-
-echo "Convert to GeoJSON and clip boundaries to shorelines"
-# Prepare the national boundary, to use to clip boundaries to
-# the coastline and Great Lakes
-curl --silent --output ./data/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip
-unzip -q -o -d ./data ./data/cb_2017_us_nation_5m.zip
 
 # Occasionally, the TIGER/Line website may not have properly
 # served all the files, in which case the process should error
@@ -32,6 +23,12 @@ if (( total != 102 )); then
 	exit 1
 fi
 
+# Prepare the national boundary, to use to clip boundaries to
+# the coastline and Great Lakes
+curl --silent --output ./data/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip
+unzip -q -o -d ./data ./data/cb_2017_us_nation_5m.zip
+
+echo "Convert to GeoJSON and clip boundaries to shorelines"
 count=0
 for f in ./data/tl_*.shp; do
 	# OGR's GeoJSON driver cannot overwrite files, so make sure
