@@ -33,7 +33,7 @@ fs.createReadStream(GEOJSON)
     const slduId = sldu.find(d => d.census_geoid_14 === geoid)
     const sldlId = sldl.find(d => d.census_geoid_14 === geoid)
     const ocdid = (slduId && slduId.id) ||
-      (sldlId && sldlId) ||
+      (sldlId && sldlId.id) ||
       null
 
     // Although OCD IDs contain the state postal code, psarsing
