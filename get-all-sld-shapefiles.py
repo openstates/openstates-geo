@@ -1,5 +1,9 @@
 #! /usr/bin/env python3
 
+# This could be done using Node instead, but that wouldn't let
+# us remove the Python dependency, since `mapboxcli` is still
+# needed and can only be installed as a Python package
+
 import requests
 import us
 

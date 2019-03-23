@@ -8,11 +8,13 @@ Generate and upload map tiles for the state-level legislative district maps on [
 - Output: a single nationwide MBTiles vector tile set, uploaded to Mapbox for hosting
   - Intermediate files are also built and retained locally, stored in the `data` directory for debugging
 
+![](tileset-screenshot.png)
+
 ### Dependencies
 
 - Python 3 and `pip`
 - Node.js 10 and `npm`
-- GDAL/OGR
+- GDAL 2
 - `curl`
 - `gawk`
 - `sed`
@@ -46,4 +48,4 @@ docker-compose up make-tiles
 
 For Open States itself, CircleCI will auto-build and deploy this tileset to our Mapbox account for use in production. So, make sure to locally check any changes to the tileset before committing any new code to the `master` branch.
 
-Note: This automated system is set up using Docker Hub auto-builds, and CircleCI to run those auto-built images. Since both processes start at the same time, _CircleCI does not run the most recent image_; CircleCI will run the auto-built image from a previous commit, likely from about 20 minutes before. Circle _does_ do a fresh checkout of the Git repository within this image, so the only problems that the Circle + Docker Hub asynchronousness causes are when the contents of the `Dockerfile` have changed; changes in the build scripts themselves will cause no issues, so the CircleCI job would almost certainly error out rather than pushing bad tiles.
+Note: This automated system is set up using Docker Hub auto-builds, and CircleCI to run those auto-built images. Since both processes start at the same time, _CircleCI does not run the most recent image_; CircleCI will run the auto-built image from a previous commit, from roughly 20 minutes before. CircleCI _does_ do a fresh checkout of the Git repository, so the only problems that the CircleCI + Docker Hub asynchronousness causes are when the contents of the `Dockerfile` or library requirements have changed in a commit; changes to the build scripts themselves will cause no issues. The CircleCI job would almost certainly error out rather than pushing bad tiles.
