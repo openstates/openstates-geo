@@ -9,12 +9,12 @@ import us
 
 
 def get_ocdid_records():
-    SLDU_CSV_PATH = './data/sldu-ocdid.csv'
+    SLDU_CSV_PATH = './data/us_sldu.csv'
     with open(SLDU_CSV_PATH, 'r') as sldu_file:
         reader = csv.DictReader(sldu_file)
         sldu = [row for row in reader]
 
-    SLDL_CSV_PATH = './data/sldl-ocdid.csv'
+    SLDL_CSV_PATH = './data/us_sldl.csv'
     with open(SLDL_CSV_PATH, 'r') as sldl_file:
         reader = csv.DictReader(sldl_file)
         sldl = [row for row in reader]
