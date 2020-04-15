@@ -1,17 +1,17 @@
 import os
 import dj_database_url
 
-DEBUG = os.environ.get("DEBUG").lower() == "false"
+DEBUG = os.environ.get("DEBUG", "true").lower() == "false"
 DATABASE_URL = os.environ.get(
     "DATABASE_URL", "postgis://openstates:openstates@db:5432/openstatesorg"
 )
 
-DATABASES = {"default": {dj_database_url.parse(DATABASE_URL)}}
+DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
 
 SECRET_KEY = "not-used"
 ALLOWED_HOSTS = ["*"]
 
-INSTALLED_APPS = ["geo"]
+INSTALLED_APPS = ["djapp.geo"]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
