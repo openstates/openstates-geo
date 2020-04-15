@@ -1,13 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash 
 
 set -e
-
-mkdir -p data
-
-echo "Download and unzip TIGER/Line shapefiles"
-poetry run ./scripts/get-all-sld-shapefiles.py
-
-echo "Additional shapefiles, such as New Hampshire floterials and DC at-large, should be downloaded here in the future"
 
 # Occasionally, the TIGER/Line website may not have properly
 # served all the files, in which case the process should error
@@ -22,7 +15,7 @@ echo "Download the national boundary for clipping"
 curl --silent --output ./data/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip
 unzip -q -o -d ./data ./data/cb_2017_us_nation_5m.zip
 
-echo "Convert to GeoJSON, clip boundaries to shoreline, and join OCD jurisdiction IDs"
+echo "Convert to GeoJSON, clip boundaries to shoreline"
 count=0
 for f in ./data/tl_*.shp; do
 	# OGR's GeoJSON driver cannot overwrite files, so make sure
@@ -40,25 +33,6 @@ for f in ./data/tl_*.shp; do
 		-f GeoJSON \
 		"${f%.*}.geojson" \
 		"$f"
-
-	poetry run ./scripts/join-ocd-division-ids.py "${f%.*}.geojson"
-
 	((++count))
 	echo -e "${count} of ${total} shapefiles processed"
 done
-
-echo "Combine all GeoJSON files into a MBTiles file for serving"
-tippecanoe \
-	--layer sld \
-	--minimum-zoom 2 --maximum-zoom 13 \
-	--detect-shared-borders \
-	--simplification 10 \
-	--force --output ./data/sld.mbtiles \
-	./data/*-with-ocdids.geojson
-
-if [ -z ${MAPBOX_ACCOUNT+x} ] || [ -z ${MAPBOX_ACCESS_TOKEN+x} ] ; then
-	echo "Skipping upload step; MAPBOX_ACCOUNT and/or MAPBOX_ACCESS_TOKEN not set in environment"
-else
-	echo "Upload the MBTiles to Mapbox, for serving"
-	mapbox upload "${MAPBOX_ACCOUNT}.sld" ./data/sld.mbtiles
-fi

@@ -1,4 +1,4 @@
-## Open States district maps
+# Open States Geography Processing & Server
 
 Generate and upload map tiles for the state-level legislative district maps on [openstates.org](https://openstates.org/), both for [state overviews](https://openstates.org/ca/) and for [individual legislators](https://openstates.org/person/tim-ashe-4mV4UFZqI2WsxsnYXLM8Vb/).
 
@@ -8,7 +8,7 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 ![](tileset-screenshot.png)
 
-### Dependencies
+## Dependencies
 
 - Python 3 and `poetry`
 - `pip install -r requirements.txt`
@@ -17,18 +17,34 @@ Generate and upload map tiles for the state-level legislative district maps on [
 - `tippecanoe`
 - `unzip`
 
-### Running
+## Running
 
-Run `./make-tiles.sh` to create the map tiles, and upload them to Mapbox.
+There are several steps, which typically need to be run in order:
 
-The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
+1) Download SLD shapefiles:
+
+  `poetry run ./scripts/get-all-sld-shapefiles.py`
+
+2) Convert to shoreline-clipped geojson:
+
+  `./scripts/to-geojson.sh`
+
+3) Join to OCD division IDs:
+
+  `poetry run ./scripts/join-ocd-division-ids.py`
+
+4) Convert to mbtiles and upload:
+
+  `./scripts/make-tiles.sh`
+
+  The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
 
 ### Running within Docker
 
-Instead of setting up your local environment and executing `./make-tiles.sh`, you can instead run using Docker. This has the added benefit of loosely mirroring how the commands will be executed by CircleCI. Using Docker Compose will still allow you to access all intermediate files from the processing, within your local `data` directory.
+Instead of setting up your local environment you can instead run using Docker. Using Docker Compose will still allow you to access all intermediate files from the processing, within your local `data` directory.
 
 Build and run with Docker Compose. Similar to running without Docker, the `MAPBOX_ACCOUNT` and `MAPBOX_ACCESS_TOKEN` must be set in your local environment.
 
-```bash
+```
 docker-compose up make-tiles
 ```
