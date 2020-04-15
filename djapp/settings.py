@@ -1,7 +1,7 @@
 import os
 import dj_database_url
 
-DEBUG = os.environ.get("DEBUG", "true").lower() == "false"
+DEBUG = os.environ.get("DEBUG", "false").lower() == "false"
 DATABASE_URL = os.environ.get(
     "DATABASE_URL", "postgis://openstates:openstates@db:5432/openstatesorg"
 )
