@@ -14,6 +14,10 @@ for state in us.STATES + [us.states.PR]:
     for chamber in ["l", "u"]:
         fips = state.fips
 
+        if state.abbr in ("DC", "NE") and chamber == "l":
+            # skip lower chamber of the unicamerals
+            continue
+
         if os.path.exists(f"data/tl_{YEAR}_{fips}_sld{chamber}.shp"):
             print(f"skipping {state} {fips} sld{chamber}")
             continue
@@ -36,10 +40,5 @@ for state in us.STATES + [us.states.PR]:
                 f.write(response.content)
             with zipfile.ZipFile(filename, "r") as f:
                 f.extractall("./data")
-        elif (
-            response.status_code == 404 and state.abbr == "DC" and chamber == "l"
-        ) or (response.status_code == 404 and state.abbr == "NE" and chamber == "l"):
-            # These chambers are non-existant, and a `404` is expected
-            pass
         else:
             response.raise_for_status()
