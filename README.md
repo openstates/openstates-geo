@@ -25,13 +25,13 @@ There are several steps, which typically need to be run in order:
 
   `poetry run ./scripts/get-all-sld-shapefiles.py`
 
-2) Convert to shoreline-clipped geojson:
+2) Convert to geojson with division IDs:
 
-  `./scripts/to-geojson.sh`
+  `poetry run ./scripts/to-geojson.py`
 
-3) Join to OCD division IDs:
+3) Import into database:
 
-  `poetry run ./scripts/join-ocd-division-ids.py`
+  `poetry run ./manage.py load_divisions`
 
 4) Convert to mbtiles and upload:
 

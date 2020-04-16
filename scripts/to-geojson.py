@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+import os
 import csv
 import json
 import glob
+import subprocess
 import us
 
 
@@ -51,11 +53,39 @@ def merge_ids(geojson_path):
         # file size
         feature["properties"] = {"ocdid": ocd_id, "type": district_type, "state": state}
 
-    output_filename = f"final-geojson/{state}-{district_type}.geojson"
+    output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    print(f"{geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geojson, geojson_file)
 
 
 if __name__ == "__main__":
-    for fname in glob.glob("data/*.geojson"):
-        merge_ids(fname)
+    try:
+        os.makedirs("./data/geojson")
+    except FileExistsError:
+        pass
+
+    files = sorted(glob.glob("data/source/tl*.shp"))
+    if len(files) != 102:
+        raise AssertionError(f"Expecting 102 shapefiles, got {len(files)}).")
+    for file in files:
+        newfilename = file.replace(".shp", ".geojson")
+        if os.path.exists(newfilename):
+            print(newfilename, "already exists, skipping")
+        else:
+            print(file, "=>", newfilename)
+            subprocess.run(
+                [
+                    "ogr2ogr",
+                    "-where",
+                    "GEOID NOT LIKE '%ZZZ'",
+                    "-t_srs",
+                    "crs:84",
+                    "-f",
+                    "GeoJSON",
+                    newfilename,
+                    file,
+                ],
+                check=True
+            )
+        merge_ids(newfilename)

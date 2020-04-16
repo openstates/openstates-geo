@@ -22,7 +22,7 @@ class Command(BaseCommand):
         DivisionSet.objects.get_or_create(slug="sldl")
         DivisionSet.objects.get_or_create(slug="sldu")
 
-        filenames = options["filenames"] or sorted(glob.glob("final-geojson/*.geojson"))
+        filenames = options["filenames"] or sorted(glob.glob("geojson/*.geojson"))
 
         for filename in filenames:
             print(f"processing {filename}...")

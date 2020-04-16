@@ -8,6 +8,11 @@ import us
 YEAR = "2019"
 URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
 
+try:
+    os.makedirs("./data/source/")
+except FileExistsError:
+    pass
+
 for state in us.STATES + [us.states.PR]:
     print("Fetching shapefiles for {}".format(state.name))
 
@@ -18,7 +23,7 @@ for state in us.STATES + [us.states.PR]:
             # skip lower chamber of the unicamerals
             continue
 
-        if os.path.exists(f"data/tl_{YEAR}_{fips}_sld{chamber}.shp"):
+        if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
             print(f"skipping {state} {fips} sld{chamber}")
             continue
 
@@ -39,6 +44,6 @@ for state in us.STATES + [us.states.PR]:
             with open(filename, "wb") as f:
                 f.write(response.content)
             with zipfile.ZipFile(filename, "r") as f:
-                f.extractall("./data")
+                f.extractall("./data/source")
         else:
             response.raise_for_status()
