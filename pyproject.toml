@@ -12,6 +12,7 @@ requests = "^2.23.0"
 django = "^3.0.5"
 psycopg2-binary = "^2.8.5"
 dj-database-url = "^0.5.0"
+openstates_metadata = "^2020.4.4"
 
 [tool.poetry.dev-dependencies]
 

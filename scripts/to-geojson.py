@@ -5,6 +5,7 @@ import json
 import glob
 import subprocess
 import us
+import openstates_metadata as metadata
 
 
 def get_ocdid_records():
@@ -47,11 +48,13 @@ def merge_ids(geojson_path):
         # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
 
-        # The source shapefiles have a large number of properties,
-        # but the output tiles only need these three for their
-        # use on openstates.org; this helps keep down the MBTiles
-        # file size
-        feature["properties"] = {"ocdid": ocd_id, "type": district_type, "state": state}
+        state_meta = metadata.lookup(abbr=state)
+        feature["properties"] = {
+            "ocdid": ocd_id,
+            "type": district_type,
+            "state": state,
+            "name": state_meta.lookup_district(ocd_id).name,
+        }
 
     output_filename = f"data/geojson/{state}-{district_type}.geojson"
     print(f"{geojson_path} => {output_filename}")
@@ -86,6 +89,6 @@ if __name__ == "__main__":
                     newfilename,
                     file,
                 ],
-                check=True
+                check=True,
             )
         merge_ids(newfilename)
