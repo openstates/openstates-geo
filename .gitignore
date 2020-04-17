@@ -3,3 +3,5 @@ final-geojson
 *.mbtiles
 *.DS_Store
 *.pyc
+endpoint/*.zip
+endpoint/awslambda-psycopg2
