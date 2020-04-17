@@ -25,7 +25,7 @@ def response(body, status_code=200):
 def geo_query(lat, lon):
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    GEO_QUERY = """SELECT id, name FROM geo_division
+    GEO_QUERY = """SELECT id, state, name, division_set_id as division_set FROM geo_division
     WHERE ST_Contains(shape, 'POINT(%s %s)'::geography::geometry);"""
 
     cur.execute(GEO_QUERY, [lat, lon])

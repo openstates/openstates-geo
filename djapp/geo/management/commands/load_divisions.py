@@ -7,6 +7,8 @@ from ...models import DivisionSet, Division
 
 GEOJSON_MAPPING = {
     "id": "ocdid",
+    "state": "state",
+    "name": "name",
     "division_set": {"slug": "type"},
     "shape": "GEOMETRY",
 }
@@ -22,7 +24,7 @@ class Command(BaseCommand):
         DivisionSet.objects.get_or_create(slug="sldl")
         DivisionSet.objects.get_or_create(slug="sldu")
 
-        filenames = options["filenames"] or sorted(glob.glob("geojson/*.geojson"))
+        filenames = options["filenames"] or sorted(glob.glob("data/geojson/*.geojson"))
 
         for filename in filenames:
             print(f"processing {filename}...")
