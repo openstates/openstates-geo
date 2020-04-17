@@ -35,7 +35,7 @@ There are several steps, which typically need to be run in order:
 
 4) Convert to mbtiles and upload:
 
-  `./scripts/make-tiles.sh`
+  `./scripts/make-tiles.py`
 
   The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
 
