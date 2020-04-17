@@ -11,4 +11,5 @@ class Division(models.Model):
         DivisionSet, on_delete=models.CASCADE, related_name="divisions"
     )
     name = models.CharField(max_length=300)
+    state = models.CharField(max_length=2)
     shape = models.MultiPolygonField()
