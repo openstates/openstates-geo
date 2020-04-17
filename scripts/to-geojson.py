@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 import os
+import sys
 import csv
 import json
 import glob
 import subprocess
 import us
 import openstates_metadata as metadata
+
+OCD_FIXES = {
+    "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
+}
 
 
 def get_ocdid_records():
@@ -47,13 +52,19 @@ def merge_ids(geojson_path):
         # an ID to determine structured data is bad practice,
         # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
-
         state_meta = metadata.lookup(abbr=state)
+        if ocd_id in OCD_FIXES:
+            ocd_id = OCD_FIXES[ocd_id]
+        district = state_meta.lookup_district(ocd_id)
+        if not district:
+            raise ValueError(f"no {ocd_id} {district_type}")
+            continue
+
         feature["properties"] = {
             "ocdid": ocd_id,
             "type": district_type,
             "state": state,
-            "name": state_meta.lookup_district(ocd_id).name,
+            "name": district.name,
         }
 
     output_filename = f"data/geojson/{state}-{district_type}.geojson"
@@ -68,9 +79,13 @@ if __name__ == "__main__":
     except FileExistsError:
         pass
 
-    files = sorted(glob.glob("data/source/tl*.shp"))
-    if len(files) != 102:
-        raise AssertionError(f"Expecting 102 shapefiles, got {len(files)}).")
+    if len(sys.argv) == 1:
+        files = sorted(glob.glob("data/source/tl*.shp"))
+        if len(files) != 102:
+            raise AssertionError(f"Expecting 102 shapefiles, got {len(files)}).")
+    else:
+        files = sys.argv[1:]
+
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
