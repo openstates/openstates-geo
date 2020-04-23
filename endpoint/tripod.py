@@ -3,7 +3,6 @@ import glob
 import subprocess
 import zipfile
 import boto3
-import botocore
 
 
 def create_psycopg2_layer():
@@ -50,7 +49,7 @@ def create_function(
 
     try:
         existing_config = client.get_function_configuration(FunctionName=name)
-    except botocore.errorfactory.ResourceNotFoundException:
+    except client.exceptions.ResourceNotFoundException:
         existing_config = False
         client.create_function(
             FunctionName=name,
@@ -82,7 +81,7 @@ def create_function(
 
 def main():
     create_function(
-        "v3_district_geo",
+        "v3-district-geo",
         "lookup.py",
         role_arn="arn:aws:iam::189670762819:role/v3_lambda_exec_role",
         handler="lookup.lambda_handler",
