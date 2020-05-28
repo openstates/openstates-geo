@@ -1,0 +1,17 @@
+functions:
+  - name: v3-district-geo
+    description: "API v3 District Geo Endpoint"
+    runtime: python3.7
+    files:
+      - lookup.py
+    role_arn: "arn:aws:iam::189670762819:role/v3_lambda_exec_role"
+    handler: lookup.lambda_handler
+    layers:
+      - py37-psycopg2
+    environment:
+      DB_USER: geo
+      DB_NAME: geo
+      DB_HOST: 
+        paramstore: /bobsled/backups/PGHOST
+      DB_PASSWORD: 
+        paramstore: /passwords/geo_db_password
