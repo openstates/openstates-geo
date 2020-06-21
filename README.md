@@ -1,3 +1,7 @@
+# Issues
+
+- Issues for this repository are tracked in our central tracking repository: https://github.com/openstates/issues/
+
 # Open States Geography Processing & Server
 
 Generate and upload map tiles for the state-level legislative district maps on [openstates.org](https://openstates.org/), both for [state overviews](https://openstates.org/ca/) and for [individual legislators](https://openstates.org/person/tim-ashe-4mV4UFZqI2WsxsnYXLM8Vb/).
