@@ -1,6 +1,6 @@
 # Issues
 
-- Issues for this repository are tracked in our central tracking repository: https://github.com/openstates/issues/
+- Tracked in our central issue repository: [Geo Issues](https://github.com/openstates/issues/issues?q=is%3Aopen+label%3Adata%3Ageo+label%3Ainfrastructure%3Ageo)
 
 # Open States Geography Processing & Server
 
