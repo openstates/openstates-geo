@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import glob
 import zipfile
 import requests
 import us
@@ -27,9 +28,12 @@ for state in us.STATES + [us.states.PR]:
             print(f"skipping {state} {fips} sld{chamber}")
             continue
 
-        download_url = URL.format(
-            fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
-        )
+        if state.abbr == "VA" and chamber == "l":
+            download_url = "http://redistricting.dls.virginia.gov/2010/Data/House%20Plans/Final_Remedial_Plan/final_remedial_plan_shpfile.zip"
+        else:
+            download_url = URL.format(
+                fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
+            )
 
         response = requests.get(download_url)
 
@@ -47,3 +51,7 @@ for state in us.STATES + [us.states.PR]:
                 f.extractall("./data/source")
         else:
             response.raise_for_status()
+
+        if state.abbr == "VA" and chamber == "l":
+            for f in glob.glob("data/source/final_remedial_plan.*"):
+                os.rename(f, f.replace("final_remedial_plan", "tl_2019_51_sldl"))
