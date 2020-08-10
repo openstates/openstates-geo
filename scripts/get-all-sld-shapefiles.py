@@ -54,4 +54,4 @@ for state in us.STATES + [us.states.PR]:
 
         if state.abbr == "VA" and chamber == "l":
             for f in glob.glob("data/source/final_remedial_plan.*"):
-                os.rename(f, f.replace("final_remedial_plan", "tl_2019_51_sldl"))
+                os.rename(f, f.replace("final_remedial_plan", "va_lower_remedial_2019"))
