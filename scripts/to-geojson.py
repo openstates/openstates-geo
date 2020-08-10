@@ -90,14 +90,22 @@ def process_va_lower(file):
     with open(newfilename, "r") as geojson_file:
         geojson = json.load(geojson_file)
 
+    state = "va"
+    district_type = "sldl"
+
     for feature in geojson["features"]:
         n = feature["properties"]["District_N"]
         feature["properties"] = {
             "ocdid": f"ocd-division/country:us/state:va/sldl:{n}",
-            "type": "sldl",
-            "state": "va",
+            "type": district_type,
+            "state": state,
             "name": str(n),
         }
+
+    output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    print(f"{newfilename} => {output_filename}")
+    with open(output_filename, "w") as geojson_file:
+        json.dump(geojson, geojson_file)
 
 
 if __name__ == "__main__":
@@ -115,6 +123,7 @@ if __name__ == "__main__":
         files = sys.argv[1:]
 
     process_va_lower("data/source/va_lower_remedial_2019.shp")
+    1/0
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
