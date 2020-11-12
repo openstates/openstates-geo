@@ -62,7 +62,7 @@ def merge_ids(geojson_path):
 
         feature["properties"] = {
             "ocdid": ocd_id,
-            "type": district_type,
+            "type": "sldl",
             "state": state,
             "name": district.name,
         }
@@ -73,18 +73,57 @@ def merge_ids(geojson_path):
         json.dump(geojson, geojson_file)
 
 
+def process_va_lower(file):
+    newfilename = file.replace(".shp", ".geojson")
+    subprocess.run(
+        [
+            "ogr2ogr",
+            "-t_srs",
+            "crs:84",
+            "-f",
+            "GeoJSON",
+            newfilename,
+            file,
+        ],
+        check=True,
+    )
+    with open(newfilename, "r") as geojson_file:
+        geojson = json.load(geojson_file)
+
+    state = "va"
+    district_type = "sldl"
+
+    for feature in geojson["features"]:
+        n = feature["properties"]["District_N"]
+        feature["properties"] = {
+            "ocdid": f"ocd-division/country:us/state:va/sldl:{n}",
+            "type": district_type,
+            "state": state,
+            "name": str(n),
+        }
+
+    output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    print(f"{newfilename} => {output_filename}")
+    with open(output_filename, "w") as geojson_file:
+        json.dump(geojson, geojson_file)
+
+
 if __name__ == "__main__":
     try:
         os.makedirs("./data/geojson")
     except FileExistsError:
         pass
 
+    expected = 101
     if len(sys.argv) == 1:
         files = sorted(glob.glob("data/source/tl*.shp"))
-        if len(files) != 102:
-            raise AssertionError(f"Expecting 102 shapefiles, got {len(files)}).")
+        if len(files) != expected:
+            raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
         files = sys.argv[1:]
+
+    process_va_lower("data/source/va_lower_remedial_2019.shp")
+    1/0
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
