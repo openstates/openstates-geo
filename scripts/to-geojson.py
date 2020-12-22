@@ -123,7 +123,6 @@ if __name__ == "__main__":
         files = sys.argv[1:]
 
     process_va_lower("data/source/va_lower_remedial_2019.shp")
-    1/0
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
