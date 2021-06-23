@@ -24,19 +24,23 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 There are several steps, which typically need to be run in order:
 
-1) Download SLD shapefiles:
+1) Setup Poetry:
+
+  `poetry install`
+
+2) Download SLD shapefiles:
 
   `poetry run ./scripts/get-shapefiles.py`
 
-2) Convert to geojson with division IDs:
+3) Convert to geojson with division IDs:
 
   `poetry run ./scripts/to-geojson.py`
 
-3) Import into database:
+4) Import into database:
 
   `poetry run ./manage.py load_divisions`
 
-4) Convert to mbtiles and upload:
+5) Convert to mbtiles and upload:
 
   `./scripts/make-tiles.py`
 
