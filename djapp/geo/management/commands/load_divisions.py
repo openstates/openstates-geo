@@ -23,6 +23,7 @@ class Command(BaseCommand):
         # create divisionsets
         DivisionSet.objects.get_or_create(slug="sldl")
         DivisionSet.objects.get_or_create(slug="sldu")
+        DivisionSet.objects.get_or_create(slug="cd")
 
         filenames = options["filenames"] or sorted(glob.glob("data/geojson/*.geojson"))
 
