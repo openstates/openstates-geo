@@ -76,6 +76,8 @@ def merge_ids(geojson_path):
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
+            if cd_num in ("00", "98"):
+                cd_num = "AL"
             district_name = f"{state.upper()}-{cd_num}"
         else:
             district = state_meta.lookup_district(ocd_id)
