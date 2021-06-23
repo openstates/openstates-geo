@@ -26,7 +26,7 @@ There are several steps, which typically need to be run in order:
 
 1) Download SLD shapefiles:
 
-  `poetry run ./scripts/get-all-sld-shapefiles.py`
+  `poetry run ./scripts/get-shapefiles.py`
 
 2) Convert to geojson with division IDs:
 

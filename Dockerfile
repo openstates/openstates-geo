@@ -31,7 +31,7 @@ WORKDIR /opt/openstates-district-maps
 RUN pip3 install -r requirements.txt
 
 ADD ./make-tiles.sh /opt/openstates-district-maps/make-tiles.sh
-ADD ./get-all-sld-shapefiles.py /opt/openstates-district-maps/get-all-sld-shapefiles.py
+ADD ./get-shapefiles.py /opt/openstates-district-maps/get-shapefiles.py
 ADD ./join-ocd-division-ids.py /opt/openstates-district-maps/join-ocd-division-ids.py
 
 CMD ./make-tiles.sh

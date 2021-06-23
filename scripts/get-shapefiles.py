@@ -9,6 +9,24 @@ import us
 YEAR = "2020"
 URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
 
+
+def download_and_extract(url, filename):
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        # This _could_ all be done with a single file operation,
+        # by using a `BytesIO` file-like object to temporarily hold the
+        # HTTP response. However, that's less readable and maintainable,
+        # and a bit of delay isn't a problem given the slowness
+        # of the Census downloads in the first place.
+        with open(filename, "wb") as f:
+            f.write(response.content)
+        with zipfile.ZipFile(filename, "r") as f:
+            f.extractall("./data/source")
+    else:
+        response.raise_for_status()
+
+
 try:
     os.makedirs("./data/source/")
 except FileExistsError:
@@ -35,23 +53,15 @@ for state in us.STATES + [us.states.PR]:
                 fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
             )
 
-        response = requests.get(download_url)
-
-        if response.status_code == 200:
-            filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
-
-            # This _could_ all be done with a single file operation,
-            # by using a `BytesIO` file-like object to temporarily hold the
-            # HTTP response. However, that's less readable and maintainable,
-            # and a bit of delay isn't a problem given the slowness
-            # of the Census downloads in the first place.
-            with open(filename, "wb") as f:
-                f.write(response.content)
-            with zipfile.ZipFile(filename, "r") as f:
-                f.extractall("./data/source")
-        else:
-            response.raise_for_status()
+        filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
+        download_and_extract(download_url, filename)
 
         if state.abbr == "VA" and chamber == "l":
             for f in glob.glob("data/source/final_remedial_plan.*"):
                 os.rename(f, f.replace("final_remedial_plan", "va_lower_remedial_2019"))
+
+# final step: get US data
+download_and_extract(
+    f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
+    f"data/source/tl_{YEAR}_us_cd116.zip",
+)
