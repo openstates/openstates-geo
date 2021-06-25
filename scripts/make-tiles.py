@@ -18,10 +18,14 @@ if __name__ == "__main__":
     )
 
     print("Clip GeoJSON to shoreline")
-    filenames = []
+    sld_filenames = []
+    cd_filenames = []
     for filename in sorted(glob.glob("data/geojson/*.geojson")):
         newfilename = filename.replace("/geojson/", "/mapbox/")
-        filenames.append(newfilename)
+        if "sld" in newfilename:
+            sld_filenames.append(newfilename)
+        else:
+            cd_filenames.append(newfilename)
         if os.path.exists(newfilename):
             print(f"{newfilename} exists, skipping")
         else:
@@ -37,12 +41,33 @@ if __name__ == "__main__":
                 check=True,
             )
 
-    print("Combine to MBTiles file")
+    # print("Combine to SLD MBTiles file")
+    # subprocess.run(
+    #     [
+    #         "tippecanoe",
+    #         "--layer",
+    #         "sld",
+    #         "--minimum-zoom",
+    #         "2",
+    #         "--maximum-zoom",
+    #         "13",
+    #         "--detect-shared-borders",
+    #         "--simplification",
+    #         "10",
+    #         "--force",
+    #         "--output",
+    #         "./sld.mbtiles",
+    #     ]
+    #     + sld_filenames,
+    #     check=True,
+    # )
+
+    print("Combine to CD MBTiles file")
     subprocess.run(
         [
             "tippecanoe",
             "--layer",
-            "sld",
+            "cd",
             "--minimum-zoom",
             "2",
             "--maximum-zoom",
@@ -52,9 +77,9 @@ if __name__ == "__main__":
             "10",
             "--force",
             "--output",
-            "./sld.mbtiles",
+            "./cd.mbtiles",
         ]
-        + filenames,
+        + cd_filenames,
         check=True,
     )
 
