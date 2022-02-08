@@ -2,7 +2,7 @@
 name = "openstates-geo"
 version = "2.0.0"
 description = ""
-authors = ["James Turk <james@openstates.org>"]
+authors = ["James Turk <dev@jamesturk.net>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
