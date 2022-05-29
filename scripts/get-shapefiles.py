@@ -46,19 +46,12 @@ for state in us.STATES + [us.states.PR]:
             print(f"skipping {state} {fips} sld{chamber}")
             continue
 
-        if state.abbr == "VA" and chamber == "l":
-            download_url = "http://redistricting.dls.virginia.gov/2010/Data/House%20Plans/Final_Remedial_Plan/final_remedial_plan_shpfile.zip"
-        else:
-            download_url = URL.format(
-                fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
-            )
+        download_url = URL.format(
+            fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
+        )
 
         filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
         download_and_extract(download_url, filename)
-
-        if state.abbr == "VA" and chamber == "l":
-            for f in glob.glob("data/source/final_remedial_plan.*"):
-                os.rename(f, f.replace("final_remedial_plan", "va_lower_remedial_2019"))
 
 # final step: get US data
 download_and_extract(
