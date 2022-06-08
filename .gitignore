@@ -5,3 +5,4 @@ final-geojson
 *.pyc
 endpoint/*.zip
 endpoint/awslambda-psycopg2
+.idea/
