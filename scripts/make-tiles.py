@@ -2,6 +2,8 @@
 import subprocess
 import glob
 import os
+import requests
+
 
 if __name__ == "__main__":
     try:
@@ -10,6 +12,7 @@ if __name__ == "__main__":
         pass
 
     print("Downloading national boundary")
+    # maps = requests.get("https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip")
     subprocess.run(
         "curl --silent --output ./data/source/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip".split()
     )

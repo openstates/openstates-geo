@@ -115,7 +115,6 @@ if __name__ == "__main__":
     else:
         files = sys.argv[1:]
 
-
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):

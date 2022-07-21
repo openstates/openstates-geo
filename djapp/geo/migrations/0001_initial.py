@@ -9,24 +9,36 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='DivisionSet',
+            name="DivisionSet",
             fields=[
-                ('slug', models.SlugField(primary_key=True, serialize=False)),
+                ("slug", models.SlugField(primary_key=True, serialize=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Division',
+            name="Division",
             fields=[
-                ('id', models.CharField(max_length=300, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=300)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('shape', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
-                ('division_set', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='divisions', to='geo.DivisionSet')),
+                (
+                    "id",
+                    models.CharField(max_length=300, primary_key=True, serialize=False),
+                ),
+                ("name", models.CharField(max_length=300)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "shape",
+                    django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326),
+                ),
+                (
+                    "division_set",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="divisions",
+                        to="geo.DivisionSet",
+                    ),
+                ),
             ],
         ),
     ]

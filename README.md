@@ -16,9 +16,7 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 - Python 3 and `poetry`
 - GDAL 2
-- `curl`
 - `tippecanoe`
-- `unzip`
 
 ## Running
 
@@ -53,5 +51,5 @@ Instead of setting up your local environment you can instead run using Docker. U
 Build and run with Docker Compose. Similar to running without Docker, the `MAPBOX_ACCOUNT` and `MAPBOX_ACCESS_TOKEN` must be set in your local environment.
 
 ```
-docker-compose up make-tiles
+docker-compose up
 ```
