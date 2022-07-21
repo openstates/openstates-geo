@@ -18,7 +18,7 @@ def download_and_extract(url, filename):
 
     if response.status_code == 200:
         shapezip = BytesIO(response.content)
-        with zipfile.ZipFile(shapezip) as f:
+        with zipfile.ZipFile(shapezip, "rb") as f:
             f.extractall("./data/source")
     else:
         response.raise_for_status()

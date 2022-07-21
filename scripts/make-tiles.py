@@ -3,7 +3,7 @@ import subprocess
 import glob
 import os
 import requests
-from io import StringIO
+from io import BytesIO
 import zipfile
 
 
@@ -18,8 +18,8 @@ if __name__ == "__main__":
         "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip",
         timeout=120,
     )
-    tmp_file = StringIO(maps.content)
-    with zipfile.ZipFile(tmp_file) as z:
+    tmp_file = BytesIO(maps.content)
+    with zipfile.ZipFile(tmp_file, "rb") as z:
         z.extractall("./data/source")
     """
     subprocess.run(
