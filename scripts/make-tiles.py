@@ -14,16 +14,19 @@ if __name__ == "__main__":
         pass
 
     print("Downloading national boundary")
-    maps = requests.get("https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip", timeout=120)
+    maps = requests.get(
+        "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip",
+        timeout=120,
+    )
     tmp_file = StringIO(maps.content)
-    with ZipFile(tmp_file) as z:
+    with zipfile.ZipFile(tmp_file) as z:
         z.extractall("./data/source")
     """
     subprocess.run(
-        "curl --silent --output ./data/source/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip".split()
+        "curl -Ss -o ./data/source/cb_2020_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip".split()
     )
     subprocess.run(
-        "unzip -q -o -d ./data/source ./data/source/cb_2017_us_nation_5m.zip".split()
+        "unzip -q -o -d ./data/source ./data/source/cb_2020_us_nation_5m.zip".split()
     )
     """
 

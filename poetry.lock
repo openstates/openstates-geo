@@ -163,7 +163,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "jellyfish"
-version = "0.5.6"
+version = "0.6.1"
 description = "a library for doing approximate and phonetic matching of strings."
 category = "main"
 optional = false
@@ -346,19 +346,19 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "us"
-version = "1.0.0"
+version = "2.0.2"
 description = "US state meta information and other fun stuff"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-jellyfish = "0.5.6"
+jellyfish = "0.6.1"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ad8e3b9c9cbbaec5c6f733815b27d1196fb01eb3e3f8fd01ef9327a1498a8fa4"
+content-hash = "db5e83c5ba4165a5074a1ffd2c392ca98e6c6b98200bcda13aa60a9cc64644b2"
 
 [metadata.files]
 asgiref = [
@@ -426,8 +426,7 @@ idna = [
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
 jellyfish = [
-    {file = "jellyfish-0.5.6-cp27-none-macosx_10_11_x86_64.whl", hash = "sha256:d0b22034df56d5faa34928457655722acf385d122da59c2cf7f4acd6bd49ea8b"},
-    {file = "jellyfish-0.5.6.tar.gz", hash = "sha256:887a9a49d0caee913a883c3e7eb185f6260ebe2137562365be422d1316bd39c9"},
+    {file = "jellyfish-0.6.1.tar.gz", hash = "sha256:5104e45a2b804b48a46a92a5e6d6e86830fe60ae83b1da32c867402c8f4c2094"},
 ]
 jmespath = [
     {file = "jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980"},
@@ -553,5 +552,5 @@ typing-extensions = [
 ]
 urllib3 = []
 us = [
-    {file = "us-1.0.0.tar.gz", hash = "sha256:09dc9ba763e2e4399e6a042104f3e415a7de6bfa4df6f557b4f19e3ba9a22fda"},
+    {file = "us-2.0.2.tar.gz", hash = "sha256:cb11ad0d43deff3a1c3690c74f0c731cff5b862c73339df2edd91133e1496fbc"},
 ]

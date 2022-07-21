@@ -1,27 +1,24 @@
 #!/usr/bin/env python3
 import os
-import glob
-import zipfile
+from io import BytesIO
 import requests
 import us
+import zipfile
 
-# note: The Census download URLs are case-sensitive
+"""
+note: The Census download URLs are case-sensitive
+us has shapefiles as well, but they are out of date and don't have legislative data available
+"""
 YEAR = "2020"
 URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
 
 
 def download_and_extract(url, filename):
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
 
     if response.status_code == 200:
-        # This _could_ all be done with a single file operation,
-        # by using a `BytesIO` file-like object to temporarily hold the
-        # HTTP response. However, that's less readable and maintainable,
-        # and a bit of delay isn't a problem given the slowness
-        # of the Census downloads in the first place.
-        with open(filename, "wb") as f:
-            f.write(response.content)
-        with zipfile.ZipFile(filename, "r") as f:
+        shapezip = BytesIO(response.content)
+        with zipfile.ZipFile(shapezip) as f:
             f.extractall("./data/source")
     else:
         response.raise_for_status()
@@ -32,7 +29,7 @@ try:
 except FileExistsError:
     pass
 
-for state in us.STATES + [us.states.PR]:
+for state in us.STATES + [us.states.PR, us.states.DC]:
     print("Fetching shapefiles for {}".format(state.name))
 
     for chamber in ["l", "u"]:

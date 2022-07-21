@@ -15,7 +15,7 @@ set -eo pipefail
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # only attempt to install deps when not in docker
-if ! grep -q docker /proc/1/cgroup; then
+if ! grep -q docker /proc/self/cgroup; then
     echo "Installing dependencies..."
     poetry install --no-dev
 fi
