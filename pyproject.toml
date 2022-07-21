@@ -17,6 +17,7 @@ boto3 = "^1.12.40"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
+flake8 = "^4.0.1"
 
 [build-system]
 requires = ["poetry>=0.12"]

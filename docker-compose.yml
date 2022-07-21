@@ -8,5 +8,3 @@ services:
       args:
         - MAPBOX_ACCOUNT
         - MAPBOX_ACCESS_TOKEN
-    volumes:
-      - ./data:/opt/openstates-district-maps/data

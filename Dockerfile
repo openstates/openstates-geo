@@ -32,6 +32,7 @@ RUN poetry install --no-dev \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/
 
 ADD scripts/ /opt/openstates-district-maps/scripts/
+ADD data/ /opt/openstates-district-maps/data/
 ADD manage.py /opt/openstates-district-maps/
 ADD update-tiles.sh /opt/openstates-district-maps/
 

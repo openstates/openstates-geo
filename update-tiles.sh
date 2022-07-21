@@ -5,12 +5,17 @@ if ! command -v tippecanoe > /dev/null 2>&1; then
     exit 1
 fi
 
+if ! command -v ogr2ogr > /dev/null 2>&1; then
+	echo "Missing local ogr2ogr (GDAL) install...cannot run"
+    exit 1
+fi
+
 set -eo pipefail
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 echo "Installing dependencies..."
-poetry install
+poetry install --no-dev
 
 echo "Collecting shapefiles..."
 poetry run python "${SCRIPT_DIR}/scripts/get-shapefiles.py"
