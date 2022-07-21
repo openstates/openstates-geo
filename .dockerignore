@@ -1,2 +1,6 @@
-data
+data/mapbox
+data/geojson
+data/sources
+data/source
+data/*.zip
 .circleci

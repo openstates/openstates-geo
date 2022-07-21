@@ -14,8 +14,11 @@ set -eo pipefail
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-echo "Installing dependencies..."
-poetry install --no-dev
+# only attempt to install deps when not in docker
+if ! grep -q docker /proc/1/cgroup; then
+    echo "Installing dependencies..."
+    poetry install --no-dev
+fi
 
 echo "Collecting shapefiles..."
 poetry run python "${SCRIPT_DIR}/scripts/get-shapefiles.py"
