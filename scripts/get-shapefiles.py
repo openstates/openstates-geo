@@ -7,7 +7,8 @@ import zipfile
 
 """
 note: The Census download URLs are case-sensitive
-us has shapefiles as well, but they are out of date and don't have legislative data available
+us.<state>.shapefile_urls() has shapefiles as well, but they are out of date and don't have legislative data available
+This PR may fix it: https://github.com/unitedstates/python-us/pull/66
 """
 YEAR = "2020"
 URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
@@ -17,19 +18,19 @@ def download_and_extract(url, filename):
     response = requests.get(url, timeout=60)
 
     if response.status_code == 200:
-        shapezip = BytesIO(response.content)
-        with zipfile.ZipFile(shapezip, "rb") as f:
-            f.extractall("./data/source")
+        tmpObj = BytesIO()
+        shapezip = zipfile.ZipFile(tmpObj, mode="w", compression=zipfile.ZIP_DEFLATED)
+        shapezip.writestr(filename, response.content)
+        shapezip.extractall("./data/source")
     else:
         response.raise_for_status()
 
 
-try:
-    os.makedirs("./data/source/")
-except FileExistsError:
-    pass
-
-for state in us.STATES + [us.states.PR, us.states.DC]:
+print("Making download directory...")
+os.makedirs("./data/source/", exist_ok=True)
+states = us.STATES + [us.states.PR, us.states.DC]
+print(f"Hoping to process {len(states)} states...")
+for state in states:
     print("Fetching shapefiles for {}".format(state.name))
 
     for chamber in ["l", "u"]:
@@ -47,7 +48,7 @@ for state in us.STATES + [us.states.PR, us.states.DC]:
             fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
         )
 
-        filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
+        filename = f"tl_{YEAR}_{fips}_sld{chamber}.zip"
         download_and_extract(download_url, filename)
 
 # final step: get US data

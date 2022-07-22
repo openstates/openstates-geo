@@ -8,3 +8,11 @@ services:
       args:
         - MAPBOX_ACCOUNT
         - MAPBOX_ACCESS_TOKEN
+  db:
+    image: "mdillon/postgis:11-alpine"
+    environment:
+      POSTGRES_PASSWORD: openstates
+      POSTGRES_USER: openstates
+      POSTGRES_DB: openstatesorg
+    volumes:
+      - ./openstates-postgres/:/var/lib/postgresql/data

@@ -51,23 +51,31 @@ brew install tippecanoe
 
 There are several steps, which typically need to be run in order:
 
-1) Setup Poetry:
+1. Set up environment variables
+    - MAPBOX_ACCOUNT
+        - OPTIONAL (if left blank, upload step will be skipped)
+    - MAPBOX_TOKEN
+        - OPTIONAL (if left blank, upload step will be skipped)
+    - DATABASE_URL
+        - To a working postgis instance (if using docker, the default will work)
+
+2. Setup Poetry:
 
     `poetry install`
 
-2) Download SLD shapefiles:
+3. Download SLD shapefiles:
 
     `poetry run python scripts/get-shapefiles.py`
 
-3) Convert to geojson with division IDs:
+4. Convert to geojson with division IDs:
 
     `poetry run python scripts/to-geojson.py`
 
-4) Import into database:
+5. Import into database:
 
     `poetry run python manage.py load_divisions`
 
-5) Convert to mbtiles and upload:
+6. Convert to mbtiles and upload:
 
     `poetry run python scripts/make-tiles.py`
 

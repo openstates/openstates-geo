@@ -18,9 +18,11 @@ if __name__ == "__main__":
         "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip",
         timeout=120,
     )
-    tmp_file = BytesIO(maps.content)
-    with zipfile.ZipFile(tmp_file, "rb") as z:
-        z.extractall("./data/source")
+    filename = "cb_2020_us_nation_5m.zip"
+    tmp_file = BytesIO()
+    zip_obj = zipfile.ZipFile(tmp_file, "w", compression=zipfile.ZIP_DEFLATED)
+    zip_obj.writestr(f"./data/source/{filename}", maps.content)
+    z.extractall(f"./data/source/{filename}")
     """
     subprocess.run(
         "curl -Ss -o ./data/source/cb_2020_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip".split()
