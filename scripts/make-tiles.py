@@ -19,18 +19,8 @@ if __name__ == "__main__":
         timeout=120,
     )
     filename = "cb_2020_us_nation_5m.zip"
-    tmp_file = BytesIO()
-    zip_obj = zipfile.ZipFile(tmp_file, "w", compression=zipfile.ZIP_DEFLATED)
-    zip_obj.writestr(f"./data/source/{filename}", maps.content)
-    z.extractall(f"./data/source/{filename}")
-    """
-    subprocess.run(
-        "curl -Ss -o ./data/source/cb_2020_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip".split()
-    )
-    subprocess.run(
-        "unzip -q -o -d ./data/source ./data/source/cb_2020_us_nation_5m.zip".split()
-    )
-    """
+    zip_obj = zipfile.ZipFile(BytesIO(maps.content))
+    zip_obj.extractall(f"./data/source/{filename}")
 
     print("Clip GeoJSON to shoreline")
     sld_filenames = []
@@ -49,7 +39,7 @@ if __name__ == "__main__":
                 [
                     "ogr2ogr",
                     "-clipsrc",
-                    "./data/source/cb_2017_us_nation_5m.shp",
+                    "./data/source/cb_2020_us_nation_5m.shp",
                     newfilename,
                     filename,
                 ],

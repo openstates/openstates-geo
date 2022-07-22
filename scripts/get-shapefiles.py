@@ -18,10 +18,9 @@ def download_and_extract(url, filename):
     response = requests.get(url, timeout=60)
 
     if response.status_code == 200:
-        tmpObj = BytesIO()
-        shapezip = zipfile.ZipFile(tmpObj, mode="w", compression=zipfile.ZIP_DEFLATED)
-        shapezip.writestr(filename, response.content)
-        shapezip.extractall("./data/source")
+        tmpObj = BytesIO(response.content)
+        shapezip = zipfile.ZipFile(tmpObj)
+        shapezip.extractall("./data/source/")
     else:
         response.raise_for_status()
 
@@ -31,7 +30,7 @@ os.makedirs("./data/source/", exist_ok=True)
 states = us.STATES + [us.states.PR, us.states.DC]
 print(f"Hoping to process {len(states)} states...")
 for state in states:
-    print("Fetching shapefiles for {}".format(state.name))
+    print(f"Fetching shapefiles for {state.name}")
 
     for chamber in ["l", "u"]:
         fips = state.fips
@@ -54,5 +53,5 @@ for state in states:
 # final step: get US data
 download_and_extract(
     f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
-    f"data/source/tl_{YEAR}_us_cd116.zip",
+    f"tl_{YEAR}_us_cd116.zip",
 )
