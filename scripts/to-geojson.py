@@ -102,10 +102,7 @@ def merge_ids(geojson_path):
 
 
 if __name__ == "__main__":
-    try:
-        os.makedirs("./data/geojson")
-    except FileExistsError:
-        pass
+    os.makedirs("./data/geojson", exist_ok=True)
 
     expected = 103
     if len(sys.argv) == 1:
@@ -114,7 +111,6 @@ if __name__ == "__main__":
             raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
         files = sys.argv[1:]
-
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")

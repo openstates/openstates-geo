@@ -1,4 +1,7 @@
-data
+data/mapbox
+data/geojson
+data/source
+data/*.zip
 final-geojson
 *.mbtiles
 *.DS_Store

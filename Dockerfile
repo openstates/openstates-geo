@@ -1,37 +1,40 @@
-# Since build time and size isn't a priority, we'll just use
-# `ubuntu`, instead of `debian` or `alpine`, since
-# Ubuntu's apt-get installations are simpler
-FROM ubuntu:18.04
+FROM python:3.9-slim
 
-# These environment variables are required to fix a bug when
-# running Mapbox CLI within CircleCI. See end of build log here:
-# https://circleci.com/gh/openstates/openstates-district-maps/38
-ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
-# CircleCI requires a few packages for "primary containers,"
-# which already come with Ubuntu, or are installed below
-# https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
-RUN apt-get update && apt-get install -y \
-	python3 \
-	python3-pip \
-	gdal-bin \
-	curl \
-	unzip \
-	git \
-	build-essential \
-	libsqlite3-dev \
-	zlib1g-dev
-RUN git clone https://github.com/mapbox/tippecanoe.git && \
-	cd tippecanoe && \
-	make -j && \
-	make install
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends -qq \
+        gdal-bin \
+        git \
+        build-essential \
+        libsqlite3-dev \
+        zlib1g-dev \
+    && pip3 --no-cache-dir --disable-pip-version-check install poetry \
+    && git clone https://github.com/mapbox/tippecanoe.git \
+    && cd tippecanoe \
+    && make -j \
+    && make install
 
-ADD ./requirements.txt /opt/openstates-district-maps/requirements.txt
+ADD pyproject.toml /opt/openstates-district-maps/
+ADD poetry.lock /opt/openstates-district-maps/
 WORKDIR /opt/openstates-district-maps
-RUN pip3 install -r requirements.txt
 
-ADD ./make-tiles.sh /opt/openstates-district-maps/make-tiles.sh
-ADD ./get-shapefiles.py /opt/openstates-district-maps/get-shapefiles.py
-ADD ./join-ocd-division-ids.py /opt/openstates-district-maps/join-ocd-division-ids.py
+RUN poetry install --no-root --no-dev -n \
+    && apt-get remove -y -qq \
+        build-essential \
+        git \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -r /var/lib/apt/lists/*
 
-CMD ./make-tiles.sh
+ADD scripts/ /opt/openstates-district-maps/scripts/
+ADD data/ /opt/openstates-district-maps/data/
+ADD djapp/ /opt/openstates-district-maps/djapp/
+ADD manage.py /opt/openstates-district-maps/
+ADD update-tiles.sh /opt/openstates-district-maps/
+# double step poetry install to ensure that local file links work right
+RUN poetry install --no-root --no-dev -n \
+    && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/
+
+CMD ["/bin/bash", "update-tiles.sh"]

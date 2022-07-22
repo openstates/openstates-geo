@@ -2,6 +2,10 @@
 import subprocess
 import glob
 import os
+import requests
+from io import BytesIO
+import zipfile
+
 
 if __name__ == "__main__":
     try:
@@ -10,12 +14,13 @@ if __name__ == "__main__":
         pass
 
     print("Downloading national boundary")
-    subprocess.run(
-        "curl --silent --output ./data/source/cb_2017_us_nation_5m.zip https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_nation_5m.zip".split()
+    maps = requests.get(
+        "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip",
+        timeout=120,
     )
-    subprocess.run(
-        "unzip -q -o -d ./data/source ./data/source/cb_2017_us_nation_5m.zip".split()
-    )
+    filename = "cb_2020_us_nation_5m.zip"
+    zip_obj = zipfile.ZipFile(BytesIO(maps.content))
+    zip_obj.extractall(f"./data/source/{filename}")
 
     print("Clip GeoJSON to shoreline")
     sld_filenames = []
@@ -34,7 +39,7 @@ if __name__ == "__main__":
                 [
                     "ogr2ogr",
                     "-clipsrc",
-                    "./data/source/cb_2017_us_nation_5m.shp",
+                    "./data/source/cb_2020_us_nation_5m.shp",
                     newfilename,
                     filename,
                 ],
