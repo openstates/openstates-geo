@@ -20,8 +20,7 @@ ADD pyproject.toml /opt/openstates-district-maps/
 ADD poetry.lock /opt/openstates-district-maps/
 WORKDIR /opt/openstates-district-maps
 
-RUN poetry install --no-dev \
-    && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
+RUN poetry install --no-root --no-dev -n \
     && apt-get remove -y -qq \
         build-essential \
         git \
@@ -34,5 +33,8 @@ ADD data/ /opt/openstates-district-maps/data/
 ADD djapp/ /opt/openstates-district-maps/djapp/
 ADD manage.py /opt/openstates-district-maps/
 ADD update-tiles.sh /opt/openstates-district-maps/
+# double step poetry install to ensure that local file links work right
+RUN poetry install --no-root --no-dev -n \
+    && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/
 
 CMD ["/bin/bash", "update-tiles.sh"]

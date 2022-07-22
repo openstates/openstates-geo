@@ -2,6 +2,8 @@ version: "3"
 
 services:
   make-tiles:
+    environment:
+      DATABASE_URL: "postgis://openstates:openstates@db:5432/openstatesorg"
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,6 +12,8 @@ services:
         - MAPBOX_ACCESS_TOKEN
   db:
     image: "mdillon/postgis:11-alpine"
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: openstates
       POSTGRES_USER: openstates
