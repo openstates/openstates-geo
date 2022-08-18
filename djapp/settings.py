@@ -3,7 +3,7 @@ import dj_database_url
 
 DEBUG = os.environ.get("DEBUG", "false").lower() == "false"
 DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "postgis://openstates:openstates@db:5432/openstatesorg"
+    "DATABASE_URL", "postgis://openstates:openstates@localhost:5405/openstatesorg"
 )
 
 DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
