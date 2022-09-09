@@ -36,11 +36,18 @@ There are several steps, which typically need to be run in order:
 
   `poetry run ./scripts/to-geojson.py`
 
-4) Import into database:
+4) Make sure `DATABASE_URL` is set to local database in `djapp/geo/settings.py`
+
+
+5) Migrate database to add needed tables:
+
+  `poetry run ./manage.py migrate`
+
+6) Import into database:
 
   `poetry run ./manage.py load_divisions`
 
-5) Convert to mbtiles and upload:
+7) Convert to mbtiles and upload:
 
   `./scripts/make-tiles.py`
 
