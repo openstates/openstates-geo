@@ -6,32 +6,33 @@ FROM python:3.7-slim
 # These environment variables are required to fix a bug when
 # running Mapbox CLI within CircleCI. See end of build log here:
 # https://circleci.com/gh/openstates/openstates-district-maps/38
-ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 # CircleCI requires a few packages for "primary containers,"
 # which already come with Ubuntu, or are installed below
 # https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
-RUN apt-get update -qq && apt-get install --no-install-recommends -qqy \
-	python3 \
-	python3-pip \
-	gdal-bin \
-	curl \
-	unzip \
-	git \
-	build-essential \
-	libsqlite3-dev \
-	zlib1g-dev
+RUN apt-get update -qq \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -qqy \
+      gdal-bin \
+      curl \
+      unzip \
+      git \
+      build-essential \
+      libsqlite3-dev \
+      zlib1g-dev \
+    && pip install --disable-pip-version-check --no-cache-dir -q crcmod wheel poetry
 RUN git clone https://github.com/mapbox/tippecanoe.git && \
-	cd tippecanoe && \
-	make -j && \
-	make install
+    cd tippecanoe && \
+    make -j && \
+    make install
 
-ADD ./requirements.txt /opt/openstates-district-maps/requirements.txt
 WORKDIR /opt/openstates-district-maps
-RUN pip3 install -r requirements.txt
+COPY pyproject.toml .
+COPY poetry.lock .
+RUN poetry install --only=main \
+    && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/
 
-ADD ./make-tiles.sh /opt/openstates-district-maps/make-tiles.sh
-ADD ./get-shapefiles.py /opt/openstates-district-maps/get-shapefiles.py
-ADD ./join-ocd-division-ids.py /opt/openstates-district-maps/join-ocd-division-ids.py
+COPY scripts/*.py .
 
-CMD ./make-tiles.sh
+CMD ["./make-tiles.sh"]
