@@ -1,7 +1,7 @@
 # Since build time and size isn't a priority, we'll just use
 # `ubuntu`, instead of `debian` or `alpine`, since
 # Ubuntu's apt-get installations are simpler
-FROM ubuntu:18.04
+FROM python:3.7-slim
 
 # These environment variables are required to fix a bug when
 # running Mapbox CLI within CircleCI. See end of build log here:
@@ -11,7 +11,7 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 # CircleCI requires a few packages for "primary containers,"
 # which already come with Ubuntu, or are installed below
 # https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get install --no-install-recommends -qqy \
 	python3 \
 	python3-pip \
 	gdal-bin \
