@@ -15,8 +15,6 @@ ENV LANG=C.UTF-8
 RUN apt-get update -qq \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -qqy \
       gdal-bin \
-      curl \
-      unzip \
       git \
       build-essential \
       libsqlite3-dev \
