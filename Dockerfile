@@ -1,7 +1,7 @@
 # Since build time and size isn't a priority, we'll just use
 # `ubuntu`, instead of `debian` or `alpine`, since
 # Ubuntu's apt-get installations are simpler
-FROM python:3.7-slim
+FROM python:3.10-slim
 
 # These environment variables are required to fix a bug when
 # running Mapbox CLI within CircleCI. See end of build log here:
