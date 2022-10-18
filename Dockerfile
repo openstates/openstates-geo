@@ -31,6 +31,9 @@ COPY poetry.lock .
 RUN poetry install --only=main \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/
 
-COPY scripts/*.py .
+COPY scripts .
+COPY manage.py .
+COPY make-tiles.sh .
+COPY djapp .
 
-CMD ["./make-tiles.sh"]
+CMD ["bash", "/opt/openstates-district-maps/make-tiles.sh"]
