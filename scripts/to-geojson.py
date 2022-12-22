@@ -6,17 +6,17 @@ import json
 import glob
 import subprocess
 import us
-import openstates_metadata as metadata
+import openstates.metadata as metadata
 
 OCD_FIXES = {
     "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
 }
 
 SKIPPED_GEOIDS = {
-    "cd-6098": "American Samoa",
-    "cd-6998": "Northern Mariana Islands",
-    "cd-6698": "Guam",
-    "cd-7898": "Virgin Islands",
+#    "cd-6098": "American Samoa",
+#    "cd-6998": "Northern Mariana Islands",
+#    "cd-6698": "Guam",
+#    "cd-7898": "Virgin Islands",
 }
 
 
