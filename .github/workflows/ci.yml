@@ -27,8 +27,8 @@ jobs:
     - name: black check
       run: poetry run black --check --diff .
     - name: ensure shell scripts are formatted
-        run: |
-          while IFS= read -r -d '' filename; do
-          echo "processing ${filename}"
-          docker run --rm -v "$(pwd):/mnt" koalaman/shellcheck:latest -x "${filename}"
-          done < <(find . -type f -name "*.sh" ! -path "*/.git/*" -print0)
+      run: |
+        while IFS= read -r -d '' filename; do
+        echo "processing ${filename}"
+        docker run --rm -v "$(pwd):/mnt" koalaman/shellcheck:latest -x "${filename}"
+        done < <(find . -type f -name "*.sh" ! -path "*/.git/*" -print0)
