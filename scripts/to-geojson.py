@@ -13,10 +13,10 @@ OCD_FIXES = {
 }
 
 SKIPPED_GEOIDS = {
-    #    "cd-6098": "American Samoa",
-    #    "cd-6998": "Northern Mariana Islands",
-    #    "cd-6698": "Guam",
-    #    "cd-7898": "Virgin Islands",
+    "cd-6098": "American Samoa",
+    "cd-6998": "Northern Mariana Islands",
+    "cd-6698": "Guam",
+    "cd-7898": "Virgin Islands",
 }
 
 
@@ -71,8 +71,7 @@ def merge_ids(geojson_path):
         # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
         state_meta = metadata.lookup(abbr=state)
-        if ocd_id in OCD_FIXES:
-            ocd_id = OCD_FIXES[ocd_id]
+        ocd_id = OCD_FIXES.get(ocd_id, ocd_id)
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -107,10 +106,10 @@ if __name__ == "__main__":
     except FileExistsError:
         pass
 
-    expected = 103
+    expected = 102
     if len(sys.argv) == 1:
         files = sorted(glob.glob("data/source/tl*.shp"))
-        if len(files) != expected:
+        if len(files) < expected:
             raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
         files = sys.argv[1:]
