@@ -2123,6 +2123,21 @@ files = [
 jellyfish = "0.6.1"
 
 [[package]]
+name = "us-aidentified"
+version = "3.0.2"
+description = "US state meta information and other fun stuff"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "us-aidentified-3.0.2.tar.gz", hash = "sha256:44d67287dcc0043b7e41c5cbe7edc9c5b6e426f8639b9ef264edb73c667d4347"},
+    {file = "us_aidentified-3.0.2-py3-none-any.whl", hash = "sha256:1db19e11fe77741c204f995cfed78f75c4f0b788b582952e5dc89892928ab9f9"},
+]
+
+[package.dependencies]
+jellyfish = "<1.0"
+
+[[package]]
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -2323,4 +2338,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6a045f62a9b8951b04b961747e89f2c2332b63794c5e248bbda128aeb06caac0"
+content-hash = "bbe98e70cfaceb095cb41836674dd7b80b692651ccc04d3a9f3293934b6b5f32"
