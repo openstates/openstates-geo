@@ -61,7 +61,7 @@ if __name__ == "__main__":
             "10",
             "--force",
             "--output",
-            "./cd.mbtiles",
+            "./data/cd.mbtiles",
         ]
         + cd_filenames,
         check=True,
@@ -85,18 +85,21 @@ if __name__ == "__main__":
                 "10",
                 "--force",
                 "--output",
-                "./sld.mbtiles",
+                "./data/sld.mbtiles",
             ]
             + sld_filenames,
             check=True,
         )
+
         print("Upload to Mapbox")
         subprocess.run(
             [
+                "poetry",
+                "run",
                 "mapbox",
                 "upload",
-                f"{MAPBOX_ACCOUNT}.sld",
-                "./sld.mbtiles",
+                f"{mb_account}.sld",
+                "./data/sld.mbtiles",
             ],
             check=True,
         )

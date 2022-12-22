@@ -14,6 +14,7 @@ psycopg2-binary = "^2.9.2"
 dj-database-url = "^0.5.0"
 boto3 = "^1.12.40"
 openstates = "^6.13.1"
+mapboxcli = "^0.8.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
