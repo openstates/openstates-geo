@@ -5,6 +5,9 @@ import subprocess
 import urllib.request
 import zipfile
 
+YEAR = "2020"
+
+
 if __name__ == "__main__":
     try:
         os.makedirs("./data/mapbox")
@@ -13,10 +16,10 @@ if __name__ == "__main__":
 
     print("Downloading national boundary")
     res = urllib.request.urlretrieve(
-        "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_nation_5m.zip",
-        "data/source/cb_2020_us_nation_5m.zip",
+        f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_nation_5m.zip",
+        f"data/source/cb_{YEAR}_us_nation_5m.zip",
     )
-    with zipfile.ZipFile("data/source/cb_2020_us_nation_5m.zip", "r") as zf:
+    with zipfile.ZipFile(f"data/source/cb_{YEAR}_us_nation_5m.zip", "r") as zf:
         zf.extractall("data/source/")
 
     print("Clip GeoJSON to shoreline")
@@ -36,33 +39,12 @@ if __name__ == "__main__":
                 [
                     "ogr2ogr",
                     "-clipsrc",
-                    "./data/source/cb_2020_us_nation_5m.shp",
+                    f"./data/source/cb_{YEAR}_us_nation_5m.shp",
                     newfilename,
                     filename,
                 ],
                 check=True,
             )
-
-    # print("Combine to SLD MBTiles file")
-    # subprocess.run(
-    #     [
-    #         "tippecanoe",
-    #         "--layer",
-    #         "sld",
-    #         "--minimum-zoom",
-    #         "2",
-    #         "--maximum-zoom",
-    #         "13",
-    #         "--detect-shared-borders",
-    #         "--simplification",
-    #         "10",
-    #         "--force",
-    #         "--output",
-    #         "./sld.mbtiles",
-    #     ]
-    #     + sld_filenames,
-    #     check=True,
-    # )
 
     print("Combine to CD MBTiles file")
     subprocess.run(
@@ -85,9 +67,38 @@ if __name__ == "__main__":
         check=True,
     )
 
-    # if [ -z ${MAPBOX_ACCOUNT+x} ] || [ -z ${MAPBOX_ACCESS_TOKEN+x} ] ; then
-    # 	echo "Skipping upload step; MAPBOX_ACCOUNT and/or MAPBOX_ACCESS_TOKEN not set in environment"
-    # else
-    # 	echo "Upload the MBTiles to Mapbox, for serving"
-    # 	mapbox upload "${MAPBOX_ACCOUNT}.sld" ./sld.mbtiles
-    # fi
+    mb_account = os.environ.get("MAPBOX_ACCOUNT", None)
+    mb_token = os.environ.get("MAPBOX_ACCESS_TOKEN", None)
+    if mb_account and mb_token:
+        print("Combine to SLD MBTiles file")
+        subprocess.run(
+            [
+                "tippecanoe",
+                "--layer",
+                "sld",
+                "--minimum-zoom",
+                "2",
+                "--maximum-zoom",
+                "13",
+                "--detect-shared-borders",
+                "--simplification",
+                "10",
+                "--force",
+                "--output",
+                "./sld.mbtiles",
+            ]
+            + sld_filenames,
+            check=True,
+        )
+        print("Upload to Mapbox")
+        subprocess.run(
+            [
+                "mapbox",
+                "upload",
+                f"{MAPBOX_ACCOUNT}.sld",
+                "./sld.mbtiles",
+            ],
+            check=True,
+        )
+    else:
+        print("Skipping upload to Mapbox...environment variables missing")
