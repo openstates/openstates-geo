@@ -4,7 +4,6 @@ services:
   make-tiles:
     build:
       context: .
-      dockerfile: Dockerfile
       args:
         - MAPBOX_ACCOUNT
         - MAPBOX_ACCESS_TOKEN
