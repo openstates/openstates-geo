@@ -1,0 +1,34 @@
+name: Lint Files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: setup Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+    - name: install Poetry
+      uses: snok/install-poetry@v1.3.3
+    - name: install dependencies
+      run: poetry install
+    - name: flake8 check
+      run: poetry run flake8 .
+    - name: black check
+      run: poetry run black --check --diff .
+    - name: ensure shell scripts are formatted
+        run: |
+          while IFS= read -r -d '' filename; do
+          echo "processing ${filename}"
+          docker run --rm -v "$(pwd):/mnt" koalaman/shellcheck:latest -x "${filename}"
+          done < <(find . -type f -name "*.sh" ! -path "*/.git/*" -print0)
