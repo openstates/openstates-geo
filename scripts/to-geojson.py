@@ -13,10 +13,10 @@ OCD_FIXES = {
 }
 
 SKIPPED_GEOIDS = {
-#    "cd-6098": "American Samoa",
-#    "cd-6998": "Northern Mariana Islands",
-#    "cd-6698": "Guam",
-#    "cd-7898": "Virgin Islands",
+    #    "cd-6098": "American Samoa",
+    #    "cd-6998": "Northern Mariana Islands",
+    #    "cd-6698": "Guam",
+    #    "cd-7898": "Virgin Islands",
 }
 
 
