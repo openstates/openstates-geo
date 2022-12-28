@@ -16,9 +16,7 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 - Python 3 and `poetry`
 - GDAL 2
-- `curl`
 - `tippecanoe`
-- `unzip`
 
 ## Running
 

@@ -1,37 +1,37 @@
-# Since build time and size isn't a priority, we'll just use
-# `ubuntu`, instead of `debian` or `alpine`, since
-# Ubuntu's apt-get installations are simpler
-FROM ubuntu:18.04
+FROM python:3.10-slim
 
-# These environment variables are required to fix a bug when
-# running Mapbox CLI within CircleCI. See end of build log here:
-# https://circleci.com/gh/openstates/openstates-district-maps/38
-ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-# CircleCI requires a few packages for "primary containers,"
-# which already come with Ubuntu, or are installed below
-# https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
-RUN apt-get update && apt-get install -y \
-	python3 \
-	python3-pip \
-	gdal-bin \
-	curl \
-	unzip \
-	git \
-	build-essential \
-	libsqlite3-dev \
-	zlib1g-dev
+RUN apt-get update -qq \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -qqy \
+      gdal-bin \
+      git \
+      build-essential \
+      libsqlite3-dev \
+      zlib1g-dev
+RUN pip install --disable-pip-version-check --no-cache-dir wheel \
+    && pip install --disable-pip-version-check --no-cache-dire crcmod poetry
 RUN git clone https://github.com/mapbox/tippecanoe.git && \
-	cd tippecanoe && \
-	make -j && \
-	make install
+    cd tippecanoe && \
+    make -j && \
+    make install
 
-ADD ./requirements.txt /opt/openstates-district-maps/requirements.txt
 WORKDIR /opt/openstates-district-maps
-RUN pip3 install -r requirements.txt
+COPY pyproject.toml .
+COPY poetry.lock .
+RUN poetry install --only=main --no-root
 
-ADD ./make-tiles.sh /opt/openstates-district-maps/make-tiles.sh
-ADD ./get-shapefiles.py /opt/openstates-district-maps/get-shapefiles.py
-ADD ./join-ocd-division-ids.py /opt/openstates-district-maps/join-ocd-division-ids.py
+COPY scripts /opt/openstates-district-maps
+COPY djapp .
+COPY manage.py .
+COPY make-tiles.sh .
 
-CMD ./make-tiles.sh
+RUN poetry install --only=main \
+    && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["bash", "/opt/openstates-district-maps/make-tiles.sh"]

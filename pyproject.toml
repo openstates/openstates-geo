@@ -6,16 +6,20 @@ authors = ["James Turk <dev@jamesturk.net>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-us = "^1.0.0"
+python = "^3.10"
 requests = "^2.23.0"
 django = "^3.2.11"
 psycopg2-binary = "^2.9.2"
 dj-database-url = "^0.5.0"
-openstates_metadata = "^2020.4.4"
 boto3 = "^1.12.40"
+openstates = "^6.13.1"
+mapboxcli = "^0.8.0"
+# use this until https://github.com/unitedstates/python-us/pull/68 is merged
+us-aidentified = "^3.0.2"
 
 [tool.poetry.dev-dependencies]
+black = "^22.10.0"
+flake8 = "^5.0.4"
 
 [build-system]
 requires = ["poetry>=0.12"]

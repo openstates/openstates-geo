@@ -6,7 +6,7 @@ import json
 import glob
 import subprocess
 import us
-import openstates_metadata as metadata
+import openstates.metadata as metadata
 
 OCD_FIXES = {
     "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
@@ -71,8 +71,7 @@ def merge_ids(geojson_path):
         # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
         state_meta = metadata.lookup(abbr=state)
-        if ocd_id in OCD_FIXES:
-            ocd_id = OCD_FIXES[ocd_id]
+        ocd_id = OCD_FIXES.get(ocd_id, ocd_id)
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -107,14 +106,13 @@ if __name__ == "__main__":
     except FileExistsError:
         pass
 
-    expected = 103
+    expected = 102
     if len(sys.argv) == 1:
         files = sorted(glob.glob("data/source/tl*.shp"))
-        if len(files) != expected:
+        if len(files) < expected:
             raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
         files = sys.argv[1:]
-
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
