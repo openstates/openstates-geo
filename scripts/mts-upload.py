@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import glob
 import os
 import requests
+import subprocess
 import urllib.request
+import zipfile
 
 YEAR = "2020"
 
@@ -20,10 +23,11 @@ def download_borders():
     use urlretrieve instead of requests 'cause we can just
     define the output file easily
     """
-    res = urllib.request.urlretrieve(
+    urllib.request.urlretrieve(
         f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_nation_5m.zip",
         f"data/source/cb_{YEAR}_us_nation_5m.zip",
     )
+
     with zipfile.ZipFile(
         f"{os.getcwd()}/data/source/cb_{YEAR}_us_nation_5m.zip", "r"
     ) as zf:
