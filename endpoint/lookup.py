@@ -8,7 +8,7 @@ DB_PASSWORD = os.environ["DB_PASSWORD"]
 DB_PORT = os.environ.get("DB_PORT", "5432")
 DB_HOST = os.environ.get("DB_HOST", "localhost")
 DB_USER = os.environ.get("DB_USER", "openstates")
-DB_NAME = os.environ.get("DB_NAME", "newgeo")
+DB_NAME = os.environ.get("DB_NAME", "geo")
 conn = psycopg2.connect(
     f"dbname='{DB_NAME}' user='{DB_USER}' host='{DB_HOST}' port='{DB_PORT}' password='{DB_PASSWORD}'"
 )

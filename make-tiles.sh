@@ -2,6 +2,16 @@
 
 set -eou pipefail
 
+if [[ -n "${DATABASE_URL}" ]]; then
+    export DATABASE_URL
+fi
+if [[ -n "${MAPBOX_ACCOUNT}" ]]; then
+    export MAPBOX_ACCOUNT
+fi
+if [[ -n "${MAPBOX_ACCESS_TOKEN}" ]]; then
+    export MAPBOX_ACCESS_TOKEN
+fi
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 ###
