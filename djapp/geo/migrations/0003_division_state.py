@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name="division",
+            model_name="Division",
             name="state",
             field=models.CharField(default="", max_length=2),
             preserve_default=False,
