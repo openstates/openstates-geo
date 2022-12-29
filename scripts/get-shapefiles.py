@@ -27,12 +27,12 @@ def download_and_extract(url, filename):
 
 
 try:
-    os.makedirs("./data/source/")
+    os.makedirs(f"{os.getcwd()}/data/source/")
 except FileExistsError:
     pass
 
 for state in us.STATES + [us.states.PR]:
-    print("Fetching shapefiles for {}".format(state.name))
+    print(f"Fetching shapefiles for {state.name}")
 
     for chamber in ["l", "u"]:
         fips = state.fips
@@ -41,7 +41,9 @@ for state in us.STATES + [us.states.PR]:
             # skip lower chamber of the unicamerals
             continue
 
-        if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
+        if os.path.exists(
+            f"{os.getcwd()}data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"
+        ):
             print(f"skipping {state} {fips} sld{chamber}")
             continue
 
@@ -49,11 +51,11 @@ for state in us.STATES + [us.states.PR]:
             fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
         )
 
-        filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
+        filename = f"{os.getcwd()}/data/tl_{YEAR}_{fips}_sld{chamber}.zip"
         download_and_extract(download_url, filename)
 
 # final step: get US data
 download_and_extract(
     f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
-    f"data/source/tl_{YEAR}_us_cd116.zip",
+    f"{os.getcwd()}/data/source/tl_{YEAR}_us_cd116.zip",
 )
