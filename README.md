@@ -22,6 +22,8 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 We download our shapefiles from [census.gov](https://www2.census.gov/geo/tiger). We should make sure we're using the most recent year available and update the `YEAR` variable in `scripts/get-shapefiles.py` and `scripts/make-tiles.py`.
 
+See Appendix A below on Geographic Data Sources for more context.
+
 You'll probably want to remove any cached files in `./data/source`, `./data/mapbox`, and `./data/geojson`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
 
 ## Running
@@ -68,3 +70,59 @@ Build and run with Docker Compose. Similar to running without Docker, the `MAPBO
 ```
 docker-compose up make-tiles
 ```
+
+# Appendix A: Geo Data Sources used by openstates-geo
+
+openstates-geo works with shapefiles. Shapefiles can be opened by a tool called [qgis](https://www.qgis.org/en/site/)
+For example, to inspect a source shapefile, such as `tl_2022_01_sldl.shp`, open up qgis and navigate to the folder where
+that file resides. Open the file, it should appear in the main pane as a map. Use the "Select Features by Area or single click"
+button in the toolbar, and then select a district. Metadata should appear in the right pane.
+
+## US Census
+
+
+### Redistricting
+
+"We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans 
+for the 118th Congress and year 2022 state legislatures" [US Census CD/SLD note](https://www.census.gov/programs-surveys/geography/technical-documentation/user-note/cd-sld-note.html)
+
+
+There is a [Redistricting Data Program](https://www.census.gov/programs-surveys/decennial-census/about/rdo.html). However, as of 
+12/30/22, it seems like the only files available under that program are 
+[Block Equivalency files](https://www.census.gov/programs-surveys/decennial-census/geographies/mapping-files/rdo.html), which appear 
+to map census blocks to district numbers (essentially CSV of block/district tuples), eg:
+
+```
+GEOID, CDFP
+440010301001000,01
+```
+
+
+### US Census: TIGER
+
+Files in the TIGER data source are organized according to 
+[Federal Information Processing System (FIPS)](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt) codes.
+Each numeric code corresponds to a US state (or other levels). For example `01` represents Alabama.
+
+As of 12/30/22 the [TIGER page states](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html): 
+"All legal boundaries and names are as of January 1, 2022. Released September 30, 2022." So it seems like post-redistricting 
+shapefiles are not available.
+
+#### TIGER SLDL
+
+[2022](https://www2.census.gov/geo/tiger/TIGER2022/SLDL/)
+
+This contains data, including shapefiles, about State Legislative Districts in Lower chambers (SLDL).
+
+#### TIGER SLDU
+
+[2022](https://www2.census.gov/geo/tiger/TIGER2022/SLDU/)
+
+This contains data, including shapefiles, about State Legislative Districts in Upper chambers (SLDU).
+
+#### TIGER CD
+
+[2022](https://www2.census.gov/geo/tiger/TIGER2022/CD/)
+
+This contains data, including shapefiles, about Congressional Districts.
+
