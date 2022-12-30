@@ -18,6 +18,12 @@ Generate and upload map tiles for the state-level legislative district maps on [
 - GDAL 2
 - `tippecanoe`
 
+## Ensuring The Right Shape Files
+
+We download our shapefiles from [census.gov](https://www2.census.gov/geo/tiger). We should make sure we're using the most recent year available and update the `YEAR` variable in `scripts/get-shapefiles.py` and `scripts/make-tiles.py`.
+
+You'll probably want to remove any cached files in `./data/source`, `./data/mapbox`, and `./data/geojson`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
+
 ## Running
 
 There are several steps, which typically need to be run in order:
@@ -50,6 +56,8 @@ There are several steps, which typically need to be run in order:
   `./scripts/make-tiles.py`
 
   The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
+
+8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
 ### Running within Docker
 
