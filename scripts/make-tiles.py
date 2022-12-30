@@ -5,7 +5,7 @@ import subprocess
 import urllib.request
 import zipfile
 
-YEAR = "2020"
+YEAR = "2022"
 
 
 if __name__ == "__main__":
@@ -91,17 +91,17 @@ if __name__ == "__main__":
             check=True,
         )
 
-        print("Upload to Mapbox")
-        subprocess.run(
-            [
-                "poetry",
-                "run",
-                "mapbox",
-                "upload",
-                f"{mb_account}.sld",
-                "./data/sld.mbtiles",
-            ],
-            check=True,
-        )
+        # print("Upload to Mapbox")
+        # subprocess.run(
+        #     [
+        #         "poetry",
+        #         "run",
+        #         "mapbox",
+        #         "upload",
+        #         f"{mb_account}.sld",
+        #         "./data/sld.mbtiles",
+        #     ],
+        #     check=True,
+        # )
     else:
         print("Skipping upload to Mapbox...environment variables missing")
