@@ -22,7 +22,7 @@ def find_jurisdiction(jur_name: str):
     Return a github.com/unitedstates/python-us style
     jurisdiction object so we can (potentially) back fill
     """
-    for jurisdiction in jur_names:
+    for jurisdiction in [s for s in us.STATES + [us.states.PR, us.states.DC]]:
         if jur_name == jurisdiction.name:
             return jurisdiction
 
@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
     us_source = f"{os.getcwd()}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):
-        download_and_extract(
+        _download_and_extract(
             f"https://www2.census.gov/geo/tiger/TIGER{SETTINGS['YEAR']}/CD/tl_{SETTINGS['YEAR']}_us_cd116.zip",
             us_source,
         )
