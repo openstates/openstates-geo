@@ -8,11 +8,23 @@ import shutil
 import us
 import yaml
 
+jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
+
 
 def load_settings(config_file: str):
     with open(config_file, "r") as f_in:
         settings = yaml.safe_load(f_in.read())
     return settings
+
+
+def find_jurisdiction(jur_name: str):
+    """
+    Return a github.com/unitedstates/python-us style
+    jurisdiction object so we can (potentially) back fill
+    """
+    for jurisdiction in jur_names:
+        if jur_name == jurisdiction.name:
+            return jurisdiction
 
 
 def clean_sources():
@@ -31,7 +43,32 @@ def clean_sources():
     os.makedirs(f"{os.getcwd()}/data/geojson/")
 
 
-def download_and_extract(url, filename):
+def download_from_tiger(jurisdiction, year):
+    fips = jurisdiction.fips
+    for chamber in ["u", "l"]:
+        url = f"https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber.upper()}/tl_{year}_{fips}_sld{chamber}.zip"
+        filename = f"{os.getcwd()}/data/tl_{year}_{fips}_sld{chamber}.zip"
+        if os.path.exists(filename):
+            print(f"{filename} already downloaded...skipping")
+            continue
+        try:
+            _download_and_extract(url, filename)
+        except Exception as e:
+            print(f"Couldn't download {jurisdiction.name} {chamber} :: {e}")
+
+
+def download_from_arp(jur_urls: dict):
+    for chamber, url in jur_urls.items():
+        filename = f"{os.getcwd()}/data/{url.rsplit('/' , 1)[1]}"
+
+        if os.path.exists(filename):
+            print(f"skipping {jur} {chamber}")
+            continue
+
+        _download_and_extract(url, filename)
+
+
+def _download_and_extract(url, filename):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -49,7 +86,6 @@ def download_and_extract(url, filename):
 
 
 if __name__ == "__main__":
-    jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
     parser = ArgumentParser(
         description="Download shapefiles for defined jurisdictions",
         formatter_class=ArgumentDefaultsHelpFormatter,
@@ -90,14 +126,11 @@ if __name__ == "__main__":
             continue
         print(f"Fetching shapefiles for {jur}")
 
-        for chamber, url in SETTINGS["shapefile_urls"][jur].items():
-            filename = f"{os.getcwd()}/data/{url.rsplit('/' , 1)[1]}"
-
-            if os.path.exists(f"{os.getcwd()}/data/{filename}"):
-                print(f"skipping {jur} {chamber}")
-                continue
-
-            download_and_extract(url, filename)
+        if SETTINGS["shapefile_urls"][jur].get("use_tiger", False):
+            jurisdiction = find_jurisdiction(jur)
+            download_from_tiger(jurisdiction, SETTINGS["YEAR"])
+        else:
+            download_from_arp(SETTINGS["shapefile_urls"][jur])
 
     us_source = f"{os.getcwd()}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):

@@ -3,6 +3,10 @@ YEAR: 2022
 # shapefile urls collected from
 # https://thearp.org/blog/map-archive/
 shapefile_urls:
+  "District of Columbia":
+    use_tiger: True
+  "Puerto Rico":
+    use_tiger: True
   Alabama:
     upper: https://thearp.org/documents/589/AL_SD_Enacted11042021_NR3fNLk.zip
     lower: https://thearp.org/documents/12508/AL_LD_Enacted_Technical_Changes.zip
