@@ -6,13 +6,18 @@ import zipfile
 import requests
 import shutil
 import us
+import yaml
 
-from settings import SHAPEFILES
+
+def load_settings(config_file: str):
+    with open(config_file, "r") as f_in:
+        settings = yaml.safe_load(f_in.read())
+    return settings
 
 
 def clean_sources():
     """
-    Nice function to clean up our source data
+    simple function to clean up our source data
     if we're completely retrying
     """
     cwd = os.getcwd()
@@ -63,26 +68,29 @@ if __name__ == "__main__":
         default=False,
         help="Remove any cached download/processed data",
     )
+    parser.add_argument(
+        "--config",
+        "-c",
+        type=str,
+        default=f"{os.getcwd()}/scripts/settings.yml",
+        help="Config file for downloading geo data",
+    )
     args = parser.parse_args()
 
     if args.clean_sources:
         clean_sources()
+    SETTINGS = load_settings(args.config)
 
     for jur in args.jurisdiction:
         if jur not in jur_names:
             print(f"Invalid jurisdiction {jur}. Skipping.")
             continue
-        if jur not in SHAPEFILES:
+        if jur not in SETTINGS["shapefile_urls"]:
             print(f"Skipping {jur}. No URLs configured.")
             continue
         print(f"Fetching shapefiles for {jur}")
 
-        for chamber in ["lower", "upper", "congress"]:
-            try:
-                url = SHAPEFILES[jur][chamber]
-            except Exception:
-                print(f"Skipping {jur} {chamber}, not found in shapefiles")
-                continue
+        for chamber, url in SETTINGS["shapefile_urls"][jur].items():
             filename = f"{os.getcwd()}/data/{url.rsplit('/' , 1)[1]}"
 
             if os.path.exists(f"{os.getcwd()}/data/{filename}"):

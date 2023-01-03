@@ -30,7 +30,7 @@ def get_ocdid_records():
     for path in paths:
         with open(path, "r") as div_file:
             reader = csv.DictReader(div_file)
-            all_divs += [row for row in reader]
+            all_divs.extend(row for row in reader)
     return all_divs
 
 
@@ -84,6 +84,7 @@ def merge_ids(geojson_path):
             if not district:
                 raise ValueError(f"no {ocd_id} {district_type}")
 
+        # relying on copy-by-reference to update the actual parent object
         feature["properties"] = {
             "ocdid": ocd_id,
             "type": district_type,
@@ -123,8 +124,8 @@ if __name__ == "__main__":
             subprocess.run(
                 [
                     "ogr2ogr",
-                    #"-where",
-                    #"GEOID NOT LIKE '%ZZ'",
+                    # "-where",
+                    # "GEOID NOT LIKE '%ZZ'",
                     "-t_srs",
                     "crs:84",
                     "-f",
