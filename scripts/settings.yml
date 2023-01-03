@@ -1,0 +1,154 @@
+# shapefile urls collected from
+# https://thearp.org/blog/map-archive/
+shapefile_urls:
+  Alabama:
+    upper: https://thearp.org/documents/589/AL_SD_Enacted11042021_NR3fNLk.zip
+    lower: https://thearp.org/documents/12508/AL_LD_Enacted_Technical_Changes.zip
+  Alaska:
+    upper: https://thearp.org/documents/598/AK_SD_Interim005252022.zip
+    lower: https://thearp.org/documents/595/AK_LD_Interim005252022.zip
+  Arizona:
+    upper: https://thearp.org/documents/607/AZ_SD_Final_01212022.zip
+    lower: https://thearp.org/documents/604/AZ_LD_Final_01212022.zip
+  Arkansas:
+    upper: https://thearp.org/documents/616/AR_SD_Enacted12292021.zip
+    lower: https://thearp.org/documents/613/AR_LD_Enacted12292021.zip
+  California:
+    upper: https://thearp.org/documents/625/CA_SD_Final_12262021.zip
+    lower: https://thearp.org/documents/12510/CA_LD_Enacted_Technical_Changes.zip
+  Colorado:
+    upper: https://thearp.org/documents/12513/CO_SD_Enacted_technical_changes.zip
+    lower: https://thearp.org/documents/12512/CO_LD_Enacted_Technical_Changes.zip
+  Connecticut:
+    upper: https://thearp.org/documents/643/CT_SD_Enacted11232021.zip
+    lower: https://thearp.org/documents/640/CT_LD_Enacted11182021_lipOwwW.zip
+  Delaware:
+    upper: https://thearp.org/documents/12515/DE_SD_Enacted_Technical_Changes.zip
+    lower: https://thearp.org/documents/12514/DE_LD_Enacted_Technical_Changes.zip
+  Florida:
+    upper: https://thearp.org/documents/661/FL_SD_Enacted03032022.zip
+    lower: https://thearp.org/documents/658/FL_LD_Enacted03032022.zip
+  Georgia:
+    upper: https://thearp.org/documents/670/GA_SD_enacted12302021.zip
+    lower: https://thearp.org/documents/667/GA_LD_enacted12302021.zip
+  Hawaii:
+    upper: https://thearp.org/documents/679/HI_SD_Final_Approved.zip
+    lower: https://thearp.org/documents/676/HI_LD_Final_Approved.zip
+  Idaho:
+    upper: https://thearp.org/documents/688/ID_SD_Enacted11102021.zip
+    lower: https://thearp.org/documents/685/ID_LD_Enacted11102021.zip
+  Illinois:
+    upper: https://thearp.org/documents/697/Illinois_SD_20210831_Sent_0924_Q2wnnbz.zip
+    lower: https://thearp.org/documents/694/Illinois_HD_20210831_sent_0924_Vnk2UaK.zip
+  Indiana:
+    upper: https://thearp.org/documents/706/IN_SD_Enacted10042021.zip
+    lower: https://thearp.org/documents/703/IN_LD_Enacted10042021.zip
+  Iowa:
+    upper: https://thearp.org/documents/715/IA_SD_Enacted11042021.zip
+    lower: https://thearp.org/documents/712/IA_LD_Enacted11042021.zip
+  Kansas:
+    upper: https://thearp.org/documents/724/KS_SD_Enacted04152022.zip
+    lower: https://thearp.org/documents/721/KS_LD_Enacted04152022.zip
+  Kentucky:
+    upper: https://thearp.org/documents/733/KY_SD_Enacted01212022.zip
+    lower: https://thearp.org/documents/730/KY_LD_Enacted01202022.zip
+  Louisiana:
+    upper: https://thearp.org/documents/742/LA_SD_Enacted03092022.zip
+    lower: https://thearp.org/documents/739/LA_LD_Enacted03092022.zip
+  Maine:
+    upper: https://thearp.org/documents/752/ME_Upper_Enacted09292021_DWAqdIP.zip
+    lower: https://thearp.org/documents/12516/ME_LD_Enacted_Technical_Changes.zip
+  Maryland:
+    upper: https://thearp.org/documents/761/MD_SD_Enacted_01272022.zip
+    lower: https://thearp.org/documents/758/MD_LD_Enacted_01272022.zip
+  Massachusetts:
+    upper: https://thearp.org/documents/770/MA_SD_Enacted11052021.zip
+    lower: https://thearp.org/documents/767/MA_LD_Enacted11042021_Final.zip
+  Michigan:
+    upper: https://thearp.org/documents/494/MI_SD_Enacted02262022.zip
+    lower: https://thearp.org/documents/491/MI_LD_Enacted02262022.zip
+  Minnesota:
+    upper: https://thearp.org/documents/779/MN_SD_Enacted_06022022_Technical_Changes.zip
+    lower: https://thearp.org/documents/776/MN_LD_Enacted_06022022_Technical_Changes.zip
+  Mississippi:
+    upper: https://thearp.org/documents/788/MS_SD_Enacted03312022.zip
+    lower: https://thearp.org/documents/785/MS_LD_Enacted03312022.zip
+  Missouri:
+    upper: https://thearp.org/documents/797/MO_SD_Enacted03152022.zip
+    lower: https://thearp.org/documents/794/MO_LD_Enacted01192022.zip
+  Montana:
+    upper: https://thearp.org/documents/5145/MT_2014to2020_SU.zip
+    lower: https://thearp.org/documents/5186/MT_2014to2020_SL.zip
+  Nebraska:
+    upper: https://thearp.org/documents/814/NE_Upper_Enacted_09302021_GBquMi7.zip
+  Nevada:
+    upper: https://thearp.org/documents/823/NV_SD_Amended_Enacted11162021.zip
+    lower: https://thearp.org/documents/820/NV_LD_Amended_Enacted11162021.zip
+  "New Hampshire":
+    upper: https://thearp.org/documents/832/NH_SD_Enacted05062022.zip
+    lower: https://thearp.org/documents/829/NH_LD_Regular_Enacted03232022_NE3Ymrn.zip
+    floterial: https://thearp.org/documents/1024/NH_LD_Floterial_Enacted03232022_doxuB8L.zip
+  "New Jersey":
+    upper: https://thearp.org/documents/841/NJ_SD_Enacted02232022.zip
+    lower: https://thearp.org/documents/838/NJ_LD_Enacted02232022.zip
+  "New Mexico":
+    upper: https://thearp.org/documents/850/NM_SD_Enacted01062022_5fwsHFT.zip
+    lower: https://thearp.org/documents/847/NM_LD_Enacted12292021.zip
+  "New York":
+    upper: https://thearp.org/documents/859/NY_SD_06022022_Tech_Changes_FINAL_vht8mpb.zip
+    # possibly mis-labelled?
+    lower: https://thearp.org/documents/856/NY_SD_Enacted5212022_adjustments.zip
+  "North Carolina":
+    upper: https://thearp.org/documents/561/NC_SD_Enacted02232022.zip
+    lower: https://thearp.org/documents/559/NC_LD_Enacted02232022.zip
+  "North Dakota":
+    upper: https://thearp.org/documents/868/ND_SD_11122021.zip
+    lower: https://thearp.org/documents/865/ND_LD_11122021.zip
+  Ohio:
+    upper: https://thearp.org/documents/5714/OH_SD_Enacted05252022.zip
+    lower: https://thearp.org/documents/5711/OH_LD_Enacted05252022.zip
+  Oklahoma:
+    upper: https://thearp.org/documents/886/OK_SD_Enacted11222021.zip
+    lower: https://thearp.org/documents/883/OK_LD_Enacted11222021.zip
+  Oregon:
+    upper: https://thearp.org/documents/895/OR_SD_Enacted09272021_3XTO7kq.zip
+    lower: https://thearp.org/documents/892/OR_LD_Enacted09272021_i0VR2RF.zip
+  Pennsylvania:
+    upper: https://thearp.org/documents/911/PA_SD_Final_02042022.zip
+    lower: https://thearp.org/documents/908/PA_LD_Final_02042022.zip
+  "Rhode Island":
+    upper: https://thearp.org/documents/920/RI_SD_Enacted02162022.zip
+    lower: https://thearp.org/documents/917/RI_LD_Enacted02162022.zip
+  "South Carolina":
+    upper: https://thearp.org/documents/929/SC_SD_Enacted_1210201.zip
+    lower: https://thearp.org/documents/926/SC_LD_Enacted_1210201.zip
+  "South Dakota":
+    upper: https://thearp.org/documents/938/SD_SD_Enacted11102021.zip
+    lower: https://thearp.org/documents/935/SD_LD_Enacted11102021.zip
+  Tennessee:
+    upper: https://thearp.org/documents/947/TN_SD_Enacted02062022_G6PN85S.zip
+    lower: https://thearp.org/documents/944/TN_LD_Enacted02062022.zip
+  Texas:
+    upper: https://thearp.org/documents/956/TX_SD_10252021_xisRmfj.zip
+    lower: https://thearp.org/documents/953/TX_LD10252021_CaaJzWc.zip
+  Utah:
+    upper: https://thearp.org/documents/965/UT_SD_Enacted11162021.zip
+    lower: https://thearp.org/documents/962/ut_ld_11162021.zip
+  Vermont:
+    upper: https://thearp.org/documents/974/VT_SD_Enacted04062022.zip
+    lower: https://thearp.org/documents/971/VT_LD_Enacted04062022.zip
+  Virginia:
+    upper: https://thearp.org/documents/983/VA_SD_Approved_12282021.zip
+    lower: https://thearp.org/documents/980/VA_HOD_Approved_12282021.zip
+  Washington:
+    upper: https://thearp.org/documents/992/WA_SD_Enacted02082022.zip
+    lower: https://thearp.org/documents/989/WA_LD_Enacted02082022.zip
+  "West Virginia":
+    upper: https://thearp.org/documents/1001/WV_SD_Enacted_10222021_3Kx9ijf.zip
+    lower: https://thearp.org/documents/998/WV_LD_Enacted_10222021_KO34TCR.zip
+  Wisconsin:
+    upper: https://thearp.org/documents/1103/WI_SD_Enacted04152022.zip
+    lower: https://thearp.org/documents/1007/WI_LD_Enacted04152022.zip
+  Wyoming:
+    upper: https://thearp.org/documents/1019/WY_SD_Enacted03252022.zip
+    lower: https://thearp.org/documents/1016/WY_LD_Enacted03252022.zip
