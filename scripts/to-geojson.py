@@ -123,8 +123,8 @@ if __name__ == "__main__":
             subprocess.run(
                 [
                     "ogr2ogr",
-                    "-where",
-                    "GEOID NOT LIKE '%ZZ'",
+                    #"-where",
+                    #"GEOID NOT LIKE '%ZZ'",
                     "-t_srs",
                     "crs:84",
                     "-f",

@@ -6,9 +6,7 @@ import requests
 import shutil
 import us
 
-# note: The Census download URLs are case-sensitive
-YEAR = "2022"
-URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
+from shapefiles import SHAPEFILES
 
 
 def clean_sources():
@@ -16,7 +14,7 @@ def clean_sources():
     Nice function to clean up our source data
     if we're completely retrying
     """
-    shutil.rmtree("./data/sources")
+    shutil.rmtree("./data/source")
     os.unlink("./data/*.zip")
     os.unlink("./data/*.mbtiles")
     shutil.rmtree("./data/geojson")
@@ -66,12 +64,6 @@ if __name__ == "__main__":
         default=False,
         help="Remove any cached download/processed data",
     )
-    parser.add_argument(
-        "--get-us-data",
-        action="store_true",
-        default=False,
-        help="Download US federal boundaries",
-    )
     args = parser.parse_args()
 
     if args.clean_sources:
@@ -88,28 +80,15 @@ if __name__ == "__main__":
         jurisdiction = find_jurisdiction(jur)
         print(f"Fetching shapefiles for {jurisdiction.name}")
 
-        for chamber in ["l", "u"]:
-            fips = jurisdiction.fips
-
-            if jurisdiction.abbr in ("DC", "NE") and chamber == "l":
+        for chamber in ["lower", "upper", "congress"]:
+            if jurisdiction.abbr in ("DC", "NE") and chamber == "lower":
                 # skip lower chamber of the unicamerals
                 continue
+
 
             if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
                 print(f"skipping {jurisdiction.name} {fips} sld{chamber}")
                 continue
 
-            download_url = URL.format(
-                fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
-            )
-
             filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
             download_and_extract(download_url, filename)
-
-    if args.get_us_data:
-        print("Downloading US data")
-        # final step: get US data
-        download_and_extract(
-            f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
-            f"data/source/tl_{YEAR}_us_cd116.zip",
-        )
