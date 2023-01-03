@@ -1,3 +1,4 @@
+YEAR = "2022"
 SHAPEFILES = {
     "Alabama": {
         "upper": "https://thearp.org/documents/589/AL_SD_Enacted11042021_NR3fNLk.zip",
@@ -8,5 +9,15 @@ SHAPEFILES = {
         "upper": "https://thearp.org/documents/598/AK_SD_Interim005252022.zip",
         "lower": "https://thearp.org/documents/595/AK_LD_Interim005252022.zip",
         "congress": "https://thearp.org/documents/592/AK_US_Cong_2018.zip",
+        },
+    "Arizona": {
+        "upper": "https://thearp.org/documents/607/AZ_SD_Final_01212022.zip",
+        "lower": "https://thearp.org/documents/604/AZ_LD_Final_01212022.zip",
+        "congress": "https://thearp.org/documents/601/AZ_CD_Final_01212022.zip",
+        },
+    "Arkansas": {
+        "upper": "https://thearp.org/documents/616/AR_SD_Enacted12292021.zip",
+        "lower": "https://thearp.org/documents/613/AR_LD_Enacted12292021.zip",
+        "congress": "https://thearp.org/documents/610/AR_CD_Enacted01142022.zip",
         },
     }
