@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import os
 import zipfile
 import requests
@@ -26,34 +27,68 @@ def download_and_extract(url, filename):
         response.raise_for_status()
 
 
-try:
-    os.makedirs("./data/source/")
-except FileExistsError:
-    pass
+def find_jurisdiction(jur_name: str):
+    for jur in us.STATES + [us.states.PR]:
+        if jur_name == jur.name:
+            return jur
 
-for state in us.STATES + [us.states.PR]:
-    print("Fetching shapefiles for {}".format(state.name))
 
-    for chamber in ["l", "u"]:
-        fips = state.fips
+if __name__ == "__main__":
+    jur_names = [s.name for s in us.STATES + [us.states.PR]]
+    parser = ArgumentParser(
+        description="Download shapefiles for defined jurisdictions",
+        formatter_class=ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--jurisdiction",
+        "-j",
+        type=str,
+        nargs="+",
+        default=jur_names,
+        help="The jurisdiction(s) to download shapefiles for",
+    )
+    parser.add_argument(
+        "--get-us-data",
+        action="store_true",
+        default=False,
+        help="Download US federal boundaries",
+    )
+    args = parser.parse_args()
 
-        if state.abbr in ("DC", "NE") and chamber == "l":
-            # skip lower chamber of the unicamerals
+    try:
+        os.makedirs("./data/source/")
+    except FileExistsError:
+        pass
+
+    for jur in args.jurisdiction:
+        if jur not in jur_names:
+            print(f"Invalid jurisdiction {jur}. Skipping.")
             continue
+        jurisdiction = find_jurisdiction(jur)
+        print(f"Fetching shapefiles for {jurisdiction.name}")
 
-        if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
-            print(f"skipping {state} {fips} sld{chamber}")
-            continue
+        for chamber in ["l", "u"]:
+            fips = jurisdiction.fips
 
-        download_url = URL.format(
-            fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
+            if jurisdiction.abbr in ("DC", "NE") and chamber == "l":
+                # skip lower chamber of the unicamerals
+                continue
+
+            if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
+                print(f"skipping {jurisdiction.name} {fips} sld{chamber}")
+                continue
+
+            download_url = URL.format(
+                fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
+            )
+
+            filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
+            download_and_extract(download_url, filename)
+
+    if args.get_us_data:
+        print("Downloading US data")
+        # final step: get US data
+        download_and_extract(
+            f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
+            f"data/source/tl_{YEAR}_us_cd116.zip",
         )
-
-        filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
-        download_and_extract(download_url, filename)
-
-# final step: get US data
-download_and_extract(
-    f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
-    f"data/source/tl_{YEAR}_us_cd116.zip",
-)
