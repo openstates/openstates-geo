@@ -3,11 +3,24 @@ from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import os
 import zipfile
 import requests
+import shutil
 import us
 
 # note: The Census download URLs are case-sensitive
 YEAR = "2022"
 URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
+
+
+def clean_sources():
+    """
+    Nice function to clean up our source data
+    if we're completely retrying
+    """
+    shutil.rmtree("./data/sources")
+    os.unlink("./data/*.zip")
+    os.unlink("./data/*.mbtiles")
+    shutil.rmtree("./data/geojson")
+    shutil.rmtree("./data/mapbox")
 
 
 def download_and_extract(url, filename):
@@ -48,6 +61,12 @@ if __name__ == "__main__":
         help="The jurisdiction(s) to download shapefiles for",
     )
     parser.add_argument(
+        "--clean-sources",
+        action="store_true",
+        default=False,
+        help="Remove any cached download/processed data",
+    )
+    parser.add_argument(
         "--get-us-data",
         action="store_true",
         default=False,
@@ -55,6 +74,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    if args.clean_sources:
+        clean_sources()
     try:
         os.makedirs("./data/source/")
     except FileExistsError:

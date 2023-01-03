@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import os
-import sys
 import csv
-import json
 import glob
-import subprocess
-import us
+import json
 import openstates.metadata as metadata
+import os
+import subprocess
+import sys
+import us
 
 OCD_FIXES = {
     "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
