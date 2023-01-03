@@ -98,3 +98,10 @@ if __name__ == "__main__":
                 continue
 
             download_and_extract(url, filename)
+
+    us_source = f"{os.getcwd()}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
+    if not os.path.exists(us_source):
+        download_and_extract(
+            f"https://www2.census.gov/geo/tiger/TIGER{SETTINGS['YEAR']}/CD/tl_{SETTINGS['YEAR']}_us_cd116.zip",
+            us_source,
+        )
