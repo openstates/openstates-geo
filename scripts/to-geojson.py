@@ -9,7 +9,7 @@ import sys
 import us
 import yaml
 
-from utils import JURISDICTION_NAMES, ROOTDIR
+from utils import JURISDICTION_NAMES, ROOTDIR, setup_source
 
 SKIPPED_GEOIDS = {
     "cd-6098": "American Samoa",
@@ -91,16 +91,11 @@ def merge_ids(geojson_path):
 
 
 if __name__ == "__main__":
-    try:
-        os.makedirs(f"{ROOTDIR}/data/geojson")
-    except FileExistsError:
-        pass
+    setup_source()
+    mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
 
-    expected = 102
     if len(sys.argv) == 1:
-        files = sorted(glob.glob(f"{ROOTDIR}/data/source/*.shp"))
-        if len(files) < expected:
-            raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
+        files = sorted(glob.glob(f"{ROOTDIR}/data/source/**/*.shp", recursive=True))
     else:
         files = sys.argv[1:]
 
@@ -110,7 +105,7 @@ if __name__ == "__main__":
         if os.path.exists(newfilename):
             print(newfilename, "already exists, skipping")
         else:
-            print(file, "=>", newfilename)
+            print(f"{file} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
@@ -125,6 +120,22 @@ if __name__ == "__main__":
                 ],
                 check=True,
             )
-        # meta_file = file.replace(".shp", ".dbx").lower()
-        # if os.path.exists(meta_file):
+        meta_file = file.replace(".shp", ".dbf").lower()
+        new_meta = meta_file.replace(".dbf", "_meta.geojson")
+        if os.path.exists(meta_file):
+            print(f"{meta_file} => {new_meta}")
+            subprocess.run(
+                [
+                    "ogr2ogr",
+                    # "-where",
+                    # "GEOID NOT LIKE '%ZZ'",
+                    "-t_srs",
+                    "crs:84",
+                    "-f",
+                    "GeoJSON",
+                    new_meta,
+                    meta_file,
+                ],
+                check=True,
+            )
         # merge_ids(newfilename)

@@ -1,4 +1,6 @@
+import os
 from pathlib import Path
+import shutil
 import us
 
 """
@@ -20,3 +22,14 @@ def find_jurisdiction(jur_name: str):
     for jurisdiction in JURISDICTIONS:
         if jur_name == jurisdiction.name:
             return jurisdiction
+
+
+def setup_source(clean: bool = False):
+    """
+    simple function to clean up our source data
+    if we're completely retrying
+    """
+    if clean:
+        shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
+    os.makedirs(f"{ROOTDIR}/data/source/", exist_ok=True)
+    os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
