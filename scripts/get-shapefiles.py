@@ -108,7 +108,7 @@ if __name__ == "__main__":
         "--config",
         "-c",
         type=str,
-        default=f"{cwd}/settings.yml",
+        default=f"{cwd}/shapefiles.yml",
         help="Config file for downloading geo data",
     )
     args = parser.parse_args()
