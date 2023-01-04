@@ -9,6 +9,7 @@ import us
 import yaml
 
 jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
+cwd = os.getcwd()
 
 
 def load_settings(config_file: str):
@@ -32,22 +33,21 @@ def clean_sources():
     simple function to clean up our source data
     if we're completely retrying
     """
-    cwd = os.getcwd()
     shutil.rmtree(f"{cwd}/data/source", ignore_errors=True)
-    os.makedirs(f"{os.getcwd()}/data/source/")
+    os.makedirs(f"{cwd}/data/source/")
     for f in glob.glob(f"{cwd}/data/*.zip"):
         os.unlink(f)
     for f in glob.glob(f"{cwd}/data/*.mbtiles"):
         os.unlink(f)
     shutil.rmtree(f"{cwd}/data/geojson", ignore_errors=True)
-    os.makedirs(f"{os.getcwd()}/data/geojson/")
+    os.makedirs(f"{cwd}/data/geojson/")
 
 
 def download_from_tiger(jurisdiction, year):
     fips = jurisdiction.fips
     for chamber in ["u", "l"]:
         url = f"https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber.upper()}/tl_{year}_{fips}_sld{chamber}.zip"
-        filename = f"{os.getcwd()}/data/tl_{year}_{fips}_sld{chamber}.zip"
+        filename = f"{cwd}/data/tl_{year}_{fips}_sld{chamber}.zip"
         if os.path.exists(filename):
             print(f"{filename} already downloaded...skipping")
             continue
@@ -59,7 +59,7 @@ def download_from_tiger(jurisdiction, year):
 
 def download_from_arp(jur_urls: dict):
     for chamber, url in jur_urls.items():
-        filename = f"{os.getcwd()}/data/{url.rsplit('/' , 1)[1]}"
+        filename = f"{cwd}/data/{url.rsplit('/' , 1)[1]}"
 
         if os.path.exists(filename):
             print(f"skipping {jur} {chamber}")
@@ -80,7 +80,7 @@ def _download_and_extract(url, filename):
         with open(filename, "wb") as f:
             f.write(response.content)
         with zipfile.ZipFile(filename, "r") as f:
-            f.extractall(f"{os.getcwd()}/data/source")
+            f.extractall(f"{cwd}/data/source")
     else:
         response.raise_for_status()
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
         "--config",
         "-c",
         type=str,
-        default=f"{os.getcwd()}/scripts/settings.yml",
+        default=f"{cwd}/scripts/settings.yml",
         help="Config file for downloading geo data",
     )
     args = parser.parse_args()
@@ -132,7 +132,7 @@ if __name__ == "__main__":
         else:
             download_from_arp(SETTINGS["shapefile_urls"][jur])
 
-    us_source = f"{os.getcwd()}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
+    us_source = f"{cwd}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):
         _download_and_extract(
             f"https://www2.census.gov/geo/tiger/TIGER{SETTINGS['YEAR']}/CD/tl_{SETTINGS['YEAR']}_us_cd116.zip",

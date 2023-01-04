@@ -8,6 +8,7 @@ import subprocess
 import sys
 import us
 
+cwd = os.getcwd()
 OCD_FIXES = {
     "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
 }
@@ -53,7 +54,7 @@ def merge_ids(geojson_path):
         # Identify the OCD ID by making a lookup against the CSV files
         # The OCD ID is the cannonical identifier of an area on
         # the Open States platform
-        geoid = "{}-{}".format(district_type, feature["properties"]["GEOID"])
+        geoid = f"{district_type}-{feature['properties']['geoid']}"
 
         if geoid in SKIPPED_GEOIDS:
             continue
@@ -64,7 +65,7 @@ def merge_ids(geojson_path):
                 break
         else:
             print(feature["properties"])
-            raise AssertionError("Could not find OCD ID for GEOID {}".format(geoid))
+            raise AssertionError(f"Could not find OCD ID for GEOID {geoid}")
 
         # Although OCD IDs contain the state postal code, parsing
         # an ID to determine structured data is bad practice,
@@ -103,13 +104,13 @@ def merge_ids(geojson_path):
 
 if __name__ == "__main__":
     try:
-        os.makedirs("./data/geojson")
+        os.makedirs(f"{cwd}/data/geojson")
     except FileExistsError:
         pass
 
     expected = 102
     if len(sys.argv) == 1:
-        files = sorted(glob.glob("data/source/tl*.shp"))
+        files = sorted(glob.glob(f"{cwd}/data/source/tl*.shp"))
         if len(files) < expected:
             raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
