@@ -92,7 +92,7 @@ def merge_ids(geojson_path):
 
 if __name__ == "__main__":
     setup_source()
-    mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
+    # mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
 
     if len(sys.argv) == 1:
         files = sorted(glob.glob(f"{ROOTDIR}/data/source/**/*.shp", recursive=True))
@@ -103,14 +103,12 @@ if __name__ == "__main__":
 
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
-            print(newfilename, "already exists, skipping")
+            print(f"{newfilename} already exists, skipping")
         else:
             print(f"{file} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
-                    # "-where",
-                    # "GEOID NOT LIKE '%ZZ'",
                     "-t_srs",
                     "crs:84",
                     "-f",
@@ -120,22 +118,47 @@ if __name__ == "__main__":
                 ],
                 check=True,
             )
-        meta_file = file.replace(".shp", ".dbf").lower()
+        """
+        Why name things consistently?
+        There maybe a dbf file with all lowercase
+        _or_ casing consistent with the shp file
+        """
+        meta_file = file.replace(".shp", ".dbf")
         new_meta = meta_file.replace(".dbf", "_meta.geojson")
+        meta_file_lower = meta_file.lower()
+        new_meta_lower = new_meta.lower()
         if os.path.exists(meta_file):
-            print(f"{meta_file} => {new_meta}")
-            subprocess.run(
-                [
-                    "ogr2ogr",
-                    # "-where",
-                    # "GEOID NOT LIKE '%ZZ'",
-                    "-t_srs",
-                    "crs:84",
-                    "-f",
-                    "GeoJSON",
-                    new_meta,
-                    meta_file,
-                ],
-                check=True,
-            )
+            if os.path.exists(new_meta):
+                print(f"{new_meta} already exists, skipping")
+            else:
+                print(f"{meta_file} => {new_meta}")
+                subprocess.run(
+                    [
+                        "ogr2ogr",
+                        "-t_srs",
+                        "crs:84",
+                        "-f",
+                        "GeoJSON",
+                        new_meta,
+                        meta_file,
+                    ],
+                    check=True,
+                )
+        elif os.path.exists(meta_file_lower):
+            if os.path.exists(new_meta_lower):
+                print(f"{new_meta_lower} already exists, skipping")
+            else:
+                print(f"{meta_file_lower} => {new_meta_lower}")
+                subprocess.run(
+                    [
+                        "ogr2ogr",
+                        "-t_srs",
+                        "crs:84",
+                        "-f",
+                        "GeoJSON",
+                        new_meta_lower,
+                        meta_file_lower,
+                    ],
+                    check=True,
+                )
         # merge_ids(newfilename)
