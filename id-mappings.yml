@@ -1364,169 +1364,169 @@ Alabama:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:al/sldl:"
-      sld-match: "sldl-010([\d+])"
+      sld-match: 'sldl-010([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:al/sldu:"
-      sld-match: "sldu-010([\d+])"
+      sld-match: 'sldu-010([\d+])'
 Alaska:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ak/sldl:"
-      sld-match: "sldl-020([\d+])"
+      sld-match: 'sldl-020([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ak/sldu:"
-      sld-match: "sldu-0200([A-Z])"
+      sld-match: 'sldu-0200([A-Z])'
       match-type: str
 Arizona:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:az/sldl:"
-      sld-match: "sldl-040([\d+])"
+      sld-match: 'sldl-040([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:az/sldu:"
-      sld-match: "sldu-040([\d+])"
+      sld-match: 'sldu-040([\d+])'
 Arkansas:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ar/sldl:"
-      sld-match: "sldl-05([\d+])"
+      sld-match: 'sldl-05([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ar/sldu:"
-      sld-match: "sldu-050([\d+])"
+      sld-match: 'sldu-050([\d+])'
 California:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ca/sldl:"
-      sld-match: "sldl-060([\d+])"
+      sld-match: 'sldl-060([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ca/sldu:"
-      sld-match: "sldu-060([\d+])"
+      sld-match: 'sldu-060([\d+])'
 Colorado:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:co/sldl:"
-      sld-match: "sldl-080([\d+])"
+      sld-match: 'sldl-080([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:co/sldu:"
-      sld-match: "sldu-080([\d+])"
+      sld-match: 'sldu-080([\d+])'
 Connecticut:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ct/sldl:"
-      sld-match: "sldl-09([\d+])"
+      sld-match: 'sldl-09([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ct/sldu:"
-      sld-match: "sldu-090([\d+])"
+      sld-match: 'sldu-090([\d+])'
 Delaware:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:de/sldl:"
-      sld-match: "sldl-100([\d+])"
+      sld-match: 'sldl-100([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:de/sldu:"
-      sld-match: "sldu-100([\d+])"
+      sld-match: 'sldu-100([\d+])'
 "District of Columbia":
   id-mappings:
     sldu:
       os-id-prefix: "ocd-division/country:us/district:dc/ward:"
-      sld-match: "sldu-1100([\d])"
+      sld-match: 'sldu-1100([\d])'
 Florida:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:fl/sldl:"
-      sld-match: "sldl-12([\d+])"
+      sld-match: 'sldl-12([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:fl/sldu:"
-      sld-match: "sldu-120([\d+])"
+      sld-match: 'sldu-120([\d+])'
 Georgia:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ga/sldl:"
-      sld-match: "sldl-13([\d+])"
+      sld-match: 'sldl-13([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ga/sldu:"
-      sld-match: "sldu-130([\d+])"
+      sld-match: 'sldu-130([\d+])'
 Hawaii:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:hi/sldl:"
-      sld-match: "sldl-150([\d+])"
+      sld-match: 'sldl-150([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:hi/sldu:"
-      sld-match: "sldu-150([\d+])"
+      sld-match: 'sldu-150([\d+])'
 Idaho:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:id/sldl:"
-      sld-match: "sldl-160([\d+])"
+      sld-match: 'sldl-160([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:id/sldu:"
-      sld-match: "sldu-160([\d+])"
+      sld-match: 'sldu-160([\d+])'
 Illinois:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:il/sldl:"
-      sld-match: "sldl-17([\d+])"
+      sld-match: 'sldl-17([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:il/sldu:"
-      sld-match: "sldu-170([\d+])"
+      sld-match: 'sldu-170([\d+])'
 Indiana:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:in/sldl:"
-      sld-match: "sldl-18([\d+])"
+      sld-match: 'sldl-18([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:in/sldu:"
-      sld-match: "sldu-180([\d+])"
+      sld-match: 'sldu-180([\d+])'
 Iowa:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ia/sldl:"
-      sld-match: "sldl-19([\d+])"
+      sld-match: 'sldl-19([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ia/sldu:"
-      sld-match: "sldu-190([\d+])"
+      sld-match: 'sldu-190([\d+])'
 Kansas:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ks/sldl:"
-      sld-match: "sldl-20([\d+])"
+      sld-match: 'sldl-20([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ks/sldu:"
-      sld-match: "sldu-200([\d+])"
+      sld-match: 'sldu-200([\d+])'
 Kentucky:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ky/sldl:"
-      sld-match: "sldl-21([\d+])"
+      sld-match: 'sldl-21([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ky/sldu:"
-      sld-match: "sldu-210([\d+])"
+      sld-match: 'sldu-210([\d+])'
 Louisiana:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:la/sldl:"
-      sld-match: "sldl-22([\d+])"
+      sld-match: 'sldl-22([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:la/sldu:"
-      sld-match: "sldu-220([\d+])"
+      sld-match: 'sldu-220([\d+])'
 Maine:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:me/sldl:"
-      sld-match: "sldl-23([\d+])"
+      sld-match: 'sldl-23([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:me/sldu:"
-      sld-match: "sldu-230([\d+])"
+      sld-match: 'sldu-230([\d+])'
 Maryland:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:md/sldl:"
-      sld-match: "sldl-24([\w+])"
+      sld-match: 'sldl-24([\w+])'
       match-type: str
     sldu:
       os-id-prefix: "ocd-division/country:us/state:md/sldu:"
-      sld-match: "sldu-240([\d+])"
+      sld-match: 'sldu-240([\d+])'
     custom:
       - os-id: "ocd-division/country:us/state:md/sldl:2c"
       - os-id: "ocd-division/country:us/state:md/sldl:30"
@@ -1726,173 +1726,286 @@ Massachusetts:
         sld-id: sldl-25105
       - os-id: "ocd-division/country:us/state:ma/sldl:5th_hampden"
         sld-id: sldl-25106
-ocd-division/country:us/state:ma/sldl:6th_hampden,sldl-25107
-ocd-division/country:us/state:ma/sldl:7th_hampden,sldl-25108
-ocd-division/country:us/state:ma/sldl:8th_hampden,sldl-25109
-ocd-division/country:us/state:ma/sldl:9th_hampden,sldl-25110
-ocd-division/country:us/state:ma/sldl:10th_hampden,sldl-25111
-ocd-division/country:us/state:ma/sldl:11th_hampden,sldl-25112
-ocd-division/country:us/state:ma/sldl:12th_hampden,sldl-25113
-ocd-division/country:us/state:ma/sldl:18th_essex,sldl-25114
-ocd-division/country:us/state:ma/sldl:1st_hampshire,sldl-25115
-ocd-division/country:us/state:ma/sldl:2nd_hampshire,sldl-25116
-ocd-division/country:us/state:ma/sldl:3rd_hampshire,sldl-25117
-ocd-division/country:us/state:ma/sldl:1st_middlesex,sldl-25118
-ocd-division/country:us/state:ma/sldl:2nd_middlesex,sldl-25119
-ocd-division/country:us/state:ma/sldl:3rd_middlesex,sldl-25120
-ocd-division/country:us/state:ma/sldl:4th_middlesex,sldl-25121
-ocd-division/country:us/state:ma/sldl:5th_middlesex,sldl-25122
-ocd-division/country:us/state:ma/sldl:6th_middlesex,sldl-25123
-ocd-division/country:us/state:ma/sldl:7th_middlesex,sldl-25124
-ocd-division/country:us/state:ma/sldl:8th_middlesex,sldl-25125
-ocd-division/country:us/state:ma/sldl:9th_middlesex,sldl-25126
-ocd-division/country:us/state:ma/sldl:10th_middlesex,sldl-25127
-ocd-division/country:us/state:ma/sldl:11th_middlesex,sldl-25128
-ocd-division/country:us/state:ma/sldl:12th_middlesex,sldl-25129
-ocd-division/country:us/state:ma/sldl:13th_middlesex,sldl-25130
-ocd-division/country:us/state:ma/sldl:14th_middlesex,sldl-25131
-ocd-division/country:us/state:ma/sldl:15th_middlesex,sldl-25132
-ocd-division/country:us/state:ma/sldl:16th_middlesex,sldl-25133
-ocd-division/country:us/state:ma/sldl:17th_middlesex,sldl-25134
-ocd-division/country:us/state:ma/sldl:18th_middlesex,sldl-25135
-ocd-division/country:us/state:ma/sldl:19th_middlesex,sldl-25136
-ocd-division/country:us/state:ma/sldl:20th_middlesex,sldl-25137
-ocd-division/country:us/state:ma/sldl:21st_middlesex,sldl-25138
-ocd-division/country:us/state:ma/sldl:22nd_middlesex,sldl-25139
-ocd-division/country:us/state:ma/sldl:23rd_middlesex,sldl-25140
-ocd-division/country:us/state:ma/sldl:24th_middlesex,sldl-25141
-ocd-division/country:us/state:ma/sldl:25th_middlesex,sldl-25142
-ocd-division/country:us/state:ma/sldl:26th_middlesex,sldl-25143
-ocd-division/country:us/state:ma/sldl:27th_middlesex,sldl-25144
-ocd-division/country:us/state:ma/sldl:28th_middlesex,sldl-25145
-ocd-division/country:us/state:ma/sldl:29th_middlesex,sldl-25146
-ocd-division/country:us/state:ma/sldl:30th_middlesex,sldl-25147
-ocd-division/country:us/state:ma/sldl:31st_middlesex,sldl-25148
-ocd-division/country:us/state:ma/sldl:32nd_middlesex,sldl-25149
-ocd-division/country:us/state:ma/sldl:33rd_middlesex,sldl-25150
-ocd-division/country:us/state:ma/sldl:34th_middlesex,sldl-25151
-ocd-division/country:us/state:ma/sldl:35th_middlesex,sldl-25152
-ocd-division/country:us/state:ma/sldl:36th_middlesex,sldl-25153
-ocd-division/country:us/state:ma/sldl:37th_middlesex,sldl-25154
-ocd-division/country:us/state:ma/sldl:18th_worcester,sldl-25155
-ocd-division/country:us/state:ma/sldl:5th_barnstable,sldl-25156
-ocd-division/country:us/state:ma/sldl:1st_norfolk,sldl-25157
-ocd-division/country:us/state:ma/sldl:2nd_norfolk,sldl-25158
-ocd-division/country:us/state:ma/sldl:3rd_norfolk,sldl-25159
-ocd-division/country:us/state:ma/sldl:4th_norfolk,sldl-25160
-ocd-division/country:us/state:ma/sldl:5th_norfolk,sldl-25161
-ocd-division/country:us/state:ma/sldl:6th_norfolk,sldl-25162
-ocd-division/country:us/state:ma/sldl:7th_norfolk,sldl-25163
-ocd-division/country:us/state:ma/sldl:8th_norfolk,sldl-25164
-ocd-division/country:us/state:ma/sldl:9th_norfolk,sldl-25165
-ocd-division/country:us/state:ma/sldl:10th_norfolk,sldl-25166
-ocd-division/country:us/state:ma/sldl:11th_norfolk,sldl-25167
-ocd-division/country:us/state:ma/sldl:12th_norfolk,sldl-25168
-ocd-division/country:us/state:ma/sldl:13th_norfolk,sldl-25169
-ocd-division/country:us/state:ma/sldl:14th_norfolk,sldl-25170
-ocd-division/country:us/state:ma/sldl:15th_norfolk,sldl-25171
-ocd-division/country:us/state:ma/sldl:1st_plymouth,sldl-25172
-ocd-division/country:us/state:ma/sldl:2nd_plymouth,sldl-25173
-ocd-division/country:us/state:ma/sldl:3rd_plymouth,sldl-25174
-ocd-division/country:us/state:ma/sldl:4th_plymouth,sldl-25175
-ocd-division/country:us/state:ma/sldl:5th_plymouth,sldl-25176
-ocd-division/country:us/state:ma/sldl:6th_plymouth,sldl-25177
-ocd-division/country:us/state:ma/sldl:7th_plymouth,sldl-25178
-ocd-division/country:us/state:ma/sldl:8th_plymouth,sldl-25179
-ocd-division/country:us/state:ma/sldl:9th_plymouth,sldl-25180
-ocd-division/country:us/state:ma/sldl:10th_plymouth,sldl-25181
-ocd-division/country:us/state:ma/sldl:11th_plymouth,sldl-25182
-ocd-division/country:us/state:ma/sldl:12th_plymouth,sldl-25183
-ocd-division/country:us/state:ma/sldl:1st_suffolk,sldl-25184
-ocd-division/country:us/state:ma/sldl:2nd_suffolk,sldl-25185
-ocd-division/country:us/state:ma/sldl:3rd_suffolk,sldl-25186
-ocd-division/country:us/state:ma/sldl:4th_suffolk,sldl-25187
-ocd-division/country:us/state:ma/sldl:5th_suffolk,sldl-25188
-ocd-division/country:us/state:ma/sldl:6th_suffolk,sldl-25189
-ocd-division/country:us/state:ma/sldl:7th_suffolk,sldl-25190
-ocd-division/country:us/state:ma/sldl:8th_suffolk,sldl-25191
-ocd-division/country:us/state:ma/sldl:9th_suffolk,sldl-25192
-ocd-division/country:us/state:ma/sldl:10th_suffolk,sldl-25193
-ocd-division/country:us/state:ma/sldl:11th_suffolk,sldl-25194
-ocd-division/country:us/state:ma/sldl:12th_suffolk,sldl-25195
-ocd-division/country:us/state:ma/sldl:13th_suffolk,sldl-25196
-ocd-division/country:us/state:ma/sldl:14th_suffolk,sldl-25197
-ocd-division/country:us/state:ma/sldl:15th_suffolk,sldl-25198
-ocd-division/country:us/state:ma/sldl:16th_suffolk,sldl-25199
-ocd-division/country:us/state:ma/sldl:17th_suffolk,sldl-25200
-ocd-division/country:us/state:ma/sldl:18th_suffolk,sldl-25201
-ocd-division/country:us/state:ma/sldl:19th_suffolk,sldl-25202
-ocd-division/country:us/state:ma/sldl:1st_worcester,sldl-25203
-ocd-division/country:us/state:ma/sldl:2nd_worcester,sldl-25204
-ocd-division/country:us/state:ma/sldl:3rd_worcester,sldl-25205
-ocd-division/country:us/state:ma/sldl:4th_worcester,sldl-25206
-ocd-division/country:us/state:ma/sldl:5th_worcester,sldl-25207
-ocd-division/country:us/state:ma/sldl:6th_worcester,sldl-25208
-ocd-division/country:us/state:ma/sldl:7th_worcester,sldl-25209
-ocd-division/country:us/state:ma/sldl:8th_worcester,sldl-25210
-ocd-division/country:us/state:ma/sldl:9th_worcester,sldl-25211
-ocd-division/country:us/state:ma/sldl:10th_worcester,sldl-25212
-ocd-division/country:us/state:ma/sldl:11th_worcester,sldl-25213
-ocd-division/country:us/state:ma/sldl:12th_worcester,sldl-25214
-ocd-division/country:us/state:ma/sldl:13th_worcester,sldl-25215
-ocd-division/country:us/state:ma/sldl:14th_worcester,sldl-25216
-ocd-division/country:us/state:ma/sldl:15th_worcester,sldl-25217
-ocd-division/country:us/state:ma/sldl:16th_worcester,sldl-25218
-ocd-division/country:us/state:ma/sldl:17th_worcester,sldl-25219
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_hampden"
+        sld-id: sldl-25107
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_hampden"
+        sld-id: sldl-25108
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_hampden"
+        sld-id: sldl-25109
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_hampden"
+        sld-id: sldl-25110
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_hampden"
+        sld-id: sldl-25111
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_hampden"
+        sld-id: sldl-25112
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_hampden"
+        sld-id: sldl-25113
+      - os-id: "ocd-division/country:us/state:ma/sldl:18th_essex"
+        sld-id: sldl-25114
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_hampshire"
+        sld-id: sldl-25115
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_hampshire"
+        sld-id: sldl-25116
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_hampshire"
+        sld-id: sldl-25117
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_middlesex"
+        sld-id: sldl-25118
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_middlesex"
+        sld-id: sldl-25119
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_middlesex"
+        sld-id: sldl-25120
+      - os-id: "ocd-division/country:us/state:ma/sldl:4th_middlesex"
+        sld-id: sldl-25121
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_middlesex"
+        sld-id: sldl-25122
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_middlesex"
+        sld-id: sldl-25123
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_middlesex"
+        sld-id: sldl-25124
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_middlesex"
+        sld-id: sldl-25125
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_middlesex"
+        sld-id: sldl-25126
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_middlesex"
+        sld-id: sldl-25127
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_middlesex"
+        sld-id: sldl-25128
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_middlesex"
+        sld-id: sldl-25129
+      - os-id: "ocd-division/country:us/state:ma/sldl:13th_middlesex"
+        sld-id: sldl-25130
+      - os-id: "ocd-division/country:us/state:ma/sldl:14th_middlesex"
+        sld-id: sldl-25131
+      - os-id: "ocd-division/country:us/state:ma/sldl:15th_middlesex"
+        sld-id: sldl-25132
+      - os-id: "ocd-division/country:us/state:ma/sldl:16th_middlesex"
+        sld-id: sldl-25133
+      - os-id: "ocd-division/country:us/state:ma/sldl:17th_middlesex"
+        sld-id: sldl-25134
+      - os-id: "ocd-division/country:us/state:ma/sldl:18th_middlesex"
+        sld-id: sldl-25135
+      - os-id: "ocd-division/country:us/state:ma/sldl:19th_middlesex"
+        sld-id: sldl-25136
+      - os-id: "ocd-division/country:us/state:ma/sldl:20th_middlesex"
+        sld-id: sldl-25137
+      - os-id: "ocd-division/country:us/state:ma/sldl:21st_middlesex"
+        sld-id: sldl-25138
+      - os-id: "ocd-division/country:us/state:ma/sldl:22nd_middlesex"
+        sld-id: sldl-25139
+      - os-id: "ocd-division/country:us/state:ma/sldl:23rd_middlesex"
+        sld-id: sldl-25140
+      - os-id: "ocd-division/country:us/state:ma/sldl:24th_middlesex"
+        sld-id: sldl-25141
+      - os-id: "ocd-division/country:us/state:ma/sldl:25th_middlesex"
+        sld-id: sldl-25142
+      - os-id: "ocd-division/country:us/state:ma/sldl:26th_middlesex"
+        sld-id: sldl-25143
+      - os-id: "ocd-division/country:us/state:ma/sldl:27th_middlesex"
+        sld-id: sldl-25144
+      - os-id: "ocd-division/country:us/state:ma/sldl:28th_middlesex"
+        sld-id: sldl-25145
+      - os-id: "ocd-division/country:us/state:ma/sldl:29th_middlesex"
+        sld-id: sldl-25146
+      - os-id: "ocd-division/country:us/state:ma/sldl:30th_middlesex"
+        sld-id: sldl-25147
+      - os-id: "ocd-division/country:us/state:ma/sldl:31st_middlesex"
+        sld-id: sldl-25148
+      - os-id: "ocd-division/country:us/state:ma/sldl:32nd_middlesex"
+        sld-id: sldl-25149
+      - os-id: "ocd-division/country:us/state:ma/sldl:33rd_middlesex"
+        sld-id: sldl-25150
+      - os-id: "ocd-division/country:us/state:ma/sldl:34th_middlesex"
+        sld-id: sldl-25151
+      - os-id: "ocd-division/country:us/state:ma/sldl:35th_middlesex"
+        sld-id: sldl-25152
+      - os-id: "ocd-division/country:us/state:ma/sldl:36th_middlesex"
+        sld-id: sldl-25153
+      - os-id: "ocd-division/country:us/state:ma/sldl:37th_middlesex"
+        sld-id: sldl-25154
+      - os-id: "ocd-division/country:us/state:ma/sldl:18th_worcester"
+        sld-id: sldl-25155
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_barnstable"
+        sld-id: sldl-25156
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_norfolk"
+        sld-id: sldl-25157
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_norfolk"
+        sld-id: sldl-25158
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_norfolk"
+        sld-id: sldl-25159
+      - os-id: "ocd-division/country:us/state:ma/sldl:4th_norfolk"
+        sld-id: sldl-25160
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_norfolk"
+        sld-id: sldl-25161
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_norfolk"
+        sld-id: sldl-25162
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_norfolk"
+        sld-id: sldl-25163
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_norfolk"
+        sld-id: sldl-25164
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_norfolk"
+        sld-id: sldl-25165
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_norfolk"
+        sld-id: sldl-25166
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_norfolk"
+        sld-id: sldl-25167
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_norfolk"
+        sld-id: sldl-25168
+      - os-id: "ocd-division/country:us/state:ma/sldl:13th_norfolk"
+        sld-id: sldl-25169
+      - os-id: "ocd-division/country:us/state:ma/sldl:14th_norfolk"
+        sld-id: sldl-25170
+      - os-id: "ocd-division/country:us/state:ma/sldl:15th_norfolk"
+        sld-id: sldl-25171
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_plymouth"
+        sld-id: sldl-25172
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_plymouth"
+        sld-id: sldl-25173
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_plymouth"
+        sld-id: sldl-25174
+      - os-id: "ocd-division/country:us/state:ma/sldl:4th_plymouth"
+        sld-id: sldl-25175
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_plymouth"
+        sld-id: sldl-25176
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_plymouth"
+        sld-id: sldl-25177
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_plymouth"
+        sld-id: sldl-25178
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_plymouth"
+        sld-id: sldl-25179
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_plymouth"
+        sld-id: sldl-25180
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_plymouth"
+        sld-id: sldl-25181
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_plymouth"
+        sld-id: sldl-25182
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_plymouth"
+        sld-id: sldl-25183
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_suffolk"
+        sld-id: sldl-25184
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_suffolk"
+        sld-id: sldl-25185
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_suffolk"
+        sld-id: sldl-25186
+      - os-id: "ocd-division/country:us/state:ma/sldl:4th_suffolk"
+        sld-id: sldl-25187
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_suffolk"
+        sld-id: sldl-25188
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_suffolk"
+        sld-id: sldl-25189
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_suffolk"
+        sld-id: sldl-25190
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_suffolk"
+        sld-id: sldl-25191
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_suffolk"
+        sld-id: sldl-25192
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_suffolk"
+        sld-id: sldl-25193
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_suffolk"
+        sld-id: sldl-25194
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_suffolk"
+        sld-id: sldl-25195
+      - os-id: "ocd-division/country:us/state:ma/sldl:13th_suffolk"
+        sld-id: sldl-25196
+      - os-id: "ocd-division/country:us/state:ma/sldl:14th_suffolk"
+        sld-id: sldl-25197
+      - os-id: "ocd-division/country:us/state:ma/sldl:15th_suffolk"
+        sld-id: sldl-25198
+      - os-id: "ocd-division/country:us/state:ma/sldl:16th_suffolk"
+        sld-id: sldl-25199
+      - os-id: "ocd-division/country:us/state:ma/sldl:17th_suffolk"
+        sld-id: sldl-25200
+      - os-id: "ocd-division/country:us/state:ma/sldl:18th_suffolk"
+        sld-id: sldl-25201
+      - os-id: "ocd-division/country:us/state:ma/sldl:19th_suffolk"
+        sld-id: sldl-25202
+      - os-id: "ocd-division/country:us/state:ma/sldl:1st_worcester"
+        sld-id: sldl-25203
+      - os-id: "ocd-division/country:us/state:ma/sldl:2nd_worcester"
+        sld-id: sldl-25204
+      - os-id: "ocd-division/country:us/state:ma/sldl:3rd_worcester"
+        sld-id: sldl-25205
+      - os-id: "ocd-division/country:us/state:ma/sldl:4th_worcester"
+        sld-id: sldl-25206
+      - os-id: "ocd-division/country:us/state:ma/sldl:5th_worcester"
+        sld-id: sldl-25207
+      - os-id: "ocd-division/country:us/state:ma/sldl:6th_worcester"
+        sld-id: sldl-25208
+      - os-id: "ocd-division/country:us/state:ma/sldl:7th_worcester"
+        sld-id: sldl-25209
+      - os-id: "ocd-division/country:us/state:ma/sldl:8th_worcester"
+        sld-id: sldl-25210
+      - os-id: "ocd-division/country:us/state:ma/sldl:9th_worcester"
+        sld-id: sldl-25211
+      - os-id: "ocd-division/country:us/state:ma/sldl:10th_worcester"
+        sld-id: sldl-25212
+      - os-id: "ocd-division/country:us/state:ma/sldl:11th_worcester"
+        sld-id: sldl-25213
+      - os-id: "ocd-division/country:us/state:ma/sldl:12th_worcester"
+        sld-id: sldl-25214
+      - os-id: "ocd-division/country:us/state:ma/sldl:13th_worcester"
+        sld-id: sldl-25215
+      - os-id: "ocd-division/country:us/state:ma/sldl:14th_worcester"
+        sld-id: sldl-25216
+      - os-id: "ocd-division/country:us/state:ma/sldl:15th_worcester"
+        sld-id: sldl-25217
+      - os-id: "ocd-division/country:us/state:ma/sldl:16th_worcester"
+        sld-id: sldl-25218
+      - os-id: "ocd-division/country:us/state:ma/sldl:17th_worcester"
+        sld-id: sldl-25219
 Michigan:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:mi/sldl:"
-      sld-match: "sldl-26([\d+])"
+      sld-match: 'sldl-26([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:mi/sldu:"
-      sld-match: "sldu-260([\d+])"
+      sld-match: 'sldu-260([\d+])'
 Minnesota:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:mn/sldl:"
-      sld-match: "sldl-27([\w])"
+      sld-match: 'sldl-27([\w])'
       match-type: str
     sldu:
       os-id-prefix: "ocd-division/country:us/state:mn/sldu:"
-      sld-match: "sldu-270([\d+])"
+      sld-match: 'sldu-270([\d+])'
 Mississippi:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ms/sldl:"
-      sld-match: "sldl-28([\d+])"
+      sld-match: 'sldl-28([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ms/sldu:"
-      sld-match: "sldu-280([\d+])"
+      sld-match: 'sldu-280([\d+])'
 Missouri:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:mo/sldl:"
-      sld-match: "sldl-29([\d+])"
+      sld-match: 'sldl-29([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:mo/sldu:"
-      sld-match: "sldu-290([\d+])"
+      sld-match: 'sldu-290([\d+])'
 Montana:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:mt/sldl:"
-      sld-match: "sldl-30([\d+])"
+      sld-match: 'sldl-30([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:mt/sldu:"
-      sld-match: "sldu-300([\d+])"
+      sld-match: 'sldu-300([\d+])'
 Nebraska:
   id-mappings:
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ne/sldu:"
-      sld-match: "sldu-310([\d+])"
+      sld-match: 'sldu-310([\d+])'
 Nevada:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:nv/sldl:"
-      sld-match: "sldl-320([\d+])"
+      sld-match: 'sldl-320([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nv/sldu:"
-      sld-match: "sldu-320([\d+])"
+      sld-match: 'sldu-320([\d+])'
     custom:
       - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_1"
       - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_2"
@@ -1917,7 +2030,7 @@ Nevada:
   id-mappings:
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nh/sldu:"
-      sld-match: "sldu-330([\d+])"
+      sld-match: 'sldu-330([\d+])'
     custom:
       - os-id: "ocd-division/country:us/state:nh/sldl:belknap_1"
         sld-id: sldl-33001
@@ -2245,131 +2358,132 @@ Nevada:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:nj/sldl:"
-      sld-match: "sldl-340([\d+])"
+      sld-match: 'sldl-340([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nj/sldu:"
-      sld-match: "sldu-340([\d+])"
+      sld-match: 'sldu-340([\d+])'
 "New Mexico":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:nm/sldl:"
-      sld-match: "sldl-350([\d+])"
+      sld-match: 'sldl-350([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nm/sldu:"
-      sld-match: "sldu-350([\d+])"
+      sld-match: 'sldu-350([\d+])'
 "New York":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ny/sldl:"
-      sld-match: "sldl-36([\d+])"
+      sld-match: 'sldl-36([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ny/sldu:"
-      sld-match: "sldu-360([\d+])"
+      sld-match: 'sldu-360([\d+])'
 "North Carolina":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:nc/sldl:"
-      sld-match: "sldl-37([\d+])"
+      sld-match: 'sldl-37([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nc/sldu:"
-      sld-match: "sldu-370([\d+])"
+      sld-match: 'sldu-370([\d+])'
 "North Dakota":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:nd/sldl:"
-      sld-match: "sldl-380([\d+])"
+      sld-match: 'sldl-380([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:nd/sldu:"
-      sld-match: "sldu-380([\d+])"
+      sld-match: 'sldu-380([\d+])'
 Ohio:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:oh/sldl:"
-      sld-match: "sldl-39([\d+])"
+      sld-match: 'sldl-39([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:oh/sldu:"
-      sld-match: "sldu-390([\d+])"
+      sld-match: 'sldu-390([\d+])'
 Oklahoma:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ok/sldl:"
-      sld-match: "sldl-40([\d+])"
+      sld-match: 'sldl-40([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ok/sldu:"
-      sld-match: "sldu-400([\d+])"
+      sld-match: 'sldu-400([\d+])'
 Oregon:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:or/sldl:"
-      sld-match: "sldl-410([\d+])"
+      sld-match: 'sldl-410([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:or/sldu:"
-      sld-match: "sldu-410([\d+])"
+      sld-match: 'sldu-410([\d+])'
 Pennsylvania:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:pa/sldl:"
-      sld-match: "sldl-42([\d+])"
+      sld-match: 'sldl-42([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:pa/sldu:"
-      sld-match: "sldu-420([\d+])"
+      sld-match: 'sldu-420([\d+])'
 "Puerto Rico":
   use_tiger: True
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/territory:pr/sldl:"
-      sld-match: "sldl-720([\d+])"
+      sld-match: 'sldl-720([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/territory:pr/sldu:"
-      sld-match: "sldu-7200([\d])"
+      sld-match: 'sldu-7200([\d])'
 "Rhode Island":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ri/sldl:"
-      sld-match: "sldl-440([\d+])"
+      sld-match: 'sldl-440([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ri/sldu:"
-      sld-match: "sldu-440([\d+])"
+      sld-match: 'sldu-440([\d+])'
 "South Carolina":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:sc/sldl:"
-      sld-match: "sldl-45([\d+])"
+      sld-match: 'sldl-45([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:sc/sldu:"
-      sld-match: "sldu-450([\d+])"
+      sld-match: 'sldu-450([\d+])'
 "South Dakota":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:sd/sldl:"
-      sld-match: "sldl-46([\w])"
+      sld-match: 'sldl-46([\w])'
+      match-type: str
     sldu:
       os-id-prefix: "ocd-division/country:us/state:sd/sldu:"
-      sld-match: "sldu-460([\d+])"
+      sld-match: 'sldu-460([\d+])'
 Tennessee:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:tn/sldl:"
-      sld-match: "sldl-47([\d+])"
+      sld-match: 'sldl-47([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:tn/sldu:"
-      sld-match: "sldu-470([\d+])"
+      sld-match: 'sldu-470([\d+])'
 Texas:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:tx/sldl:"
-      sld-match: "sldl-48([\d+])"
+      sld-match: 'sldl-48([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:tx/sldu:"
-      sld-match: "sldu-480([\d+])"
+      sld-match: 'sldu-480([\d+])'
 Utah:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:ut/sldl:"
-      sld-match: "sldl-490([\d+])"
+      sld-match: 'sldl-490([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:ut/sldu:"
-      sld-match: "sldu-490([\d+])"
+      sld-match: 'sldu-490([\d+])'
 Vermont:
   id-mappings:
     custom:
@@ -2662,41 +2776,41 @@ Virginia:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:va/sldl:"
-      sld-match: "sldl-51([\d+])"
+      sld-match: 'sldl-51([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:va/sldu:"
-      sld-match: "sldu-510([\d+])"
+      sld-match: 'sldu-510([\d+])'
 Washington:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:wa/sldl:"
-      sld-match: "sldl-530([\d+])"
+      sld-match: 'sldl-530([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:wa/sldu:"
-      sld-match: "sldu-530([\d+])"
+      sld-match: 'sldu-530([\d+])'
 "West Virginia":
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:wv/sldl:"
-      sld-match: "sldl-540([\d+])"
+      sld-match: 'sldl-540([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:wv/sldu:"
-      sld-match: "sldu-540([\d+])"
+      sld-match: 'sldu-540([\d+])'
     custom:
       - os-id: "ocd-division/country:us/state:wv/sldu:817"
 Wisconsin:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:wi/sldl:"
-      sld-match: "sldl-55([\d+])"
+      sld-match: 'sldl-55([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:wi/sldu:"
-      sld-match: "sldu-550([\d+])"
+      sld-match: 'sldu-550([\d+])'
 Wyoming:
   id-mappings:
     sldl:
       os-id-prefix: "ocd-division/country:us/state:wy/sldl:"
-      sld-match: "sldl-560([\d+])"
+      sld-match: 'sldl-560([\d+])'
     sldu:
       os-id-prefix: "ocd-division/country:us/state:wy/sldu:"
-      sld-match: "sldu-560([\d+])"
+      sld-match: 'sldu-560([\d+])'
