@@ -5,10 +5,8 @@ import os
 import zipfile
 import requests
 import shutil
-from utils import JURISDICTION_NAMES, find_jurisdiction
+from utils import JURISDICTION_NAMES, find_jurisdiction, ROOTDIR
 import yaml
-
-cwd = os.getcwd()
 
 
 def load_settings(config_file: str):
@@ -22,21 +20,21 @@ def clean_sources():
     simple function to clean up our source data
     if we're completely retrying
     """
-    shutil.rmtree(f"{cwd}/data/source", ignore_errors=True)
-    os.makedirs(f"{cwd}/data/source/")
-    for f in glob.glob(f"{cwd}/data/*.zip"):
+    shutil.rmtree(f"{ROOTDIR}/data/source", ignore_errors=True)
+    os.makedirs(f"{ROOTDIR}/data/source/")
+    for f in glob.glob(f"{ROOTDIR}/data/*.zip"):
         os.unlink(f)
-    for f in glob.glob(f"{cwd}/data/*.mbtiles"):
+    for f in glob.glob(f"{ROOTDIR}/data/*.mbtiles"):
         os.unlink(f)
-    shutil.rmtree(f"{cwd}/data/geojson", ignore_errors=True)
-    os.makedirs(f"{cwd}/data/geojson/")
+    shutil.rmtree(f"{ROOTDIR}/data/geojson", ignore_errors=True)
+    os.makedirs(f"{ROOTDIR}/data/geojson/")
 
 
 def download_from_tiger(jurisdiction, year):
     fips = jurisdiction.fips
     for chamber in ["u", "l"]:
         url = f"https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber.upper()}/tl_{year}_{fips}_sld{chamber}.zip"
-        filename = f"{cwd}/data/tl_{year}_{fips}_sld{chamber}.zip"
+        filename = f"{ROOTDIR}/data/tl_{year}_{fips}_sld{chamber}.zip"
         if os.path.exists(filename):
             print(f"{filename} already downloaded...skipping")
             continue
@@ -48,7 +46,7 @@ def download_from_tiger(jurisdiction, year):
 
 def download_from_arp(jur_urls: dict):
     for chamber, url in jur_urls.items():
-        filename = f"{cwd}/data/{url.rsplit('/' , 1)[1]}"
+        filename = f"{ROOTDIR}/data/{url.rsplit('/' , 1)[1]}"
 
         if os.path.exists(filename):
             print(f"skipping {jur} {chamber}")
@@ -69,7 +67,8 @@ def _download_and_extract(url, filename):
         with open(filename, "wb") as f:
             f.write(response.content)
         with zipfile.ZipFile(filename, "r") as f:
-            f.extractall(f"{cwd}/data/source")
+            for obj in f.infolist():
+                f.extract(obj, path=f"{ROOTDIR}/data/source")
     else:
         response.raise_for_status()
 
@@ -97,13 +96,16 @@ if __name__ == "__main__":
         "--config",
         "-c",
         type=str,
-        default=f"{cwd}/shapefiles.yml",
+        default=f"{ROOTDIR}/shapefiles.yml",
         help="Config file for downloading geo data",
     )
     args = parser.parse_args()
 
     if args.clean_sources:
         clean_sources()
+    else:
+        os.makedirs(f"{ROOTDIR}/data/source/", exist_ok=True)
+        os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
     SETTINGS = load_settings(args.config)
 
     for jur in args.jurisdiction:
@@ -121,7 +123,7 @@ if __name__ == "__main__":
         else:
             download_from_arp(SETTINGS["jurisdictions"][jur]["shapefile_urls"])
 
-    us_source = f"{cwd}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
+    us_source = f"{ROOTDIR}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):
         _download_and_extract(
             f"https://www2.census.gov/geo/tiger/TIGER{SETTINGS['YEAR']}/CD/tl_{SETTINGS['YEAR']}_us_cd116.zip",

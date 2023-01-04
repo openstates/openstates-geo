@@ -9,11 +9,7 @@ import sys
 import us
 import yaml
 
-jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
-cwd = os.getcwd()
-OCD_FIXES = {
-    "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
-}
+from utils import JURISDICTION_NAMES, ROOTDIR
 
 SKIPPED_GEOIDS = {
     "cd-6098": "American Samoa",
@@ -51,20 +47,20 @@ def merge_ids(geojson_path):
         if geoid in SKIPPED_GEOIDS:
             continue
 
-        for row in ocd_ids:
-            if row["census_geoid"] == geoid:
-                ocd_id = row["id"]
-                break
-        else:
-            print(feature["properties"])
-            raise AssertionError(f"Could not find OCD ID for GEOID {geoid}")
+        # for row in ocd_ids:
+        #     if row["census_geoid"] == geoid:
+        #         ocd_id = row["id"]
+        #         break
+        # else:
+        #     print(feature["properties"])
+        #     raise AssertionError(f"Could not find OCD ID for GEOID {geoid}")
 
         # Although OCD IDs contain the state postal code, parsing
         # an ID to determine structured data is bad practice,
         # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
         state_meta = metadata.lookup(abbr=state)
-        ocd_id = OCD_FIXES.get(ocd_id, ocd_id)
+        ocd_id = 1
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -96,19 +92,20 @@ def merge_ids(geojson_path):
 
 if __name__ == "__main__":
     try:
-        os.makedirs(f"{cwd}/data/geojson")
+        os.makedirs(f"{ROOTDIR}/data/geojson")
     except FileExistsError:
         pass
 
     expected = 102
     if len(sys.argv) == 1:
-        files = sorted(glob.glob(f"{cwd}/data/source/tl*.shp"))
+        files = sorted(glob.glob(f"{ROOTDIR}/data/source/*.shp"))
         if len(files) < expected:
             raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
     else:
         files = sys.argv[1:]
 
     for file in files:
+
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
             print(newfilename, "already exists, skipping")
@@ -128,4 +125,6 @@ if __name__ == "__main__":
                 ],
                 check=True,
             )
-        merge_ids(newfilename)
+        # meta_file = file.replace(".shp", ".dbx").lower()
+        # if os.path.exists(meta_file):
+        # merge_ids(newfilename)

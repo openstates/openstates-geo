@@ -2495,6 +2495,8 @@ Vermont:
         sld-id: sldu-50CAL
       - os-id: "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden"
         sld-id: sldu-50CGI
+      - os-id: "ocd-division/country:us/state:vt/sldu:grand_isle"
+        sld-id: sldu-50CGI
       - os-id: "ocd-division/country:us/state:vt/sldu:chittenden"
         sld-id: sldu-50CHI
       - os-id: "ocd-division/country:us/state:vt/sldu:essex-orleans"
@@ -2513,7 +2515,6 @@ Vermont:
         sld-id: sldu-50WDM
       - os-id: "ocd-division/country:us/state:vt/sldu:windsor"
         sld-id: sldu-50WSR
-      - os-id: "ocd-division/country:us/state:vt/sldu:grand_isle"
       - os-id: "ocd-division/country:us/state:vt/sldl:addison-1"
         sld-id: sldl-50A-1
       - os-id: "ocd-division/country:us/state:vt/sldl:addison-2"
