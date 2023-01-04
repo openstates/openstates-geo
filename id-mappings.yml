@@ -200,218 +200,324 @@
       - os-id: "ocd-division/country:us/state:ca/cd:50"
         name: "California's 50th congressional district"
         sld-id: cd-0650
-      - os-id: "ocd-division/country:us/state:ca/cd:51,California's 51st congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:51"
+        name: "California's 51st congressional district"
         sld-id: cd-0651
-      - os-id: "ocd-division/country:us/state:ca/cd:52,California's 52nd congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:52"
+        name: "California's 52nd congressional district"
         sld-id: cd-0652
-      - os-id: "ocd-division/country:us/state:ca/cd:53,California's 53rd congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:53"
+        name: "California's 53rd congressional district"
         sld-id: cd-0653
-      - os-id: "ocd-division/country:us/state:ca/cd:5,California's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:5"
+        name: "California's 5th congressional district"
         sld-id: cd-0605
-      - os-id: "ocd-division/country:us/state:ca/cd:6,California's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:6"
+        name: "California's 6th congressional district"
         sld-id: cd-0606
-      - os-id: "ocd-division/country:us/state:ca/cd:7,California's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:7"
+        name: "California's 7th congressional district"
         sld-id: cd-0607
-      - os-id: "ocd-division/country:us/state:ca/cd:8,California's 8th congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:8"
+        name: "California's 8th congressional district"
         sld-id: cd-0608
-      - os-id: "ocd-division/country:us/state:ca/cd:9,California's 9th congressional district"
+      - os-id: "ocd-division/country:us/state:ca/cd:9"
+        name: "California's 9th congressional district"
         sld-id: cd-0609
-      - os-id: "ocd-division/country:us/state:co/cd:1,Colorado's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:1"
+        name: "Colorado's 1st congressional district"
         sld-id: cd-0801
-      - os-id: "ocd-division/country:us/state:co/cd:2,Colorado's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:2"
+        name: "Colorado's 2nd congressional district"
         sld-id: cd-0802
-      - os-id: "ocd-division/country:us/state:co/cd:3,Colorado's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:3"
+        name: "Colorado's 3rd congressional district"
         sld-id: cd-0803
-      - os-id: "ocd-division/country:us/state:co/cd:4,Colorado's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:4"
+        name: "Colorado's 4th congressional district"
         sld-id: cd-0804
-      - os-id: "ocd-division/country:us/state:co/cd:5,Colorado's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:5"
+        name: "Colorado's 5th congressional district"
         sld-id: cd-0805
-      - os-id: "ocd-division/country:us/state:co/cd:6,Colorado's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:6"
+        name: "Colorado's 6th congressional district"
         sld-id: cd-0806
-      - os-id: "ocd-division/country:us/state:co/cd:7,Colorado's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:co/cd:7"
+        name: "Colorado's 7th congressional district"
         sld-id: cd-0807
-      - os-id: "ocd-division/country:us/state:ct/cd:1,Connecticut's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:ct/cd:1"
+        name: "Connecticut's 1st congressional district"
         sld-id: cd-0901
-      - os-id: "ocd-division/country:us/state:ct/cd:2,Connecticut's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:ct/cd:2"
+        name: "Connecticut's 2nd congressional district"
         sld-id: cd-0902
-      - os-id: "ocd-division/country:us/state:ct/cd:3,Connecticut's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:ct/cd:3"
+        name: "Connecticut's 3rd congressional district"
         sld-id: cd-0903
-      - os-id: "ocd-division/country:us/state:ct/cd:4,Connecticut's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:ct/cd:4"
+        name: "Connecticut's 4th congressional district"
         sld-id: cd-0904
-      - os-id: "ocd-division/country:us/state:ct/cd:5,Connecticut's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:ct/cd:5"
+        name: "Connecticut's 5th congressional district"
         sld-id: cd-0905
-      - os-id: "ocd-division/country:us/state:de/cd:at-large,Delaware's at-large congressional district"
+      - os-id: "ocd-division/country:us/state:de/cd:at-large"
+        name: "Delaware's at-large congressional district"
         sld-id: cd-1000
-      - os-id: "ocd-division/country:us/state:fl/cd:10,Florida's 10th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:10"
+        name: "Florida's 10th congressional district"
         sld-id: cd-1210
-      - os-id: "ocd-division/country:us/state:fl/cd:11,Florida's 11th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:11"
+        name: "Florida's 11th congressional district"
         sld-id: cd-1211
-      - os-id: "ocd-division/country:us/state:fl/cd:12,Florida's 12th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:12"
+        name: "Florida's 12th congressional district"
         sld-id: cd-1212
-      - os-id: "ocd-division/country:us/state:fl/cd:13,Florida's 13th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:13"
+        name: "Florida's 13th congressional district"
         sld-id: cd-1213
-      - os-id: "ocd-division/country:us/state:fl/cd:14,Florida's 14th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:14"
+        name: "Florida's 14th congressional district"
         sld-id: cd-1214
-      - os-id: "ocd-division/country:us/state:fl/cd:15,Florida's 15th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:15"
+        name: "Florida's 15th congressional district"
         sld-id: cd-1215
-      - os-id: "ocd-division/country:us/state:fl/cd:16,Florida's 16th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:16"
+        name: "Florida's 16th congressional district"
         sld-id: cd-1216
-      - os-id: "ocd-division/country:us/state:fl/cd:17,Florida's 17th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:17"
+        name: "Florida's 17th congressional district"
         sld-id: cd-1217
-      - os-id: "ocd-division/country:us/state:fl/cd:18,Florida's 18th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:18"
+        name: "Florida's 18th congressional district"
         sld-id: cd-1218
-      - os-id: "ocd-division/country:us/state:fl/cd:19,Florida's 19th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:19"
+        name: "Florida's 19th congressional district"
         sld-id: cd-1219
-      - os-id: "ocd-division/country:us/state:fl/cd:1,Florida's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:1"
+        name: "Florida's 1st congressional district"
         sld-id: cd-1201
-      - os-id: "ocd-division/country:us/state:fl/cd:20,Florida's 20th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:20"
+        name: "Florida's 20th congressional district"
         sld-id: cd-1220
-      - os-id: "ocd-division/country:us/state:fl/cd:21,Florida's 21st congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:21"
+        name: "Florida's 21st congressional district"
         sld-id: cd-1221
-      - os-id: "ocd-division/country:us/state:fl/cd:22,Florida's 22nd congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:22"
+        name: "Florida's 22nd congressional district"
         sld-id: cd-1222
-      - os-id: "ocd-division/country:us/state:fl/cd:23,Florida's 23rd congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:23"
+        name: "Florida's 23rd congressional district"
         sld-id: cd-1223
-      - os-id: "ocd-division/country:us/state:fl/cd:24,Florida's 24th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:24"
+        name: "Florida's 24th congressional district"
         sld-id: cd-1224
-      - os-id: "ocd-division/country:us/state:fl/cd:25,Florida's 25th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:25"
+        name: "Florida's 25th congressional district"
         sld-id: cd-1225
-      - os-id: "ocd-division/country:us/state:fl/cd:26,Florida's 26th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:26"
+        name: "Florida's 26th congressional district"
         sld-id: cd-1226
-      - os-id: "ocd-division/country:us/state:fl/cd:27,Florida's 27th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:27"
+        name: "Florida's 27th congressional district"
         sld-id: cd-1227
-      - os-id: "ocd-division/country:us/state:fl/cd:2,Florida's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:2"
+        name: "Florida's 2nd congressional district"
         sld-id: cd-1202
-      - os-id: "ocd-division/country:us/state:fl/cd:3,Florida's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:3"
+        name: "Florida's 3rd congressional district"
         sld-id: cd-1203
-      - os-id: "ocd-division/country:us/state:fl/cd:4,Florida's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:4"
+        name: "Florida's 4th congressional district"
         sld-id: cd-1204
-      - os-id: "ocd-division/country:us/state:fl/cd:5,Florida's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:5"
+        name: "Florida's 5th congressional district"
         sld-id: cd-1205
-      - os-id: "ocd-division/country:us/state:fl/cd:6,Florida's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:6"
+        name: "Florida's 6th congressional district"
         sld-id: cd-1206
-      - os-id: "ocd-division/country:us/state:fl/cd:7,Florida's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:7"
+        name: "Florida's 7th congressional district"
         sld-id: cd-1207
-      - os-id: "ocd-division/country:us/state:fl/cd:8,Florida's 8th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:8"
+        name: "Florida's 8th congressional district"
         sld-id: cd-1208
-      - os-id: "ocd-division/country:us/state:fl/cd:9,Florida's 9th congressional district"
+      - os-id: "ocd-division/country:us/state:fl/cd:9"
+        name: "Florida's 9th congressional district"
         sld-id: cd-1209
-      - os-id: "ocd-division/country:us/state:ga/cd:10,Georgia's 10th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:10"
+        name: "Georgia's 10th congressional district"
         sld-id: cd-1310
-      - os-id: "ocd-division/country:us/state:ga/cd:11,Georgia's 11th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:11"
+        name: "Georgia's 11th congressional district"
         sld-id: cd-1311
-      - os-id: "ocd-division/country:us/state:ga/cd:12,Georgia's 12th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:12"
+        name: "Georgia's 12th congressional district"
         sld-id: cd-1312
-      - os-id: "ocd-division/country:us/state:ga/cd:13,Georgia's 13th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:13"
+        name: "Georgia's 13th congressional district"
         sld-id: cd-1313
-      - os-id: "ocd-division/country:us/state:ga/cd:14,Georgia's 14th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:14"
+        name: "Georgia's 14th congressional district"
         sld-id: cd-1314
-      - os-id: "ocd-division/country:us/state:ga/cd:1,Georgia's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:1"
+        name: "Georgia's 1st congressional district"
         sld-id: cd-1301
-      - os-id: "ocd-division/country:us/state:ga/cd:2,Georgia's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:2"
+        name: "Georgia's 2nd congressional district"
         sld-id: cd-1302
-      - os-id: "ocd-division/country:us/state:ga/cd:3,Georgia's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:3"
+        name: "Georgia's 3rd congressional district"
         sld-id: cd-1303
-      - os-id: "ocd-division/country:us/state:ga/cd:4,Georgia's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:4"
+        name: "Georgia's 4th congressional district"
         sld-id: cd-1304
-      - os-id: "ocd-division/country:us/state:ga/cd:5,Georgia's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:5"
+        name: "Georgia's 5th congressional district"
         sld-id: cd-1305
-      - os-id: "ocd-division/country:us/state:ga/cd:6,Georgia's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:6"
+        name: "Georgia's 6th congressional district"
         sld-id: cd-1306
-      - os-id: "ocd-division/country:us/state:ga/cd:7,Georgia's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:7"
+        name: "Georgia's 7th congressional district"
         sld-id: cd-1307
-      - os-id: "ocd-division/country:us/state:ga/cd:8,Georgia's 8th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:8"
+        name: "Georgia's 8th congressional district"
         sld-id: cd-1308
-      - os-id: "ocd-division/country:us/state:ga/cd:9,Georgia's 9th congressional district"
+      - os-id: "ocd-division/country:us/state:ga/cd:9"
+        name: "Georgia's 9th congressional district"
         sld-id: cd-1309
-      - os-id: "ocd-division/country:us/state:hi/cd:1,Hawaii's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:hi/cd:1"
+        name: "Hawaii's 1st congressional district"
         sld-id: cd-1501
-      - os-id: "ocd-division/country:us/state:hi/cd:2,Hawaii's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:hi/cd:2"
+        name: "Hawaii's 2nd congressional district"
         sld-id: cd-1502
-      - os-id: "ocd-division/country:us/state:ia/cd:1,Iowa's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:ia/cd:1"
+        name: "Iowa's 1st congressional district"
         sld-id: cd-1901
-      - os-id: "ocd-division/country:us/state:ia/cd:2,Iowa's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:ia/cd:2"
+        name: "Iowa's 2nd congressional district"
         sld-id: cd-1902
-      - os-id: "ocd-division/country:us/state:ia/cd:3,Iowa's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:ia/cd:3"
+        name: "Iowa's 3rd congressional district"
         sld-id: cd-1903
-      - os-id: "ocd-division/country:us/state:ia/cd:4,Iowa's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:ia/cd:4"
+        name: "Iowa's 4th congressional district"
         sld-id: cd-1904
-      - os-id: "ocd-division/country:us/state:id/cd:1,Idaho's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:id/cd:1"
+        name: "Idaho's 1st congressional district"
         sld-id: cd-1601
-      - os-id: "ocd-division/country:us/state:id/cd:2,Idaho's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:id/cd:2"
+        name: "Idaho's 2nd congressional district"
         sld-id: cd-1602
-      - os-id: "ocd-division/country:us/state:il/cd:19,Illinois's 19th congressional district (obsolete as of 2012)"
+      - os-id: "ocd-division/country:us/state:il/cd:19"
+        name: "Illinois's 19th congressional district (obsolete as of 2012)"
         sld-id: cd-1719
         expiration: 2013-01-03
-      - os-id: "ocd-division/country:us/state:il/cd:10,Illinois's 10th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:10"
+        name: "Illinois's 10th congressional district"
         sld-id: cd-1710
-      - os-id: "ocd-division/country:us/state:il/cd:11,Illinois's 11th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:11"
+        name: "Illinois's 11th congressional district"
         sld-id: cd-1711
-      - os-id: "ocd-division/country:us/state:il/cd:12,Illinois's 12th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:12"
+        name: "Illinois's 12th congressional district"
         sld-id: cd-1712
-      - os-id: "ocd-division/country:us/state:il/cd:13,Illinois's 13th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:13"
+        name: "Illinois's 13th congressional district"
         sld-id: cd-1713
-      - os-id: "ocd-division/country:us/state:il/cd:14,Illinois's 14th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:14"
+        name: "Illinois's 14th congressional district"
         sld-id: cd-1714
-      - os-id: "ocd-division/country:us/state:il/cd:15,Illinois's 15th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:15"
+        name: "Illinois's 15th congressional district"
         sld-id: cd-1715
-      - os-id: "ocd-division/country:us/state:il/cd:16,Illinois's 16th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:16"
+        name: "Illinois's 16th congressional district"
         sld-id: cd-1716
-      - os-id: "ocd-division/country:us/state:il/cd:17,Illinois's 17th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:17"
+        name: "Illinois's 17th congressional district"
         sld-id: cd-1717
-      - os-id: "ocd-division/country:us/state:il/cd:18,Illinois's 18th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:18"
+        name: "Illinois's 18th congressional district"
         sld-id: cd-1718
-      - os-id: "ocd-division/country:us/state:il/cd:1,Illinois's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:1"
+        name: "Illinois's 1st congressional district"
         sld-id: cd-1701
-      - os-id: "ocd-division/country:us/state:il/cd:2,Illinois's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:2"
+        name: "Illinois's 2nd congressional district"
         sld-id: cd-1702
-      - os-id: "ocd-division/country:us/state:il/cd:3,Illinois's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:3"
+        name: "Illinois's 3rd congressional district"
         sld-id: cd-1703
-      - os-id: "ocd-division/country:us/state:il/cd:4,Illinois's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:4"
+        name: "Illinois's 4th congressional district"
         sld-id: cd-1704
-      - os-id: "ocd-division/country:us/state:il/cd:5,Illinois's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:5"
+        name: "Illinois's 5th congressional district"
         sld-id: cd-1705
-      - os-id: "ocd-division/country:us/state:il/cd:6,Illinois's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:6"
+        name: "Illinois's 6th congressional district"
         sld-id: cd-1706
-      - os-id: "ocd-division/country:us/state:il/cd:7,Illinois's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:7"
+        name: "Illinois's 7th congressional district"
         sld-id: cd-1707
-      - os-id: "ocd-division/country:us/state:il/cd:8,Illinois's 8th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:8"
+        name: "Illinois's 8th congressional district"
         sld-id: cd-1708
-      - os-id: "ocd-division/country:us/state:il/cd:9,Illinois's 9th congressional district"
+      - os-id: "ocd-division/country:us/state:il/cd:9"
+        name: "Illinois's 9th congressional district"
         sld-id: cd-1709
-      - os-id: "ocd-division/country:us/state:in/cd:1,Indiana's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:1"
+        name: "Indiana's 1st congressional district"
         sld-id: cd-1801
-      - os-id: "ocd-division/country:us/state:in/cd:2,Indiana's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:2"
+        name: "Indiana's 2nd congressional district"
         sld-id: cd-1802
-      - os-id: "ocd-division/country:us/state:in/cd:3,Indiana's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:3"
+        name: "Indiana's 3rd congressional district"
         sld-id: cd-1803
-      - os-id: "ocd-division/country:us/state:in/cd:4,Indiana's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:4"
+        name: "Indiana's 4th congressional district"
         sld-id: cd-1804
-      - os-id: "ocd-division/country:us/state:in/cd:5,Indiana's 5th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:5"
+        name: "Indiana's 5th congressional district"
         sld-id: cd-1805
-      - os-id: "ocd-division/country:us/state:in/cd:6,Indiana's 6th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:6"
+        name: "Indiana's 6th congressional district"
         sld-id: cd-1806
-      - os-id: "ocd-division/country:us/state:in/cd:7,Indiana's 7th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:7"
+        name: "Indiana's 7th congressional district"
         sld-id: cd-1807
-      - os-id: "ocd-division/country:us/state:in/cd:8,Indiana's 8th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:8"
+        name: "Indiana's 8th congressional district"
         sld-id: cd-1808
-      - os-id: "ocd-division/country:us/state:in/cd:9,Indiana's 9th congressional district"
+      - os-id: "ocd-division/country:us/state:in/cd:9"
+        name: "Indiana's 9th congressional district"
         sld-id: cd-1809
-      - os-id: "ocd-division/country:us/state:ks/cd:1,Kansas's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:ks/cd:1"
+        name: "Kansas's 1st congressional district"
         sld-id: cd-2001
-      - os-id: "ocd-division/country:us/state:ks/cd:2,Kansas's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:ks/cd:2"
+        name: "Kansas's 2nd congressional district"
         sld-id: cd-2002
-      - os-id: "ocd-division/country:us/state:ks/cd:3,Kansas's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:ks/cd:3"
+        name: "Kansas's 3rd congressional district"
         sld-id: cd-2003
-      - os-id: "ocd-division/country:us/state:ks/cd:4,Kansas's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:ks/cd:4"
+        name: "Kansas's 4th congressional district"
         sld-id: cd-2004
-      - os-id: "ocd-division/country:us/state:ky/cd:1,Kentucky's 1st congressional district"
+      - os-id: "ocd-division/country:us/state:ky/cd:1"
+        name: "Kentucky's 1st congressional district"
         sld-id: cd-2101
-      - os-id: "ocd-division/country:us/state:ky/cd:2,Kentucky's 2nd congressional district"
+      - os-id: "ocd-division/country:us/state:ky/cd:2"
+        name: "Kentucky's 2nd congressional district"
         sld-id: cd-2102
-      - os-id: "ocd-division/country:us/state:ky/cd:3,Kentucky's 3rd congressional district"
+      - os-id: "ocd-division/country:us/state:ky/cd:3"
+        name: "Kentucky's 3rd congressional district"
         sld-id: cd-2103
-      - os-id: "ocd-division/country:us/state:ky/cd:4,Kentucky's 4th congressional district"
+      - os-id: "ocd-division/country:us/state:ky/cd:4"
+        name: "Kentucky's 4th congressional district"
         sld-id: cd-2104
       - os-id: "ocd-division/country:us/state:ky/cd:5,Kentucky's 5th congressional district"
         sld-id: cd-2105
