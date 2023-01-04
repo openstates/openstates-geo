@@ -5,10 +5,9 @@ import os
 import zipfile
 import requests
 import shutil
-import us
+from utils import JURISDICTION_NAMES, find_jurisdiction
 import yaml
 
-jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
 cwd = os.getcwd()
 
 
@@ -16,16 +15,6 @@ def load_settings(config_file: str):
     with open(config_file, "r") as f_in:
         settings = yaml.safe_load(f_in.read())
     return settings
-
-
-def find_jurisdiction(jur_name: str):
-    """
-    Return a github.com/unitedstates/python-us style
-    jurisdiction object so we can (potentially) back fill
-    """
-    for jurisdiction in [s for s in us.STATES + [us.states.PR, us.states.DC]]:
-        if jur_name == jurisdiction.name:
-            return jurisdiction
 
 
 def clean_sources():
@@ -95,7 +84,7 @@ if __name__ == "__main__":
         "-j",
         type=str,
         nargs="+",
-        default=jur_names,
+        default=JURISDICTION_NAMES,
         help="The jurisdiction(s) to download shapefiles for",
     )
     parser.add_argument(
@@ -118,19 +107,19 @@ if __name__ == "__main__":
     SETTINGS = load_settings(args.config)
 
     for jur in args.jurisdiction:
-        if jur not in jur_names:
+        if jur not in JURISDICTION_NAMES:
             print(f"Invalid jurisdiction {jur}. Skipping.")
             continue
-        if jur not in SETTINGS["shapefile_urls"]:
+        if jur not in SETTINGS["jurisdictions"]:
             print(f"Skipping {jur}. No URLs configured.")
             continue
         print(f"Fetching shapefiles for {jur}")
 
-        if SETTINGS["shapefile_urls"][jur].get("use_tiger", False):
+        if SETTINGS["jurisdictions"][jur].get("use_tiger", False):
             jurisdiction = find_jurisdiction(jur)
             download_from_tiger(jurisdiction, SETTINGS["YEAR"])
         else:
-            download_from_arp(SETTINGS["shapefile_urls"][jur])
+            download_from_arp(SETTINGS["jurisdictions"][jur]["shapefile_urls"])
 
     us_source = f"{cwd}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):

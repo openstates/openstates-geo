@@ -47,6 +47,8 @@ jurisdictions:
     shapefile_urls:
       upper: https://thearp.org/documents/670/GA_SD_enacted12302021.zip
       lower: https://thearp.org/documents/667/GA_LD_enacted12302021.zip
+  Guam:
+    use_tiger: True
   Hawaii:
     shapefile_urls:
       upper: https://thearp.org/documents/679/HI_SD_Final_Approved.zip
@@ -144,6 +146,8 @@ jurisdictions:
     shapefile_urls:
       upper: https://thearp.org/documents/868/ND_SD_11122021.zip
       lower: https://thearp.org/documents/865/ND_LD_11122021.zip
+  "Northern Mariana Islands":
+    use_tiger: True
   Ohio:
     shapefile_urls:
       upper: https://thearp.org/documents/5714/OH_SD_Enacted05252022.zip
@@ -190,6 +194,8 @@ jurisdictions:
     shapefile_urls:
       upper: https://thearp.org/documents/974/VT_SD_Enacted04062022.zip
       lower: https://thearp.org/documents/971/VT_LD_Enacted04062022.zip
+  "Virgin Islands":
+    use_tiger: True
   Virginia:
     shapefile_urls:
       upper: https://thearp.org/documents/983/VA_SD_Approved_12282021.zip
