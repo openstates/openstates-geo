@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import glob
 import json
 import openstates.metadata as metadata
@@ -7,7 +7,9 @@ import os
 import subprocess
 import sys
 import us
+import yaml
 
+jur_names = [s.name for s in us.STATES + [us.states.PR, us.states.DC]]
 cwd = os.getcwd()
 OCD_FIXES = {
     "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
@@ -21,27 +23,17 @@ SKIPPED_GEOIDS = {
 }
 
 
-def get_ocdid_records():
-    paths = [
-        "./data/ocdids/us_sldu.csv",
-        "./data/ocdids/us_sldl.csv",
-        "./data/ocdids/us_cd.csv",
-    ]
-    all_divs = []
-    for path in paths:
-        with open(path, "r") as div_file:
-            reader = csv.DictReader(div_file)
-            all_divs.extend(row for row in reader)
-    return all_divs
-
-
-ocd_ids = get_ocdid_records()
-
 MTFCC_MAPPING = {
     "G5200": "cd",
     "G5210": "sldu",
     "G5220": "sldl",
 }
+
+
+def _load_id_mappings(path: str):
+    with open(path, "r") as f_in:
+        all_divs = yaml.safe_load(f_in.read())
+    return all_divs
 
 
 def merge_ids(geojson_path):

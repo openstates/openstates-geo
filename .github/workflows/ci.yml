@@ -32,3 +32,9 @@ jobs:
         echo "processing ${filename}"
         docker run --rm -v "$(pwd):/mnt" koalaman/shellcheck:latest -x "${filename}"
         done < <(find . -type f -name "*.sh" ! -path "*/.git/*" -print0)
+    - name: Yaml file linting
+      run: |
+        docker run --rm \
+        -v $(pwd):/code \
+        registry.gitlab.com/pipeline-components/yamllint:latest \
+        -c .yamllint.yml -s .
