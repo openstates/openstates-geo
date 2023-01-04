@@ -1,0 +1,11 @@
+name: Hawaii
+shapefile_urls:
+  upper: https://thearp.org/documents/679/HI_SD_Final_Approved.zip
+  lower: https://thearp.org/documents/676/HI_LD_Final_Approved.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:hi/sldl:"
+    sld-match: 'sldl-150([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:hi/sldu:"
+    sld-match: 'sldu-150([\d+])'

@@ -1,0 +1,11 @@
+name: Kansas
+shapefile_urls:
+  upper: https://thearp.org/documents/724/KS_SD_Enacted04152022.zip
+  lower: https://thearp.org/documents/721/KS_LD_Enacted04152022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:ks/sldl:"
+    sld-match: 'sldl-20([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:ks/sldu:"
+    sld-match: 'sldu-200([\d+])'

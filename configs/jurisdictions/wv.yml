@@ -1,0 +1,13 @@
+name: West Virginia
+shapefile_urls:
+  upper: https://thearp.org/documents/1001/WV_SD_Enacted_10222021_3Kx9ijf.zip
+  lower: https://thearp.org/documents/998/WV_LD_Enacted_10222021_KO34TCR.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:wv/sldl:"
+    sld-match: 'sldl-540([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:wv/sldu:"
+    sld-match: 'sldu-540([\d+])'
+  custom:
+    - os-id: "ocd-division/country:us/state:wv/sldu:817"

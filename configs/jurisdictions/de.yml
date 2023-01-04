@@ -1,0 +1,11 @@
+name: Delaware
+shapefile_urls:
+  upper: https://thearp.org/documents/12515/DE_SD_Enacted_Technical_Changes.zip
+  lower: https://thearp.org/documents/12514/DE_LD_Enacted_Technical_Changes.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:de/sldl:"
+    sld-match: 'sldl-100([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:de/sldu:"
+    sld-match: 'sldu-100([\d+])'

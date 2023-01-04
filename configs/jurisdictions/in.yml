@@ -1,0 +1,11 @@
+name: Indiana
+shapefile_urls:
+  upper: https://thearp.org/documents/706/IN_SD_Enacted10042021.zip
+  lower: https://thearp.org/documents/703/IN_LD_Enacted10042021.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:in/sldl:"
+    sld-match: 'sldl-18([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:in/sldu:"
+    sld-match: 'sldu-180([\d+])'

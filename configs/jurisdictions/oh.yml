@@ -1,0 +1,11 @@
+name: Ohio
+shapefile_urls:
+  upper: https://thearp.org/documents/5714/OH_SD_Enacted05252022.zip
+  lower: https://thearp.org/documents/5711/OH_LD_Enacted05252022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:oh/sldl:"
+    sld-match: 'sldl-39([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:oh/sldu:"
+    sld-match: 'sldu-390([\d+])'

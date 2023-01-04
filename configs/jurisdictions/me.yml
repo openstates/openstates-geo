@@ -1,0 +1,11 @@
+name: Maine
+shapefile_urls:
+  upper: https://thearp.org/documents/752/ME_Upper_Enacted09292021_DWAqdIP.zip
+  lower: https://thearp.org/documents/12516/ME_LD_Enacted_Technical_Changes.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:me/sldl:"
+    sld-match: 'sldl-23([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:me/sldu:"
+    sld-match: 'sldu-230([\d+])'

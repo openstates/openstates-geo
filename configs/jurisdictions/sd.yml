@@ -1,0 +1,12 @@
+name: South Dakota
+shapefile_urls:
+  upper: https://thearp.org/documents/938/SD_SD_Enacted11102021.zip
+  lower: https://thearp.org/documents/935/SD_LD_Enacted11102021.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:sd/sldl:"
+    sld-match: 'sldl-46([\w])'
+    match-type: str
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:sd/sldu:"
+    sld-match: 'sldu-460([\d+])'

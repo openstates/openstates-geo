@@ -1,0 +1,292 @@
+name: Vermont
+shapefile_urls:
+  upper: https://thearp.org/documents/974/VT_SD_Enacted04062022.zip
+  lower: https://thearp.org/documents/971/VT_LD_Enacted04062022.zip
+id-mappings:
+  custom:
+    - os-id: "ocd-division/country:us/state:vt/sldu:addison"
+      sld-id: sldu-50ADD
+    - os-id: "ocd-division/country:us/state:vt/sldu:bennington"
+      sld-id: sldu-50BEN
+    - os-id: "ocd-division/country:us/state:vt/sldu:caledonia"
+      sld-id: sldu-50CAL
+    - os-id: "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden"
+      sld-id: sldu-50CGI
+    - os-id: "ocd-division/country:us/state:vt/sldu:grand_isle"
+      sld-id: sldu-50CGI
+    - os-id: "ocd-division/country:us/state:vt/sldu:chittenden"
+      sld-id: sldu-50CHI
+    - os-id: "ocd-division/country:us/state:vt/sldu:essex-orleans"
+      sld-id: sldu-50E-O
+    - os-id: "ocd-division/country:us/state:vt/sldu:franklin"
+      sld-id: sldu-50FRA
+    - os-id: "ocd-division/country:us/state:vt/sldu:lamoille"
+      sld-id: sldu-50LAM
+    - os-id: "ocd-division/country:us/state:vt/sldu:orange"
+      sld-id: sldu-50ORA
+    - os-id: "ocd-division/country:us/state:vt/sldu:rutland"
+      sld-id: sldu-50RUT
+    - os-id: "ocd-division/country:us/state:vt/sldu:washington"
+      sld-id: sldu-50WAS
+    - os-id: "ocd-division/country:us/state:vt/sldu:windham"
+      sld-id: sldu-50WDM
+    - os-id: "ocd-division/country:us/state:vt/sldu:windsor"
+      sld-id: sldu-50WSR
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-1"
+      sld-id: sldl-50A-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-2"
+      sld-id: sldl-50A-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-3"
+      sld-id: sldl-50A-3
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-4"
+      sld-id: sldl-50A-4
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-5"
+      sld-id: sldl-50A-5
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-rutland"
+      sld-id: sldl-50A-R
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-1"
+      sld-id: sldl-50B-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-3"
+      sld-id: sldl-50B-3
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-4"
+      sld-id: sldl-50B-4
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-rutland"
+      sld-id: sldl-50B-R
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-2-1"
+      sld-id: sldl-50B21
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-2-2"
+      sld-id: sldl-50B22
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-1"
+      sld-id: sldl-50C-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-2"
+      sld-id: sldl-50C-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3"
+      sld-id: sldl-50C-3
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-10"
+      sld-id: sldl-50C10
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-4-1"
+      sld-id: sldl-50C41
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-4-2"
+      sld-id: sldl-50C42
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-5-1"
+      sld-id: sldl-50C51
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-5-2"
+      sld-id: sldl-50C52
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-1"
+      sld-id: sldl-50C61
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-2"
+      sld-id: sldl-50C62
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-3"
+      sld-id: sldl-50C63
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-4"
+      sld-id: sldl-50C64
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-5"
+      sld-id: sldl-50C65
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-6"
+      sld-id: sldl-50C66
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-6-7"
+      sld-id: sldl-50C67
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-7-1"
+      sld-id: sldl-50C71
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-7-2"
+      sld-id: sldl-50C72
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-7-3"
+      sld-id: sldl-50C73
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-7-4"
+      sld-id: sldl-50C74
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-8-1"
+      sld-id: sldl-50C81
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-8-2"
+      sld-id: sldl-50C82
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-8-3"
+      sld-id: sldl-50C83
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-9-1"
+      sld-id: sldl-50C91
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-9-2"
+      sld-id: sldl-50C92
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-1"
+      sld-id: sldl-50CA1
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-2"
+      sld-id: sldl-50CA2
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-3"
+      sld-id: sldl-50CA3
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-4"
+      sld-id: sldl-50CA4
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-washington"
+      sld-id: sldl-50CAW
+    - os-id: "ocd-division/country:us/state:vt/sldl:essex-caledonia"
+      sld-id: sldl-50E-C
+    - os-id: "ocd-division/country:us/state:vt/sldl:essex-caledonia-orleans"
+      sld-id: sldl-50ECO
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-1"
+      sld-id: sldl-50F-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-2"
+      sld-id: sldl-50F-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-4"
+      sld-id: sldl-50F-4
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-5"
+      sld-id: sldl-50F-5
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-6"
+      sld-id: sldl-50F-6
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-7"
+      sld-id: sldl-50F-7
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-3-1"
+      sld-id: sldl-50F31
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-3-2"
+      sld-id: sldl-50F32
+    - os-id: "ocd-division/country:us/state:vt/sldl:grand_isle-chittenden"
+      sld-id: sldl-50GIC
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-1"
+      sld-id: sldl-50LM1
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-2"
+      sld-id: sldl-50LM2
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-3"
+      sld-id: sldl-50LM3
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-washington"
+      sld-id: sldl-50LMW
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-1"
+      sld-id: sldl-50O-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-2"
+      sld-id: sldl-50O-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-caledonia"
+      sld-id: sldl-50O-C
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-lamoille"
+      sld-id: sldl-50O-L
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-caledonia"
+      sld-id: sldl-50OLC
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-1"
+      sld-id: sldl-50OR1
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-2"
+      sld-id: sldl-50OR2
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-washington-addison"
+      sld-id: sldl-50OWA
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-1"
+      sld-id: sldl-50R-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-2"
+      sld-id: sldl-50R-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-3"
+      sld-id: sldl-50R-3
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-4"
+      sld-id: sldl-50R-4
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-6"
+      sld-id: sldl-50R-6
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-bennington"
+      sld-id: sldl-50R-B
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-windsor-1"
+      sld-id: sldl-50R-W
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-5-1"
+      sld-id: sldl-50R51
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-5-2"
+      sld-id: sldl-50R52
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-5-3"
+      sld-id: sldl-50R53
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-5-4"
+      sld-id: sldl-50R54
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-windsor-2"
+      sld-id: sldl-50RW2
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-1"
+      sld-id: sldl-50W-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-3"
+      sld-id: sldl-50W-3
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-4"
+      sld-id: sldl-50W-4
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-5"
+      sld-id: sldl-50W-5
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-6"
+      sld-id: sldl-50W-6
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-2-1"
+      sld-id: sldl-50W21
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-2-2"
+      sld-id: sldl-50W22
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-2-3"
+      sld-id: sldl-50W23
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-1"
+      sld-id: sldl-50WA1
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-2"
+      sld-id: sldl-50WA2
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-3"
+      sld-id: sldl-50WA3
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-4"
+      sld-id: sldl-50WA4
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-5"
+      sld-id: sldl-50WA5
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-6"
+      sld-id: sldl-50WA6
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-7"
+      sld-id: sldl-50WA7
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-chittenden"
+      sld-id: sldl-50WAC
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-bennington-windsor"
+      sld-id: sldl-50WBW
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-bennington"
+      sld-id: sldl-50WIB
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-1"
+      sld-id: sldl-50Y-1
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-2"
+      sld-id: sldl-50Y-2
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-5"
+      sld-id: sldl-50Y-5
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-rutland"
+      sld-id: sldl-50Y-R
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-3-1"
+      sld-id: sldl-50Y31
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-3-2"
+      sld-id: sldl-50Y32
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-4-1"
+      sld-id: sldl-50Y41
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-4-2"
+      sld-id: sldl-50Y42
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-orange-1"
+      sld-id: sldl-50YO1
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-orange-2"
+      sld-id: sldl-50YO2
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-10"
+    - os-id: "ocd-division/country:us/state:vt/sldl:addison-rutland-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-5"
+    - os-id: "ocd-division/country:us/state:vt/sldl:bennington-rutland-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-4"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-8"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-9"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-1-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-1-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-3"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-4"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-5"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-6"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-7"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-8"
+    - os-id: "ocd-division/country:us/state:vt/sldl:chittenden-3-9"
+    - os-id: "ocd-division/country:us/state:vt/sldl:caledonia-washington-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:essex-caledonia-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:essex-caledonia-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:franklin-3"
+    - os-id: "ocd-division/country:us/state:vt/sldl:grand_isle-chittenden-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-4"
+    - os-id: "ocd-division/country:us/state:vt/sldl:lamoille-washington-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-addison-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:orange-caledonia-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-caledonia-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:orleans-franklin-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-7"
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-8"
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-1-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:rutland-1-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-3-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-3-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-3-3"
+    - os-id: "ocd-division/country:us/state:vt/sldl:washington-chittenden-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-3-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-3-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-3-3"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windham-bennington-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-3"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-4"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-1-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-1-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-6-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-6-2"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-rutland-1"
+    - os-id: "ocd-division/country:us/state:vt/sldl:windsor-rutland-2"

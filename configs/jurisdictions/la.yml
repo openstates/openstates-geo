@@ -1,0 +1,11 @@
+name: Louisiana
+shapefile_urls:
+  upper: https://thearp.org/documents/742/LA_SD_Enacted03092022.zip
+  lower: https://thearp.org/documents/739/LA_LD_Enacted03092022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:la/sldl:"
+    sld-match: 'sldl-22([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:la/sldu:"
+    sld-match: 'sldu-220([\d+])'

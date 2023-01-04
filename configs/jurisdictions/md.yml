@@ -1,0 +1,27 @@
+name: Maryland
+shapefile_urls:
+  upper: https://thearp.org/documents/761/MD_SD_Enacted_01272022.zip
+  lower: https://thearp.org/documents/758/MD_LD_Enacted_01272022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:md/sldl:"
+    sld-match: 'sldl-24([\w+])'
+    match-type: str
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:md/sldu:"
+    sld-match: 'sldu-240([\d+])'
+  custom:
+    - os-id: "ocd-division/country:us/state:md/sldl:2c"
+    - os-id: "ocd-division/country:us/state:md/sldl:30"
+    - os-id: "ocd-division/country:us/state:md/sldl:31"
+    - os-id: "ocd-division/country:us/state:md/sldl:42"
+    - os-id: "ocd-division/country:us/state:md/sldl:44"
+    - os-id: "ocd-division/country:us/state:md/sldl:47"
+    - os-id: "ocd-division/country:us/state:md/sldl:4a"
+    - os-id: "ocd-division/country:us/state:md/sldl:4b"
+    - os-id: "ocd-division/country:us/state:md/sldl:5a"
+    - os-id: "ocd-division/country:us/state:md/sldl:5b"
+    - os-id: "ocd-division/country:us/state:md/sldl:12a"
+    - os-id: "ocd-division/country:us/state:md/sldl:12b"
+    - os-id: "ocd-division/country:us/state:md/sldl:33a"
+    - os-id: "ocd-division/country:us/state:md/sldl:33b"

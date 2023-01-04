@@ -1,0 +1,11 @@
+name: North Dakota
+shapefile_urls:
+  upper: https://thearp.org/documents/868/ND_SD_11122021.zip
+  lower: https://thearp.org/documents/865/ND_LD_11122021.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:nd/sldl:"
+    sld-match: 'sldl-380([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:nd/sldu:"
+    sld-match: 'sldu-380([\d+])'

@@ -1,0 +1,11 @@
+name: Arizona
+shapefile_urls:
+  upper: https://thearp.org/documents/607/AZ_SD_Final_01212022.zip
+  lower: https://thearp.org/documents/604/AZ_LD_Final_01212022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:az/sldl:"
+    sld-match: 'sldl-040([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:az/sldu:"
+    sld-match: 'sldu-040([\d+])'

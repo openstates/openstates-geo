@@ -1,0 +1,11 @@
+name: Oregon
+shapefile_urls:
+  upper: https://thearp.org/documents/895/OR_SD_Enacted09272021_3XTO7kq.zip
+  lower: https://thearp.org/documents/892/OR_LD_Enacted09272021_i0VR2RF.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:or/sldl:"
+    sld-match: 'sldl-410([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:or/sldu:"
+    sld-match: 'sldu-410([\d+])'

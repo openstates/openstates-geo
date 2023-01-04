@@ -1,0 +1,9 @@
+name: Puerto Rico
+use_tiger: True
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/territory:pr/sldl:"
+    sld-match: 'sldl-720([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/territory:pr/sldu:"
+    sld-match: 'sldu-7200([\d])'

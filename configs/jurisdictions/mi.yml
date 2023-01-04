@@ -1,0 +1,11 @@
+name: Michigan
+shapefile_urls:
+  upper: https://thearp.org/documents/494/MI_SD_Enacted02262022.zip
+  lower: https://thearp.org/documents/491/MI_LD_Enacted02262022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:mi/sldl:"
+    sld-match: 'sldl-26([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:mi/sldu:"
+    sld-match: 'sldu-260([\d+])'

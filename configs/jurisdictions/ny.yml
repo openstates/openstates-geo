@@ -1,0 +1,12 @@
+name: New York
+shapefile_urls:
+  upper: https://thearp.org/documents/859/NY_SD_06022022_Tech_Changes_FINAL_vht8mpb.zip
+  # possibly mis-labelled?
+  lower: https://thearp.org/documents/856/NY_SD_Enacted5212022_adjustments.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:ny/sldl:"
+    sld-match: 'sldl-36([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:ny/sldu:"
+    sld-match: 'sldu-360([\d+])'

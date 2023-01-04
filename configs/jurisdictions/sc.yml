@@ -1,0 +1,11 @@
+name: South Carolina
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:sc/sldl:"
+    sld-match: 'sldl-45([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:sc/sldu:"
+    sld-match: 'sldu-450([\d+])'
+shapefile_urls:
+  upper: https://thearp.org/documents/929/SC_SD_Enacted_1210201.zip
+  lower: https://thearp.org/documents/926/SC_LD_Enacted_1210201.zip

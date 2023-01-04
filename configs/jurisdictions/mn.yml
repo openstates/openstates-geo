@@ -1,0 +1,12 @@
+name: Minnesota
+shapefile_urls:
+  upper: https://thearp.org/documents/779/MN_SD_Enacted_06022022_Technical_Changes.zip
+  lower: https://thearp.org/documents/776/MN_LD_Enacted_06022022_Technical_Changes.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:mn/sldl:"
+    sld-match: 'sldl-27([\w])'
+    match-type: str
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:mn/sldu:"
+    sld-match: 'sldu-270([\d+])'

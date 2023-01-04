@@ -1,0 +1,11 @@
+name: New Mexico
+shapefile_urls:
+  upper: https://thearp.org/documents/850/NM_SD_Enacted01062022_5fwsHFT.zip
+  lower: https://thearp.org/documents/847/NM_LD_Enacted12292021.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:nm/sldl:"
+    sld-match: 'sldl-350([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:nm/sldu:"
+    sld-match: 'sldu-350([\d+])'

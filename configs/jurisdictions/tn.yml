@@ -1,0 +1,11 @@
+name: Tennessee
+shapefile_urls:
+  upper: https://thearp.org/documents/947/TN_SD_Enacted02062022_G6PN85S.zip
+  lower: https://thearp.org/documents/944/TN_LD_Enacted02062022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:tn/sldl:"
+    sld-match: 'sldl-47([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:tn/sldu:"
+    sld-match: 'sldu-470([\d+])'

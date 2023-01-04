@@ -1,0 +1,11 @@
+name: Colorado
+shapefile_urls:
+  upper: https://thearp.org/documents/12513/CO_SD_Enacted_technical_changes.zip
+  lower: https://thearp.org/documents/12512/CO_LD_Enacted_Technical_Changes.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:co/sldl:"
+    sld-match: 'sldl-080([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:co/sldu:"
+    sld-match: 'sldu-080([\d+])'

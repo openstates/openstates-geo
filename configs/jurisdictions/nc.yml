@@ -1,0 +1,11 @@
+name: North Carolina
+shapefile_urls:
+  upper: https://thearp.org/documents/561/NC_SD_Enacted02232022.zip
+  lower: https://thearp.org/documents/559/NC_LD_Enacted02232022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:nc/sldl:"
+    sld-match: 'sldl-37([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:nc/sldu:"
+    sld-match: 'sldu-370([\d+])'

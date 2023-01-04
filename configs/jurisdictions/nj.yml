@@ -1,0 +1,11 @@
+name: New Jersey
+shapefile_urls:
+  upper: https://thearp.org/documents/841/NJ_SD_Enacted02232022.zip
+  lower: https://thearp.org/documents/838/NJ_LD_Enacted02232022.zip
+id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:nj/sldl:"
+    sld-match: 'sldl-340([\d+])'
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:nj/sldu:"
+    sld-match: 'sldu-340([\d+])'
