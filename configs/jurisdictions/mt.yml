@@ -2,6 +2,7 @@ name: Montana
 shapefile_urls:
   upper: https://thearp.org/documents/5145/MT_2014to2020_SU.zip
   lower: https://thearp.org/documents/5186/MT_2014to2020_SL.zip
+  congress: https://thearp.org/documents/800/MT_CP12_110122021.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:mt/sldl:"
