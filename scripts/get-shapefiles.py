@@ -9,9 +9,14 @@ from utils import JURISDICTION_NAMES, find_jurisdiction, ROOTDIR, setup_source
 import yaml
 
 
-def load_settings(config_file: str):
-    with open(config_file, "r") as f_in:
+def load_settings(config_dir: str):
+    with open(f"{config_dir}/settings.yml", "r") as f_in:
         settings = yaml.safe_load(f_in.read())
+    settings["jurisdictions"] = dict()
+    for file in glob.glob(f"{config_dir}/jurisdictions/*.yml"):
+        with open(file, "r") as f:
+            jur_settings = yaml.safe_load(f.read())
+            settings["jurisdictions"][jur_settings["name"]] = dict(jur_settings)
     return settings
 
 
@@ -52,7 +57,7 @@ def _download_and_extract(url, filename):
         with open(filename, "wb") as f:
             f.write(response.content)
         with zipfile.ZipFile(filename, "r") as f:
-            f.extractall(f"{ROOTDIR}/data/source")
+            f.extractall(f"{ROOTDIR}/data/source_cache")
     else:
         response.raise_for_status()
 
@@ -71,7 +76,7 @@ if __name__ == "__main__":
         help="The jurisdiction(s) to download shapefiles for",
     )
     parser.add_argument(
-        "--clean-sources",
+        "--clean-source",
         action="store_true",
         default=False,
         help="Remove any cached download/processed data",
@@ -80,12 +85,12 @@ if __name__ == "__main__":
         "--config",
         "-c",
         type=str,
-        default=f"{ROOTDIR}/shapefiles.yml",
-        help="Config file for downloading geo data",
+        default=f"{ROOTDIR}/configs",
+        help="Config directory for downloading geo data",
     )
     args = parser.parse_args()
 
-    setup_source(args.clean_sources)
+    setup_source(args.clean_source)
     SETTINGS = load_settings(args.config)
 
     for jur in args.jurisdiction:

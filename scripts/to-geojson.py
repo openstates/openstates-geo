@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
 
     if len(sys.argv) == 1:
-        files = sorted(glob.glob(f"{ROOTDIR}/data/source/**/*.shp", recursive=True))
+        files = sorted(glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True))
     else:
         files = sys.argv[1:]
 
