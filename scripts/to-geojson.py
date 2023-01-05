@@ -115,6 +115,9 @@ def _arp_geoid(geojson, settings, geojson_path):
             district_id = str(int(district_id))
         except Exception:
             pass
+        # be explicit here to avoid "false-y" values like 0
+        if district_id is None:
+            continue
         us_state = us.states.lookup(state_id)
         state_abbr = us_state.abbr.lower()
         os_state_meta = metadata.lookup(abbr=state_abbr)
