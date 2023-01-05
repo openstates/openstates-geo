@@ -14,19 +14,19 @@ from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 
 
 def _tiger_geoid(geojson, settings, geojson_path):
+    """
+    Process a GeoJSON file sent from TIGER.
+    """
     for feature in geojson["features"]:
         mtfcc = feature["properties"].get("MTFCC")
         geoid = feature["properties"].get("GEOID")
+        if "ZZ" in geoid:
+            continue
         district_type = settings["MTFCC_MAPPING"][mtfcc]
 
-        """
-        Identify the OCD ID by making a lookup against the CSV files
-        The OCD ID is the cannonical identifier of an area on
-        the Open States platform
-        """
         geoid = f"{district_type}-{geoid}"
         if geoid in settings["SKIPPED_GEOIDS"]:
-            return
+            continue
 
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
         state_name = us.states.lookup(feature["properties"]["STATEFP"]).name
@@ -40,16 +40,17 @@ def _tiger_geoid(geojson, settings, geojson_path):
         And we should only check regex matching if custom mappings fail.
         """
         mappings = settings["jurisdictions"][state_name]
-        custom = mappings.get("custom", [])
-        mapping_type = mappings[district_type]
+        print(f"{mappings=}")
+        custom = mappings["id-mappings"].get("custom", [])
+        mapping_type = mappings["id-mappings"][district_type]
         ocd_id = None
         for mapping in custom:
             if mapping.get("sld-id", "") == geoid:
                 ocd_id = mapping["os-id"]
                 break
         if not ocd_id:
-            dist_id = re.search(mapping_type["sld-match"], geoid)
-            ocd_id = f"{mapping['os-id-prefix']}{dist_id}"
+            dist_id = re.search(mapping_type["sld-match"], geoid).groups()[0]
+            ocd_id = f"{mapping_type['os-id-prefix']}{dist_id}"
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -79,6 +80,10 @@ def _tiger_geoid(geojson, settings, geojson_path):
         json.dump(geojson, geojson_file)
 
 
+def _arp_geoid(geojson, settings, geojson_path):
+    for feature in geojson["features"]:
+
+
 def merge_ids(geojson_path: str, meta_file: str, settings: dict):
     print(f"Converting IDs for {geojson_path}...")
     with open(geojson_path, "r") as f:
@@ -90,7 +95,8 @@ def merge_ids(geojson_path: str, meta_file: str, settings: dict):
         with open(meta_path, "r") as f:
             metajson = json.load(f)
     elif os.path.exists(meta_path.lower()):
-        with open(meta_path.lower(), "r") as f:
+        meta_path = meta_path.lower()
+        with open(meta_path, "r") as f:
             metajson = json.load(f)
 
     """
@@ -100,11 +106,13 @@ def merge_ids(geojson_path: str, meta_file: str, settings: dict):
     geoid = geojson["features"][0]["properties"].get("GEOID", None)
     if mtfcc and geoid:
         _tiger_geoid(geojson, settings, geojson_path)
-        exit(1)
     else:
         if metajson and not geojson["features"][0]["properties"]:
+            print(f"Adding metadata from {meta_path} to {geojson_path}")
             for geo_feat, meta_feat in zip(geojson["features"], metajson["features"]):
                 geo_feat["properties"] = meta_feat["properties"]
+        _arp_geoid(geojson, settings, geojson_path)
+        exit(1)
 
 
 if __name__ == "__main__":
