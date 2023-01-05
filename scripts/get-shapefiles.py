@@ -20,7 +20,7 @@ def download_from_tiger(jurisdiction, year):
         url = f"https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber.upper()}/tl_{year}_{fips}_sld{chamber}.zip"
         filename = f"{ROOTDIR}/data/tl_{year}_{fips}_sld{chamber}.zip"
         if os.path.exists(filename):
-            print(f"{filename} already downloaded...skipping")
+            print(f"skipping {jurisdiction.name} {chamber}")
             continue
         try:
             _download_and_extract(url, filename)
@@ -39,7 +39,7 @@ def download_from_arp(jur_urls: dict):
         _download_and_extract(url, filename)
 
 
-def _download_and_extract(url, filename):
+def _download_and_extract(url: str, filename: str):
     response = requests.get(url)
 
     if response.status_code == 200:
