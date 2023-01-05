@@ -9,7 +9,7 @@ import sys
 import us
 import yaml
 
-from utils import JURISDICTION_NAMES, ROOTDIR, setup_source
+from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 
 SKIPPED_GEOIDS = {
     "cd-6098": "American Samoa",
@@ -92,6 +92,7 @@ def merge_ids(geojson_path):
 
 if __name__ == "__main__":
     setup_source()
+    SETTINGS = load_settings(f"{ROOTDIR}/configs")
     # mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
 
     if len(sys.argv) == 1:

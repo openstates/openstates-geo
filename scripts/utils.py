@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import shutil
 import us
+import yaml
 
 """
 two 'parent' calls to move back to directory
@@ -33,3 +34,14 @@ def setup_source(clean: bool = False):
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
     os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
+
+
+def load_settings(config_dir: str):
+    with open(f"{config_dir}/settings.yml", "r") as f_in:
+        settings = yaml.safe_load(f_in.read())
+    settings["jurisdictions"] = dict()
+    for file in glob.glob(f"{config_dir}/jurisdictions/*.yml"):
+        with open(file, "r") as f:
+            jur_settings = yaml.safe_load(f.read())
+            settings["jurisdictions"][jur_settings["name"]] = dict(jur_settings)
+    return settings
