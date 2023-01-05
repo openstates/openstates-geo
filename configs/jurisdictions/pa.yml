@@ -2,6 +2,7 @@ name: Pennsylvania
 shapefile_urls:
   upper: https://thearp.org/documents/911/PA_SD_Final_02042022.zip
   lower: https://thearp.org/documents/908/PA_LD_Final_02042022.zip
+  congress: https://thearp.org/documents/905/PA_CD_enacted02232022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:pa/sldl:"

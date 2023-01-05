@@ -2,6 +2,7 @@ name: Massachusetts
 shapefile_urls:
   upper: https://thearp.org/documents/770/MA_SD_Enacted11052021.zip
   lower: https://thearp.org/documents/767/MA_LD_Enacted11042021_Final.zip
+  congress: https://thearp.org/documents/764/MA_CD_Enacted11222021_clip.zip
 id-mappings:
   custom:
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk"

@@ -2,6 +2,7 @@ name: Maine
 shapefile_urls:
   upper: https://thearp.org/documents/752/ME_Upper_Enacted09292021_DWAqdIP.zip
   lower: https://thearp.org/documents/12516/ME_LD_Enacted_Technical_Changes.zip
+  congress: https://thearp.org/documents/745/ME_CD_Enacted2021_OASIiQR.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:me/sldl:"

@@ -2,6 +2,7 @@ name: Wisconsin
 shapefile_urls:
   upper: https://thearp.org/documents/1103/WI_SD_Enacted04152022.zip
   lower: https://thearp.org/documents/1007/WI_LD_Enacted04152022.zip
+  congress: https://thearp.org/documents/1004/WI_CD_Enacted03032022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:wi/sldl:"

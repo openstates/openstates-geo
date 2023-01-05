@@ -2,6 +2,7 @@ name: Florida
 shapefile_urls:
   upper: https://thearp.org/documents/661/FL_SD_Enacted03032022.zip
   lower: https://thearp.org/documents/658/FL_LD_Enacted03032022.zip
+  congress: https://thearp.org/documents/655/FL_CD_Enacted04222022_Florida.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:fl/sldl:"

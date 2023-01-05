@@ -2,6 +2,7 @@ name: Vermont
 shapefile_urls:
   upper: https://thearp.org/documents/974/VT_SD_Enacted04062022.zip
   lower: https://thearp.org/documents/971/VT_LD_Enacted04062022.zip
+  congress: https://thearp.org/documents/968/VT_US_Cong_2018.zip
 id-mappings:
   custom:
     - os-id: "ocd-division/country:us/state:vt/sldu:addison"

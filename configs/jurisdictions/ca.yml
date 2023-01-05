@@ -1,8 +1,9 @@
 name: California
-use_tiger: True
+# use_tiger: True
 shapefile_urls:
   upper: https://thearp.org/documents/625/CA_SD_Final_12262021.zip
   lower: https://thearp.org/documents/12510/CA_LD_Enacted_Technical_Changes.zip
+  congress: https://thearp.org/documents/619/CA_CD_Final_12262021.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ca/sldl:"

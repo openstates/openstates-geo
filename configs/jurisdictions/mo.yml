@@ -2,6 +2,7 @@ name: Missouri
 shapefile_urls:
   upper: https://thearp.org/documents/797/MO_SD_Enacted03152022.zip
   lower: https://thearp.org/documents/794/MO_LD_Enacted01192022.zip
+  congress: https://thearp.org/documents/791/MO_CD_Enacted05182022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:mo/sldl:"

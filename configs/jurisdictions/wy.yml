@@ -2,6 +2,7 @@ name: Wyoming
 shapefile_urls:
   upper: https://thearp.org/documents/1019/WY_SD_Enacted03252022.zip
   lower: https://thearp.org/documents/1016/WY_LD_Enacted03252022.zip
+  congress: https://thearp.org/documents/1013/WY_US_Cong_2018.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:wy/sldl:"

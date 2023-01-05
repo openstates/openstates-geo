@@ -2,6 +2,7 @@ name: Oklahoma
 shapefile_urls:
   upper: https://thearp.org/documents/886/OK_SD_Enacted11222021.zip
   lower: https://thearp.org/documents/883/OK_LD_Enacted11222021.zip
+  congress: https://thearp.org/documents/880/OK_CD_Enacted11222021.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ok/sldl:"

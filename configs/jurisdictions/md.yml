@@ -2,6 +2,7 @@ name: Maryland
 shapefile_urls:
   upper: https://thearp.org/documents/761/MD_SD_Enacted_01272022.zip
   lower: https://thearp.org/documents/758/MD_LD_Enacted_01272022.zip
+  congress: https://thearp.org/documents/755/MD_CD_Enacted04042022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:md/sldl:"

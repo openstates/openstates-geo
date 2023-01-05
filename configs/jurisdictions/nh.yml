@@ -3,6 +3,7 @@ shapefile_urls:
   upper: https://thearp.org/documents/832/NH_SD_Enacted05062022.zip
   lower: https://thearp.org/documents/829/NH_LD_Regular_Enacted03232022_NE3Ymrn.zip
   floterial: https://thearp.org/documents/1024/NH_LD_Floterial_Enacted03232022_doxuB8L.zip
+  congress: https://thearp.org/documents/826/NH_CD_Enacted05312022.zip
 id-mappings:
   sldu:
     os-id-prefix: "ocd-division/country:us/state:nh/sldu:"

@@ -2,6 +2,7 @@ name: Alaska
 shapefile_urls:
   upper: https://thearp.org/documents/598/AK_SD_Interim005252022.zip
   lower: https://thearp.org/documents/595/AK_LD_Interim005252022.zip
+  congress: https://thearp.org/documents/592/AK_US_Cong_2018.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ak/sldl:"

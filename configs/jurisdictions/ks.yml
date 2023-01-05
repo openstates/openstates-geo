@@ -2,6 +2,7 @@ name: Kansas
 shapefile_urls:
   upper: https://thearp.org/documents/724/KS_SD_Enacted04152022.zip
   lower: https://thearp.org/documents/721/KS_LD_Enacted04152022.zip
+  congress: https://thearp.org/documents/718/KS_CD_Enacted02092022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ks/sldl:"

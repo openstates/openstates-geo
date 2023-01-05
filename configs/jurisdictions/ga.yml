@@ -9,3 +9,4 @@ id-mappings:
 shapefile_urls:
   upper: https://thearp.org/documents/670/GA_SD_enacted12302021.zip
   lower: https://thearp.org/documents/667/GA_LD_enacted12302021.zip
+  congress: https://thearp.org/documents/664/GA_CD_enacted12302021.zip

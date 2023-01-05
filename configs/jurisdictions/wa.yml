@@ -9,3 +9,4 @@ id-mappings:
 shapefile_urls:
   upper: https://thearp.org/documents/992/WA_SD_Enacted02082022.zip
   lower: https://thearp.org/documents/989/WA_LD_Enacted02082022.zip
+  congress: https://thearp.org/documents/986/WA_CD_Enacted02082022.zip

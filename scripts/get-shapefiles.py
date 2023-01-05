@@ -50,8 +50,12 @@ def _download_and_extract(url, filename):
         # of the Census downloads in the first place.
         with open(filename, "wb") as f:
             f.write(response.content)
-        with zipfile.ZipFile(filename, "r") as f:
-            f.extractall(f"{ROOTDIR}/data/source_cache")
+        with zipfile.ZipFile(filename, "r") as z:
+            for obj in z.infolist():
+                try:
+                    z.extract(obj, f"{ROOTDIR}/data/source_cache/")
+                except Exception as e:
+                    print(f"Failed to extract {obj.filename}: {e}")
     else:
         response.raise_for_status()
 
@@ -102,9 +106,12 @@ if __name__ == "__main__":
         else:
             download_from_arp(SETTINGS["jurisdictions"][jur]["shapefile_urls"])
 
+    """
+    Leave this out for now...
     us_source = f"{ROOTDIR}/data/tl_{SETTINGS['YEAR']}_us_cd116.zip"
     if not os.path.exists(us_source):
         _download_and_extract(
             f"https://www2.census.gov/geo/tiger/TIGER{SETTINGS['YEAR']}/CD/tl_{SETTINGS['YEAR']}_us_cd116.zip",
             us_source,
         )
+    """

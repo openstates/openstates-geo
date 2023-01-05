@@ -2,6 +2,7 @@ name: North Carolina
 shapefile_urls:
   upper: https://thearp.org/documents/561/NC_SD_Enacted02232022.zip
   lower: https://thearp.org/documents/559/NC_LD_Enacted02232022.zip
+  congress: https://thearp.org/documents/557/NC_CD_Enacted02232022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:nc/sldl:"

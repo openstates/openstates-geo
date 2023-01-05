@@ -2,6 +2,7 @@ name: Delaware
 shapefile_urls:
   upper: https://thearp.org/documents/12515/DE_SD_Enacted_Technical_Changes.zip
   lower: https://thearp.org/documents/12514/DE_LD_Enacted_Technical_Changes.zip
+  congress: https://thearp.org/documents/646/DE_US_Cong_2018.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:de/sldl:"

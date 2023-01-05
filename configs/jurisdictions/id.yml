@@ -2,6 +2,7 @@ name: Idaho
 shapefile_urls:
   upper: https://thearp.org/documents/688/ID_SD_Enacted11102021.zip
   lower: https://thearp.org/documents/685/ID_LD_Enacted11102021.zip
+  congress: https://thearp.org/documents/682/ID_CD_Enacted11102021.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:id/sldl:"

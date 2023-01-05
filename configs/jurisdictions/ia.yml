@@ -2,6 +2,7 @@ name: Iowa
 shapefile_urls:
   upper: https://thearp.org/documents/715/IA_SD_Enacted11042021.zip
   lower: https://thearp.org/documents/712/IA_LD_Enacted11042021.zip
+  congress: https://thearp.org/documents/709/IA_CD_Enacted11042021.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ia/sldl:"

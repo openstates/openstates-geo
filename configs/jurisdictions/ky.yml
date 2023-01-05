@@ -2,6 +2,7 @@ name: Kentucky
 shapefile_urls:
   upper: https://thearp.org/documents/733/KY_SD_Enacted01212022.zip
   lower: https://thearp.org/documents/730/KY_LD_Enacted01202022.zip
+  congress: https://thearp.org/documents/727/KY_CD_Enacted01202022.zip
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ky/sldl:"
