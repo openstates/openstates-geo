@@ -105,7 +105,9 @@ def _arp_geoid(geojson, settings, geojson_path):
                 ocd_id = mapping["os-id"]
                 break
         if not ocd_id:
-            ocd_id = ocd_template.format("state", state_abbr, district_type, district_id)
+            ocd_id = ocd_template.format(
+                "state", state_abbr, district_type, district_id
+            )
 
         district = os_state_meta.lookup_district(ocd_id)
         district_name = district.name
