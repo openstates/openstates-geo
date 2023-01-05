@@ -5,7 +5,13 @@ import os
 import zipfile
 import requests
 import shutil
-from utils import JURISDICTION_NAMES, find_jurisdiction, ROOTDIR, setup_source, load_settings
+from utils import (
+    JURISDICTION_NAMES,
+    find_jurisdiction,
+    ROOTDIR,
+    setup_source,
+    load_settings,
+)
 
 
 def download_from_tiger(jurisdiction, year):
