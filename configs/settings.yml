@@ -10,3 +10,6 @@ MTFCC_MAPPING:
   G5200: cd
   G5210: sldu
   G5220: sldl
+
+ARP_DIST_MAPPING:
+  Leg_Upper: sldu
