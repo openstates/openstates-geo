@@ -2,7 +2,7 @@ name: Nebraska
 id-mappings:
   sldu:
     os-id-prefix: "ocd-division/country:us/state:ne/sldu:"
-    sld-match: 'sldu-310([\d+])'
+    sld-match: 'sldu-310([\d]+)'
 shapefile_urls:
   upper: https://thearp.org/documents/814/NE_Upper_Enacted_09302021_GBquMi7.zip
   congress: https://thearp.org/documents/809/NE_Congress_Enacted_09302021_gADfJ09.zip

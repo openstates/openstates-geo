@@ -7,7 +7,7 @@ shapefile_urls:
 id-mappings:
   sldu:
     os-id-prefix: "ocd-division/country:us/state:nh/sldu:"
-    sld-match: 'sldu-330([\d+])'
+    sld-match: 'sldu-330([\d]+)'
   custom:
     - os-id: "ocd-division/country:us/state:nh/sldl:belknap_1"
       sld-id: sldl-33001

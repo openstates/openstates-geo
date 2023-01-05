@@ -10,4 +10,4 @@ id-mappings:
     match-type: str
   sldu:
     os-id-prefix: "ocd-division/country:us/state:mn/sldu:"
-    sld-match: 'sldu-270([\d+])'
+    sld-match: 'sldu-270([\d]+)'

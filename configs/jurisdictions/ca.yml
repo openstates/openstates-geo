@@ -1,5 +1,5 @@
 name: California
-# use_tiger: True
+use_tiger: True
 shapefile_urls:
   upper: https://thearp.org/documents/625/CA_SD_Final_12262021.zip
   lower: https://thearp.org/documents/12510/CA_LD_Enacted_Technical_Changes.zip
@@ -7,7 +7,7 @@ shapefile_urls:
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ca/sldl:"
-    sld-match: 'sldl-060([\d+])'
+    sld-match: 'sldl-060([\d]+)'
   sldu:
     os-id-prefix: "ocd-division/country:us/state:ca/sldu:"
-    sld-match: 'sldu-060([\d+])'
+    sld-match: 'sldu-060([\d]+)'

@@ -18,6 +18,7 @@ def _tiger_geoid(geojson, settings, geojson_path):
     Process a GeoJSON file sent from TIGER.
     """
     for feature in geojson["features"]:
+        print(f"Processing {feature['properties']}")
         mtfcc = feature["properties"].get("MTFCC")
         geoid = feature["properties"].get("GEOID")
         # some files have weird additional ids all made of Zs. Skip them.
@@ -44,6 +45,7 @@ def _tiger_geoid(geojson, settings, geojson_path):
         custom = mappings["id-mappings"].get("custom", [])
         mapping_type = mappings["id-mappings"][district_type]
         ocd_id = None
+        dist_id = None
         for mapping in custom:
             if mapping.get("sld-id", "") == geoid:
                 ocd_id = mapping["os-id"]
@@ -66,7 +68,7 @@ def _tiger_geoid(geojson, settings, geojson_path):
         else:
             district = state_meta.lookup_district(ocd_id)
             if not district:
-                raise ValueError(f"no {ocd_id} {district_type}")
+                raise ValueError(f"no {ocd_id} {district_type} {dist_id}")
             district_name = district.name
 
         # relying on copy-by-reference to update the actual parent object

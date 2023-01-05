@@ -6,7 +6,7 @@ shapefile_urls:
 id-mappings:
   sldl:
     os-id-prefix: "ocd-division/country:us/state:ut/sldl:"
-    sld-match: 'sldl-490([\d+])'
+    sld-match: 'sldl-490([\d]+)'
   sldu:
     os-id-prefix: "ocd-division/country:us/state:ut/sldu:"
-    sld-match: 'sldu-490([\d+])'
+    sld-match: 'sldu-490([\d]+)'
