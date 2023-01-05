@@ -58,16 +58,16 @@ def _tiger_geoid(geojson, settings, geojson_path):
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
             """
-            No idea why this is here
+            00 and 98 correlate to "at-large" districts
             """
             if cd_num in ("00", "98"):
                 cd_num = "AL"
             district_name = f"{state.upper()}-{cd_num}"
         else:
             district = state_meta.lookup_district(ocd_id)
-            district_name = district.name
             if not district:
                 raise ValueError(f"no {ocd_id} {district_type}")
+            district_name = district.name
 
         # relying on copy-by-reference to update the actual parent object
         feature["properties"] = {
@@ -90,29 +90,61 @@ def _arp_geoid(geojson, settings, geojson_path):
     """
     convert data from the ARP
     """
-    ocd_template = "ocd-division/country:us/{}:{}/{}:{}"
+    ocd_template = "ocd-division/country:us/state:{}/{}:{}"
     for feature in geojson["features"]:
-        print(feature["properties"])
-        us_state = us.states.lookup(feature["properties"]["STA"])
+        print(f"Processing: {feature['properties']}")
+        """
+        Keys can come in all caps _or_ all lowercase
+        handle both posiblities
+        """
+        try:
+            state_id = feature["properties"]["STA"]
+        except Exception:
+            state_id = feature["properties"]["sta"]
+        try:
+            type_abbr = feature["properties"]["TYPE_ABB"]
+        except Exception:
+            type_abbr = feature["properties"]["type_abb"]
+        try:
+            district_id = feature["properties"]["LABEL"]
+        except Exception:
+            district_id = feature["properties"]["label"]
+        try:
+            district_id = str(int(district_id))
+        except Exception:
+            pass
+        us_state = us.states.lookup(state_id)
         state_abbr = us_state.abbr.lower()
         os_state_meta = metadata.lookup(abbr=state_abbr)
-        district_type = settings["ARP_DIST_MAPPING"][feature["properties"]["TYPE_ABB"]]
+        district_type = settings["ARP_DIST_MAPPING"][type_abbr]
         mappings = settings["jurisdictions"][us_state.name]["id-mappings"]
-        district_id = feature["properties"]["DISTRICT"]
         ocd_id = None
         for mapping in mappings.get("custom", []):
             if mapping.get("arp-id", "") == district_id:
                 ocd_id = mapping["os-id"]
                 break
         if not ocd_id:
-            ocd_id = ocd_template.format(
-                "state", state_abbr, district_type, district_id
-            )
+            if district_type == "cd" and district_id == "AL":
+                ocd_id = ocd_template.format(
+                    state_abbr, district_type, "at-large"
+                ).lower()
+            else:
+                ocd_id = ocd_template.format(
+                    state_abbr, district_type, district_id
+                ).lower()
 
-        district = os_state_meta.lookup_district(ocd_id)
-        district_name = district.name
-        if not district:
-            raise ValueError(f"no {ocd_id} {district_type}")
+        # check for congressional district, formatting is slightly different
+        if district_type == "cd":
+            # pad a leading 0 for initial districts
+            if len(district_id) < 2:
+                district_id = f"0{district_id}"
+            district_name = f"{state_abbr.upper()}-{district_id}"
+        else:
+            district = os_state_meta.lookup_district(ocd_id)
+            if not district:
+                print(f"State meta: {os_state_meta}")
+                raise ValueError(f"no {ocd_id} {district_type}")
+            district_name = district.name
 
         feature["properties"] = {
             "ocdid": ocd_id,
@@ -120,6 +152,7 @@ def _arp_geoid(geojson, settings, geojson_path):
             "state": state_abbr,
             "name": district_name,
         }
+        print(f"Result: {feature['properties']}")
     output_filename = f"data/geojson/{state_abbr}-{district_type}.geojson"
     print(f"{geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
@@ -154,7 +187,6 @@ def merge_ids(geojson_path: str, meta_file: str, settings: dict):
             for geo_feat, meta_feat in zip(geojson["features"], metajson["features"]):
                 geo_feat["properties"] = meta_feat["properties"]
         _arp_geoid(geojson, settings, geojson_path)
-        exit(1)
 
 
 if __name__ == "__main__":

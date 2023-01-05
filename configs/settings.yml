@@ -13,3 +13,5 @@ MTFCC_MAPPING:
 
 ARP_DIST_MAPPING:
   Leg_Upper: sldu
+  Leg_Lower: sldl
+  US_Cong: cd
