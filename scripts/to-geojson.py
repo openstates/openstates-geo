@@ -4,6 +4,7 @@ import glob
 import json
 import openstates.metadata as metadata
 import os
+import re
 import subprocess
 import sys
 import us
@@ -11,56 +12,44 @@ import yaml
 
 from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 
-SKIPPED_GEOIDS = {
-    "cd-6098": "American Samoa",
-    "cd-6998": "Northern Mariana Islands",
-    "cd-6698": "Guam",
-    "cd-7898": "Virgin Islands",
-}
 
-
-MTFCC_MAPPING = {
-    "G5200": "cd",
-    "G5210": "sldu",
-    "G5220": "sldl",
-}
-
-
-def _load_id_mappings(path: str):
-    with open(path, "r") as f_in:
-        all_divs = yaml.safe_load(f_in.read())
-    return all_divs
-
-
-def merge_ids(geojson_path):
-    with open(geojson_path, "r") as geojson_file:
-        geojson = json.load(geojson_file)
-
+def _tiger_geoid(geojson, settings, geojson_path):
     for feature in geojson["features"]:
-        district_type = MTFCC_MAPPING[feature["properties"]["MTFCC"]]
+        mtfcc = feature["properties"].get("MTFCC")
+        geoid = feature["properties"].get("GEOID")
+        district_type = settings["MTFCC_MAPPING"][mtfcc]
 
-        # Identify the OCD ID by making a lookup against the CSV files
-        # The OCD ID is the cannonical identifier of an area on
-        # the Open States platform
-        geoid = f"{district_type}-{feature['properties']['geoid']}"
+        """
+        Identify the OCD ID by making a lookup against the CSV files
+        The OCD ID is the cannonical identifier of an area on
+        the Open States platform
+        """
+        geoid = f"{district_type}-{geoid}"
+        if geoid in settings["SKIPPED_GEOIDS"]:
+            return
 
-        if geoid in SKIPPED_GEOIDS:
-            continue
-
-        # for row in ocd_ids:
-        #     if row["census_geoid"] == geoid:
-        #         ocd_id = row["id"]
-        #         break
-        # else:
-        #     print(feature["properties"])
-        #     raise AssertionError(f"Could not find OCD ID for GEOID {geoid}")
-
-        # Although OCD IDs contain the state postal code, parsing
-        # an ID to determine structured data is bad practice,
-        # so add a standalone state postal abbreviation property too
         state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
+        state_name = us.states.lookup(feature["properties"]["STATEFP"]).name
         state_meta = metadata.lookup(abbr=state)
-        ocd_id = 1
+
+        """
+        So we first get our mappings for the current jurisdiction
+        Then we compare mappings.
+        Custom mappings must come first, or we may end up with in-accurate
+        associations.
+        And we should only check regex matching if custom mappings fail.
+        """
+        mappings = settings["jurisdictions"][state_name]
+        custom = mappings.get("custom", [])
+        mapping_type = mappings[district_type]
+        ocd_id = None
+        for mapping in custom:
+            if mapping.get("sld-id", "") == geoid:
+                ocd_id = mapping["os-id"]
+                break
+        if not ocd_id:
+            dist_id = re.search(mapping_type["sld-match"], geoid)
+            ocd_id = f"{mapping['os-id-prefix']}{dist_id}"
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -90,15 +79,40 @@ def merge_ids(geojson_path):
         json.dump(geojson, geojson_file)
 
 
+def merge_ids(geojson_path: str, meta_file: str, settings: dict):
+    print(f"Converting IDs for {geojson_path}...")
+    with open(geojson_path, "r") as f:
+        geojson = json.load(f)
+    prefix = geojson_path.rsplit(".", 1)[0]
+    meta_path = f"{prefix}_meta.geojson"
+    metajson = None
+    if os.path.exists(meta_path):
+        with open(meta_path, "r") as f:
+            metajson = json.load(f)
+    elif os.path.exists(meta_path.lower()):
+        with open(meta_path.lower(), "r") as f:
+            metajson = json.load(f)
+
+    """
+    First, check for TIGER-style setup
+    """
+    mtfcc = geojson["features"][0]["properties"].get("MTFCC", None)
+    geoid = geojson["features"][0]["properties"].get("GEOID", None)
+    if mtfcc and geoid:
+        _tiger_geoid(geojson, settings, geojson_path)
+        exit(1)
+    else:
+        if metajson and not geojson["features"][0]["properties"]:
+            for geo_feat, meta_feat in zip(geojson["features"], metajson["features"]):
+                geo_feat["properties"] = meta_feat["properties"]
+
+
 if __name__ == "__main__":
     setup_source()
     SETTINGS = load_settings(f"{ROOTDIR}/configs")
-    # mappings = _load_id_mappings(f"{ROOTDIR}/id-mappings.yml")
 
     if len(sys.argv) == 1:
-        files = sorted(
-            glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
-        )
+        files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
     else:
         files = sys.argv[1:]
 
@@ -106,7 +120,8 @@ if __name__ == "__main__":
 
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
-            print(f"{newfilename} already exists, skipping")
+            # print(f"{newfilename} already exists, skipping")
+            pass
         else:
             print(f"{file} => {newfilename}")
             subprocess.run(
@@ -132,7 +147,8 @@ if __name__ == "__main__":
         new_meta_lower = new_meta.lower()
         if os.path.exists(meta_file):
             if os.path.exists(new_meta):
-                print(f"{new_meta} already exists, skipping")
+                # print(f"{new_meta} already exists, skipping")
+                pass
             else:
                 print(f"{meta_file} => {new_meta}")
                 subprocess.run(
@@ -148,8 +164,11 @@ if __name__ == "__main__":
                     check=True,
                 )
         elif os.path.exists(meta_file_lower):
+            meta_file = meta_file_lower
+            new_meta = new_meta_lower
             if os.path.exists(new_meta_lower):
-                print(f"{new_meta_lower} already exists, skipping")
+                # print(f"{new_meta_lower} already exists, skipping")
+                pass
             else:
                 print(f"{meta_file_lower} => {new_meta_lower}")
                 subprocess.run(
@@ -164,4 +183,4 @@ if __name__ == "__main__":
                     ],
                     check=True,
                 )
-        # merge_ids(newfilename)
+        merge_ids(newfilename, new_meta, SETTINGS)
