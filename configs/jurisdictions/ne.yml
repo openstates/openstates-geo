@@ -1,6 +1,7 @@
 name: Nebraska
 id-mappings:
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:ne/sldu:"
     sld-match: 'sldu-310([\d]+)'
 shapefile_urls:

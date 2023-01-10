@@ -16,8 +16,8 @@ from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 def merge_ids(geojson_path: str, settings: dict):
     folder = geojson_path.split("/")[-2]
     state, district_type = folder.split("_")[:2]
-    if state == "ma":
-        print("Skipping MA for now")
+    if state in ["ma", "vt"]:
+        print("Skipping MA and VT for now")
         return
     state_meta = metadata.lookup(abbr=state)
     mapping_key = settings["jurisdictions"][state_meta.name]["id-mappings"][
