@@ -10,4 +10,4 @@ id-mappings:
   sldu:
     os-id-prefix: "ocd-division/country:us/state:ak/sldu:"
     sld-match: 'sldu-0200([A-Z])'
-    match-type: str
+    match_type: str

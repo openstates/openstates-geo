@@ -1037,14 +1037,14 @@ et-xmlfile = "*"
 
 [[package]]
 name = "openstates"
-version = "6.13.3"
+version = "6.13.8"
 description = "core infrastructure for the openstates project"
 category = "main"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "openstates-6.13.3-py3-none-any.whl", hash = "sha256:881af67c649bf254c46b61df18b2dbf4da4a74749995ae634f7892b28def2abe"},
-    {file = "openstates-6.13.3.tar.gz", hash = "sha256:d211fa3241417a1a6448c6bc4ffae1b496a2c3515049638a606cc547385647a3"},
+    {file = "openstates-6.13.8-py3-none-any.whl", hash = "sha256:35485ce3566fd887476391bcdebf3c6aed34ae4866cb5eb6252e208f3420912c"},
+    {file = "openstates-6.13.8.tar.gz", hash = "sha256:cd23cb74196353195e52a17ced648f34e4c16fbbbfdfd3e2a844b8e89fe48f22"},
 ]
 
 [package.dependencies]

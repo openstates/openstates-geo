@@ -1,5 +1,4 @@
 name: United States
-use_tiger: True
 id-mappings:
   custom:
     - os-id: "ocd-division/country:us/state:ak/cd:at-large"
