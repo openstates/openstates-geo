@@ -6,8 +6,10 @@ shapefile_urls:
   lower: https://thearp.org/documents/856/NY_SD_Enacted5212022_adjustments.zip
 id-mappings:
   sldl:
+    key: ID
     os-id-prefix: "ocd-division/country:us/state:ny/sldl:"
     sld-match: 'sldl-36([\d]+)'
   sldu:
+    key: District
     os-id-prefix: "ocd-division/country:us/state:ny/sldu:"
     sld-match: 'sldu-360([\d]+)'

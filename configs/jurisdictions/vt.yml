@@ -4,6 +4,12 @@ shapefile_urls:
   lower: https://thearp.org/documents/971/VT_LD_Enacted04062022.zip
   congress: https://thearp.org/documents/968/VT_US_Cong_2018.zip
 id-mappings:
+  sldl:
+    os-id-prefix: "ocd-division/country:us/state:vt/sldl:"
+    key: DISTRICT
+  sldu:
+    os-id-prefix: "ocd-division/country:us/state:vt/sldu:"
+    key: DISTRICT
   custom:
     - os-id: "ocd-division/country:us/state:vt/sldu:addison"
       sld-id: sldu-50ADD

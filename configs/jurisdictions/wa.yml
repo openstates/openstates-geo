@@ -1,9 +1,11 @@
 name: Washington
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wa/sldl:"
     sld-match: 'sldl-530([\d]+)'
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wa/sldu:"
     sld-match: 'sldu-530([\d]+)'
 shapefile_urls:

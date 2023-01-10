@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/1013/WY_US_Cong_2018.zip
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wy/sldl:"
     sld-match: 'sldl-560([\d]+)'
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wy/sldu:"
     sld-match: 'sldu-560([\d]+)'

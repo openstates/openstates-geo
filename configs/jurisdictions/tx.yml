@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/950/TX_CD_10252021_jFiNCxj.zip
 id-mappings:
   sldl:
+    key: District
     os-id-prefix: "ocd-division/country:us/state:tx/sldl:"
     sld-match: 'sldl-48([\d]+)'
   sldu:
+    key: District
     os-id-prefix: "ocd-division/country:us/state:tx/sldu:"
     sld-match: 'sldu-480([\d]+)'

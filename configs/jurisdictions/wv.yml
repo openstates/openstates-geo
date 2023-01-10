@@ -5,9 +5,11 @@ shapefile_urls:
   congress: https://thearp.org/documents/995/WV_CD_Enacted10222021_7eHHVGj.zip
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wv/sldl:"
     sld-match: 'sldl-540([\d]+)'
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:wv/sldu:"
     sld-match: 'sldu-540([\d]+)'
   custom:

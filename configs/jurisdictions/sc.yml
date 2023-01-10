@@ -1,9 +1,11 @@
 name: South Carolina
 id-mappings:
   sldl:
+    key: ID
     os-id-prefix: "ocd-division/country:us/state:sc/sldl:"
     sld-match: 'sldl-45([\d]+)'
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:sc/sldu:"
     sld-match: 'sldu-450([\d]+)'
 shapefile_urls:

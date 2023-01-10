@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/889/OR_CD_Enacted09272021_DoB1jYB.zip
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:or/sldl:"
     sld-match: 'sldl-410([\d]+)'
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:or/sldu:"
     sld-match: 'sldu-410([\d]+)'

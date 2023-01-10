@@ -20,7 +20,9 @@ def merge_ids(geojson_path: str, settings: dict):
         print("Skipping MA for now")
         return
     state_meta = metadata.lookup(abbr=state)
-    mapping_key = settings["jurisdictions"][state_meta.name]["id-mappings"][district_type]["key"]
+    mapping_key = settings["jurisdictions"][state_meta.name]["id-mappings"][
+        district_type
+    ]["key"]
     output_filename = f"data/geojson/{state}-{district_type}.geojson"
     if os.path.exists(output_filename):
         print(f"Final geojson for {state},{district_type} already exists. Skipping")
@@ -37,8 +39,8 @@ def merge_ids(geojson_path: str, settings: dict):
             continue
         if district_type == "sldu" and state in ["md", "mo"]:
             district_id = district_id.lstrip("SD").lstrip("0")
-        if state == "nv":
-            district_id = str(int(district_id))
+        if state in ["nv", "ut"]:
+            district_id = str(int(float(district_id)))
         print(f"{district_id=}")
 
         # geoid code has to be FIPS + 3 character code, so we pad with 0
