@@ -1,9 +1,11 @@
 name: Georgia
 id-mappings:
   sldl:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:ga/sldl:"
     sld-match: 'sldl-13([\d]+)'
   sldu:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:ga/sldu:"
     sld-match: 'sldu-130([\d]+)'
 shapefile_urls:

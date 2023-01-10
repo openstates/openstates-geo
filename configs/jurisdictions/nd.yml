@@ -4,8 +4,10 @@ shapefile_urls:
   lower: https://thearp.org/documents/865/ND_LD_11122021.zip
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:nd/sldl:"
     sld-match: 'sldl-380([\d]+)'
   sldu:
+    key: SENATE
     os-id-prefix: "ocd-division/country:us/state:nd/sldu:"
     sld-match: 'sldu-380([\d]+)'

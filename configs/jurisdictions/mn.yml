@@ -5,9 +5,11 @@ shapefile_urls:
   congress: https://thearp.org/documents/773/MN_CD_Enacted_06022022_Technical_Changes.zip
 id-mappings:
   sldl:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:mn/sldl:"
     sld-match: 'sldl-27([\w])'
     match-type: str
   sldu:
+    key: DISTRICT
     os-id-prefix: "ocd-division/country:us/state:mn/sldu:"
     sld-match: 'sldu-270([\d]+)'

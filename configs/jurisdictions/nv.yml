@@ -5,9 +5,11 @@ shapefile_urls:
   congress: https://thearp.org/documents/817/NV_CD_Amended_Enacted11162021.zip
 id-mappings:
   sldl:
+    key: DISTRICTNO
     os-id-prefix: "ocd-division/country:us/state:nv/sldl:"
     sld-match: 'sldl-320([\d]+)'
   sldu:
+    key: DISTRICTNO
     os-id-prefix: "ocd-division/country:us/state:nv/sldu:"
     sld-match: 'sldu-320([\d]+)'
   custom:

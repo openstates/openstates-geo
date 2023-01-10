@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/655/FL_CD_Enacted04222022_Florida.zip
 id-mappings:
   sldl:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:fl/sldl:"
     sld-match: 'sldl-12([\d]+)'
   sldu:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:fl/sldu:"
     sld-match: 'sldu-120([\d]+)'

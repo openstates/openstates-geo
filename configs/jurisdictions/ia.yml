@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/709/IA_CD_Enacted11042021.zip
 id-mappings:
   sldl:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:ia/sldl:"
     sld-match: 'sldl-19([\d]+)'
   sldu:
+    key: "DISTRICT"
     os-id-prefix: "ocd-division/country:us/state:ia/sldu:"
     sld-match: 'sldu-190([\d]+)'

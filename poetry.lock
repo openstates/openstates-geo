@@ -1068,7 +1068,7 @@ us = "^2.0.2"
 type = "git"
 url = "https://github.com/johnseekins/openstates-core.git"
 reference = "additional-metadata"
-resolved_reference = "105136f50faadc1a742aab750c1d5697ab30cf03"
+resolved_reference = "417d76f207528bdf4a52749bd69f740d6358a2d9"
 
 [[package]]
 name = "parso"

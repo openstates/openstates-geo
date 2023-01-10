@@ -5,8 +5,10 @@ shapefile_urls:
   congress: https://thearp.org/documents/12511/CO_CD_Enacted_Technical_Changes.zip
 id-mappings:
   sldl:
+    key: "District"
     os-id-prefix: "ocd-division/country:us/state:co/sldl:"
     sld-match: 'sldl-080([\d]+)'
   sldu:
+    key: "District"
     os-id-prefix: "ocd-division/country:us/state:co/sldu:"
     sld-match: 'sldu-080([\d]+)'
