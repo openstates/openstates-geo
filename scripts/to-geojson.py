@@ -12,26 +12,34 @@ import yaml
 
 from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 
-POSSIBLE_KEYS = ["DISTRICT", "SEN_DIST"]
 
 def merge_ids(geojson_path: str, settings: dict):
+    folder = geojson_path.split("/")[-2]
+    state, district_type = folder.split("_")[:2]
+    if state == "ma":
+        print("Skipping MA for now")
+        return
+    state_meta = metadata.lookup(abbr=state)
+    mapping_key = settings["jurisdictions"][state_meta.name]["id-mappings"][district_type]["key"]
+    output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    if os.path.exists(output_filename):
+        print("Final geojson for {state},{district_type} already exists. Skipping")
+        return
     print(f"Converting IDs for {geojson_path}...")
     with open(geojson_path, "r") as f:
         geojson = json.load(f)
     print(f"{len(geojson['features'])} features in {geojson_path}")
-    folder = geojson_path.split("/")[-2]
-    state, district_type = folder.split("_")[:2]
-    state_meta = metadata.lookup(abbr=state)
-    state_name = state_meta.name
-    state_fips = state_meta.fips
     for feature in geojson["features"]:
         print(f"Processing {feature['properties']}")
-        for key in POSSIBLE_KEYS:
-            district_id = feature["properties"].get(key, None)
-            if district_id:
-                break
-        district_padding = "0" * (3 - len(district_id))
-        geoid = f"{district_type}-{state_fips}{district_padding}{district_id}"
+        district_id = feature["properties"][mapping_key]
+        if not district_id:
+            print(f"District with empty ID: {feature['properties']}. Skipping.")
+            continue
+        print(f"{district_id=}")
+
+        district_padding = "0" * (3 - len(str(district_id)))
+        geoid = f"{district_type}-{state_meta.fips}{district_padding}{district_id}"
+        print(f"Processing {district_id=}, {geoid}")
         if geoid in settings["SKIPPED_GEOIDS"]:
             continue
 
@@ -42,21 +50,16 @@ def merge_ids(geojson_path: str, settings: dict):
         associations.
         And we should only check regex matching if custom mappings fail.
         """
-        mappings = settings["jurisdictions"][state_name]
+        mappings = settings["jurisdictions"][state_meta.name]
         custom = mappings["id-mappings"].get("custom", [])
         mapping_type = mappings["id-mappings"][district_type]
         ocd_id = None
-        dist_id = None
         for mapping in custom:
             if mapping.get("sld-id", "") == geoid:
                 ocd_id = mapping["os-id"]
                 break
         if not ocd_id:
-            dist_id = re.search(mapping_type["sld-match"], geoid).groups()[0]
-            # cleanest way to strip leading 0s
-            if mapping_type.get("match_type", "int") == "int":
-                dist_id = int(dist_id)
-            ocd_id = f"{mapping_type['os-id-prefix']}{dist_id}".lower()
+            ocd_id = f"{mapping_type['os-id-prefix']}{district_id.lstrip('0')}".lower()
 
         if district_type == "cd":
             cd_num = feature["properties"]["CD116FP"]
@@ -69,7 +72,7 @@ def merge_ids(geojson_path: str, settings: dict):
         else:
             district = state_meta.lookup_district(ocd_id)
             if not district:
-                raise ValueError(f"no {ocd_id} {district_type} {dist_id}")
+                raise ValueError(f"no {ocd_id} {district_type} {district_id}")
             district_name = district.name
 
         # relying on copy-by-reference to update the actual parent object
