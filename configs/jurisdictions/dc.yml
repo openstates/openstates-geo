@@ -6,4 +6,4 @@ id-mappings:
     sld-match: 'sldu-1100([\d])'
   cd:
     key: SLDUST
-    os-id-prefix: "ocd-division/country:us/district:dc/cd:"
+    os-id-prefix: "ocd-division/country:us/district:dc"

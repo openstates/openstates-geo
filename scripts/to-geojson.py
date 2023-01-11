@@ -105,7 +105,6 @@ def process_territories(cd_file: str, settings: dict):
     """
     print("Processing TIGER data for territory districts")
     territories = [t for t in us.TERRITORIES + [us.states.DC]]
-    territory_fips = [t.fips for t in territories]
     with open(cd_file, "r") as f:
         rawgeodata = json.load(f)
     territory_geo = {k: v for k, v in rawgeodata.items() if k not in ["features"]}
@@ -119,13 +118,14 @@ def process_territories(cd_file: str, settings: dict):
                 break
         else:
             continue
-        print(f"{district['properties']=}, {territory=}")
         try:
-            territory_meta = metadata.lookup(abbr=territory.abbr)
-        except Exception as e:
+            _ = metadata.lookup(abbr=territory.abbr)
+        except Exception:
             print(f"{territory.name} not defined in OpenStates metadata. Skipping")
             continue
         geoid = district["properties"]["GEOID"]
+        if geoid.endswith("98") or geoid.endswith("99"):
+            geoid = "at-large"
         district_padding = "0" * (3 - len(geoid))
         district_id = f"cd-{district_padding}{geoid}"
         mappings = settings["jurisdictions"][territory.name]
@@ -139,16 +139,12 @@ def process_territories(cd_file: str, settings: dict):
         if not ocd_id:
             prefix = mapping_type.get("os-id-prefix", None)
             if prefix:
-                ocd_id = f"{prefix}{geoid}".lower()
+                ocd_id = prefix.lower()
             else:
                 prefix = mappings["os-id-prefix"]
-                ocd_id = f"{prefix}/{district_type}:{geoid}".lower()
+                ocd_id = prefix.lower()
 
-        if (
-            district_id.lower().endswith("at-large")
-            or geoid.endswith("98")
-            or geoid.endswith("99")
-        ):
+        if district_id.lower().endswith("at-large"):
             district_name = f"{territory.abbr.upper()}-AL"
         else:
             district_name = f"{territory.abbr.upper()}-{geoid}"
@@ -159,11 +155,9 @@ def process_territories(cd_file: str, settings: dict):
             "state": territory.abbr,
             "name": district_name,
         }
-        print(f"{district['properties']=}")
-        exit(1)
         territory_geo["features"].append(district)
     output_filename = f"{ROOTDIR}/data/geojson/us-cd.geojson"
-    print(f"{cd_file} => {output_filename}")
+    print(f"{cd_file} (territories only) => {output_filename}")
     with open(output_filename, "w") as f:
         json.dump(territory_geo, f)
 

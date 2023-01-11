@@ -6,4 +6,7 @@ id-mappings:
     sld-match: 'sldl-720([\d+])'
   sldu:
     key: SLDUST
+  cd:
+    key: SLDUST
+    sld-match: 'sldl-720([\d+])'
     sld-match: 'sldu-7200([\d])'
