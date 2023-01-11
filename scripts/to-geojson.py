@@ -42,10 +42,10 @@ def merge_ids(geojson_path: str, settings: dict):
             district_id = str(int(float(district_id)))
         print(f"{district_id=}")
         if not district_id or district_id == "None":
-            print(f"Empty district ID? Skipping")
+            print("Empty district ID? Skipping")
             continue
         if district_id == "ZZZ":
-            print(f"Bad TIGER district ID. Skipping")
+            print("Bad TIGER district ID. Skipping")
             continue
 
         # geoid code has to be FIPS + 3 character code, so we pad with 0
