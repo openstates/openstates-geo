@@ -2,5 +2,6 @@ name: "District of Columbia"
 use_tiger: True
 id-mappings:
   sldu:
+    key: SLDUST
     os-id-prefix: "ocd-division/country:us/district:dc/ward:"
     sld-match: 'sldu-1100([\d])'

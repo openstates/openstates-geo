@@ -1037,7 +1037,7 @@ et-xmlfile = "*"
 
 [[package]]
 name = "openstates"
-version = "6.13.8"
+version = "6.13.9"
 description = "core infrastructure for the openstates project"
 category = "main"
 optional = false
@@ -1068,7 +1068,7 @@ us = "^2.0.2"
 type = "git"
 url = "https://github.com/johnseekins/openstates-core.git"
 reference = "additional-metadata"
-resolved_reference = "321641ab5d34de172083ea014f71578053c11494"
+resolved_reference = "1500ac8167f7bcdfbe9cf3e61a210ded47cd87a1"
 
 [[package]]
 name = "parso"
