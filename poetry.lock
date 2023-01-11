@@ -1037,38 +1037,34 @@ et-xmlfile = "*"
 
 [[package]]
 name = "openstates"
-version = "6.13.9"
+version = "6.14.0"
 description = "core infrastructure for the openstates project"
 category = "main"
 optional = false
-python-versions = "^3.9"
-files = []
-develop = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "openstates-6.14.0-py3-none-any.whl", hash = "sha256:10806bafa4c89ca00754e32651e6992a181fbb73ccb370ddfde8b2bbf425fb79"},
+    {file = "openstates-6.14.0.tar.gz", hash = "sha256:fbbd792f91764dcc604567dea1f6adc1798b1dcde4bcca51b26030ea9783ae50"},
+]
 
 [package.dependencies]
-attrs = "^20.2.0"
-boto3 = "^1.17.79"
-chardet = "^3.0"
-click = "^8.0"
-dj_database_url = "^0.5.0"
+attrs = ">=20.2.0,<21.0.0"
+boto3 = ">=1.17.79,<2.0.0"
+chardet = ">=3.0,<4.0"
+click = ">=8.0,<9.0"
+dj_database_url = ">=0.5.0,<0.6.0"
 Django = "3.2.14"
-jsonschema = "^3.2.0"
-psycopg2-binary = "^2.8.4"
-pydantic = "^1.8.2"
-PyJWT = "^2.5.0"
-pytz = "^2019.3"
-PyYAML = "^5.3.1"
-s3fs = "^2022.10.0"
-scrapelib = "^2.0.7"
+jsonschema = ">=3.2.0,<4.0.0"
+psycopg2-binary = ">=2.8.4,<3.0.0"
+pydantic = ">=1.8.2,<2.0.0"
+PyJWT = ">=2.5.0,<3.0.0"
+pytz = ">=2019.3,<2020.0"
+PyYAML = ">=5.3.1,<6.0.0"
+s3fs = ">=2022.10.0,<2023.0.0"
+scrapelib = ">=2.0.7,<3.0.0"
 spatula = ">=0.8.9,<1.0"
-textract = "^1.6"
-us = "^2.0.2"
-
-[package.source]
-type = "git"
-url = "https://github.com/johnseekins/openstates-core.git"
-reference = "additional-metadata"
-resolved_reference = "1f3cbb3413f0f90413cbc3d8b9f04d8b828da1f8"
+textract = ">=1.6,<2.0"
+us = ">=2.0.2,<3.0.0"
 
 [[package]]
 name = "parso"
@@ -2140,4 +2136,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "10f8c2928d5e502bf1914cf65b68ab22555beaac4909a5ee06d75928dcf040e9"
+content-hash = "0e75a0b4847703037fb94ffa76f38f13ba1bf9b53bda6b1c7b5aeb102b92826f"

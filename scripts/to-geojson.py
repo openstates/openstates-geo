@@ -32,16 +32,19 @@ def merge_ids(geojson_path: str, settings: dict):
         geojson = json.load(f)
     print(f"{len(geojson['features'])} features in {geojson_path}")
     for feature in geojson["features"]:
-        print(f"Processing {feature['properties']}")
         district_id = str(feature["properties"].get(mapping_key, None)).lstrip("0")
         if not district_id:
             print(f"District with empty ID: {feature['properties']}. Skipping.")
             continue
         if not district_id or district_id == "None":
             print("Empty district ID? Skipping")
+            print(f"{feature['properties']=}")
+            print(f"{district_id=}")
             continue
         if district_id == "ZZZ":
             print("Bad TIGER district ID. Skipping")
+            print(f"{feature['properties']=}")
+            print(f"{district_id=}")
             continue
 
         # geoid code has to be FIPS + 3 character code, so we pad with 0

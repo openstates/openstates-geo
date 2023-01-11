@@ -1,10 +1,12 @@
 name: Puerto Rico
-os-id-prefix: "ocd-division/country:us/territory:pr"
 id-mappings:
   sldl:
-    key: SLDUST
+    key: SLDLST
+    os-id-prefix: "ocd-division/country:us/territory:pr/sldl:"
     sld-match: 'sldl-720([\d+])'
   sldu:
+    os-id-prefix: "ocd-division/country:us/territory:pr/sldu:"
     key: SLDUST
   cd:
     key: SLDUST
+    os-id-prefix: "ocd-division/country:us/territory:pr"

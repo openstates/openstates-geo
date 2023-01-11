@@ -12,8 +12,7 @@ django = "^3.2.11"
 psycopg2-binary = "^2.9.2"
 dj-database-url = "^0.5.0"
 boto3 = "^1.12.40"
-# openstates = "^6.13.1"
-openstates = {git = "https://github.com/johnseekins/openstates-core.git", branch = "additional-metadata"}
+openstates = "^6.13.1"
 # use this until https://github.com/unitedstates/python-us/pull/68 is merged
 us-aidentified = "^3.0.2"
 
