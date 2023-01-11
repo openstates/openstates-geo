@@ -1,14 +1,11 @@
 name: Pennsylvania
-shapefile_urls:
-  upper: https://thearp.org/documents/911/PA_SD_Final_02042022.zip
-  lower: https://thearp.org/documents/908/PA_LD_Final_02042022.zip
-  congress: https://thearp.org/documents/905/PA_CD_enacted02232022.zip
+os-id-prefix: "ocd-division/country:us/state:pa"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:pa/sldl:"
     sld-match: 'sldl-42([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:pa/sldu:"
     sld-match: 'sldu-420([\d]+)'
+  cd:
+    key: DISTRICT

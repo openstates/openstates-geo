@@ -1,18 +1,15 @@
 name: Maryland
-shapefile_urls:
-  upper: https://thearp.org/documents/761/MD_SD_Enacted_01272022.zip
-  lower: https://thearp.org/documents/758/MD_LD_Enacted_01272022.zip
-  congress: https://thearp.org/documents/755/MD_CD_Enacted04042022.zip
+os-id-prefix: "ocd-division/country:us/state:md"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:md/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-24([\w])'
     match-type: str
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:md/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-240([\d]+)'
+  cd:
+    key: DISTRICT
   custom:
     - os-id: "ocd-division/country:us/state:md/sldl:2c"
     - os-id: "ocd-division/country:us/state:md/sldl:30"

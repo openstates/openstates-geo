@@ -1,14 +1,11 @@
 name: Arkansas
-shapefile_urls:
-  upper: https://thearp.org/documents/616/AR_SD_Enacted12292021.zip
-  lower: https://thearp.org/documents/613/AR_LD_Enacted12292021.zip
-  congress: https://thearp.org/documents/610/AR_CD_Enacted01142022.zip
+os-id-prefix: "ocd-division/country:us/state:ar"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ar/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-05([\d]+)'
   sldu:
-    key: "district"
-    os-id-prefix: "ocd-division/country:us/state:ar/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-050([\d]+)'
+  cd:
+    key: DISTRICT

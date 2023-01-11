@@ -1,2 +1,7 @@
 name: Virgin Islands
-use_tiger: True
+os-id-prefix: "ocd-division/country:us/territory:vi"
+id-mappings:
+  sldl:
+    key: SLDUST
+  sldu:
+    key: SLDUST

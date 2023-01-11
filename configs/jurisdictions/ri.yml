@@ -1,14 +1,11 @@
 name: Rhode Island
-shapefile_urls:
-  upper: https://thearp.org/documents/920/RI_SD_Enacted02162022.zip
-  lower: https://thearp.org/documents/917/RI_LD_Enacted02162022.zip
-  congress: https://thearp.org/documents/914/RI_CD_Enacted02162022.zip
+os-id-prefix: "ocd-division/country:us/state:ri"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:ri/sldl:"
     sld-match: 'sldl-440([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:ri/sldu:"
     sld-match: 'sldu-440([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,14 +1,11 @@
 name: Alabama
-shapefile_urls:
-  upper: https://thearp.org/documents/589/AL_SD_Enacted11042021_NR3fNLk.zip
-  lower: https://thearp.org/documents/12508/AL_LD_Enacted_Technical_Changes.zip
-  congress: https://thearp.org/documents/583/AL_CD_Enacted11042021_QjvUMkL.zip
+os-id-prefix: "ocd-division/country:us/state:al"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:al/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-01([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:al/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-010([\d]+)'
+  cd:
+    key: DISTRICT

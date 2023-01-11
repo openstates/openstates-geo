@@ -1,15 +1,12 @@
 name: South Dakota
-shapefile_urls:
-  upper: https://thearp.org/documents/938/SD_SD_Enacted11102021.zip
-  lower: https://thearp.org/documents/935/SD_LD_Enacted11102021.zip
-  congress: https://thearp.org/documents/932/SD_US_Cong_2018.zip
+os-id-prefix: "ocd-division/country:us/state:sd"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:sd/sldl:"
     sld-match: 'sldl-46([\w])'
     match-type: str
   sldu:
-    key: SENATE
-    os-id-prefix: "ocd-division/country:us/state:sd/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-460([\d]+)'
+  cd:
+    key: DISTRICT

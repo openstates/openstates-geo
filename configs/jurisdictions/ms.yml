@@ -1,14 +1,11 @@
 name: Mississippi
-shapefile_urls:
-  upper: https://thearp.org/documents/788/MS_SD_Enacted03312022.zip
-  lower: https://thearp.org/documents/785/MS_LD_Enacted03312022.zip
-  congress: https://thearp.org/documents/782/MS_CD_01242022_Enacted.zip
+os-id-prefix: "ocd-division/country:us/state:ms"
 id-mappings:
   sldl:
-    key: Distnum
-    os-id-prefix: "ocd-division/country:us/state:ms/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-28([\d]+)'
   sldu:
-    key: Distnum
-    os-id-prefix: "ocd-division/country:us/state:ms/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-280([\d]+)'
+  cd:
+    key: DISTRICT

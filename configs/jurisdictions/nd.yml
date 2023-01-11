@@ -1,13 +1,11 @@
 name: North Dakota
-shapefile_urls:
-  upper: https://thearp.org/documents/868/ND_SD_11122021.zip
-  lower: https://thearp.org/documents/865/ND_LD_11122021.zip
+os-id-prefix: "ocd-division/country:us/state:nd"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:nd/sldl:"
     sld-match: 'sldl-380([\d]+)'
   sldu:
-    key: SENATE
-    os-id-prefix: "ocd-division/country:us/state:nd/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-380([\d]+)'
+  cd:
+    key: DISTRICT

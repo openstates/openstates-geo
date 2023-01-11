@@ -16,13 +16,14 @@ from utils import JURISDICTION_NAMES, ROOTDIR, setup_source, load_settings
 def merge_ids(geojson_path: str, settings: dict):
     folder = geojson_path.split("/")[-2]
     state, district_type = folder.split("_")[:2]
-    if state in ["usa"]:
-        return
+    if district_type == "cong":
+        district_type = "cd"
+    state = state.lower()
     state_meta = metadata.lookup(abbr=state)
     mapping_key = settings["jurisdictions"][state_meta.name]["id-mappings"][
         district_type
     ]["key"]
-    output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    output_filename = f"{ROOTDIR}/data/geojson/{state}-{district_type}.geojson"
     if os.path.exists(output_filename):
         print(f"Final geojson for {state},{district_type} already exists. Skipping")
         return
@@ -36,11 +37,6 @@ def merge_ids(geojson_path: str, settings: dict):
         if not district_id:
             print(f"District with empty ID: {feature['properties']}. Skipping.")
             continue
-        if district_type == "sldu" and state in ["md", "mo"]:
-            district_id = district_id.lstrip("SD").lstrip("0")
-        if state in ["nv", "ut"]:
-            district_id = str(int(float(district_id)))
-        print(f"{district_id=}")
         if not district_id or district_id == "None":
             print("Empty district ID? Skipping")
             continue
@@ -51,7 +47,6 @@ def merge_ids(geojson_path: str, settings: dict):
         # geoid code has to be FIPS + 3 character code, so we pad with 0
         district_padding = "0" * (3 - len(district_id))
         geoid = f"{district_type}-{state_meta.fips}{district_padding}{district_id}"
-        print(f"Processing {district_id=}, {geoid}")
         if geoid in settings["SKIPPED_GEOIDS"]:
             continue
 
@@ -71,16 +66,18 @@ def merge_ids(geojson_path: str, settings: dict):
                 ocd_id = mapping["os-id"]
                 break
         if not ocd_id:
-            ocd_id = f"{mapping_type['os-id-prefix']}{district_id}".lower()
+            prefix = mapping_type.get("os-id-prefix", None)
+            if not prefix:
+                prefix = mappings["os-id-prefix"]
+                ocd_id = f"{prefix}/{district_type}:{district_id}".lower()
+            else:
+                ocd_id = f"{prefix}{district_id}".lower()
 
         if district_type == "cd":
-            cd_num = feature["properties"]["CD116FP"]
-            """
-            00 and 98 correlate to "at-large" districts
-            """
-            if cd_num in ("00", "98"):
-                cd_num = "AL"
-            district_name = f"{state.upper()}-{cd_num}"
+            if district_id.lower() == "at-large":
+                district_name = f"{state.upper()}-AL"
+            else:
+                district_name = f"{state.upper()}-{district_id}"
         else:
             district = state_meta.lookup_district(ocd_id)
             if not district:
@@ -95,10 +92,7 @@ def merge_ids(geojson_path: str, settings: dict):
             "name": district_name,
         }
 
-    if district_type == "cd":
-        output_filename = f"data/geojson/us-{district_type}.geojson"
-    else:
-        output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    output_filename = f"{ROOTDIR}/data/geojson/{state}-{district_type}.geojson"
     print(f"{geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geojson, geojson_file)

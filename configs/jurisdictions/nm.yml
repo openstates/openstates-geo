@@ -1,14 +1,11 @@
 name: New Mexico
-shapefile_urls:
-  upper: https://thearp.org/documents/850/NM_SD_Enacted01062022_5fwsHFT.zip
-  lower: https://thearp.org/documents/847/NM_LD_Enacted12292021.zip
-  congress: https://thearp.org/documents/844/NM_CD_enacted_12172021.zip
+os-id-prefix: "ocd-division/country:us/state:nm"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:nm/sldl:"
     sld-match: 'sldl-350([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:nm/sldu:"
     sld-match: 'sldu-350([\d]+)'
+  cd:
+    key: DISTRICT

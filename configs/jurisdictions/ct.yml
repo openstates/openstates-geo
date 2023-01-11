@@ -1,14 +1,11 @@
 name: Connecticut
-shapefile_urls:
-  upper: https://thearp.org/documents/643/CT_SD_Enacted11232021.zip
-  lower: https://thearp.org/documents/640/CT_LD_Enacted11182021_lipOwwW.zip
-  congress: https://thearp.org/documents/637/CT_CD_Enacted02102022.zip
+os-id-prefix: "ocd-division/country:us/state:ct"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ct/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-09([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ct/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-090([\d]+)'
+  cd:
+    key: DISTRICT

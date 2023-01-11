@@ -1,14 +1,11 @@
 name: Montana
-shapefile_urls:
-  upper: https://thearp.org/documents/5145/MT_2014to2020_SU.zip
-  lower: https://thearp.org/documents/5186/MT_2014to2020_SL.zip
-  congress: https://thearp.org/documents/800/MT_CP12_110122021.zip
+os-id-prefix: "ocd-division/country:us/state:mt"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:mt/sldl:"
     sld-match: 'sldl-30([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:mt/sldu:"
     sld-match: 'sldu-300([\d]+)'
+  cd:
+    key: DISTRICT

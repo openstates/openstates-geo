@@ -1,2 +1,6 @@
 name: Northern Mariana Islands
-use_tiger: True
+id-mappings:
+  sldu:
+    key: SLDUST
+    os-id-prefix: "ocd-division/country:us/territory:mp/sldu:"
+    sld-match: 'sldu-1100([\d])'

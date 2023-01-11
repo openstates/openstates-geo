@@ -1,14 +1,11 @@
 name: Washington
+os-id-prefix: "ocd-division/country:us/state:wa"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:wa/sldl:"
     sld-match: 'sldl-530([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:wa/sldu:"
     sld-match: 'sldu-530([\d]+)'
-shapefile_urls:
-  upper: https://thearp.org/documents/992/WA_SD_Enacted02082022.zip
-  lower: https://thearp.org/documents/989/WA_LD_Enacted02082022.zip
-  congress: https://thearp.org/documents/986/WA_CD_Enacted02082022.zip
+  cd:
+    key: DISTRICT

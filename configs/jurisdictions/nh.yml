@@ -1,17 +1,13 @@
 name: New Hampshire
-shapefile_urls:
-  upper: https://thearp.org/documents/832/NH_SD_Enacted05062022.zip
-  lower: https://thearp.org/documents/829/NH_LD_Regular_Enacted03232022_NE3Ymrn.zip
-  floterial: https://thearp.org/documents/1024/NH_LD_Floterial_Enacted03232022_doxuB8L.zip
-  congress: https://thearp.org/documents/826/NH_CD_Enacted05312022.zip
+os-id-prefix: "ocd-division/country:us/state:nh"
 id-mappings:
   sldu:
-    key: Senate2022
-    os-id-prefix: "ocd-division/country:us/state:nh/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-330([\d]+)'
   sldl:
-    key: BaseHse22
-    os-id-prefix: "ocd-division/country:us/state:nh/sldl:"
+    key: DISTRICT
+  cd:
+    key: DISTRICT
   custom:
     - os-id: "ocd-division/country:us/state:nh/sldl:belknap_1"
       sld-id: sldl-33BE1
@@ -27,6 +23,8 @@ id-mappings:
       sld-id: sldl-33BE6
     - os-id: "ocd-division/country:us/state:nh/sldl:belknap_7"
       sld-id: sldl-33BE7
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_8"
+      sld-id: sldl-33BE8
     - os-id: "ocd-division/country:us/state:nh/sldl:carroll_1"
       sld-id: sldl-33CA1
     - os-id: "ocd-division/country:us/state:nh/sldl:carroll_2"
@@ -39,6 +37,10 @@ id-mappings:
       sld-id: sldl-33CA5
     - os-id: "ocd-division/country:us/state:nh/sldl:carroll_6"
       sld-id: sldl-33CA6
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_7"
+      sld-id: sldl-33CA7
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_8"
+      sld-id: sldl-33CA8
     - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_1"
       sld-id: sldl-33CH1
     - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_2"
@@ -67,6 +69,14 @@ id-mappings:
       sld-id: sldl-33CH13
     - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_14"
       sld-id: sldl-33CH14
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_15"
+      sld-id: sldl-33CH15
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_16"
+      sld-id: sldl-33CH16
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_17"
+      sld-id: sldl-33CH17
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_18"
+      sld-id: sldl-33CH18
     - os-id: "ocd-division/country:us/state:nh/sldl:coos_1"
       sld-id: sldl-33CO1
     - os-id: "ocd-division/country:us/state:nh/sldl:coos_2"
@@ -79,6 +89,8 @@ id-mappings:
       sld-id: sldl-33CO5
     - os-id: "ocd-division/country:us/state:nh/sldl:coos_6"
       sld-id: sldl-33CO6
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_7"
+      sld-id: sldl-33CO7
     - os-id: "ocd-division/country:us/state:nh/sldl:grafton_1"
       sld-id: sldl-33GR1
     - os-id: "ocd-division/country:us/state:nh/sldl:grafton_2"
@@ -111,6 +123,10 @@ id-mappings:
       sld-id: sldl-33GR15
     - os-id: "ocd-division/country:us/state:nh/sldl:grafton_16"
       sld-id: sldl-33GR16
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_17"
+      sld-id: sldl-33GR17
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_18"
+      sld-id: sldl-33GR18
     - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_1"
       sld-id: sldl-33HI1
     - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_2"
@@ -185,10 +201,22 @@ id-mappings:
       sld-id: sldl-33HI36
     - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_37"
       sld-id: sldl-33HI37
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_38"
+      sld-id: sldl-33HI38
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_39"
+      sld-id: sldl-33HI39
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_40"
+      sld-id: sldl-33HI40
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_41"
+      sld-id: sldl-33HI41
     - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_42"
       sld-id: sldl-33HI42
     - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_43"
       sld-id: sldl-33HI43
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_44"
+      sld-id: sldl-33HI44
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_45"
+      sld-id: sldl-33HI45
     - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_1"
       sld-id: sldl-33ME1
     - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_2"
@@ -237,6 +265,18 @@ id-mappings:
       sld-id: sldl-33ME23
     - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_24"
       sld-id: sldl-33ME24
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_25"
+      sld-id: sldl-33ME25
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_26"
+      sld-id: sldl-33ME26
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_27"
+      sld-id: sldl-33ME27
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_28"
+      sld-id: sldl-33ME28
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_29"
+      sld-id: sldl-33ME29
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_30"
+      sld-id: sldl-33ME30
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_1"
       sld-id: sldl-33RO1
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_2"
@@ -297,6 +337,26 @@ id-mappings:
       sld-id: sldl-33RO29
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_30"
       sld-id: sldl-33RO30
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_31"
+      sld-id: sldl-33RO31
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_32"
+      sld-id: sldl-33RO32
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_33"
+      sld-id: sldl-33RO33
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_34"
+      sld-id: sldl-33RO34
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_35"
+      sld-id: sldl-33RO35
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_36"
+      sld-id: sldl-33RO36
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_37"
+      sld-id: sldl-33RO37
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_38"
+      sld-id: sldl-33RO38
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_39"
+      sld-id: sldl-33RO39
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_40"
+      sld-id: sldl-33RO40
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_1"
       sld-id: sldl-33ST1
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_2"
@@ -333,6 +393,12 @@ id-mappings:
       sld-id: sldl-33ST17
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_18"
       sld-id: sldl-33ST18
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_19"
+      sld-id: sldl-33ST19
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_20"
+      sld-id: sldl-33ST20
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_21"
+      sld-id: sldl-33ST21
     - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_1"
       sld-id: sldl-33SU1
     - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_2"

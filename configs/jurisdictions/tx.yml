@@ -1,14 +1,11 @@
 name: Texas
-shapefile_urls:
-  upper: https://thearp.org/documents/956/TX_SD_10252021_xisRmfj.zip
-  lower: https://thearp.org/documents/953/TX_LD10252021_CaaJzWc.zip
-  congress: https://thearp.org/documents/950/TX_CD_10252021_jFiNCxj.zip
+os-id-prefix: "ocd-division/country:us/state:tx"
 id-mappings:
   sldl:
-    key: District
-    os-id-prefix: "ocd-division/country:us/state:tx/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-48([\d]+)'
   sldu:
-    key: District
-    os-id-prefix: "ocd-division/country:us/state:tx/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-480([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,14 +1,11 @@
 name: Virginia
-shapefile_urls:
-  upper: https://thearp.org/documents/983/VA_SD_Approved_12282021.zip
-  lower: https://thearp.org/documents/980/VA_HOD_Approved_12282021.zip
-  congress: https://thearp.org/documents/977/VA_CD_Approved_12282021.zip
+os-id-prefix: "ocd-division/country:us/state:va"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:va/sldl:"
     sld-match: 'sldl-51([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:va/sldu:"
     sld-match: 'sldu-510([\d]+)'
+  cd:
+    key: DISTRICT

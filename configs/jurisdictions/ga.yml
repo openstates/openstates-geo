@@ -1,14 +1,11 @@
 name: Georgia
+os-id-prefix: "ocd-division/country:us/state:ga"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ga/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-13([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ga/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-130([\d]+)'
-shapefile_urls:
-  upper: https://thearp.org/documents/670/GA_SD_enacted12302021.zip
-  lower: https://thearp.org/documents/667/GA_LD_enacted12302021.zip
-  congress: https://thearp.org/documents/664/GA_CD_enacted12302021.zip
+  cd:
+    key: DISTRICT

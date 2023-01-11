@@ -1,14 +1,11 @@
 name: Delaware
-shapefile_urls:
-  upper: https://thearp.org/documents/12515/DE_SD_Enacted_Technical_Changes.zip
-  lower: https://thearp.org/documents/12514/DE_LD_Enacted_Technical_Changes.zip
-  congress: https://thearp.org/documents/646/DE_US_Cong_2018.zip
+os-id-prefix: "ocd-division/country:us/state:de"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:de/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-100([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:de/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-100([\d]+)'
+  cd:
+    key: DISTRICT

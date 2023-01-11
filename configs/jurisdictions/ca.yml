@@ -1,14 +1,11 @@
 name: California
-shapefile_urls:
-  upper: https://thearp.org/documents/625/CA_SD_Final_12262021.zip
-  lower: https://thearp.org/documents/12510/CA_LD_Enacted_Technical_Changes.zip
-  congress: https://thearp.org/documents/619/CA_CD_Final_12262021.zip
+os-id-prefix: "ocd-division/country:us/state:ca"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ca/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-060([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:ca/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-060([\d]+)'
+  cd:
+    key: DISTRICT

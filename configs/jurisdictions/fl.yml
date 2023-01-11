@@ -1,14 +1,11 @@
 name: Florida
-shapefile_urls:
-  upper: https://thearp.org/documents/661/FL_SD_Enacted03032022.zip
-  lower: https://thearp.org/documents/658/FL_LD_Enacted03032022.zip
-  congress: https://thearp.org/documents/655/FL_CD_Enacted04222022_Florida.zip
+os-id-prefix: "ocd-division/country:us/state:fl"
 id-mappings:
   sldl:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:fl/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-12([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:fl/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-120([\d]+)'
+  cd:
+    key: DISTRICT

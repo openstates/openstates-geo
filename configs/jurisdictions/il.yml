@@ -1,14 +1,11 @@
 name: Illinois
-shapefile_urls:
-  upper: https://thearp.org/documents/697/Illinois_SD_20210831_Sent_0924_Q2wnnbz.zip
-  lower: https://thearp.org/documents/694/Illinois_HD_20210831_sent_0924_Vnk2UaK.zip
-  congress: https://thearp.org/documents/691/IL_CD_Enacted11232021.zip
+os-id-prefix: "ocd-division/country:us/state:il"
 id-mappings:
   sldl:
-    key: "NAME"
-    os-id-prefix: "ocd-division/country:us/state:il/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-17([\d]+)'
   sldu:
-    key: "DISTRICT"
-    os-id-prefix: "ocd-division/country:us/state:il/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-170([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,14 +1,11 @@
 name: Wisconsin
-shapefile_urls:
-  upper: https://thearp.org/documents/1103/WI_SD_Enacted04152022.zip
-  lower: https://thearp.org/documents/1007/WI_LD_Enacted04152022.zip
-  congress: https://thearp.org/documents/1004/WI_CD_Enacted03032022.zip
+os-id-prefix: "ocd-division/country:us/state:wi"
 id-mappings:
   sldl:
-    key: ASM2021
-    os-id-prefix: "ocd-division/country:us/state:wi/sldl:"
+    key: DISTRICT
     sld-match: 'sldl-55([\d]+)'
   sldu:
-    key: SEN2021
-    os-id-prefix: "ocd-division/country:us/state:wi/sldu:"
+    key: DISTRICT
     sld-match: 'sldu-550([\d]+)'
+  cd:
+    key: DISTRICT

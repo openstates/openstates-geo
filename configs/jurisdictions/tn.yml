@@ -1,14 +1,11 @@
 name: Tennessee
-shapefile_urls:
-  upper: https://thearp.org/documents/947/TN_SD_Enacted02062022_G6PN85S.zip
-  lower: https://thearp.org/documents/944/TN_LD_Enacted02062022.zip
-  congress: https://thearp.org/documents/12531/TN_CD_Enacted_Technical_Changes.zip
+os-id-prefix: "ocd-division/country:us/state:tn"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:tn/sldl:"
     sld-match: 'sldl-47([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:tn/sldu:"
     sld-match: 'sldu-470([\d]+)'
+  cd:
+    key: DISTRICT

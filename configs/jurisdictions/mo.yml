@@ -1,14 +1,11 @@
 name: Missouri
-shapefile_urls:
-  upper: https://thearp.org/documents/797/MO_SD_Enacted03152022.zip
-  lower: https://thearp.org/documents/794/MO_LD_Enacted01192022.zip
-  congress: https://thearp.org/documents/791/MO_CD_Enacted05182022.zip
+os-id-prefix: "ocd-division/country:us/state:mo"
 id-mappings:
   sldl:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:mo/sldl:"
     sld-match: 'sldl-29([\d]+)'
   sldu:
     key: DISTRICT
-    os-id-prefix: "ocd-division/country:us/state:mo/sldu:"
     sld-match: 'sldu-290([\d]+)'
+  cd:
+    key: DISTRICT
