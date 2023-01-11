@@ -98,6 +98,76 @@ def merge_ids(geojson_path: str, settings: dict):
         json.dump(geojson, geojson_file)
 
 
+def process_territories(cd_file: str, settings: dict):
+    """
+    Convert TIGER data to properly formatted territory
+    information
+    """
+    print("Processing TIGER data for territory districts")
+    territories = [t for t in us.TERRITORIES + [us.states.DC]]
+    territory_fips = [t.fips for t in territories]
+    with open(cd_file, "r") as f:
+        rawgeodata = json.load(f)
+    territory_geo = {k: v for k, v in rawgeodata.items() if k not in ["features"]}
+    territory_geo["features"] = []
+    for district in rawgeodata["features"]:
+        fips = district["properties"]["STATEFP"]
+        territory = None
+        for t in territories:
+            if fips == t.fips:
+                territory = t
+                break
+        else:
+            continue
+        print(f"{district['properties']=}, {territory=}")
+        try:
+            territory_meta = metadata.lookup(abbr=territory.abbr)
+        except Exception as e:
+            print(f"{territory.name} not defined in OpenStates metadata. Skipping")
+            continue
+        geoid = district["properties"]["GEOID"]
+        district_padding = "0" * (3 - len(geoid))
+        district_id = f"cd-{district_padding}{geoid}"
+        mappings = settings["jurisdictions"][territory.name]
+        custom = mappings["id-mappings"].get("custom", [])
+        mapping_type = mappings["id-mappings"]["cd"]
+        ocd_id = None
+        for mapping in custom:
+            if mapping.get("sld-id", "") == geoid:
+                ocd_id = mapping["os-id"]
+                break
+        if not ocd_id:
+            prefix = mapping_type.get("os-id-prefix", None)
+            if prefix:
+                ocd_id = f"{prefix}{geoid}".lower()
+            else:
+                prefix = mappings["os-id-prefix"]
+                ocd_id = f"{prefix}/{district_type}:{geoid}".lower()
+
+        if (
+            district_id.lower().endswith("at-large")
+            or geoid.endswith("98")
+            or geoid.endswith("99")
+        ):
+            district_name = f"{territory.abbr.upper()}-AL"
+        else:
+            district_name = f"{territory.abbr.upper()}-{geoid}"
+
+        district["properties"] = {
+            "ocdid": ocd_id,
+            "type": "cd",
+            "state": territory.abbr,
+            "name": district_name,
+        }
+        print(f"{district['properties']=}")
+        exit(1)
+        territory_geo["features"].append(district)
+    output_filename = f"{ROOTDIR}/data/geojson/us-cd.geojson"
+    print(f"{cd_file} => {output_filename}")
+    with open(output_filename, "w") as f:
+        json.dump(territory_geo, f)
+
+
 if __name__ == "__main__":
     setup_source()
     SETTINGS = load_settings(f"{ROOTDIR}/configs")
@@ -127,4 +197,9 @@ if __name__ == "__main__":
                 ],
                 check=True,
             )
-        merge_ids(newfilename, SETTINGS)
+        if SETTINGS["us_cd_file"] not in newfilename:
+            merge_ids(newfilename, SETTINGS)
+    process_territories(
+        f"{ROOTDIR}/data/source_cache/us_cd_2022-tiger/{SETTINGS['us_cd_file']}",
+        SETTINGS,
+    )

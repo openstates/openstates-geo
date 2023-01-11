@@ -15,3 +15,5 @@ ARP_DIST_MAPPING:
   Leg_Upper: sldu
   Leg_Lower: sldl
   US_Cong: cd
+
+us_cd_file: tl_2022_us_cd116.geojson
