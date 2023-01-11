@@ -11,8 +11,8 @@ YEAR = "2021"
 
 if __name__ == "__main__":
     try:
-        os.makedirs("{ROOTDIR}/data/mapbox")
-        os.makedirs("{ROOTDIR}/data/boundary")
+        os.makedirs(f"{ROOTDIR}/data/mapbox")
+        os.makedirs(f"{ROOTDIR}/data/boundary")
     except FileExistsError:
         pass
 
@@ -22,12 +22,12 @@ if __name__ == "__main__":
         f"{ROOTDIR}/data/cb_{YEAR}_us_nation_5m.zip",
     )
     with zipfile.ZipFile(f"{ROOTDIR}/data/cb_{YEAR}_us_nation_5m.zip", "r") as zf:
-        zf.extractall("{ROOTDIR}/data/boundary/")
+        zf.extractall(f"{ROOTDIR}/data/boundary/")
 
     print("Clip GeoJSON to shoreline")
     sld_filenames = []
     cd_filenames = []
-    for filename in sorted(glob.glob("{ROOTDIR}/data/geojson/*.geojson")):
+    for filename in sorted(glob.glob(f"{ROOTDIR}/data/geojson/*.geojson")):
         newfilename = filename.replace("/geojson/", "/mapbox/")
         if "sld" in newfilename:
             sld_filenames.append(newfilename)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
             "10",
             "--force",
             "--output",
-            "{ROOTDIR}/data/cd.mbtiles",
+            f"{ROOTDIR}/data/cd.mbtiles",
         ]
         + cd_filenames,
         check=True,
@@ -84,7 +84,7 @@ if __name__ == "__main__":
             "10",
             "--force",
             "--output",
-            "{ROOTDIR}/data/sld.mbtiles",
+            f"{ROOTDIR}/data/sld.mbtiles",
         ]
         + sld_filenames,
         check=True,
@@ -100,7 +100,7 @@ if __name__ == "__main__":
                 "mapbox",
                 "upload",
                 f"{mb_account}.sld",
-                "{ROOTDIR}/data/sld.mbtiles",
+                f"{ROOTDIR}/data/sld.mbtiles",
             ],
             check=True,
         )
