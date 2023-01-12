@@ -17,11 +17,14 @@ def main():
             obj = json.load(f)
         print(f"Processing {file} into district-level boundary files")
         for feature in obj["features"]:
+            if "ocdid" not in feature["properties"]:
+                continue
             metadata = dict(feature["properties"])
             folder, filename = metadata["ocdid"].rsplit("/", 1)
             full_path = f"{ROOTDIR}/data/boundaries/{folder}/{filename}.json"
             if os.path.exists(full_path):
                 print(f"{filename}.json already exists. Skipping.")
+                continue
             os.makedirs(f"{ROOTDIR}/data/boundaries/{folder}", exist_ok=True)
             obj = {
                 "shape": feature["geometry"],
