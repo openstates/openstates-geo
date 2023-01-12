@@ -76,22 +76,21 @@ There are several steps, which typically need to be run in order:
 
 4) Make sure `DATABASE_URL` is set to local database in `djapp/geo/settings.py`
 
-
-5) Migrate database to add needed tables:
-
-  `poetry run ./manage.py migrate`
-
-6) Import into database:
-
-  `poetry run ./manage.py load_divisions`
-
-7) Convert to mbtiles and upload:
+5) Convert to mbtiles and upload:
 
   `./scripts/make-tiles.py`
 
   The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
 
-8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
+6) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`. This can be done in tandem with:
+
+7) Migrate database to add needed tables:
+
+  `poetry run ./manage.py migrate`
+
+8) Import into database:
+
+  `poetry run ./manage.py load_divisions`
 
 9) Generate and upload new boundary files to S3:
 
