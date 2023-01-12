@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from datetime import datetime
+import geopandas as gpd
 import glob
 import json
 import os
@@ -19,23 +20,34 @@ def main():
         for feature in obj["features"]:
             if "ocdid" not in feature["properties"]:
                 continue
-            metadata = dict(feature["properties"])
-            folder, filename = metadata["ocdid"].rsplit("/", 1)
+            folder, filename = feature["properties"]["ocdid"].rsplit("/", 1)
             full_path = f"{ROOTDIR}/data/boundaries/{folder}/{filename}.json"
             if os.path.exists(full_path):
                 print(f"{filename}.json already exists. Skipping.")
                 continue
+            gdf = gpd.GeoDataFrame.from_features([feature])
             os.makedirs(f"{ROOTDIR}/data/boundaries/{folder}", exist_ok=True)
             obj = {
                 "shape": feature["geometry"],
-                "metadata": metadata,
-                "division_id": metadata["ocdid"],
+                "metadata": feature["properties"],
+                "division_id": feature["properties"]["ocdid"],
                 "year": year,
                 "extent": [],
-                "centroid": [],
+                "centroid": {
+                    "coordinates": [
+                        gdf["geometry"].centroid.x[0],
+                        gdf["geometry"].centroid.y[0],
+                    ],
+                    "type": "Point",
+                },
             }
             with open(f"{ROOTDIR}/data/boundaries/{folder}/{filename}.json", "w") as f:
                 json.dump(obj, f)
+    # all geojson files processed...now to upload
+    s3 = S3FileSystem()
+    bucket_path = f"data.openstates.org/boundaries/{year}"
+    print("Uploading division files to S3")
+    s3.put(f"{ROOTDIR}/data/boundaries/", bucket_path, recursive=True)
 
 
 if __name__ == "__main__":
