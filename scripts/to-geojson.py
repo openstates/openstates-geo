@@ -88,12 +88,12 @@ def merge_ids(geojson_path: str, settings: dict):
             district_name = district.name
 
         # relying on copy-by-reference to update the actual parent object
-        feature["properties"] = {
-            "ocdid": ocd_id,
-            "type": district_type,
-            "state": state,
-            "name": district_name,
-        }
+        feature["properties"]["ocdid"] = ocd_id
+        feature["properties"]["type"] = district_type
+        feature["properties"]["state"] = state
+        feature["properties"]["name"] = district_name
+        feature["properties"]["geoid"] = geoid
+        feature["properties"]["fips"] = state_meta.fips
 
     output_filename = f"{ROOTDIR}/data/geojson/{state}-{district_type}.geojson"
     print(f"{geojson_path} => {output_filename}")
@@ -152,12 +152,10 @@ def process_territories(cd_file: str, settings: dict):
         else:
             district_name = f"{territory.abbr.upper()}-{geoid}"
 
-        district["properties"] = {
-            "ocdid": ocd_id,
-            "type": "cd",
-            "state": territory.abbr,
-            "name": district_name,
-        }
+        district["properties"]["ocdid"] = ocd_id
+        district["properties"]["type"] = "cd"
+        district["properties"]["state"] = territory.abbr
+        district["properties"]["name"] = district_name
         territory_geo["features"].append(district)
     output_filename = f"{ROOTDIR}/data/geojson/us-cd.geojson"
     print(f"{cd_file} (territories only) => {output_filename}")
