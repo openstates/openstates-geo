@@ -93,6 +93,12 @@ There are several steps, which typically need to be run in order:
 
 8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
+9) Generate and upload new boundary files to S3:
+
+  `./scripts/update-boundaries.py`
+
+  This step requires an AWS account with permissions to write to the data.openstates.org bucket.
+
 ### Running within Docker
 
 Instead of setting up your local environment you can instead run using Docker. Using Docker Compose will still allow you to access all intermediate files from the processing, within your local `data` directory.
