@@ -49,7 +49,8 @@ def main():
     bucket_path = f"data.openstates.org/boundaries/{year}"
     print("Uploading division files to S3")
     s3.put(f"{ROOTDIR}/data/boundaries/", bucket_path, recursive=True)
-    s3.chmod(bucket_path, acl="public-read", recursive=True)
+    # s3.chmod(bucket_path, acl="public-read", recursive=True)
+    print("Please ensure `public-read` ACL is set on the new data in S3")
 
 
 if __name__ == "__main__":
