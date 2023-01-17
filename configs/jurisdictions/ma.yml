@@ -57,11 +57,11 @@ id-mappings:
     - os-id: "ocd-division/country:us/state:ma/sldu:4th_middlesex"
       sld-id: sldu-25024
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_middlesex"
-      sld-id: sldu-25025
+      sld-id: sldu-25027
     - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_suffolk"
       sld-id: sldu-25026
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk_and_middlesex"
-      sld-id: sldu-25027
+      sld-id: sldu-25025
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_suffolk_and_middlesex"
       sld-id: sldu-25028
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_middlesex_and_norfolk"
