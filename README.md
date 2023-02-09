@@ -38,7 +38,8 @@ There are several steps, which typically need to be run in order:
 
 2) Download SLD shapefiles:
 
-  `poetry run ./scripts/get-shapefiles.py`
+  - `poetry run ./scripts/get-shapefiles.py`
+    - Note that this script does not fail on individual download failures. If you see failures in the run, make sure they are expected (e.g. NE/DC lower should fail)
 
 3) Convert to geojson with division IDs:
 

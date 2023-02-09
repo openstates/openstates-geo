@@ -31,6 +31,10 @@ def setup_source(clean: bool = False):
     simple function to clean up our source data
     if we're completely retrying
     """
+    for cmd in ["tippecanoe", "ogr2ogr"]:
+        if not shutil.which(cmd):
+            print(f"Cannot find {cmd} in PATH. Cannot continue.")
+            exit(1)
     if clean:
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
