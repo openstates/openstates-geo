@@ -45,7 +45,7 @@ There are several steps, which typically need to be run in order:
 
   - `poetry run ./scripts/to-geojson.py`
 
-4) Make sure `DATABASE_URL` is set correctly in `djapp/geo/settings.py` (pointing at either the `geo` database in production or to a local copy)
+4) Make sure `DATABASE_URL` is set correctly in `djapp/geo/settings.py` (pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`)
 
 5) Migrate database to add needed tables:
 

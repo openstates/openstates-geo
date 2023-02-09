@@ -2,9 +2,11 @@
 
 set -eou pipefail
 
-if [[ -n "${DATABASE_URL}" ]]; then
-    export DATABASE_URL
+if [[ -z "${DATABASE_URL}" ]]; then
+    echo "Missing required environment variable DATABASE_URL"
+    exit 2
 fi
+export DATABASE_URL
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
