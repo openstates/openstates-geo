@@ -23,9 +23,7 @@ def _find_key(district_properties, keys):
         if fips:
             return fips
     else:
-        print(
-            f"Couldn't find {keys} in {district_properties}"
-        )
+        print(f"Couldn't find {keys} in {district_properties}")
         return None
 
 
