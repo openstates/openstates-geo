@@ -20,11 +20,13 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 ## Ensuring The Right Shape Files
 
-We download our shapefiles from [census.gov](https://www2.census.gov/geo/tiger). We should make sure we're using the most recent year available and update the `YEAR` variable in `scripts/get-shapefiles.py` and `scripts/make-tiles.py`.
+We download our shapefiles from [census.gov](https://www2.census.gov/geo/tiger).
+
+The organization of files within TIGER's site means that we may have to change the layout of downloaded files from year to year (in `scripts/get-shapefiles.py`). As long as we consistently add proper files into `data/source_cache` for the rest of the scripts to process, changing the initial download location shouldn't matter.
 
 See Appendix A below on Geographic Data Sources for more context.
 
-You'll probably want to remove any cached files in `./data/source`, `./data/mapbox`, and `./data/geojson`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
+You'll probably want to remove any cached files in `./data/`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
 
 ## Running
 
@@ -57,9 +59,11 @@ There are several steps, which typically need to be run in order:
 
   `./scripts/make-tiles.py`
 
-  The `MAPBOX_ACCOUNT` name and `MAPBOX_ACCESS_TOKEN` (with upload privileges) must be set as environment variables. If not, then the upload step will be skipped.
-
 8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
+
+9) Create district boundary files and upload to S3
+
+  `poetry run python scripts/update-bulk-boundary-files.py`
 
 ### Running within Docker
 
@@ -83,29 +87,17 @@ button in the toolbar, and then select a district. Metadata should appear in the
 
 ### Redistricting
 
-"We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans 
+"We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans
 for the 118th Congress and year 2022 state legislatures" [US Census CD/SLD note](https://www.census.gov/programs-surveys/geography/technical-documentation/user-note/cd-sld-note.html)
-
-
-There is a [Redistricting Data Program](https://www.census.gov/programs-surveys/decennial-census/about/rdo.html). However, as of 
-12/30/22, it seems like the only files available under that program are 
-[Block Equivalency files](https://www.census.gov/programs-surveys/decennial-census/geographies/mapping-files/rdo.html), which appear 
-to map census blocks to district numbers (essentially CSV of block/district tuples), eg:
-
-```
-GEOID, CDFP
-440010301001000,01
-```
-
 
 ### US Census: TIGER
 
-Files in the TIGER data source are organized according to 
+Files in the TIGER data source are organized according to
 [Federal Information Processing System (FIPS)](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt) codes.
 Each numeric code corresponds to a US state (or other levels). For example `01` represents Alabama.
 
-As of 12/30/22 the [TIGER page states](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html): 
-"All legal boundaries and names are as of January 1, 2022. Released September 30, 2022." So it seems like post-redistricting 
+As of 12/30/22 the [TIGER page states](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html):
+"All legal boundaries and names are as of January 1, 2022. Released September 30, 2022." So it seems like post-redistricting
 shapefiles are not available.
 
 #### TIGER SLDL

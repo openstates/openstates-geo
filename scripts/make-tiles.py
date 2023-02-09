@@ -1,28 +1,29 @@
 #!/usr/bin/env python3
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import glob
 import os
 import subprocess
 import urllib.request
 import zipfile
-from utils import ROOTDIR
-
-YEAR = "2021"
+from utils import ROOTDIR, load_settings
 
 
 if __name__ == "__main__":
-    try:
-        os.makedirs(f"{ROOTDIR}/data/mapbox")
-        os.makedirs(f"{ROOTDIR}/data/boundary")
-    except FileExistsError:
-        pass
-
-    print("Downloading national boundary")
-    res = urllib.request.urlretrieve(
-        f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_nation_5m.zip",
-        f"{ROOTDIR}/data/cb_{YEAR}_us_nation_5m.zip",
+    parser = ArgumentParser(
+        description="Download shapefiles for defined jurisdictions",
+        formatter_class=ArgumentDefaultsHelpFormatter,
     )
-    with zipfile.ZipFile(f"{ROOTDIR}/data/cb_{YEAR}_us_nation_5m.zip", "r") as zf:
-        zf.extractall(f"{ROOTDIR}/data/boundary/")
+    parser.add_argument(
+        "--config",
+        "-c",
+        type=str,
+        default=f"{ROOTDIR}/configs",
+        help="Config directory for downloading geo data",
+    )
+    args = parser.parse_args()
+    settings = load_settings(args.config)
+
+    os.makedirs(f"{ROOTDIR}/data/mapbox", exist_ok=True)
 
     print("Clip GeoJSON to shoreline")
     sld_filenames = []
@@ -41,7 +42,7 @@ if __name__ == "__main__":
                 [
                     "ogr2ogr",
                     "-clipsrc",
-                    f"{ROOTDIR}/data/boundary/cb_{YEAR}_us_nation_5m.shp",
+                    f"{ROOTDIR}/data/boundary/cb_{settings['BOUNDARY_YEAR']}_us_nation_5m.shp",
                     newfilename,
                     filename,
                 ],

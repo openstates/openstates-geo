@@ -4,6 +4,8 @@ import glob
 import os
 import zipfile
 import requests
+import urllib.request
+
 from utils import (
     JURISDICTION_NAMES,
     find_jurisdiction,
@@ -33,6 +35,19 @@ def download_from_tiger(jurisdiction, prefix):
             _download_and_extract(url, fullpath)
         except Exception as e:
             print(f"Couldn't download {jurisdiction.name} {chamber} :: {e}")
+
+
+def download_boundary_file(boundary_year: str):
+    url = f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
+    print(f"Downloading national boundary from {url}")
+    _ = urllib.request.urlretrieve(
+        url,
+        f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip",
+    )
+    with zipfile.ZipFile(
+        f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip", "r"
+    ) as zf:
+        zf.extractall(f"{ROOTDIR}/data/boundary/")
 
 
 def _download_and_extract(url: str, filename: str):
@@ -98,3 +113,4 @@ if __name__ == "__main__":
 
         jurisdiction = find_jurisdiction(jur)
         download_from_tiger(jurisdiction, "RD18")
+    download_boundary_file(SETTINGS["BOUNDARY_YEAR"])

@@ -35,6 +35,7 @@ def setup_source(clean: bool = False):
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
     os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
+    os.makedirs(f"{ROOTDIR}/data/boundary/", exist_ok=True)
 
 
 def load_settings(config_dir: str):
