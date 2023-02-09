@@ -12,6 +12,22 @@ import yaml
 
 from utils import JURISDICTIONS, ROOTDIR, setup_source, load_settings
 
+FIPS_KEYS = ("STATEFP", "STATEFP20")
+GEOID_KEYS = ("GEOID", "GEOID20")
+MTFCC_KEYS = ("MTFCC", "MTFCC20")
+
+
+def _find_key(district_properties, keys):
+    for key in keys:
+        fips = district_properties.get(key, None)
+        if fips:
+            return fips
+    else:
+        print(
+            f"Couldn't find a fips code for {geojson_path}:{district['properties']} in any of {FIPS_KEYS}"
+        )
+        return None
+
 
 def merge_ids(geojson_path, settings):
     with open(geojson_path, "r") as f:
@@ -21,7 +37,9 @@ def merge_ids(geojson_path, settings):
     jurisdiction = None
     district_type = None
     for district in rawgeodata["features"]:
-        fips = district["properties"]["STATEFP"]
+        fips = _find_key(district["properties"], FIPS_KEYS)
+        if not fips:
+            continue
         """
         Find the matching jurisdiction district
         """
@@ -37,10 +55,12 @@ def merge_ids(geojson_path, settings):
             print(f"{jurisdiction.name} not defined in OpenStates metadata. Skipping")
             continue
         if not district_type:
-            mapping = district["properties"]["MTFCC20"]
+            mapping = _find_key(district["properties"], MTFCC_KEYS)
+            if not mapping:
+                continue
             district_type = settings["MTFCC_MAPPING"][mapping]
-        geoid = district["properties"]["GEOID"]
-        if geoid in settings["SKIPPED_GEOIDS"]:
+        geoid = _find_key(district["properties"], GEOID_KEYS)
+        if not geoid or geoid in settings["SKIPPED_GEOIDS"]:
             continue
         if geoid.endswith("98") or geoid.endswith("99"):
             geoid = "at-large"
@@ -76,7 +96,7 @@ def merge_ids(geojson_path, settings):
     output_filename = (
         f"{ROOTDIR}/data/geojson/{jurisdiction.abbr}-{district_type}.geojson"
     )
-    print(f"{geojson_path} => {output_filename}")
+    print(f"Writing data from {geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geodata, geojson_file)
 
@@ -96,7 +116,7 @@ if __name__ == "__main__":
             print(f"{newfilename} already exists, skipping")
             continue
         else:
-            print(f"{file} => {newfilename}")
+            print(f"Converting {file} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
