@@ -49,11 +49,11 @@ There are several steps, which typically need to be run in order:
 
 5) Migrate database to add needed tables:
 
-  - `poetry run ./manage.py migrate`
+  - `DATABASE_URL=... poetry run ./manage.py migrate`
 
 6) Import into database:
 
-  - `poetry run ./manage.py load_divisions`
+  - `DATABASE_URL=... poetry run ./manage.py load_divisions`
 
 7) Convert to mbtiles and upload:
 
