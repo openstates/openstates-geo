@@ -36,6 +36,7 @@ if __name__ == "__main__":
             cd_filenames.append(newfilename)
         if os.path.exists(newfilename):
             print(f"{newfilename} exists, skipping")
+            continue
         else:
             print(f"{filename} => {newfilename}")
             subprocess.run(
@@ -90,20 +91,3 @@ if __name__ == "__main__":
         + sld_filenames,
         check=True,
     )
-    mb_account = os.environ.get("MAPBOX_ACCOUNT", None)
-    mb_token = os.environ.get("MAPBOX_ACCESS_TOKEN", None)
-    if mb_account and mb_token:
-        print("Upload to Mapbox")
-        subprocess.run(
-            [
-                "poetry",
-                "run",
-                "mapbox",
-                "upload",
-                f"{mb_account}.sld",
-                f"{ROOTDIR}/data/sld.mbtiles",
-            ],
-            check=True,
-        )
-    else:
-        print("Skipping upload to Mapbox...environment variables missing")

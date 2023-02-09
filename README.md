@@ -63,7 +63,7 @@ There are several steps, which typically need to be run in order:
 
 9) Create district boundary files and upload to S3
 
-  `poetry run python scripts/update-bulk-boundary-files.py`
+  `poetry run python scripts/upload-bulk-boundary-files.py`
 
 ### Running within Docker
 
