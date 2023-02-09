@@ -34,7 +34,7 @@ There are several steps, which typically need to be run in order:
 
 1) Setup Poetry:
 
-  `poetry install`
+  - `poetry install`
 
 2) Download SLD shapefiles:
 
@@ -43,22 +43,21 @@ There are several steps, which typically need to be run in order:
 
 3) Convert to geojson with division IDs:
 
-  `poetry run ./scripts/to-geojson.py`
+  - `poetry run ./scripts/to-geojson.py`
 
-4) Make sure `DATABASE_URL` is set to local database in `djapp/geo/settings.py`
-
+4) Make sure `DATABASE_URL` is set correctly in `djapp/geo/settings.py` (pointing at either the `geo` database in production or to a local copy)
 
 5) Migrate database to add needed tables:
 
-  `poetry run ./manage.py migrate`
+  - `poetry run ./manage.py migrate`
 
 6) Import into database:
 
-  `poetry run ./manage.py load_divisions`
+  - `poetry run ./manage.py load_divisions`
 
 7) Convert to mbtiles and upload:
 
-  `./scripts/make-tiles.py`
+  - `./scripts/make-tiles.py`
 
 8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
