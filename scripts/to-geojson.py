@@ -24,7 +24,7 @@ def _find_key(district_properties, keys):
             return fips
     else:
         print(
-            f"Couldn't find a fips code for {geojson_path}:{district['properties']} in any of {FIPS_KEYS}"
+            f"Couldn't find {keys} in {district_properties}"
         )
         return None
 
