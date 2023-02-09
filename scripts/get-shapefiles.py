@@ -1,15 +1,41 @@
 #!/usr/bin/env python3
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+import glob
 import os
 import zipfile
 import requests
-import us
+from utils import (
+    JURISDICTION_NAMES,
+    find_jurisdiction,
+    ROOTDIR,
+    TIGER_ROOT,
+    setup_source,
+    load_settings,
+)
 
-# note: The Census download URLs are case-sensitive
-YEAR = "2022"
-URL = "https://www2.census.gov/geo/tiger/TIGER{year}/SLD{chamber_uppercase}/tl_{year}_{fips}_sld{chamber}.zip"
+
+def download_from_tiger(jurisdiction, prefix):
+    fips = jurisdiction.fips
+    jur_name = jurisdiction.name.upper().replace(" ", "_")
+    url_root = f"{TIGER_ROOT}/TIGER_{prefix}/STATE/{fips}_{jur_name}/{fips}"
+    urls = (
+        f"{url_root}/tl_rd22_{fips}_cd118.zip",
+        f"{url_root}/tl_rd22_{fips}_sldu.zip",
+        f"{url_root}/tl_rd22_{fips}_sldl.zip",
+    )
+    for url in urls:
+        chamber = url.split("/")[-1]
+        fullpath = f"{ROOTDIR}/data/{chamber}"
+        if os.path.exists(fullpath):
+            print(f"skipping {jurisdiction.name} {chamber}")
+            continue
+        try:
+            _download_and_extract(url, fullpath)
+        except Exception as e:
+            print(f"Couldn't download {jurisdiction.name} {chamber} :: {e}")
 
 
-def download_and_extract(url, filename):
+def _download_and_extract(url: str, filename: str):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -20,40 +46,55 @@ def download_and_extract(url, filename):
         # of the Census downloads in the first place.
         with open(filename, "wb") as f:
             f.write(response.content)
-        with zipfile.ZipFile(filename, "r") as f:
-            f.extractall("./data/source")
+        with zipfile.ZipFile(filename, "r") as z:
+            for obj in z.infolist():
+                try:
+                    z.extract(obj, f"{ROOTDIR}/data/source_cache/")
+                except Exception as e:
+                    print(f"Failed to extract {obj.filename}: {e}")
     else:
         response.raise_for_status()
 
 
-try:
-    os.makedirs("./data/source/")
-except FileExistsError:
-    pass
+if __name__ == "__main__":
+    parser = ArgumentParser(
+        description="Download shapefiles for defined jurisdictions",
+        formatter_class=ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--jurisdiction",
+        "-j",
+        type=str,
+        nargs="+",
+        default=JURISDICTION_NAMES,
+        help="The jurisdiction(s) to download shapefiles for",
+    )
+    parser.add_argument(
+        "--clean-source",
+        action="store_true",
+        default=False,
+        help="Remove any cached download/processed data",
+    )
+    parser.add_argument(
+        "--config",
+        "-c",
+        type=str,
+        default=f"{ROOTDIR}/configs",
+        help="Config directory for downloading geo data",
+    )
+    args = parser.parse_args()
 
-for state in us.STATES + [us.states.PR]:
-    print("Fetching shapefiles for {}".format(state.name))
+    setup_source(args.clean_source)
+    SETTINGS = load_settings(args.config)
 
-    for chamber in ["l", "u"]:
-        fips = state.fips
-
-        if state.abbr in ("DC", "NE") and chamber == "l":
-            # skip lower chamber of the unicamerals
+    for jur in args.jurisdiction:
+        if jur not in JURISDICTION_NAMES:
+            print(f"Invalid jurisdiction {jur}. Skipping.")
             continue
-
-        if os.path.exists(f"data/source/tl_{YEAR}_{fips}_sld{chamber}.shp"):
-            print(f"skipping {state} {fips} sld{chamber}")
+        if jur not in SETTINGS["jurisdictions"]:
+            print(f"Skipping {jur}. No URLs configured.")
             continue
+        print(f"Fetching shapefiles for {jur}")
 
-        download_url = URL.format(
-            fips=fips, chamber=chamber, chamber_uppercase=chamber.upper(), year=YEAR
-        )
-
-        filename = f"./data/tl_{YEAR}_{fips}_sld{chamber}.zip"
-        download_and_extract(download_url, filename)
-
-# final step: get US data
-download_and_extract(
-    f"https://www2.census.gov/geo/tiger/TIGER{YEAR}/CD/tl_{YEAR}_us_cd116.zip",
-    f"data/source/tl_{YEAR}_us_cd116.zip",
-)
+        jurisdiction = find_jurisdiction(jur)
+        download_from_tiger(jurisdiction, "RD18")

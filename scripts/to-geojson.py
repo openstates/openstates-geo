@@ -1,130 +1,105 @@
 #!/usr/bin/env python3
-import os
-import sys
-import csv
-import json
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import glob
-import subprocess
-import us
+import json
 import openstates.metadata as metadata
+import os
+import subprocess
+import sys
+import us
 
-OCD_FIXES = {
-    "ocd-division/country:us/state:vt/sldu:grand_isle-chittenden": "ocd-division/country:us/state:vt/sldu:grand_isle"
-}
+import yaml
 
-SKIPPED_GEOIDS = {
-    "cd-6098": "American Samoa",
-    "cd-6998": "Northern Mariana Islands",
-    "cd-6698": "Guam",
-    "cd-7898": "Virgin Islands",
-}
+from utils import JURISDICTIONS, ROOTDIR, setup_source, load_settings
 
 
-def get_ocdid_records():
-    paths = [
-        "./data/ocdids/us_sldu.csv",
-        "./data/ocdids/us_sldl.csv",
-        "./data/ocdids/us_cd.csv",
-    ]
-    all_divs = []
-    for path in paths:
-        with open(path, "r") as div_file:
-            reader = csv.DictReader(div_file)
-            all_divs += [row for row in reader]
-    return all_divs
-
-
-ocd_ids = get_ocdid_records()
-
-MTFCC_MAPPING = {
-    "G5200": "cd",
-    "G5210": "sldu",
-    "G5220": "sldl",
-}
-
-
-def merge_ids(geojson_path):
-    with open(geojson_path, "r") as geojson_file:
-        geojson = json.load(geojson_file)
-
-    for feature in geojson["features"]:
-        district_type = MTFCC_MAPPING[feature["properties"]["MTFCC"]]
-
-        # Identify the OCD ID by making a lookup against the CSV files
-        # The OCD ID is the cannonical identifier of an area on
-        # the Open States platform
-        geoid = "{}-{}".format(district_type, feature["properties"]["GEOID"])
-
-        if geoid in SKIPPED_GEOIDS:
-            continue
-
-        for row in ocd_ids:
-            if row["census_geoid"] == geoid:
-                ocd_id = row["id"]
+def merge_ids(geojson_path, settings):
+    with open(geojson_path, "r") as f:
+        rawgeodata = json.load(f)
+    geodata = {k: v for k, v in rawgeodata.items() if k not in ["features"]}
+    geodata["features"] = []
+    jurisdiction = None
+    district_type = None
+    for district in rawgeodata["features"]:
+        fips = district["properties"]["STATEFP"]
+        """
+        Find the matching jurisdiction district
+        """
+        for j in JURISDICTIONS:
+            if fips == j.fips:
+                jurisdiction = j
                 break
         else:
-            print(feature["properties"])
-            raise AssertionError("Could not find OCD ID for GEOID {}".format(geoid))
+            continue
+        try:
+            _ = metadata.lookup(abbr=jurisdiction.abbr)
+        except Exception:
+            print(f"{jurisdiction.name} not defined in OpenStates metadata. Skipping")
+            continue
+        if not district_type:
+            mapping = district["properties"]["MTFCC20"]
+            district_type = settings["MTFCC_MAPPING"][mapping]
+        geoid = district["properties"]["GEOID"]
+        if geoid in settings["SKIPPED_GEOIDS"]:
+            continue
+        if geoid.endswith("98") or geoid.endswith("99"):
+            geoid = "at-large"
+        district_padding = "0" * (3 - len(geoid))
+        district_id = f"cd-{district_padding}{geoid}"
+        mappings = settings["jurisdictions"][jurisdiction.name]
+        custom = mappings["id-mappings"].get("custom", [])
+        mapping_type = mappings["id-mappings"]["cd"]
+        ocd_id = None
+        for mapping in custom:
+            if mapping.get("sld-id", "") == geoid:
+                ocd_id = mapping["os-id"]
+                break
+        if not ocd_id:
+            prefix = mapping_type.get("os-id-prefix", None)
+            if prefix:
+                ocd_id = prefix.lower()
+            else:
+                prefix = mappings["os-id-prefix"]
+                ocd_id = prefix.lower()
 
-        # Although OCD IDs contain the state postal code, parsing
-        # an ID to determine structured data is bad practice,
-        # so add a standalone state postal abbreviation property too
-        state = us.states.lookup(feature["properties"]["STATEFP"]).abbr.lower()
-        state_meta = metadata.lookup(abbr=state)
-        ocd_id = OCD_FIXES.get(ocd_id, ocd_id)
-
-        if district_type == "cd":
-            cd_num = feature["properties"]["CD116FP"]
-            if cd_num in ("00", "98"):
-                cd_num = "AL"
-            district_name = f"{state.upper()}-{cd_num}"
+        if district_id.lower().endswith("at-large"):
+            district_name = f"{jurisdiction.abbr.upper()}-AL"
         else:
-            district = state_meta.lookup_district(ocd_id)
-            district_name = district.name
-            if not district:
-                raise ValueError(f"no {ocd_id} {district_type}")
+            district_name = f"{jurisdiction.abbr.upper()}-{geoid}"
 
-        feature["properties"] = {
-            "ocdid": ocd_id,
-            "type": district_type,
-            "state": state,
-            "name": district_name,
-        }
+        district["properties"]["ocdid"] = ocd_id
+        district["properties"]["type"] = "cd"
+        district["properties"]["state"] = jurisdiction.abbr
+        district["properties"]["name"] = district_name
+        geodata["features"].append(district)
 
-    if district_type == "cd":
-        output_filename = f"data/geojson/us-{district_type}.geojson"
-    else:
-        output_filename = f"data/geojson/{state}-{district_type}.geojson"
+    output_filename = (
+        f"{ROOTDIR}/data/geojson/{jurisdiction.abbr}-{district_type}.geojson"
+    )
     print(f"{geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
-        json.dump(geojson, geojson_file)
+        json.dump(geodata, geojson_file)
 
 
 if __name__ == "__main__":
-    try:
-        os.makedirs("./data/geojson")
-    except FileExistsError:
-        pass
+    setup_source()
+    SETTINGS = load_settings(f"{ROOTDIR}/configs")
 
-    expected = 102
     if len(sys.argv) == 1:
-        files = sorted(glob.glob("data/source/tl*.shp"))
-        if len(files) < expected:
-            raise AssertionError(f"Expecting {expected} shapefiles, got {len(files)}).")
+        files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
     else:
         files = sys.argv[1:]
 
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
-            print(newfilename, "already exists, skipping")
+            print(f"{newfilename} already exists, skipping")
+            continue
         else:
-            print(file, "=>", newfilename)
+            print(f"{file} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
-                    "-where",
-                    "GEOID NOT LIKE '%ZZ'",
                     "-t_srs",
                     "crs:84",
                     "-f",
@@ -134,4 +109,4 @@ if __name__ == "__main__":
                 ],
                 check=True,
             )
-        merge_ids(newfilename)
+        merge_ids(newfilename, SETTINGS)
