@@ -1,0 +1,11 @@
+name: Wisconsin
+os-id-prefix: "ocd-division/country:us/state:wi"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-55([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-550([\d]+)'
+  cd:
+    key: DISTRICT

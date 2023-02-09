@@ -1,0 +1,11 @@
+name: Virginia
+os-id-prefix: "ocd-division/country:us/state:va"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-51([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-510([\d]+)'
+  cd:
+    key: DISTRICT

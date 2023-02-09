@@ -1,0 +1,11 @@
+name: Delaware
+os-id-prefix: "ocd-division/country:us/state:de"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-100([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-100([\d]+)'
+  cd:
+    key: DISTRICT

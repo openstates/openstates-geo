@@ -1,0 +1,11 @@
+name: Connecticut
+os-id-prefix: "ocd-division/country:us/state:ct"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-09([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-090([\d]+)'
+  cd:
+    key: DISTRICT

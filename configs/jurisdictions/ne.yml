@@ -1,0 +1,8 @@
+name: Nebraska
+os-id-prefix: "ocd-division/country:us/state:ne"
+id-mappings:
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-310([\d]+)'
+  cd:
+    key: DISTRICT

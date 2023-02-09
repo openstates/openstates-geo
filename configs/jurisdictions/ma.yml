@@ -1,0 +1,414 @@
+name: Massachusetts
+os-id-prefix: "ocd-division/country:us/state:ma"
+id-mappings:
+  sldu:
+    key: DISTRICT
+  sldl:
+    key: DISTRICT
+  cd:
+    key: DISTRICT
+  custom:
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk"
+      sld-id: sldu-25001
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_suffolk"
+      sld-id: sldu-25002
+    - os-id: "ocd-division/country:us/state:ma/sldu:hampden"
+      sld-id: sldu-25003
+    - os-id: "ocd-division/country:us/state:ma/sldu:berkshire_hampshire_franklin_and_hampden"
+      sld-id: sldu-25004
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_hampden_and_hampshire"
+      sld-id: sldu-25005
+    - os-id: "ocd-division/country:us/state:ma/sldu:hampshire_franklin_and_worcester"
+      sld-id: sldu-25006
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_hampden_and_hampshire"
+      sld-id: sldu-25007
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_hampden_hampshire_and_middlesex"
+      sld-id: sldu-25008
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_middlesex"
+      sld-id: sldu-25009
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_worcester"
+      sld-id: sldu-25010
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_worcester"
+      sld-id: sldu-25011
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_norfolk"
+      sld-id: sldu-25012
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_middlesex"
+      sld-id: sldu-25013
+    - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_worcester"
+      sld-id: sldu-25014
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_middlesex_and_norfolk"
+      sld-id: sldu-25015
+    - os-id: "ocd-division/country:us/state:ma/sldu:3rd_middlesex"
+      sld-id: sldu-25016
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_bristol_and_middlesex"
+      sld-id: sldu-25017
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_essex_and_middlesex"
+      sld-id: sldu-25018
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_essex"
+      sld-id: sldu-25019
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_essex_and_middlesex"
+      sld-id: sldu-25020
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_essex"
+      sld-id: sldu-25021
+    - os-id: "ocd-division/country:us/state:ma/sldu:3rd_essex"
+      sld-id: sldu-25022
+    - os-id: "ocd-division/country:us/state:ma/sldu:5th_middlesex"
+      sld-id: sldu-25023
+    - os-id: "ocd-division/country:us/state:ma/sldu:4th_middlesex"
+      sld-id: sldu-25024
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_middlesex"
+      sld-id: sldu-25027
+    - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_suffolk"
+      sld-id: sldu-25026
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk_and_middlesex"
+      sld-id: sldu-25025
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_suffolk_and_middlesex"
+      sld-id: sldu-25028
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_middlesex_and_norfolk"
+      sld-id: sldu-25029
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_suffolk"
+      sld-id: sldu-25030
+    - os-id: "ocd-division/country:us/state:ma/sldu:bristol_and_norfolk"
+      sld-id: sldu-25031
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_bristol_and_plymouth"
+      sld-id: sldu-25032
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_plymouth"
+      sld-id: sldu-25033
+    - os-id: "ocd-division/country:us/state:ma/sldu:plymouth_and_norfolk"
+      sld-id: sldu-25034
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_plymouth_and_bristol"
+      sld-id: sldu-25035
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_plymouth_and_bristol"
+      sld-id: sldu-25036
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_bristol_and_plymouth"
+      sld-id: sldu-25037
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_bristol_and_plymouth"
+      sld-id: sldu-25038
+    - os-id: "ocd-division/country:us/state:ma/sldu:plymouth_and_barnstable"
+      sld-id: sldu-25039
+    - os-id: "ocd-division/country:us/state:ma/sldu:cape_and_islands"
+      sld-id: sldu-25040
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_barnstable"
+      sld-id: sldl-25BARN1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_barnstable"
+      sld-id: sldl-25BARN2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_barnstable"
+      sld-id: sldl-25BARN3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_barnstable"
+      sld-id: sldl-25BARN4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_barnstable"
+      sld-id: sldl-25BARN5
+    - os-id: "ocd-division/country:us/state:ma/sldl:barnstable_dukes_and_nantucket"
+      sld-id: sldl-25BDN
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_berkshire"
+      sld-id: sldl-25BERK1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_berkshire"
+      sld-id: sldl-25BERK2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_berkshire"
+      sld-id: sldl-25BERK3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_berkshire"
+      sld-id: sldl-25068
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_bristol"
+      sld-id: sldl-25BRISTOL1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_bristol"
+      sld-id: sldl-25BRISTOL2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_bristol"
+      sld-id: sldl-25BRISTOL3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_bristol"
+      sld-id: sldl-25BRISTOL4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_bristol"
+      sld-id: sldl-25BRISTOL5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_bristol"
+      sld-id: sldl-25BRISTOL6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_bristol"
+      sld-id: sldl-25BRISTOL7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_bristol"
+      sld-id: sldl-25BRISTOL8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_bristol"
+      sld-id: sldl-25BRISTOL9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_bristol"
+      sld-id: sldl-25BRISTOL10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_bristol"
+      sld-id: sldl-25BRISTOL11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_bristol"
+      sld-id: sldl-25BRISTOL12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_bristol"
+      sld-id: sldl-25BRISTOL13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_bristol"
+      sld-id: sldl-25BRISTOL14
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_essex"
+      sld-id: sldl-25ESSEX1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_essex"
+      sld-id: sldl-25ESSEX2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_essex"
+      sld-id: sldl-25ESSEX3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_essex"
+      sld-id: sldl-25ESSEX4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_essex"
+      sld-id: sldl-25ESSEX5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_essex"
+      sld-id: sldl-25ESSEX6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_essex"
+      sld-id: sldl-25ESSEX7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_essex"
+      sld-id: sldl-25ESSEX8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_essex"
+      sld-id: sldl-25ESSEX9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_essex"
+      sld-id: sldl-25ESSEX10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_essex"
+      sld-id: sldl-25ESSEX11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_essex"
+      sld-id: sldl-25ESSEX12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_essex"
+      sld-id: sldl-25ESSEX13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_essex"
+      sld-id: sldl-25ESSEX14
+    - os-id: "ocd-division/country:us/state:ma/sldl:15th_essex"
+      sld-id: sldl-25ESSEX15
+    - os-id: "ocd-division/country:us/state:ma/sldl:16th_essex"
+      sld-id: sldl-25ESSEX16
+    - os-id: "ocd-division/country:us/state:ma/sldl:17th_essex"
+      sld-id: sldl-25ESSEX17
+    - os-id: "ocd-division/country:us/state:ma/sldl:18th_essex"
+      sld-id: sldl-25ESSEX18
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_franklin"
+      sld-id: sldl-25FRANK1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_franklin"
+      sld-id: sldl-25FRANK2
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_hampden"
+      sld-id: sldl-25HAMPDEN1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_hampden"
+      sld-id: sldl-25HAMPDEN2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_hampden"
+      sld-id: sldl-25HAMPDEN3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_hampden"
+      sld-id: sldl-25HAMPDEN4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_hampden"
+      sld-id: sldl-25HAMPDEN5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_hampden"
+      sld-id: sldl-25HAMPDEN6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_hampden"
+      sld-id: sldl-25HAMPDEN7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_hampden"
+      sld-id: sldl-25HAMPDEN8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_hampden"
+      sld-id: sldl-25HAMPDEN9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_hampden"
+      sld-id: sldl-25HAMPDEN10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_hampden"
+      sld-id: sldl-25HAMPDEN11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_hampden"
+      sld-id: sldl-25HAMPDEN12
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_hampshire"
+      sld-id: sldl-25HAMPSHIRE1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_hampshire"
+      sld-id: sldl-25HAMPSHIRE2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_hampshire"
+      sld-id: sldl-25HAMPSHIRE3
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_middlesex"
+      sld-id: sldl-25MIDDLE1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_middlesex"
+      sld-id: sldl-25MIDDLE2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_middlesex"
+      sld-id: sldl-25MIDDLE3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_middlesex"
+      sld-id: sldl-25MIDDLE4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_middlesex"
+      sld-id: sldl-25MIDDLE5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_middlesex"
+      sld-id: sldl-25MIDDLE6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_middlesex"
+      sld-id: sldl-25MIDDLE7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_middlesex"
+      sld-id: sldl-25MIDDLE8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_middlesex"
+      sld-id: sldl-25MIDDLE9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_middlesex"
+      sld-id: sldl-25MIDDLE10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_middlesex"
+      sld-id: sldl-25MIDDLE11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_middlesex"
+      sld-id: sldl-25MIDDLE12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_middlesex"
+      sld-id: sldl-25MIDDLE13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_middlesex"
+      sld-id: sldl-25MIDDLE14
+    - os-id: "ocd-division/country:us/state:ma/sldl:15th_middlesex"
+      sld-id: sldl-25MIDDLE15
+    - os-id: "ocd-division/country:us/state:ma/sldl:16th_middlesex"
+      sld-id: sldl-25MIDDLE16
+    - os-id: "ocd-division/country:us/state:ma/sldl:17th_middlesex"
+      sld-id: sldl-25MIDDLE17
+    - os-id: "ocd-division/country:us/state:ma/sldl:18th_middlesex"
+      sld-id: sldl-25MIDDLE18
+    - os-id: "ocd-division/country:us/state:ma/sldl:19th_middlesex"
+      sld-id: sldl-25MIDDLE19
+    - os-id: "ocd-division/country:us/state:ma/sldl:20th_middlesex"
+      sld-id: sldl-25MIDDLE20
+    - os-id: "ocd-division/country:us/state:ma/sldl:21st_middlesex"
+      sld-id: sldl-25MIDDLE21
+    - os-id: "ocd-division/country:us/state:ma/sldl:22nd_middlesex"
+      sld-id: sldl-25MIDDLE22
+    - os-id: "ocd-division/country:us/state:ma/sldl:23rd_middlesex"
+      sld-id: sldl-25MIDDLE23
+    - os-id: "ocd-division/country:us/state:ma/sldl:24th_middlesex"
+      sld-id: sldl-25MIDDLE24
+    - os-id: "ocd-division/country:us/state:ma/sldl:25th_middlesex"
+      sld-id: sldl-25MIDDLE25
+    - os-id: "ocd-division/country:us/state:ma/sldl:26th_middlesex"
+      sld-id: sldl-25MIDDLE26
+    - os-id: "ocd-division/country:us/state:ma/sldl:27th_middlesex"
+      sld-id: sldl-25MIDDLE27
+    - os-id: "ocd-division/country:us/state:ma/sldl:28th_middlesex"
+      sld-id: sldl-25MIDDLE28
+    - os-id: "ocd-division/country:us/state:ma/sldl:29th_middlesex"
+      sld-id: sldl-25MIDDLE29
+    - os-id: "ocd-division/country:us/state:ma/sldl:30th_middlesex"
+      sld-id: sldl-25MIDDLE30
+    - os-id: "ocd-division/country:us/state:ma/sldl:31st_middlesex"
+      sld-id: sldl-25MIDDLE31
+    - os-id: "ocd-division/country:us/state:ma/sldl:32nd_middlesex"
+      sld-id: sldl-25MIDDLE32
+    - os-id: "ocd-division/country:us/state:ma/sldl:33rd_middlesex"
+      sld-id: sldl-25MIDDLE33
+    - os-id: "ocd-division/country:us/state:ma/sldl:34th_middlesex"
+      sld-id: sldl-25MIDDLE34
+    - os-id: "ocd-division/country:us/state:ma/sldl:35th_middlesex"
+      sld-id: sldl-25MIDDLE35
+    - os-id: "ocd-division/country:us/state:ma/sldl:36th_middlesex"
+      sld-id: sldl-25MIDDLE36
+    - os-id: "ocd-division/country:us/state:ma/sldl:37th_middlesex"
+      sld-id: sldl-25MIDDLE37
+    - os-id: "ocd-division/country:us/state:ma/sldl:18th_worcester"
+      sld-id: sldl-25155
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_norfolk"
+      sld-id: sldl-25NORFOLK1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_norfolk"
+      sld-id: sldl-25NORFOLK2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_norfolk"
+      sld-id: sldl-25NORFOLK3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_norfolk"
+      sld-id: sldl-25NORFOLK4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_norfolk"
+      sld-id: sldl-25NORFOLK5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_norfolk"
+      sld-id: sldl-25NORFOLK6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_norfolk"
+      sld-id: sldl-25NORFOLK7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_norfolk"
+      sld-id: sldl-25NORFOLK8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_norfolk"
+      sld-id: sldl-25NORFOLK9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_norfolk"
+      sld-id: sldl-25NORFOLK10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_norfolk"
+      sld-id: sldl-25NORFOLK11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_norfolk"
+      sld-id: sldl-25NORFOLK12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_norfolk"
+      sld-id: sldl-25NORFOLK13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_norfolk"
+      sld-id: sldl-25NORFOLK14
+    - os-id: "ocd-division/country:us/state:ma/sldl:15th_norfolk"
+      sld-id: sldl-25NORFOLK15
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_plymouth"
+      sld-id: sldl-25PLY1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_plymouth"
+      sld-id: sldl-25PLY2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_plymouth"
+      sld-id: sldl-25PLY3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_plymouth"
+      sld-id: sldl-25PLY4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_plymouth"
+      sld-id: sldl-25PLY5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_plymouth"
+      sld-id: sldl-25PLY6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_plymouth"
+      sld-id: sldl-25PLY7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_plymouth"
+      sld-id: sldl-25PLY8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_plymouth"
+      sld-id: sldl-25PLY9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_plymouth"
+      sld-id: sldl-25PLY10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_plymouth"
+      sld-id: sldl-25PLY11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_plymouth"
+      sld-id: sldl-25PLY12
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_suffolk"
+      sld-id: sldl-25SUFFOLK1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_suffolk"
+      sld-id: sldl-25SUFFOLK2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_suffolk"
+      sld-id: sldl-25SUFFOLK3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_suffolk"
+      sld-id: sldl-25SUFFOLK4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_suffolk"
+      sld-id: sldl-25SUFFOLK5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_suffolk"
+      sld-id: sldl-25SUFFOLK6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_suffolk"
+      sld-id: sldl-25SUFFOLK7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_suffolk"
+      sld-id: sldl-25SUFFOLK8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_suffolk"
+      sld-id: sldl-25SUFFOLK9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_suffolk"
+      sld-id: sldl-25SUFFOLK10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_suffolk"
+      sld-id: sldl-25SUFFOLK11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_suffolk"
+      sld-id: sldl-25SUFFOLK12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_suffolk"
+      sld-id: sldl-25SUFFOLK13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_suffolk"
+      sld-id: sldl-25SUFFOLK14
+    - os-id: "ocd-division/country:us/state:ma/sldl:15th_suffolk"
+      sld-id: sldl-25SUFFOLK15
+    - os-id: "ocd-division/country:us/state:ma/sldl:16th_suffolk"
+      sld-id: sldl-25SUFFOLK16
+    - os-id: "ocd-division/country:us/state:ma/sldl:17th_suffolk"
+      sld-id: sldl-25SUFFOLK17
+    - os-id: "ocd-division/country:us/state:ma/sldl:18th_suffolk"
+      sld-id: sldl-25SUFFOLK18
+    - os-id: "ocd-division/country:us/state:ma/sldl:19th_suffolk"
+      sld-id: sldl-25SUFFOLK19
+    - os-id: "ocd-division/country:us/state:ma/sldl:1st_worcester"
+      sld-id: sldl-25WOR1
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_worcester"
+      sld-id: sldl-25WOR2
+    - os-id: "ocd-division/country:us/state:ma/sldl:3rd_worcester"
+      sld-id: sldl-25WOR3
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_worcester"
+      sld-id: sldl-25WOR4
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_worcester"
+      sld-id: sldl-25WOR5
+    - os-id: "ocd-division/country:us/state:ma/sldl:6th_worcester"
+      sld-id: sldl-25WOR6
+    - os-id: "ocd-division/country:us/state:ma/sldl:7th_worcester"
+      sld-id: sldl-25WOR7
+    - os-id: "ocd-division/country:us/state:ma/sldl:8th_worcester"
+      sld-id: sldl-25WOR8
+    - os-id: "ocd-division/country:us/state:ma/sldl:9th_worcester"
+      sld-id: sldl-25WOR9
+    - os-id: "ocd-division/country:us/state:ma/sldl:10th_worcester"
+      sld-id: sldl-25WOR10
+    - os-id: "ocd-division/country:us/state:ma/sldl:11th_worcester"
+      sld-id: sldl-25WOR11
+    - os-id: "ocd-division/country:us/state:ma/sldl:12th_worcester"
+      sld-id: sldl-25WOR12
+    - os-id: "ocd-division/country:us/state:ma/sldl:13th_worcester"
+      sld-id: sldl-25WOR13
+    - os-id: "ocd-division/country:us/state:ma/sldl:14th_worcester"
+      sld-id: sldl-25WOR14
+    - os-id: "ocd-division/country:us/state:ma/sldl:15th_worcester"
+      sld-id: sldl-25WOR15
+    - os-id: "ocd-division/country:us/state:ma/sldl:16th_worcester"
+      sld-id: sldl-25WOR16
+    - os-id: "ocd-division/country:us/state:ma/sldl:17th_worcester"
+      sld-id: sldl-25WOR17
+    - os-id: "ocd-division/country:us/state:ma/sldl:18th_worcester"
+      sld-id: sldl-25WOR18
+    - os-id: "ocd-division/country:us/state:ma/sldl:19th_worcester"
+      sld-id: sldl-25WOR19

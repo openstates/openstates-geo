@@ -1,0 +1,11 @@
+name: South Carolina
+os-id-prefix: "ocd-division/country:us/state:sc"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-45([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-450([\d]+)'
+  cd:
+    key: DISTRICT

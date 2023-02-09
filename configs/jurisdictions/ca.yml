@@ -1,0 +1,11 @@
+name: California
+os-id-prefix: "ocd-division/country:us/state:ca"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-060([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-060([\d]+)'
+  cd:
+    key: DISTRICT

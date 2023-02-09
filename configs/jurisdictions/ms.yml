@@ -1,0 +1,11 @@
+name: Mississippi
+os-id-prefix: "ocd-division/country:us/state:ms"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-28([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-280([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,0 +1,11 @@
+name: Hawaii
+os-id-prefix: "ocd-division/country:us/state:hi"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-150([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-150([\d]+)'
+  cd:
+    key: DISTRICT

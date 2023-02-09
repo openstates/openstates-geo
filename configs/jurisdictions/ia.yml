@@ -1,0 +1,11 @@
+name: Iowa
+os-id-prefix: "ocd-division/country:us/state:ia"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-19([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-190([\d]+)'
+  cd:
+    key: DISTRICT

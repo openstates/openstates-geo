@@ -1,0 +1,11 @@
+name: Arkansas
+os-id-prefix: "ocd-division/country:us/state:ar"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-05([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-050([\d]+)'
+  cd:
+    key: DISTRICT

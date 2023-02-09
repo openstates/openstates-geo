@@ -1,0 +1,11 @@
+name: Arizona
+os-id-prefix: "ocd-division/country:us/state:az"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-040([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-040([\d]+)'
+  cd:
+    key: DISTRICT

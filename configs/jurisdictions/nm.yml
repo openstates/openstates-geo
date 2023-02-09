@@ -1,0 +1,11 @@
+name: New Mexico
+os-id-prefix: "ocd-division/country:us/state:nm"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-350([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-350([\d]+)'
+  cd:
+    key: DISTRICT

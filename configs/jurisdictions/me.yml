@@ -1,0 +1,11 @@
+name: Maine
+os-id-prefix: "ocd-division/country:us/state:me"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-23([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-230([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,0 +1,11 @@
+name: Florida
+os-id-prefix: "ocd-division/country:us/state:fl"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-12([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-120([\d]+)'
+  cd:
+    key: DISTRICT

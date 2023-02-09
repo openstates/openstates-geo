@@ -1,0 +1,12 @@
+name: Minnesota
+os-id-prefix: "ocd-division/country:us/state:mn"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-27([\w])'
+    match-type: str
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-270([\d]+)'
+  cd:
+    key: DISTRICT

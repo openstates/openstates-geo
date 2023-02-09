@@ -1,0 +1,11 @@
+name: Pennsylvania
+os-id-prefix: "ocd-division/country:us/state:pa"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-42([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-420([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,0 +1,12 @@
+name: Alaska
+os-id-prefix: "ocd-division/country:us/state:ak"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-020([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-0200([A-Z])'
+    match_type: str
+  cd:
+    key: DISTRICT

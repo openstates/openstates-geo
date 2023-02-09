@@ -1,0 +1,11 @@
+name: Illinois
+os-id-prefix: "ocd-division/country:us/state:il"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-17([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-170([\d]+)'
+  cd:
+    key: DISTRICT

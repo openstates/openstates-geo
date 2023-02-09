@@ -1,0 +1,11 @@
+name: Montana
+os-id-prefix: "ocd-division/country:us/state:mt"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-30([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-300([\d]+)'
+  cd:
+    key: DISTRICT

@@ -1,0 +1,12 @@
+name: South Dakota
+os-id-prefix: "ocd-division/country:us/state:sd"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-46([\w])'
+    match-type: str
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-460([\d]+)'
+  cd:
+    key: DISTRICT

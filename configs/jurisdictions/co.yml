@@ -1,0 +1,11 @@
+name: Colorado
+os-id-prefix: "ocd-division/country:us/state:co"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-080([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-080([\d]+)'
+  cd:
+    key: DISTRICT

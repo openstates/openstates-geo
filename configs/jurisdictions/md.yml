@@ -1,0 +1,27 @@
+name: Maryland
+os-id-prefix: "ocd-division/country:us/state:md"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-24([\w])'
+    match-type: str
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-240([\d]+)'
+  cd:
+    key: DISTRICT
+  custom:
+    - os-id: "ocd-division/country:us/state:md/sldl:2c"
+    - os-id: "ocd-division/country:us/state:md/sldl:30"
+    - os-id: "ocd-division/country:us/state:md/sldl:31"
+    - os-id: "ocd-division/country:us/state:md/sldl:42"
+    - os-id: "ocd-division/country:us/state:md/sldl:44"
+    - os-id: "ocd-division/country:us/state:md/sldl:47"
+    - os-id: "ocd-division/country:us/state:md/sldl:4a"
+    - os-id: "ocd-division/country:us/state:md/sldl:4b"
+    - os-id: "ocd-division/country:us/state:md/sldl:5a"
+    - os-id: "ocd-division/country:us/state:md/sldl:5b"
+    - os-id: "ocd-division/country:us/state:md/sldl:12a"
+    - os-id: "ocd-division/country:us/state:md/sldl:12b"
+    - os-id: "ocd-division/country:us/state:md/sldl:33a"
+    - os-id: "ocd-division/country:us/state:md/sldl:33b"

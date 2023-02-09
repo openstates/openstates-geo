@@ -1,0 +1,11 @@
+name: Kansas
+os-id-prefix: "ocd-division/country:us/state:ks"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-20([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-200([\d]+)'
+  cd:
+    key: DISTRICT

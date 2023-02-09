@@ -1,0 +1,11 @@
+name: Washington
+os-id-prefix: "ocd-division/country:us/state:wa"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-530([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-530([\d]+)'
+  cd:
+    key: DISTRICT

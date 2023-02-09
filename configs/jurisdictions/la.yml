@@ -1,0 +1,11 @@
+name: Louisiana
+os-id-prefix: "ocd-division/country:us/state:la"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-22([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-220([\d]+)'
+  cd:
+    key: DISTRICT
