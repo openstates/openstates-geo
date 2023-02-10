@@ -56,11 +56,14 @@ def merge_ids(geojson_path, settings):
         else:
             ocd_prefix = settings["jurisdictions"][juris.name]["os-id-prefix"]
         geoid = _find_key(district["properties"], GEOID_KEYS)
-        if not geoid or geoid in settings["SKIPPED_GEOIDS"]:
+        if not geoid or geoid in settings["SKIPPED_GEOIDS"] or geoid.endswith("ZZ"):
+            print(f"Skipping bad geoid: {geoid}")
             continue
         census_id = f"{district_type}-{geoid}"
         ocd_id = None
         for custom_match in mappings.get("custom", []):
+            if "sld-id" not in custom_match:
+                continue
             if census_id == custom_match["sld-id"]:
                 ocd_id = custom_match["os-id"]
                 break
