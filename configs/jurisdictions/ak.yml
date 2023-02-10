@@ -10,3 +10,4 @@ id-mappings:
     match_type: str
   cd:
     key: DISTRICT
+    sld-match: 'cd-020(\d)'

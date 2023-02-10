@@ -4,10 +4,9 @@ import glob
 import json
 import openstates.metadata as metadata
 import os
+import re
 import subprocess
 import sys
-import us
-
 import yaml
 
 from utils import JURISDICTIONS, ROOTDIR, setup_source, load_settings
@@ -19,9 +18,9 @@ MTFCC_KEYS = ("MTFCC", "MTFCC20")
 
 def _find_key(district_properties, keys):
     for key in keys:
-        fips = district_properties.get(key, None)
-        if fips:
-            return fips
+        res = district_properties.get(key, None)
+        if res:
+            return res
     else:
         print(f"Couldn't find {keys} in {district_properties}")
         return None
@@ -32,8 +31,6 @@ def merge_ids(geojson_path, settings):
         rawgeodata = json.load(f)
     geodata = {k: v for k, v in rawgeodata.items() if k not in ["features"]}
     geodata["features"] = []
-    jurisdiction = None
-    district_type = None
     for district in rawgeodata["features"]:
         fips = _find_key(district["properties"], FIPS_KEYS)
         if not fips:
@@ -43,57 +40,57 @@ def merge_ids(geojson_path, settings):
         """
         for j in JURISDICTIONS:
             if fips == j.fips:
-                jurisdiction = j
+                juris = j
                 break
         else:
+            print(f"{fips} not defined in metadata. Skipping")
             continue
-        try:
-            _ = metadata.lookup(abbr=jurisdiction.abbr)
-        except Exception:
-            print(f"{jurisdiction.name} not defined in OpenStates metadata. Skipping")
+        state_meta = metadata.lookup(abbr=juris.abbr)
+        res = _find_key(district["properties"], MTFCC_KEYS)
+        if not res:
             continue
-        if not district_type:
-            mapping = _find_key(district["properties"], MTFCC_KEYS)
-            if not mapping:
-                continue
-            district_type = settings["MTFCC_MAPPING"][mapping]
+        ocd_prefix = settings["jurisdictions"][juris.name]["os-id-prefix"]
+        district_type = settings["MTFCC_MAPPING"][res].lower()
         geoid = _find_key(district["properties"], GEOID_KEYS)
         if not geoid or geoid in settings["SKIPPED_GEOIDS"]:
             continue
-        if geoid.endswith("98") or geoid.endswith("99"):
-            geoid = "at-large"
-        district_padding = "0" * (3 - len(geoid))
-        district_id = f"cd-{district_padding}{geoid}"
-        mappings = settings["jurisdictions"][jurisdiction.name]
-        custom = mappings["id-mappings"].get("custom", [])
-        mapping_type = mappings["id-mappings"]["cd"]
+        census_id = f"{district_type}-{geoid}"
+        mappings = settings["jurisdictions"][juris.name]["id-mappings"]
         ocd_id = None
-        for mapping in custom:
-            if mapping.get("sld-id", "") == geoid:
-                ocd_id = mapping["os-id"]
+        for custom_match in mappings.get("custom", []):
+            if census_id == custom_match["sld-id"]:
+                ocd_id = custom_match["os-id"]
                 break
         if not ocd_id:
-            prefix = mapping_type.get("os-id-prefix", None)
-            if prefix:
-                ocd_id = prefix.lower()
+            di_match = re.compile(mappings[district_type]["sld-match"])
+            sld_id = di_match.search(census_id).groups()[0]
+            ocd_id = f"{ocd_prefix}/{district_type}:{int(sld_id)}"
+        if district_type == "cd":
+            cd_num = geoid.removeprefix(fips)
+            if cd_num in ["00", "98"]:
+                ocd_id = f"{ocd_prefix}/{district_type}:at-large"
+                district_name = f"{juris.abbr.upper()}-AL"
             else:
-                prefix = mappings["os-id-prefix"]
-                ocd_id = prefix.lower()
-
-        if district_id.lower().endswith("at-large"):
-            district_name = f"{jurisdiction.abbr.upper()}-AL"
+                ocd_id = f"{ocd_prefix}/{district_type}:{int(cd_num)}"
+                district_name = f"{juris.abbr.upper()}-{cd_num}"
         else:
-            district_name = f"{jurisdiction.abbr.upper()}-{geoid}"
+            output_filename = f"data/geojson/{juris.abbr}-{district_type}.geojson"
+            district_meta = state_meta.lookup_district(ocd_id)
+            if not district_meta:
+                print(f"Missing district for {ocd_id}")
+                continue
+            district_name = district_meta.name
 
         district["properties"]["ocdid"] = ocd_id
-        district["properties"]["type"] = "cd"
-        district["properties"]["state"] = jurisdiction.abbr
+        district["properties"]["type"] = district_type
+        district["properties"]["state"] = juris.abbr
         district["properties"]["name"] = district_name
         geodata["features"].append(district)
 
-    output_filename = (
-        f"{ROOTDIR}/data/geojson/{jurisdiction.abbr}-{district_type}.geojson"
-    )
+    if district_type == "cd":
+        output_filename = f"data/geojson/us-{district_type}.geojson"
+    else:
+        output_filename = f"{ROOTDIR}/data/geojson/{juris.abbr}-{district_type}.geojson"
     print(f"Writing data from {geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geodata, geojson_file)

@@ -9,3 +9,4 @@ id-mappings:
     sld-match: 'sldu-040([\d]+)'
   cd:
     key: DISTRICT
+    sld-match: 'cd-040(\d)'
