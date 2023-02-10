@@ -9,6 +9,7 @@ id-mappings:
     sld-match: 'sldu-320([\d]+)'
   cd:
     key: DISTRICT
+    sld-match: 'cd-320(\d)'
   custom:
     - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_1"
     - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_2"

@@ -8,6 +8,7 @@ id-mappings:
     key: DISTRICT
   cd:
     key: DISTRICT
+    sld-match: 'cd-330(\d)'
   custom:
     - os-id: "ocd-division/country:us/state:nh/sldl:belknap_1"
       sld-id: sldl-33BE1

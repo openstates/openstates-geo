@@ -10,6 +10,7 @@ id-mappings:
     sld-match: 'sldu-240([\d]+)'
   cd:
     key: DISTRICT
+    sld-match: 'cd-240(\d)'
   custom:
     - os-id: "ocd-division/country:us/state:md/sldl:2c"
     - os-id: "ocd-division/country:us/state:md/sldl:30"

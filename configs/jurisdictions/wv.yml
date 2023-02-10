@@ -11,3 +11,4 @@ id-mappings:
     - os-id: "ocd-division/country:us/state:wv/sldu:817"
   cd:
     key: DISTRICT
+    sld-id: 'cd-540(\d)'

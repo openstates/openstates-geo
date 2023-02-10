@@ -10,3 +10,4 @@ id-mappings:
   cd:
     key: SLDUST
     os-id-prefix: "ocd-division/country:us/territory:pr"
+    sld-match: 'cd-72([\d]+)'

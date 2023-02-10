@@ -7,6 +7,7 @@ id-mappings:
     key: DISTRICT
   cd:
     key: DISTRICT
+    sld-match: 'cd-500(\d)'
   custom:
     - os-id: "ocd-division/country:us/state:vt/sldu:addison"
       sld-id: sldu-50ADD

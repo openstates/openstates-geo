@@ -1,12 +1,9 @@
 name: Massachusetts
 os-id-prefix: "ocd-division/country:us/state:ma"
 id-mappings:
-  sldu:
-    key: DISTRICT
-  sldl:
-    key: DISTRICT
   cd:
     key: DISTRICT
+    sld-match: 'cd-250(\d)'
   custom:
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk"
       sld-id: sldu-25001

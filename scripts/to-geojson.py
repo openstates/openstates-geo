@@ -49,13 +49,16 @@ def merge_ids(geojson_path, settings):
         res = _find_key(district["properties"], MTFCC_KEYS)
         if not res:
             continue
-        ocd_prefix = settings["jurisdictions"][juris.name]["os-id-prefix"]
         district_type = settings["MTFCC_MAPPING"][res].lower()
+        mappings = settings["jurisdictions"][juris.name]["id-mappings"]
+        if "os-id-prefix" in mappings[district_type]:
+            ocd_prefix = mappings[district_type]["os-id-prefix"]
+        else:
+            ocd_prefix = settings["jurisdictions"][juris.name]["os-id-prefix"]
         geoid = _find_key(district["properties"], GEOID_KEYS)
         if not geoid or geoid in settings["SKIPPED_GEOIDS"]:
             continue
         census_id = f"{district_type}-{geoid}"
-        mappings = settings["jurisdictions"][juris.name]["id-mappings"]
         ocd_id = None
         for custom_match in mappings.get("custom", []):
             if census_id == custom_match["sld-id"]:
@@ -63,8 +66,12 @@ def merge_ids(geojson_path, settings):
                 break
         if not ocd_id:
             di_match = re.compile(mappings[district_type]["sld-match"])
-            sld_id = di_match.search(census_id).groups()[0]
-            ocd_id = f"{ocd_prefix}/{district_type}:{int(sld_id)}"
+            sld_id = di_match.search(census_id)
+            if not sld_id:
+                print(f"{census_id} doesn't match any districts with {di_match}")
+                continue
+            sld_id = sld_id.groups()[0]
+            ocd_id = f"{ocd_prefix}/{district_type}:{sld_id.lstrip('0')}".lower()
         if district_type == "cd":
             cd_num = geoid.removeprefix(fips)
             if cd_num in ["00", "98"]:
