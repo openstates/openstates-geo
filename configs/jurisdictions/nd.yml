@@ -3,7 +3,7 @@ os-id-prefix: "ocd-division/country:us/state:nd"
 id-mappings:
   sldl:
     key: DISTRICT
-    sld-match: 'sldl-380([\d]+)'
+    sld-match: 'sldl-380(\d+[A-Z]?)'
   sldu:
     key: DISTRICT
     sld-match: 'sldu-380([\d]+)'
