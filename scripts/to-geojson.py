@@ -105,7 +105,7 @@ def merge_ids(geojson_path, settings):
             district_name = district_meta.name
 
         district["properties"]["ocdid"] = ocd_id
-        district["properties"]["type"] = district_type
+        district["properties"]["type"] = dt
         district["properties"]["state"] = juris.abbr
         district["properties"]["name"] = district_name
         geodata["features"].append(district)
