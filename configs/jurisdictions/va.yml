@@ -6,7 +6,7 @@ id-mappings:
     sld-match: 'sldl-51([\d]+)'
   sldu:
     key: DISTRICT
-    sld-match: 'sldu-510([\d]+)'
+    sld-match: 'sldu-51(\d+)'
   cd:
     key: DISTRICT
     sld-match: 'cd-51([\d]+)'
