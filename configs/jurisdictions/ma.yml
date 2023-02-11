@@ -90,13 +90,13 @@ id-mappings:
 
     - os-id: "ocd-division/country:us/state:ma/sldl:1st_barnstable"
       sld-id: sldl-25001
-    - os-id: "ocd-division/country:us/state:ma/sldl:2st_barnstable"
+    - os-id: "ocd-division/country:us/state:ma/sldl:2nd_barnstable"
       sld-id: sldl-25002
     - os-id: "ocd-division/country:us/state:ma/sldl:3rd_barnstable"
       sld-id: sldl-25003
-    - os-id: "ocd-division/country:us/state:ma/sldl:4rd_barnstable"
+    - os-id: "ocd-division/country:us/state:ma/sldl:4th_barnstable"
       sld-id: sldl-25004
-    - os-id: "ocd-division/country:us/state:ma/sldl:5rd_barnstable"
+    - os-id: "ocd-division/country:us/state:ma/sldl:5th_barnstable"
       sld-id: sldl-25005
     - os-id: "ocd-division/country:us/state:ma/sldl:barnstable_dukes_and_nantucket"
       sld-id: sldl-25006
@@ -271,7 +271,7 @@ id-mappings:
     - os-id: "ocd-division/country:us/state:ma/sldl:33rd_middlesex"
       sld-id: sldl-25091
     - os-id: "ocd-division/country:us/state:ma/sldl:34th_middlesex"
-      sld-id: sldl-25093
+      sld-id: sldl-25092
     - os-id: "ocd-division/country:us/state:ma/sldl:35th_middlesex"
       sld-id: sldl-25093
     - os-id: "ocd-division/country:us/state:ma/sldl:36th_middlesex"
