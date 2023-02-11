@@ -3,10 +3,10 @@ os-id-prefix: "ocd-division/country:us/state:wv"
 id-mappings:
   sldl:
     key: DISTRICT
-    sld-match: 'sldl-540([\d]+)'
+    sld-match: 'sldl-54(\d+)'
   sldu:
     key: DISTRICT
-    sld-match: 'sldu-540([\d]+)'
+    sld-match: 'sldu-540(\d+)'
   custom:
     - os-id: "ocd-division/country:us/state:wv/sldu:817"
   cd:
