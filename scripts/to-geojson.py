@@ -92,7 +92,15 @@ def merge_ids(geojson_path, settings):
             output_filename = f"data/geojson/{juris.abbr}-{dt}.geojson"
             district_meta = state_meta.lookup_district(ocd_id)
             if not district_meta:
-                print(f"Missing district for {ocd_id}")
+                print(f"WARNING!! LOOKING IN LEGACY DISTRICTS FOR {ocd_id}")
+                for legacy in state_meta.legacy_districts:
+                    if not legacy:
+                        continue
+                    if legacy.division_id == ocd_id:
+                        district_meta = legacy
+                        break
+            if not district_meta:
+                print(f"Couldn't find metadata for {ocd_id}")
                 continue
             district_name = district_meta.name
 
