@@ -286,7 +286,7 @@ id-mappings:
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_3"
       sld-id: sldl-33703
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_4"
-      sld-id: sldl-33R04
+      sld-id: sldl-33704
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_5"
       sld-id: sldl-33705
     - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_6"
@@ -378,7 +378,7 @@ id-mappings:
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_9"
       sld-id: sldl-33809
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_10"
-      sld-id: sldl-33S810
+      sld-id: sldl-33810
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_11"
       sld-id: sldl-33811
     - os-id: "ocd-division/country:us/state:nh/sldl:strafford_12"
