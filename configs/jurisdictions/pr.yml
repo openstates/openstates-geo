@@ -2,8 +2,8 @@ name: Puerto Rico
 os-id-prefix: "ocd-division/country:us/territory:pr"
 id-mappings:
   sldl:
-    sld-match: 'sldl-720([\d+])'
+    sld-match: 'sldl-720(\d+)'
   sldu:
     sld-match: 'sldu-7200(\d)'
   cd:
-    sld-match: 'cd-72([\d]+)'
+    sld-match: 'cd-72(\d+)'
