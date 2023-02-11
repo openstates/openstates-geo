@@ -21,11 +21,11 @@ def main():
             # skip empty features
             if "ocdid" not in feature["properties"]:
                 continue
-            folder = feature["properties"]["ocdid"]
-            filename = f"{feature['properties']['type']}:.json"
-            full_path = f"{ROOTDIR}/data/boundaries/{folder}/{filename}.json"
+            subpath = feature["properties"]["ocdid"]
+            full_path = f"{ROOTDIR}/data/boundaries/{subpath}.json"
             if os.path.exists(full_path):
                 continue
+            folder = "/".join(subpath.split("/")[:-1])
             os.makedirs(f"{ROOTDIR}/data/boundaries/{folder}", exist_ok=True)
             gdf = gpd.GeoDataFrame.from_features([feature])
             obj = {
@@ -42,19 +42,22 @@ def main():
                     "type": "Point",
                 },
             }
-            with open(f"{ROOTDIR}/data/boundaries/{folder}/{filename}.json", "w") as f:
+            with open(full_path, "w") as f:
                 json.dump(obj, f)
+
     # all geojson files processed...now to upload
     print("Uploading division files to S3")
     s3 = boto3.client("s3")
     bucket = "data.openstates.org"
-    prefix_path = "data/boundaries"
-    for file in glob.glob(f"{ROOTDIR}/{prefix_path}/**/*.json", recursive=True):
-        print(f"{file=}")
-        exit(1)
-        path = "boundaries/{YEAR}/"
+    prefix_path = f"{ROOTDIR}/data/boundaries"
+    bucket_path = f"boundaries/{year}"
+    for index, file in enumerate(glob.glob(f"{prefix_path}/**/*.json", recursive=True)):
+        path = file.removeprefix(f"{prefix_path}/")
+        path = f"{bucket_path}/{path}"
         s3.put_object(Body=open(file, "r").read(), Bucket=bucket, Key=path)
-    # s3.chmod(bucket_path, acl="public-read", recursive=True)
+        if index and index % 50 == 0:
+            print(f"Processed {index} files...")
+    s3.chmod(bucket_path, acl="public-read", recursive=True)
     print("Please ensure `public-read` ACL is set on the new data in S3")
 
 
