@@ -1,7 +1,8 @@
 name: "District of Columbia"
 id-mappings:
   sldu:
-    os-id-prefix: "ocd-division/country:us/district:dc/ward:"
+    os-id-prefix: "ocd-division/country:us/district:dc"
+    sld-prefix: "ward:"
     sld-match: 'sldu-1100([\d])'
   cd:
     os-id-prefix: "ocd-division/country:us/district:dc"

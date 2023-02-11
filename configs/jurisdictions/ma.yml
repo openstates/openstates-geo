@@ -1,6 +1,8 @@
 name: Massachusetts
 os-id-prefix: "ocd-division/country:us/state:ma"
 id-mappings:
+  sldu: {}
+  sldl: {}
   cd:
     key: DISTRICT
     sld-match: 'cd-250(\d)'

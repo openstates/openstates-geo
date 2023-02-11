@@ -51,6 +51,8 @@ def merge_ids(geojson_path, settings):
             continue
         district_type = settings["MTFCC_MAPPING"][res].lower()
         mappings = settings["jurisdictions"][juris.name]["id-mappings"]
+        if "sld-prefix" in mappings[district_type]:
+            district_type = mappings[district_type]["sld-prefix"]
         if "os-id-prefix" in mappings[district_type]:
             ocd_prefix = mappings[district_type]["os-id-prefix"]
         else:
@@ -97,10 +99,7 @@ def merge_ids(geojson_path, settings):
         district["properties"]["name"] = district_name
         geodata["features"].append(district)
 
-    if district_type == "cd":
-        output_filename = f"data/geojson/us-{district_type}.geojson"
-    else:
-        output_filename = f"{ROOTDIR}/data/geojson/{juris.abbr}-{district_type}.geojson"
+    output_filename = f"{ROOTDIR}/data/geojson/{juris.abbr}-{district_type}.geojson"
     print(f"Writing data from {geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geodata, geojson_file)
