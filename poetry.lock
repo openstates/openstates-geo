@@ -903,14 +903,14 @@ et-xmlfile = "*"
 
 [[package]]
 name = "openstates"
-version = "6.15.1"
+version = "6.15.2.2"
 description = "core infrastructure for the openstates project"
 category = "main"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "openstates-6.15.1-py3-none-any.whl", hash = "sha256:c99aa4c4361d6f2269a16f85af968a0449756189df05f9ee633e76f96a1a5ede"},
-    {file = "openstates-6.15.1.tar.gz", hash = "sha256:ac31a25dea03682b0a7c90db6c1c3baddaf7b93c8a434d7f8e1c07618cc5eda4"},
+    {file = "openstates-6.15.2.2-py3-none-any.whl", hash = "sha256:3bfe2acd61231b23afff0724ce041ff03b62256ceafaf382fee945710d76b60e"},
+    {file = "openstates-6.15.2.2.tar.gz", hash = "sha256:6e6fe3cc85ec758fc289f69943271e8671ca278744ea5c103bf48ecf3615ae35"},
 ]
 
 [package.dependencies]
@@ -1955,21 +1955,6 @@ files = [
 jellyfish = "0.6.1"
 
 [[package]]
-name = "us-aidentified"
-version = "3.0.2"
-description = "US state meta information and other fun stuff"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "us-aidentified-3.0.2.tar.gz", hash = "sha256:44d67287dcc0043b7e41c5cbe7edc9c5b6e426f8639b9ef264edb73c667d4347"},
-    {file = "us_aidentified-3.0.2-py3-none-any.whl", hash = "sha256:1db19e11fe77741c204f995cfed78f75c4f0b788b582952e5dc89892928ab9f9"},
-]
-
-[package.dependencies]
-jellyfish = "<1.0"
-
-[[package]]
 name = "wcwidth"
 version = "0.2.6"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -2008,4 +1993,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "205c68a164e3279263b83224fc4a30c8554c2f868006de86e23af293745d69fd"
+content-hash = "409361cdf62d44a095bc7054c504be72d297124e9b5d85ab0921cf3c590e15b1"

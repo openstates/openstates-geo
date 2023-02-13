@@ -23,7 +23,7 @@ id-mappings:
       sld-id: sldu-25D05
     - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_hampshire"
       sld-id: sldu-25D06
-    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_an_hampden"
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_hampden"
       sld-id: sldu-25D07
     - os-id: "ocd-division/country:us/state:ma/sldu:worcester_hampden_hampshire_and_middlesex"
       sld-id: sldu-25D08
@@ -73,7 +73,7 @@ id-mappings:
       sld-id: sldu-25D29
     - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_suffolk"
       sld-id: sldu-25D18
-    - os-id: "ocd-division/country:us/state:ma/sldu:1st_plymouth_and_norfolk"
+    - os-id: "ocd-division/country:us/state:ma/sldu:plymouth_and_norfolk"
       sld-id: sldu-25D31
     - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_bristol_and_plymouth"
       sld-id: sldu-25D33

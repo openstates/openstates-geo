@@ -2,7 +2,7 @@ import glob
 import os
 from pathlib import Path
 import shutil
-import us
+from openstates.metadata.data import STATES_AND_DC_PR as JURISDICTIONS
 import yaml
 
 """
@@ -12,11 +12,7 @@ move up one more directory (to the git root)
 """
 ROOTDIR = Path(__file__).parent.parent.absolute()
 TIGER_ROOT = "https://www2.census.gov/geo/tiger"
-# JURISDICTION_NAMES = [s.name for s in us.STATES + us.TERRITORIES + [us.states.DC]]
-# JURISDICTIONS = [s for s in us.STATES + us.TERRITORIES + [us.states.DC]]
-TERRITORIES = [us.states.DC, us.states.PR]
-JURISDICTION_NAMES = [s.name for s in us.STATES + TERRITORIES]
-JURISDICTIONS = [s for s in us.STATES + TERRITORIES]
+JURISDICTION_NAMES = [s.name for s in JURISDICTIONS]
 
 
 def find_jurisdiction(jur_name: str):
