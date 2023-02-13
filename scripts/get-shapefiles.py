@@ -17,6 +17,15 @@ from utils import (
 
 
 def download_from_tiger(jurisdiction, prefix):
+    """
+    URLs are somewhat hard-coded here...
+    Generally...download three files for each jurisdiction:
+    1. Federal congress (cd) boundaries
+    2. Upper chamber boundaries (sldu)
+    3. lower chamber boundaries (sldl)
+    Some jurisdictions (e.g. NE, DC) don't have all three files
+    so we allow a download to fail and just log and move on
+    """
     fips = jurisdiction.fips
     jur_name = jurisdiction.name.upper().replace(" ", "_")
     url_root = f"{TIGER_ROOT}/TIGER_{prefix}/STATE/{fips}_{jur_name}/{fips}"
@@ -38,6 +47,10 @@ def download_from_tiger(jurisdiction, prefix):
 
 
 def download_boundary_file(boundary_year: str):
+    """
+    Use separate download pattern because this file
+    needs to be processed separately
+    """
     url = f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
     print(f"Downloading national boundary from {url}")
     _ = urllib.request.urlretrieve(
@@ -107,7 +120,7 @@ if __name__ == "__main__":
             print(f"Invalid jurisdiction {jur}. Skipping.")
             continue
         if jur not in SETTINGS["jurisdictions"]:
-            print(f"Skipping {jur}. No URLs configured.")
+            print(f"Skipping {jur}. No configuration present.")
             continue
         print(f"Fetching shapefiles for {jur}")
 
