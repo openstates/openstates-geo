@@ -17,7 +17,7 @@ id-mappings:
       sld-id: sldu-25D01
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_hampden_and_hampshire"
       sld-id: sldu-25D02
-    - os-id: "ocd-division/country:us/state:ma/sldu:hampden_hampshire_worcester"
+    - os-id: "ocd-division/country:us/state:ma/sldu:hampden_hampshire_and_worcester"
       sld-id: sldu-25D04
     - os-id: "ocd-division/country:us/state:ma/sldu:hampshire_franklin_and_worcester"
       sld-id: sldu-25D05
@@ -41,7 +41,7 @@ id-mappings:
       sld-id: sldu-25D12
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_middlesex_and_norfolk"
       sld-id: sldu-25D13
-    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_worcester_middlesex"
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_middlesex"
       sld-id: sldu-25D14
     - os-id: "ocd-division/country:us/state:ma/sldu:3rd_middlesex"
       sld-id: sldu-25D15
