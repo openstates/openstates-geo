@@ -12,8 +12,11 @@ move up one more directory (to the git root)
 """
 ROOTDIR = Path(__file__).parent.parent.absolute()
 TIGER_ROOT = "https://www2.census.gov/geo/tiger"
-JURISDICTION_NAMES = [s.name for s in us.STATES + us.TERRITORIES + [us.states.DC]]
-JURISDICTIONS = [s for s in us.STATES + us.TERRITORIES + [us.states.DC]]
+# JURISDICTION_NAMES = [s.name for s in us.STATES + us.TERRITORIES + [us.states.DC]]
+# JURISDICTIONS = [s for s in us.STATES + us.TERRITORIES + [us.states.DC]]
+TERRITORIES = [us.states.DC, us.states.PR]
+JURISDICTION_NAMES = [s.name for s in us.STATES + TERRITORIES]
+JURISDICTIONS = [s for s in us.STATES + TERRITORIES]
 
 
 def find_jurisdiction(jur_name: str):
