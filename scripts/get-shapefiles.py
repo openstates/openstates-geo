@@ -31,21 +31,25 @@ def download_from_tiger(jurisdiction, prefix, settings):
         fips, jurisdiction.name.upper().replace(" ", "_")
     )
     url_root = f"{TIGER_ROOT}/TIGER_{prefix}/STATE/{fips}_{jur_name}/{fips}"
-    urls = (
-        f"{url_root}/tl_rd22_{fips}_cd118.zip",
-        f"{url_root}/tl_rd22_{fips}_sldu.zip",
-        f"{url_root}/tl_rd22_{fips}_sldl.zip",
-    )
-    for url in urls:
-        chamber = url.split("/")[-1]
-        fullpath = f"{ROOTDIR}/data/{chamber}"
+    urls = {
+            "cd": f"{url_root}/tl_rd22_{fips}_cd118.zip",
+            "sldu": f"{url_root}/tl_rd22_{fips}_sldu.zip",
+            "sldl":f"{url_root}/tl_rd22_{fips}_sldl.zip",
+            }
+    mappings = settings["jurisdictions"][jurisdiction.name]["id-mappings"]
+    for key in urls.keys():
+        if "url" in mappings.get(key, {}):
+            urls[key] = mappings[key]["url"]
+    for url_type, url in urls.items():
+        filename = url.split("/")[-1]
+        fullpath = f"{ROOTDIR}/data/{filename}"
         if os.path.exists(fullpath):
-            print(f"skipping {jurisdiction.name} {chamber}")
+            print(f"skipping {jurisdiction.name} {filename}")
             continue
         try:
             _download_and_extract(url, fullpath)
         except Exception as e:
-            print(f"Couldn't download {jurisdiction.name} {chamber} :: {e}")
+            print(f"Couldn't download {jurisdiction.name} {filename} :: {e}")
 
 
 def download_boundary_file(boundary_year: str):
