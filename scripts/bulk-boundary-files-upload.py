@@ -47,18 +47,16 @@ def main():
 
     # all geojson files processed...now to upload
     print("Uploading division files to S3")
-    s3 = boto3.client("s3")
+    s3 = boto3.resource("s3")
     bucket = "data.openstates.org"
     prefix_path = f"{ROOTDIR}/data/boundaries"
     bucket_path = f"boundaries/{year}"
     for index, file in enumerate(glob.glob(f"{prefix_path}/**/*.json", recursive=True)):
         path = file.removeprefix(f"{prefix_path}/")
         path = f"{bucket_path}/{path}"
-        s3.put_object(Body=open(file, "r").read(), Bucket=bucket, Key=path)
+        s3.Object(bucket, path).put(Body=open(file, "r").read(), ACL="public-read")
         if index and index % 50 == 0:
             print(f"Processed {index} files...")
-    s3.chmod(bucket_path, acl="public-read", recursive=True)
-    print("Please ensure `public-read` ACL is set on the new data in S3")
 
 
 if __name__ == "__main__":
