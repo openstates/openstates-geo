@@ -10,7 +10,7 @@ from utils import ROOTDIR, load_settings
 
 if __name__ == "__main__":
     parser = ArgumentParser(
-        description="Download shapefiles for defined jurisdictions",
+        description="Convert geoJSON to mapbox format",
         formatter_class=ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(

@@ -129,7 +129,6 @@ if __name__ == "__main__":
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
             print(f"{newfilename} already exists, skipping")
-            continue
         else:
             print(f"Converting {file} => {newfilename}")
             subprocess.run(
