@@ -1,0 +1,16 @@
+BOUNDARY_YEAR: "2021"
+
+SKIPPED_GEOIDS: []
+#  cd-6098: American Samoa
+#  cd-6998: Northern Mariana Islands
+#  cd-6698: Guam
+#  cd-7898: Virgin Islands
+
+MTFCC_MAPPING:
+  G5200: cd
+  G5210: sldu
+  G5220: sldl
+
+FIPS_NAME_MAP:
+  "69": "COMMONWEALTH_OF_THE_NORTHERN_MARIANA_ISLANDS"
+  "78": "UNITED_STATES_VIRGIN_ISLANDS"

@@ -1,0 +1,419 @@
+name: New Hampshire
+os-id-prefix: "ocd-division/country:us/state:nh"
+id-mappings:
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-330([\d]+)'
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-33(\d+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-330(\d)'
+  custom:
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_1"
+      sld-id: sldl-33001
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_2"
+      sld-id: sldl-33002
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_3"
+      sld-id: sldl-33003
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_4"
+      sld-id: sldl-33004
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_5"
+      sld-id: sldl-33005
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_6"
+      sld-id: sldl-33006
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_7"
+      sld-id: sldl-33007
+    - os-id: "ocd-division/country:us/state:nh/sldl:belknap_8"
+      sld-id: sldl-33008
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_1"
+      sld-id: sldl-33101
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_2"
+      sld-id: sldl-33102
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_3"
+      sld-id: sldl-33103
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_4"
+      sld-id: sldl-33104
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_5"
+      sld-id: sldl-33105
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_6"
+      sld-id: sldl-33106
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_7"
+      sld-id: sldl-33107
+    - os-id: "ocd-division/country:us/state:nh/sldl:carroll_8"
+      sld-id: sldl-33108
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_1"
+      sld-id: sldl-33201
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_2"
+      sld-id: sldl-33202
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_3"
+      sld-id: sldl-33203
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_4"
+      sld-id: sldl-33204
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_5"
+      sld-id: sldl-33205
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_6"
+      sld-id: sldl-33206
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_7"
+      sld-id: sldl-33207
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_8"
+      sld-id: sldl-33208
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_9"
+      sld-id: sldl-33209
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_10"
+      sld-id: sldl-33210
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_11"
+      sld-id: sldl-33211
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_12"
+      sld-id: sldl-33212
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_13"
+      sld-id: sldl-33213
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_14"
+      sld-id: sldl-33214
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_15"
+      sld-id: sldl-33215
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_16"
+      sld-id: sldl-33216
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_17"
+      sld-id: sldl-33217
+    - os-id: "ocd-division/country:us/state:nh/sldl:cheshire_18"
+      sld-id: sldl-33218
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_1"
+      sld-id: sldl-33301
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_2"
+      sld-id: sldl-33302
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_3"
+      sld-id: sldl-33303
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_4"
+      sld-id: sldl-33304
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_5"
+      sld-id: sldl-33305
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_6"
+      sld-id: sldl-33306
+    - os-id: "ocd-division/country:us/state:nh/sldl:coos_7"
+      sld-id: sldl-33307
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_1"
+      sld-id: sldl-33401
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_2"
+      sld-id: sldl-33402
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_3"
+      sld-id: sldl-33403
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_4"
+      sld-id: sldl-33404
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_5"
+      sld-id: sldl-33405
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_6"
+      sld-id: sldl-33406
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_7"
+      sld-id: sldl-33407
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_8"
+      sld-id: sldl-33408
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_9"
+      sld-id: sldl-33409
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_10"
+      sld-id: sldl-33410
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_11"
+      sld-id: sldl-33411
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_12"
+      sld-id: sldl-33412
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_13"
+      sld-id: sldl-33413
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_14"
+      sld-id: sldl-33414
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_15"
+      sld-id: sldl-33415
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_16"
+      sld-id: sldl-33416
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_17"
+      sld-id: sldl-33417
+    - os-id: "ocd-division/country:us/state:nh/sldl:grafton_18"
+      sld-id: sldl-33418
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_1"
+      sld-id: sldl-33501
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_2"
+      sld-id: sldl-33502
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_3"
+      sld-id: sldl-33503
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_4"
+      sld-id: sldl-33504
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_5"
+      sld-id: sldl-33505
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_6"
+      sld-id: sldl-33506
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_7"
+      sld-id: sldl-33507
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_8"
+      sld-id: sldl-33508
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_9"
+      sld-id: sldl-33509
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_10"
+      sld-id: sldl-33510
+    - os-id: 'ocd-division/country:us/state:nh/sldl:hillsborough_11'
+      sld-id: sldl-33511
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_12"
+      sld-id: sldl-33512
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_13"
+      sld-id: sldl-33513
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_14"
+      sld-id: sldl-33514
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_15"
+      sld-id: sldl-33515
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_16"
+      sld-id: sldl-33516
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_17"
+      sld-id: sldl-33517
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_18"
+      sld-id: sldl-33518
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_19"
+      sld-id: sldl-33519
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_20"
+      sld-id: sldl-33520
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_21"
+      sld-id: sldl-33521
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_22"
+      sld-id: sldl-33522
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_23"
+      sld-id: sldl-33523
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_24"
+      sld-id: sldl-33524
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_25"
+      sld-id: sldl-33525
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_26"
+      sld-id: sldl-33526
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_27"
+      sld-id: sldl-33527
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_28"
+      sld-id: sldl-33528
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_29"
+      sld-id: sldl-33529
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_30"
+      sld-id: sldl-33530
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_31"
+      sld-id: sldl-33531
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_32"
+      sld-id: sldl-33532
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_33"
+      sld-id: sldl-33533
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_34"
+      sld-id: sldl-33534
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_35"
+      sld-id: sldl-33535
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_36"
+      sld-id: sldl-33536
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_37"
+      sld-id: sldl-33537
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_38"
+      sld-id: sldl-33538
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_39"
+      sld-id: sldl-33539
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_40"
+      sld-id: sldl-33540
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_41"
+      sld-id: sldl-33541
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_42"
+      sld-id: sldl-33542
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_43"
+      sld-id: sldl-33543
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_44"
+      sld-id: sldl-33544
+    - os-id: "ocd-division/country:us/state:nh/sldl:hillsborough_45"
+      sld-id: sldl-33545
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_1"
+      sld-id: sldl-33601
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_2"
+      sld-id: sldl-33602
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_3"
+      sld-id: sldl-33603
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_4"
+      sld-id: sldl-33604
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_5"
+      sld-id: sldl-33605
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_6"
+      sld-id: sldl-33606
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_7"
+      sld-id: sldl-33607
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_8"
+      sld-id: sldl-33608
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_9"
+      sld-id: sldl-33609
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_10"
+      sld-id: sldl-33610
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_11"
+      sld-id: sldl-33611
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_12"
+      sld-id: sldl-33612
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_13"
+      sld-id: sldl-33613
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_14"
+      sld-id: sldl-33614
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_15"
+      sld-id: sldl-33615
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_16"
+      sld-id: sldl-33616
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_17"
+      sld-id: sldl-33617
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_18"
+      sld-id: sldl-33618
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_19"
+      sld-id: sldl-33619
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_20"
+      sld-id: sldl-33620
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_21"
+      sld-id: sldl-33621
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_22"
+      sld-id: sldl-33622
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_23"
+      sld-id: sldl-33623
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_24"
+      sld-id: sldl-33624
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_25"
+      sld-id: sldl-33625
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_26"
+      sld-id: sldl-33626
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_27"
+      sld-id: sldl-33627
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_28"
+      sld-id: sldl-33628
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_29"
+      sld-id: sldl-33629
+    - os-id: "ocd-division/country:us/state:nh/sldl:merrimack_30"
+      sld-id: sldl-33630
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_1"
+      sld-id: sldl-33701
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_2"
+      sld-id: sldl-33702
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_3"
+      sld-id: sldl-33703
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_4"
+      sld-id: sldl-33704
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_5"
+      sld-id: sldl-33705
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_6"
+      sld-id: sldl-33706
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_7"
+      sld-id: sldl-33707
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_8"
+      sld-id: sldl-33708
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_9"
+      sld-id: sldl-33709
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_10"
+      sld-id: sldl-33710
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_11"
+      sld-id: sldl-33711
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_12"
+      sld-id: sldl-33712
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_13"
+      sld-id: sldl-33713
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_14"
+      sld-id: sldl-33714
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_15"
+      sld-id: sldl-33715
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_16"
+      sld-id: sldl-33716
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_17"
+      sld-id: sldl-33717
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_18"
+      sld-id: sldl-33718
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_19"
+      sld-id: sldl-33719
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_20"
+      sld-id: sldl-33720
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_21"
+      sld-id: sldl-33721
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_22"
+      sld-id: sldl-33722
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_23"
+      sld-id: sldl-33723
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_24"
+      sld-id: sldl-33724
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_25"
+      sld-id: sldl-33725
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_26"
+      sld-id: sldl-33726
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_27"
+      sld-id: sldl-33727
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_28"
+      sld-id: sldl-33728
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_29"
+      sld-id: sldl-33729
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_30"
+      sld-id: sldl-33730
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_31"
+      sld-id: sldl-33731
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_32"
+      sld-id: sldl-33732
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_33"
+      sld-id: sldl-33733
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_34"
+      sld-id: sldl-33734
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_35"
+      sld-id: sldl-33735
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_36"
+      sld-id: sldl-33736
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_37"
+      sld-id: sldl-33737
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_38"
+      sld-id: sldl-33738
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_39"
+      sld-id: sldl-33739
+    - os-id: "ocd-division/country:us/state:nh/sldl:rockingham_40"
+      sld-id: sldl-33740
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_1"
+      sld-id: sldl-33801
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_2"
+      sld-id: sldl-33802
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_3"
+      sld-id: sldl-33803
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_4"
+      sld-id: sldl-33804
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_5"
+      sld-id: sldl-33805
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_6"
+      sld-id: sldl-33806
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_7"
+      sld-id: sldl-33807
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_8"
+      sld-id: sldl-33808
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_9"
+      sld-id: sldl-33809
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_10"
+      sld-id: sldl-33810
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_11"
+      sld-id: sldl-33811
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_12"
+      sld-id: sldl-33812
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_13"
+      sld-id: sldl-33813
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_14"
+      sld-id: sldl-33814
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_15"
+      sld-id: sldl-33815
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_16"
+      sld-id: sldl-33816
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_17"
+      sld-id: sldl-33817
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_18"
+      sld-id: sldl-33818
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_19"
+      sld-id: sldl-33819
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_20"
+      sld-id: sldl-33820
+    - os-id: "ocd-division/country:us/state:nh/sldl:strafford_21"
+      sld-id: sldl-33821
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_1"
+      sld-id: sldl-33901
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_2"
+      sld-id: sldl-33902
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_3"
+      sld-id: sldl-33903
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_4"
+      sld-id: sldl-33904
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_5"
+      sld-id: sldl-33905
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_6"
+      sld-id: sldl-33906
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_7"
+      sld-id: sldl-33907
+    - os-id: "ocd-division/country:us/state:nh/sldl:sullivan_8"
+      sld-id: sldl-33908

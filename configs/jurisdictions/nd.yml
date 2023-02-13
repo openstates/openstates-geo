@@ -1,0 +1,12 @@
+name: North Dakota
+os-id-prefix: "ocd-division/country:us/state:nd"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-380(\d+[A-Z]?)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-380([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-380(\d)'

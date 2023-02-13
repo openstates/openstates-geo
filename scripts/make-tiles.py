@@ -1,31 +1,34 @@
 #!/usr/bin/env python3
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import glob
 import os
 import subprocess
 import urllib.request
 import zipfile
-
-YEAR = "2022"
+from utils import ROOTDIR, load_settings
 
 
 if __name__ == "__main__":
-    try:
-        os.makedirs("./data/mapbox")
-    except FileExistsError:
-        pass
-
-    print("Downloading national boundary")
-    res = urllib.request.urlretrieve(
-        f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_nation_5m.zip",
-        f"data/source/cb_{YEAR}_us_nation_5m.zip",
+    parser = ArgumentParser(
+        description="Convert geoJSON to mapbox format",
+        formatter_class=ArgumentDefaultsHelpFormatter,
     )
-    with zipfile.ZipFile(f"data/source/cb_{YEAR}_us_nation_5m.zip", "r") as zf:
-        zf.extractall("data/source/")
+    parser.add_argument(
+        "--config",
+        "-c",
+        type=str,
+        default=f"{ROOTDIR}/configs",
+        help="Config directory for downloading geo data",
+    )
+    args = parser.parse_args()
+    settings = load_settings(args.config)
+
+    os.makedirs(f"{ROOTDIR}/data/mapbox", exist_ok=True)
 
     print("Clip GeoJSON to shoreline")
     sld_filenames = []
     cd_filenames = []
-    for filename in sorted(glob.glob("data/geojson/*.geojson")):
+    for filename in sorted(glob.glob(f"{ROOTDIR}/data/geojson/*.geojson")):
         newfilename = filename.replace("/geojson/", "/mapbox/")
         if "sld" in newfilename:
             sld_filenames.append(newfilename)
@@ -33,13 +36,14 @@ if __name__ == "__main__":
             cd_filenames.append(newfilename)
         if os.path.exists(newfilename):
             print(f"{newfilename} exists, skipping")
+            continue
         else:
             print(f"{filename} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
                     "-clipsrc",
-                    f"./data/source/cb_{YEAR}_us_nation_5m.shp",
+                    f"{ROOTDIR}/data/boundary/cb_{settings['BOUNDARY_YEAR']}_us_nation_5m.shp",
                     newfilename,
                     filename,
                 ],
@@ -55,53 +59,35 @@ if __name__ == "__main__":
             "--minimum-zoom",
             "2",
             "--maximum-zoom",
-            "13",
+            "12",
             "--detect-shared-borders",
             "--simplification",
             "10",
             "--force",
             "--output",
-            "./data/cd.mbtiles",
+            f"{ROOTDIR}/data/cd.mbtiles",
         ]
         + cd_filenames,
         check=True,
     )
 
-    mb_account = os.environ.get("MAPBOX_ACCOUNT", None)
-    mb_token = os.environ.get("MAPBOX_ACCESS_TOKEN", None)
-    if mb_account and mb_token:
-        print("Combine to SLD MBTiles file")
-        subprocess.run(
-            [
-                "tippecanoe",
-                "--layer",
-                "sld",
-                "--minimum-zoom",
-                "2",
-                "--maximum-zoom",
-                "13",
-                "--detect-shared-borders",
-                "--simplification",
-                "10",
-                "--force",
-                "--output",
-                "./data/sld.mbtiles",
-            ]
-            + sld_filenames,
-            check=True,
-        )
-
-        # print("Upload to Mapbox")
-        # subprocess.run(
-        #     [
-        #         "poetry",
-        #         "run",
-        #         "mapbox",
-        #         "upload",
-        #         f"{mb_account}.sld",
-        #         "./data/sld.mbtiles",
-        #     ],
-        #     check=True,
-        # )
-    else:
-        print("Skipping upload to Mapbox...environment variables missing")
+    print("Combine to SLD MBTiles file")
+    subprocess.run(
+        [
+            "tippecanoe",
+            "--layer",
+            "sld",
+            "--minimum-zoom",
+            "2",
+            "--maximum-zoom",
+            "12",
+            "--detect-shared-borders",
+            "--simplification",
+            "10",
+            "--force",
+            "--output",
+            f"{ROOTDIR}/data/sld.mbtiles",
+        ]
+        + sld_filenames,
+        check=True,
+    )

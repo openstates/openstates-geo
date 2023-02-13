@@ -1,0 +1,13 @@
+name: Maryland
+os-id-prefix: "ocd-division/country:us/state:md"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-24(\d+[A-Z]?)'
+    match-type: str
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-240([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-240(\d)'

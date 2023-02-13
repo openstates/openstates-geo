@@ -1,0 +1,13 @@
+name: Kansas
+os-id-prefix: "ocd-division/country:us/state:ks"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-20([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-200([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER2022/SLDU/tl_2022_20_sldu.zip
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-200(\d)'

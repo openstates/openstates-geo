@@ -2,15 +2,11 @@
 
 set -eou pipefail
 
-if [[ -n "${DATABASE_URL}" ]]; then
-    export DATABASE_URL
+if [[ -z "${DATABASE_URL}" ]]; then
+    echo "Missing required environment variable DATABASE_URL"
+    exit 2
 fi
-if [[ -n "${MAPBOX_ACCOUNT}" ]]; then
-    export MAPBOX_ACCOUNT
-fi
-if [[ -n "${MAPBOX_ACCESS_TOKEN}" ]]; then
-    export MAPBOX_ACCESS_TOKEN
-fi
+export DATABASE_URL
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -22,3 +18,4 @@ poetry run python "${SCRIPT_DIR}/scripts/to-geojson.py"
 poetry run python "${SCRIPT_DIR}/manage.py" migrate
 poetry run python "${SCRIPT_DIR}/manage.py" load_divisions
 poetry run python "${SCRIPT_DIR}/scripts/make-tiles.py"
+poetry run python "${SCRIPT_DIR}/scripts/bulk-boundary-files-upload.py"

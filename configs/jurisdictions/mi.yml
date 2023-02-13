@@ -1,0 +1,12 @@
+name: Michigan
+os-id-prefix: "ocd-division/country:us/state:mi"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-26([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-260([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-26([\d]+)'

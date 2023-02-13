@@ -1,0 +1,12 @@
+name: Rhode Island
+os-id-prefix: "ocd-division/country:us/state:ri"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-440([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-440([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-440(\d)'

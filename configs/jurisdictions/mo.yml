@@ -1,0 +1,12 @@
+name: Missouri
+os-id-prefix: "ocd-division/country:us/state:mo"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-29([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-290([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-290(\d)'

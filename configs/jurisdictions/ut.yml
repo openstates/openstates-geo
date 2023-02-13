@@ -1,0 +1,12 @@
+name: Utah
+os-id-prefix: "ocd-division/country:us/state:ut"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-490([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-490([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-490(\d)'

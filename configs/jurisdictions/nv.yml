@@ -1,0 +1,32 @@
+name: Nevada
+os-id-prefix: "ocd-division/country:us/state:nv"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-320([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-320([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-320(\d)'
+  custom:
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_1"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_2"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_3"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_4"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_5"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_6"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_7"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_8"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_9"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_10"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_11"
+    - os-id: "ocd-division/country:us/state:nv/sldu:clark_county_12"
+    - os-id: "ocd-division/country:us/state:nv/sldu:washoe_county_1"
+    - os-id: "ocd-division/country:us/state:nv/sldu:washoe_county_2"
+    - os-id: "ocd-division/country:us/state:nv/sldu:washoe_county_3"
+    - os-id: "ocd-division/country:us/state:nv/sldu:washoe_county_4"
+    - os-id: "ocd-division/country:us/state:nv/sldu:capital"
+    - os-id: "ocd-division/country:us/state:nv/sldu:central_nevada"
+    - os-id: "ocd-division/country:us/state:nv/sldu:rural_nevada"

@@ -1,0 +1,12 @@
+name: Oregon
+os-id-prefix: "ocd-division/country:us/state:or"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-410([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-410([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-410(\d)'

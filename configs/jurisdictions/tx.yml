@@ -1,0 +1,12 @@
+name: Texas
+os-id-prefix: "ocd-division/country:us/state:tx"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-48([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-480([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-48([\d]+)'

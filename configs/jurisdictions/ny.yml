@@ -1,0 +1,12 @@
+name: New York
+os-id-prefix: "ocd-division/country:us/state:ny"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-36([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-360([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-36([\d]+)'

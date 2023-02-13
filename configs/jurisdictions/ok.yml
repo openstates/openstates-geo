@@ -1,0 +1,12 @@
+name: Oklahoma
+os-id-prefix: "ocd-division/country:us/state:ok"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-40([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-400([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-400(\d)'

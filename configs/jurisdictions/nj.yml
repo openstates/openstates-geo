@@ -1,0 +1,12 @@
+name: New Jersey
+os-id-prefix: "ocd-division/country:us/state:nj"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-340([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-340([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-34([\d]+)'

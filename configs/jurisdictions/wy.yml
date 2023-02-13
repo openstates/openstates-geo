@@ -1,0 +1,12 @@
+name: Wyoming
+os-id-prefix: "ocd-division/country:us/state:wy"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-560([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-560([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-560(\d)'

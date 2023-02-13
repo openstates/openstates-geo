@@ -1,0 +1,12 @@
+name: Kentucky
+os-id-prefix: "ocd-division/country:us/state:ky"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-21([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-210([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-210(\d)'

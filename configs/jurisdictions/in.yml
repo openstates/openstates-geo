@@ -1,0 +1,12 @@
+name: Indiana
+os-id-prefix: "ocd-division/country:us/state:in"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-18([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-180([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-180(\d)'

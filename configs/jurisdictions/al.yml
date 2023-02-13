@@ -1,0 +1,12 @@
+name: Alabama
+os-id-prefix: "ocd-division/country:us/state:al"
+id-mappings:
+  sldl:
+    key: DISTRICT
+    sld-match: 'sldl-01([\d]+)'
+  sldu:
+    key: DISTRICT
+    sld-match: 'sldu-010([\d]+)'
+  cd:
+    key: DISTRICT
+    sld-match: 'cd-010(\d)'

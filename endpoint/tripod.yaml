@@ -11,7 +11,7 @@ functions:
     environment:
       DB_USER: geo
       DB_NAME: geo
-      DB_HOST: 
+      DB_HOST:
         paramstore: /bobsled/backups/PGHOST
-      DB_PASSWORD: 
+      DB_PASSWORD:
         paramstore: /passwords/geo_db_password
