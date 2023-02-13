@@ -36,7 +36,7 @@ def merge_ids(geojson_path, settings):
         if not fips:
             continue
         """
-        Find the matching jurisdiction district
+        Find the matching jurisdiction based on FIPS code
         """
         for j in JURISDICTIONS:
             if fips == j.fips:
@@ -81,6 +81,12 @@ def merge_ids(geojson_path, settings):
             sld_id = sld_id.groups()[0]
             ocd_id = f"{ocd_prefix}/{district_type}:{sld_id.lstrip('0')}".lower()
         if district_type == "cd":
+            """
+            Federal files have some quirks that other jurisdictional boundaries
+            don't have. Particularly:
+            1. the actual district name
+            2. handling "at large" districts
+            """
             cd_num = geoid.removeprefix(fips)
             if cd_num in ["00", "98"]:
                 ocd_id = f"{ocd_prefix}/{district_type}:at-large"
@@ -89,6 +95,11 @@ def merge_ids(geojson_path, settings):
                 ocd_id = f"{ocd_prefix}/{district_type}:{int(cd_num)}"
                 district_name = f"{juris.abbr.upper()}-{cd_num}"
         else:
+            """
+            Jurisdictional boundaries we can look up in OpenStates
+            But some may not be up to date with current boundaries yet
+            In those cases, we need to check "legacy" boundaries
+            """
             output_filename = f"data/geojson/{juris.abbr}-{dt}.geojson"
             district_meta = state_meta.lookup_district(ocd_id)
             if not district_meta:

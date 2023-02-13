@@ -16,7 +16,7 @@ from utils import (
 )
 
 
-def download_from_tiger(jurisdiction, prefix):
+def download_from_tiger(jurisdiction, prefix, settings):
     """
     URLs are somewhat hard-coded here...
     Generally...download three files for each jurisdiction:
@@ -27,7 +27,9 @@ def download_from_tiger(jurisdiction, prefix):
     so we allow a download to fail and just log and move on
     """
     fips = jurisdiction.fips
-    jur_name = jurisdiction.name.upper().replace(" ", "_")
+    jur_name = settings["FIPS_NAME_MAP"].get(
+        fips, jurisdiction.name.upper().replace(" ", "_")
+    )
     url_root = f"{TIGER_ROOT}/TIGER_{prefix}/STATE/{fips}_{jur_name}/{fips}"
     urls = (
         f"{url_root}/tl_rd22_{fips}_cd118.zip",
@@ -51,15 +53,14 @@ def download_boundary_file(boundary_year: str):
     Use separate download pattern because this file
     needs to be processed separately
     """
+    output = f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip"
+    if os.path.exists(output):
+        print("Boundary file exists. Skipping download.")
+        return
     url = f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
     print(f"Downloading national boundary from {url}")
-    _ = urllib.request.urlretrieve(
-        url,
-        f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip",
-    )
-    with zipfile.ZipFile(
-        f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip", "r"
-    ) as zf:
+    _ = urllib.request.urlretrieve(url, output)
+    with zipfile.ZipFile(output, "r") as zf:
         zf.extractall(f"{ROOTDIR}/data/boundary/")
 
 
@@ -125,5 +126,5 @@ if __name__ == "__main__":
         print(f"Fetching shapefiles for {jur}")
 
         jurisdiction = find_jurisdiction(jur)
-        download_from_tiger(jurisdiction, "RD18")
+        download_from_tiger(jurisdiction, "RD18", SETTINGS)
     download_boundary_file(SETTINGS["BOUNDARY_YEAR"])
