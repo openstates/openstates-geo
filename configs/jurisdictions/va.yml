@@ -7,6 +7,8 @@ id-mappings:
   sldu:
     key: DISTRICT
     sld-match: 'sldu-51(\d+)'
+    url: https://www2.census.gov/geo/tiger/TIGER2022/SLDU/tl_2022_51_sldu.zip
   cd:
     key: DISTRICT
     sld-match: 'cd-51([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER2022/SLDL/tl_2022_51_sldl.zip
