@@ -7,16 +7,12 @@ id-mappings:
     key: DISTRICT
     sld-match: 'cd-250(\d)'
   custom:
-    - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk"
-      sld-id: sldu-25D30
-    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_suffolk"
-      sld-id: sldu-25D29
+    - os-id: "ocd-division/country:us/state:ma/sldu:berkshire_hampden_franklin_and_hampshire"
+      sld-id: sldu-25D01
+    - os-id: "ocd-division/country:us/state:ma/sldu:hampden_and_hampshire"
+      sld-id: sldu-25D02
     - os-id: "ocd-division/country:us/state:ma/sldu:hampden"
       sld-id: sldu-25D03
-    - os-id: "ocd-division/country:us/state:ma/sldu:berkshire_hampshire_franklin_and_hampden"
-      sld-id: sldu-25D01
-    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_hampden_and_hampshire"
-      sld-id: sldu-25D02
     - os-id: "ocd-division/country:us/state:ma/sldu:hampden_hampshire_and_worcester"
       sld-id: sldu-25D04
     - os-id: "ocd-division/country:us/state:ma/sldu:hampshire_franklin_and_worcester"
@@ -25,23 +21,19 @@ id-mappings:
       sld-id: sldu-25D06
     - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_hampden"
       sld-id: sldu-25D07
-    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_hampden_hampshire_and_middlesex"
-      sld-id: sldu-25D08
-    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_middlesex"
-      sld-id: sldu-25D10
-    - os-id: "ocd-division/country:us/state:ma/sldu:1st_worcester"
-      sld-id: sldu-25D09
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_worcester"
       sld-id: sldu-25D08
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_worcester"
+      sld-id: sldu-25D09
+    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_middlesex"
+      sld-id: sldu-25D10
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_middlesex"
       sld-id: sldu-25D11
-    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_norfolk"
-      sld-id: sldu-25D12
     - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_worcester"
       sld-id: sldu-25D12
-    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_middlesex_and_norfolk"
+    - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_norfolk"
       sld-id: sldu-25D13
-    - os-id: "ocd-division/country:us/state:ma/sldu:worcester_and_middlesex"
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_worcester_and_middlesex"
       sld-id: sldu-25D14
     - os-id: "ocd-division/country:us/state:ma/sldu:3rd_middlesex"
       sld-id: sldu-25D15
@@ -49,18 +41,20 @@ id-mappings:
       sld-id: sldu-25D16
     - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_middlesex"
       sld-id: sldu-25D17
-    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_essex_and_middlesex"
-      sld-id: sldu-25D20
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_suffolk"
+      sld-id: sldu-25D18
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_essex"
       sld-id: sldu-25D19
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_essex_and_middlesex"
+      sld-id: sldu-25D20
     - os-id: "ocd-division/country:us/state:ma/sldu:1st_essex_and_middlesex"
       sld-id: sldu-25D21
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_essex"
       sld-id: sldu-25D22
-    - os-id: "ocd-division/country:us/state:ma/sldu:3rd_essex"
-      sld-id: sldu-25D24
     - os-id: "ocd-division/country:us/state:ma/sldu:5th_middlesex"
       sld-id: sldu-25D23
+    - os-id: "ocd-division/country:us/state:ma/sldu:3rd_essex"
+      sld-id: sldu-25D24
     - os-id: "ocd-division/country:us/state:ma/sldu:3rd_suffolk"
       sld-id: sldu-25D25
     - os-id: "ocd-division/country:us/state:ma/sldu:middlesex_and_suffolk"
@@ -69,16 +63,16 @@ id-mappings:
       sld-id: sldu-25D27
     - os-id: "ocd-division/country:us/state:ma/sldu:suffolk_and_middlesex"
       sld-id: sldu-25D28
-    - os-id: "ocd-division/country:us/state:ma/sldu:1st_middlesex_and_norfolk"
+    - os-id: "ocd-division/country:us/state:ma/sldu:2nd_suffolk"
       sld-id: sldu-25D29
-    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_suffolk"
-      sld-id: sldu-25D18
-    - os-id: "ocd-division/country:us/state:ma/sldu:plymouth_and_norfolk"
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_suffolk"
+      sld-id: sldu-25D30
+    - os-id: "ocd-division/country:us/state:ma/sldu:1st_plymouth_and_norfolk"
       sld-id: sldu-25D31
-    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_bristol_and_plymouth"
-      sld-id: sldu-25D33
     - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_and_plymouth"
       sld-id: sldu-25D32
+    - os-id: "ocd-division/country:us/state:ma/sldu:norfolk_plymouth_and_bristol"
+      sld-id: sldu-25D33
     - os-id: "ocd-division/country:us/state:ma/sldu:2nd_plymouth_and_norfolk"
       sld-id: sldu-25D34
     - os-id: "ocd-division/country:us/state:ma/sldu:bristol_and_norfolk"
