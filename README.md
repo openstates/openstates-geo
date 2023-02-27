@@ -16,7 +16,7 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 - Python 3 and `poetry`
 - GDAL 2
-- `tippecanoe`
+- [tippecanoe](https://github.com/felt/tippecanoe)
 
 ## Ensuring The Right Shape Files
 
