@@ -28,6 +28,19 @@ See Appendix A below on Geographic Data Sources for more context.
 
 You'll probably want to remove any cached files in `./data/`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
 
+### Note on file naming
+
+You'll see many files with names like `sldu`, `sldl` or `cd` during this process. Here is a quick layout of what those file name abbreviations mean:
+
+- `sldu`
+  - State Level District Upper -> Upper Chamber District boundaries
+- `sldl`
+  - State Level District Lower -> Lower Chamber District boundaries
+- `cd`
+  - Congressional District -> Federal Congressional District boundaries
+
+We do not collect boundaries for Federal Senate because each state has the same number of senators and they are considered "at-large" (having no district boundaries beyond the entire state).
+
 ## Running
 
 There are several steps, which typically need to be run in order:
@@ -59,11 +72,13 @@ There are several steps, which typically need to be run in order:
 
   - `./scripts/make-tiles.py`
 
-8) Currently, we have to manually upload the resulting tilesets to [Mapbox](https://studio.mapbox.com/tilesets/). We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
+8) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
+
+  - We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
 9) Create district boundary files and upload to S3
 
-  `poetry run python scripts/upload-bulk-boundary-files.py`
+  - `poetry run python scripts/upload-bulk-boundary-files.py`
 
 ### Running within Docker
 
