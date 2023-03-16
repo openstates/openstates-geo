@@ -56,3 +56,9 @@ if __name__ == "__main__":
     pprint.pprint(
         lambda_handler({"queryStringParameters": {"lat": 38.9, "lng": -77}}, None)
     )
+    print("Checking KS 33 -> 39 change ({'lat': 38.480357, 'lng': -100.906731})")
+    pprint.pprint(
+        lambda_handler(
+            {"queryStringParameters": {"lat": 38.480357, "lng": -100.906731}}, None
+        )
+    )
