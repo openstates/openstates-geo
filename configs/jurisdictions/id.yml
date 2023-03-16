@@ -2,11 +2,9 @@ name: Idaho
 os-id-prefix: "ocd-division/country:us/state:id"
 id-mappings:
   sldl:
-    key: DISTRICT
     sld-match: 'sldl-160([\d]+)'
+    split_districts: true
   sldu:
-    key: DISTRICT
     sld-match: 'sldu-160([\d]+)'
   cd:
-    key: DISTRICT
     sld-match: 'cd-160(\d)'
