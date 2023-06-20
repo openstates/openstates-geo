@@ -13,8 +13,8 @@ RUN apt-get update -qq \
       libsqlite3-dev \
       zlib1g-dev
 RUN pip install --disable-pip-version-check --no-cache-dir wheel \
-    && pip install --disable-pip-version-check --no-cache-dire crcmod poetry
-RUN git clone https://github.com/mapbox/tippecanoe.git && \
+    && pip install --disable-pip-version-check --no-cache-dir crcmod poetry
+RUN git clone https://github.com/felt/tippecanoe.git && \
     cd tippecanoe && \
     make -j && \
     make install
@@ -31,6 +31,8 @@ COPY make-tiles.sh .
 
 RUN poetry install --only=main \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
+    && DEBIAN_FRONTEND=noninteractive apt-get remove -yqq build-essential libsqlite3-dev zlib1g-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get autoremove -yqq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
