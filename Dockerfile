@@ -24,8 +24,9 @@ COPY pyproject.toml .
 COPY poetry.lock .
 RUN poetry install --only=main --no-root
 
-COPY scripts /opt/openstates-district-maps
-COPY djapp .
+COPY scripts scripts/
+COPY configs configs/
+COPY djapp djapp/
 COPY manage.py .
 COPY make-tiles.sh .
 
