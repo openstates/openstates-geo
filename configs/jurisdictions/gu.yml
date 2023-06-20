@@ -1,1 +1,9 @@
 name: Guam
+os-id-prefix: "ocd-division/country:us/territory:gu"
+id-mappings:
+  sldl:
+    sld-match: 'sldl-660(\d+)'
+  sldu:
+    sld-match: 'sldu-6600(\d)'
+  cd:
+    sld-match: 'cd-66(\d+)'

@@ -68,17 +68,17 @@ There are several steps, which typically need to be run in order:
 
   - `DATABASE_URL=... poetry run ./manage.py load_divisions`
 
-7) Convert to mbtiles and upload:
+7) Create district boundary files and upload to S3
+
+  - `poetry run python scripts/upload-bulk-boundary-files.py`
+
+8) Convert to mbtiles and upload:
 
   - `./scripts/make-tiles.py`
 
-8) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
+9) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
 
   - We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
-
-9) Create district boundary files and upload to S3
-
-  - `poetry run python scripts/upload-bulk-boundary-files.py`
 
 ### Running within Docker
 
