@@ -16,5 +16,5 @@ poetry run python "${SCRIPT_DIR}/scripts/get-shapefiles.py"
 poetry run python "${SCRIPT_DIR}/scripts/to-geojson.py"
 poetry run python "${SCRIPT_DIR}/manage.py" migrate
 poetry run python "${SCRIPT_DIR}/manage.py" load_divisions
-poetry run python "${SCRIPT_DIR}/scripts/make-tiles.py"
 poetry run python "${SCRIPT_DIR}/scripts/bulk-boundary-files-upload.py"
+poetry run python "${SCRIPT_DIR}/scripts/make-tiles.py"

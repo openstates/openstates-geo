@@ -37,7 +37,4 @@ RUN poetry install --only=main \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ARG DATABASE_URL=postgis://localhost:5405/geo
-ENV DATABASE_URL=$DATABASE_URL
-
 CMD ["bash", "/opt/openstates-district-maps/make-tiles.sh"]
