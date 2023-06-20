@@ -111,10 +111,6 @@ Files in the TIGER data source are organized according to
 [Federal Information Processing System (FIPS)](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt) codes.
 Each numeric code corresponds to a US state (or other levels). For example `01` represents Alabama.
 
-As of 12/30/22 the [TIGER page states](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html):
-"All legal boundaries and names are as of January 1, 2022. Released September 30, 2022." So it seems like post-redistricting
-shapefiles are not available.
-
 #### TIGER SLDL
 
 [2022](https://www2.census.gov/geo/tiger/TIGER2022/SLDL/)
