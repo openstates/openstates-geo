@@ -41,7 +41,7 @@ def setup_source(clean: bool = False):
     os.makedirs(f"{ROOTDIR}/data/boundary/", exist_ok=True)
 
 
-def load_settings(config_dir: str):
+def load_settings(config_dir: str) -> dict:
     """
     Load all yaml files (settings) recursively from the defined config_dir
     """
