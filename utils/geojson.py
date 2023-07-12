@@ -1,7 +1,10 @@
 import copy
+import glob
 import json
 import openstates.metadata as metadata
+import os
 import re
+import subprocess
 
 from .general import (
     JURISDICTIONS,
@@ -23,7 +26,30 @@ def _find_key(district_properties, keys):
         return None
 
 
-def merge_ids(geojson_path, settings):
+def convert_to_geojson(SETTINGS: dict) -> None:
+    files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
+    for file in files:
+        newfilename = file.replace(".shp", ".geojson")
+        if os.path.exists(newfilename):
+            print(f"{newfilename} already exists, skipping")
+        else:
+            print(f"Converting {file} => {newfilename}")
+            subprocess.run(
+                [
+                    "ogr2ogr",
+                    "-t_srs",
+                    "crs:84",
+                    "-f",
+                    "GeoJSON",
+                    newfilename,
+                    file,
+                ],
+                check=True,
+            )
+        _merge_ids(newfilename, SETTINGS)
+
+
+def _merge_ids(geojson_path: str, settings: dict) -> None:
     with open(geojson_path, "r") as f:
         rawgeodata = json.load(f)
     geodata = {k: v for k, v in rawgeodata.items() if k not in ["features"]}

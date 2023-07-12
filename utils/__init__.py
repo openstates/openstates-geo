@@ -11,7 +11,7 @@ from .tiger import (  # noqa: F401
 )
 
 from .geojson import (  # noqa: F401
-    merge_ids,
+    convert_to_geojson,
 )
 
 from .bulk import (  # noqa: F401

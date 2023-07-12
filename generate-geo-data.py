@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from django.core.management import execute_from_command_line
-import glob
 import os
-import subprocess
 
 from utils import (
     JURISDICTION_NAMES,
     ROOTDIR,
     bulk_upload,
+    convert_to_geojson,
     create_tiles,
     download_from_tiger,
     download_boundary_file,
     find_jurisdiction,
     load_settings,
-    merge_ids,
     setup_source,
 )
 
@@ -28,7 +26,16 @@ def _django_cmds() -> None:
     execute_from_command_line("load_divisions")
 
 
-def generate_geo_data(SETTINGS, jurisdictions, run_migrations=False, upload_data=False) -> None:
+def generate_geo_data(
+    SETTINGS, jurisdictions, run_migrations=False, upload_data=False
+) -> None:
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        os.environ.set(
+            "DATABASE_URL",
+            "postgis://openstates:openstates@localhost:5432/openstatesorg",
+        )
+
     """
     Download shp files from TIGER
     """
@@ -48,26 +55,7 @@ def generate_geo_data(SETTINGS, jurisdictions, run_migrations=False, upload_data
     """
     Convert downloaded shp files to geojson
     """
-    files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
-    for file in files:
-        newfilename = file.replace(".shp", ".geojson")
-        if os.path.exists(newfilename):
-            print(f"{newfilename} already exists, skipping")
-        else:
-            print(f"Converting {file} => {newfilename}")
-            subprocess.run(
-                [
-                    "ogr2ogr",
-                    "-t_srs",
-                    "crs:84",
-                    "-f",
-                    "GeoJSON",
-                    newfilename,
-                    file,
-                ],
-                check=True,
-            )
-        merge_ids(newfilename, SETTINGS)
+    convert_to_geojson(SETTINGS)
 
     create_tiles(SETTINGS)
 
@@ -122,4 +110,6 @@ if __name__ == "__main__":
 
     setup_source(args.clean_source)
     SETTINGS = load_settings(args.config)
-    generate_geo_data(SETTINGS, args.jurisdiction, args.run_migrations, args.upload_data)
+    generate_geo_data(
+        SETTINGS, args.jurisdiction, args.run_migrations, args.upload_data
+    )
