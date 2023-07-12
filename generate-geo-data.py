@@ -33,7 +33,7 @@ def generate_geo_data(
     if not db_url:
         os.environ.setdefault(
             "DATABASE_URL",
-            "postgis://openstates:openstates@localhost:5432/openstatesorg",
+            "postgis://openstates:openstates@localhost:5405/openstatesorg",
         )
 
     """

@@ -21,4 +21,5 @@ from .bulk import (  # noqa: F401
 
 from .mapbox import (  # noqa: F401
     create_tiles,
+    upload_tiles,
 )

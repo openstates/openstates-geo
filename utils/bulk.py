@@ -1,9 +1,9 @@
+import boto3
 from datetime import datetime
 import geopandas as gpd
 import glob
 import json
 import os
-import boto3
 
 from .general import ROOTDIR
 

@@ -22,7 +22,7 @@ Generate and upload map tiles for the state-level legislative district maps on [
 
 We download our shapefiles from [census.gov](https://www2.census.gov/geo/tiger).
 
-The organization of files within TIGER's site means that we may have to change the layout of downloaded files from year to year (in `scripts/get-shapefiles.py`). As long as we consistently add proper files into `data/source_cache` for the rest of the scripts to process, changing the initial download location shouldn't matter.
+The organization of files within TIGER's site means that we may have to change the layout of downloaded files from year to year (in `utils/tiger.py`). As long as we consistently add proper files into `data/source_cache` for the rest of the scripts to process, changing the initial download location shouldn't matter.
 
 See Appendix A below on Geographic Data Sources for more context.
 
@@ -49,34 +49,14 @@ There are several steps, which typically need to be run in order:
 
   - `poetry install`
 
-2) Download SLD shapefiles:
+2 ) Make sure `DATABASE_URL` is set correctly in the environment (pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`)
 
-  - `poetry run ./scripts/get-shapefiles.py`
+3) Download and format geo data:
+
+  - `poetry run python generate-geo-data.py`
     - Note that this script does not fail on individual download failures. If you see failures in the run, make sure they are expected (e.g. NE/DC lower should fail)
 
-3) Convert to geojson with division IDs:
-
-  - `poetry run ./scripts/to-geojson.py`
-
-4) Make sure `DATABASE_URL` is set correctly in `djapp/geo/settings.py` (pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`)
-
-5) Migrate database to add needed tables:
-
-  - `DATABASE_URL=... poetry run ./manage.py migrate`
-
-6) Import into database:
-
-  - `DATABASE_URL=... poetry run ./manage.py load_divisions`
-
-7) Create district boundary files and upload to S3
-
-  - `poetry run python scripts/upload-bulk-boundary-files.py`
-
-8) Convert to mbtiles and upload:
-
-  - `./scripts/make-tiles.py`
-
-9) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
+4) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
 
   - We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
