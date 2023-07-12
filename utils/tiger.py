@@ -1,18 +1,11 @@
-#!/usr/bin/env python3
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
-import glob
 import os
 import zipfile
 import requests
 import urllib.request
 
-from utils import (
-    JURISDICTION_NAMES,
-    find_jurisdiction,
+from .general import (
     ROOTDIR,
     TIGER_ROOT,
-    setup_source,
-    load_settings,
 )
 
 
@@ -87,48 +80,3 @@ def _download_and_extract(url: str, filename: str):
                     print(f"Failed to extract {obj.filename}: {e}")
     else:
         response.raise_for_status()
-
-
-if __name__ == "__main__":
-    parser = ArgumentParser(
-        description="Download shapefiles for defined jurisdictions",
-        formatter_class=ArgumentDefaultsHelpFormatter,
-    )
-    parser.add_argument(
-        "--jurisdiction",
-        "-j",
-        type=str,
-        nargs="+",
-        default=JURISDICTION_NAMES,
-        help="The jurisdiction(s) to download shapefiles for",
-    )
-    parser.add_argument(
-        "--clean-source",
-        action="store_true",
-        default=False,
-        help="Remove any cached download/processed data",
-    )
-    parser.add_argument(
-        "--config",
-        "-c",
-        type=str,
-        default=f"{ROOTDIR}/configs",
-        help="Config directory for downloading geo data",
-    )
-    args = parser.parse_args()
-
-    setup_source(args.clean_source)
-    SETTINGS = load_settings(args.config)
-
-    for jur in args.jurisdiction:
-        if jur not in JURISDICTION_NAMES:
-            print(f"Invalid jurisdiction {jur}. Skipping.")
-            continue
-        if jur not in SETTINGS["jurisdictions"]:
-            print(f"Skipping {jur}. No configuration present.")
-            continue
-        print(f"Fetching shapefiles for {jur}")
-
-        jurisdiction = find_jurisdiction(jur)
-        download_from_tiger(jurisdiction, "RD18", SETTINGS)
-    download_boundary_file(SETTINGS["BOUNDARY_YEAR"])

@@ -1,16 +1,12 @@
-#!/usr/bin/env python3
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import copy
-import glob
 import json
 import openstates.metadata as metadata
-import os
 import re
-import subprocess
-import sys
-import yaml
 
-from utils import JURISDICTIONS, ROOTDIR, setup_source, load_settings
+from .general import (
+    JURISDICTIONS,
+    ROOTDIR,
+)
 
 FIPS_KEYS = ("STATEFP", "STATEFP20")
 GEOID_KEYS = ("GEOID", "GEOID20")
@@ -125,33 +121,3 @@ def merge_ids(geojson_path, settings):
     print(f"Writing data from {geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geodata, geojson_file)
-
-
-if __name__ == "__main__":
-    setup_source()
-    SETTINGS = load_settings(f"{ROOTDIR}/configs")
-
-    if len(sys.argv) == 1:
-        files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
-    else:
-        files = sys.argv[1:]
-
-    for file in files:
-        newfilename = file.replace(".shp", ".geojson")
-        if os.path.exists(newfilename):
-            print(f"{newfilename} already exists, skipping")
-        else:
-            print(f"Converting {file} => {newfilename}")
-            subprocess.run(
-                [
-                    "ogr2ogr",
-                    "-t_srs",
-                    "crs:84",
-                    "-f",
-                    "GeoJSON",
-                    newfilename,
-                    file,
-                ],
-                check=True,
-            )
-        merge_ids(newfilename, SETTINGS)
