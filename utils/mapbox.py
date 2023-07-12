@@ -1,7 +1,8 @@
 import glob
 import os
 import subprocess
-from utils import ROOTDIR
+
+from .general import ROOTDIR
 
 
 def create_tiles(settings: dict):
