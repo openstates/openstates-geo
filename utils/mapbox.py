@@ -3,6 +3,7 @@ import glob
 import os
 import requests
 import subprocess
+import time
 
 from .general import ROOTDIR
 
@@ -87,7 +88,7 @@ def _upload_tile(tileset: str, filepath: str) -> None:
         raise Exception("Missing MAPBOX_TOKEN.")
     params = {"access_token": mapbox_token}
     resp = requests.post(
-        f"https://api.mapbox.com/uploads/v1/openstates/credentials", params=params
+        "https://api.mapbox.com/uploads/v1/openstates/credentials", params=params
     ).json()
     bucket = resp["bucket"]
     key = resp["key"]
@@ -113,7 +114,7 @@ def _upload_tile(tileset: str, filepath: str) -> None:
     ).json()
     while not resp["complete"]:
         time.sleep(10)
-        res = requests.get(
+        resp = requests.get(
             f"https://api.mapbox.com/uploads/v1/openstates/{upload_id}", params=params
         ).json()
 
