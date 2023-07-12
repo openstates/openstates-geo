@@ -31,7 +31,7 @@ def generate_geo_data(
 ) -> None:
     db_url = os.environ.get("DATABASE_URL")
     if not db_url:
-        os.environ.set(
+        os.environ.setdefault(
             "DATABASE_URL",
             "postgis://openstates:openstates@localhost:5432/openstatesorg",
         )
