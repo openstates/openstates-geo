@@ -14,6 +14,7 @@ from utils import (
     find_jurisdiction,
     load_settings,
     setup_source,
+    upload_tiles,
 )
 
 
@@ -64,6 +65,7 @@ def generate_geo_data(
 
     if upload_data:
         bulk_upload(SETTINGS)
+        upload_tiles()
 
 
 if __name__ == "__main__":

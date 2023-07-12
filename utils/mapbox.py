@@ -119,7 +119,7 @@ def _upload_tile(tileset: str, filepath: str) -> None:
         ).json()
 
 
-def upload_tiles(settings: dict) -> None:
+def upload_tiles() -> None:
     """
     Following the pattern in https://docs.mapbox.com/api/maps/uploads/
     """
