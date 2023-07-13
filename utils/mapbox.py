@@ -83,9 +83,10 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
     """
     Actually upload a tileset to mapbox
     """
+    mapbox_user = "openstates"
     params = {"access_token": mapbox_token}
     resp = requests.post(
-        "https://api.mapbox.com/uploads/v1/openstates/credentials", params=params
+        f"https://api.mapbox.com/uploads/v1/{mapbox_user}/credentials", params=params
     ).json()
     bucket = resp["bucket"]
     key = resp["key"]
@@ -103,16 +104,16 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
 
     data = {"tileset": f"openstates.{tileset}", "url": url}
     resp = requests.post(
-        "https://api.mapbox.com/uploads/v1/openstates", params=params, json=data
+        f"https://api.mapbox.com/uploads/v1/{mapbox_user}", params=params, json=data
     ).json()
     upload_id = resp["id"]
     resp = requests.get(
-        f"https://api.mapbox.com/uploads/v1/openstates/{upload_id}", params=params
+        f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
     ).json()
     while not resp["complete"]:
         time.sleep(10)
         resp = requests.get(
-            f"https://api.mapbox.com/uploads/v1/openstates/{upload_id}", params=params
+            f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
         ).json()
 
 
