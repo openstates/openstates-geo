@@ -7,3 +7,5 @@ id-mappings:
   cd:
     key: DISTRICT
     sld-match: 'cd-310(\d)'
+ignored_chambers:
+  - sldl

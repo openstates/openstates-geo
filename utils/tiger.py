@@ -29,6 +29,8 @@ def download_from_tiger(jurisdiction, prefix, settings):
         "sldu": f"{url_root}/tl_rd22_{fips}_sldu.zip",
         "sldl": f"{url_root}/tl_rd22_{fips}_sldl.zip",
     }
+    for k in settings["jurisdictions"][jurisdiction.name].get("ignored_chambers", []):
+        urls.pop(k)
     mappings = settings["jurisdictions"][jurisdiction.name]["id-mappings"]
     for key in urls.keys():
         if "url" in mappings.get(key, {}):
