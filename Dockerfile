@@ -32,7 +32,7 @@ COPY make-tiles.sh .
 
 RUN poetry install --only=main \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
-    && DEBIAN_FRONTEND=noninteractive apt-get remove -yqq build-essential libsqlite3-dev zlib1g-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get remove -yqq build-essential libsqlite3-dev zlib1g-dev git \
     && DEBIAN_FRONTEND=noninteractive apt-get autoremove -yqq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
