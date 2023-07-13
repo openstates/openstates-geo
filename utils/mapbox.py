@@ -113,7 +113,8 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
     while not resp["complete"]:
         time.sleep(10)
         resp = requests.get(
-            f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
+            f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}",
+            params=params,
         ).json()
 
 
