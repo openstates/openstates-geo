@@ -37,4 +37,5 @@ RUN poetry install --only=main \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["bash", "/opt/openstates-district-maps/make-tiles.sh"]
+# We use --clean-source here to ensure we don't accidentally run against messy data somehow
+CMD ["poetry", "run", "python", "generate-geo-data.py", "--run-migrations", "--upload-data", "--clean-source"]
