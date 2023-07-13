@@ -16,3 +16,7 @@ FIPS_NAME_MAP:
   "78": "UNITED_STATES_VIRGIN_ISLANDS"
 
 bucket: data.openstates.org
+
+run_migrations: False
+upload_data: False
+create_tiles: True

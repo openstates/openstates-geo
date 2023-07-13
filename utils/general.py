@@ -52,7 +52,9 @@ def setup_source(clean: bool = False, upload_data: bool = False) -> None:
     os.makedirs(f"{ROOTDIR}/data/boundary/", exist_ok=True)
 
 
-def load_settings(config_dir: str) -> dict:
+def load_settings(
+    config_dir: str, run_migrations: bool, upload_data: bool, skip_tile_creation: bool
+) -> dict:
     """
     Load all yaml files (settings) recursively from the defined config_dir
     """
@@ -63,4 +65,7 @@ def load_settings(config_dir: str) -> dict:
         with open(file, "r") as f:
             jur_settings = yaml.safe_load(f.read())
             settings["jurisdictions"][jur_settings["name"]] = dict(jur_settings)
+    settings["run_migrations"] = run_migrations
+    settings["upload_data"] = upload_data
+    settings["create_tiles"] = not skip_tile_creation
     return settings

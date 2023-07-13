@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
-from django.core.management import execute_from_command_line
+import django
+from django.core.management import call_command
 import os
 
 from utils import (
@@ -23,12 +24,14 @@ def _django_cmds() -> None:
     Execute Django commands to ensure database is configured correctly
     """
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djapp.settings")
-    execute_from_command_line("migrate")
-    execute_from_command_line("load_divisions")
+    django.setup()
+    call_command("migrate")
+    call_command("load_divisions")
 
 
 def generate_geo_data(
-    SETTINGS, jurisdictions, run_migrations=False, upload_data=False
+    SETTINGS,
+    jurisdictions,
 ) -> None:
     db_url = os.environ.get("DATABASE_URL")
     if not db_url:
@@ -58,12 +61,13 @@ def generate_geo_data(
     """
     convert_to_geojson(SETTINGS)
 
-    create_tiles(SETTINGS)
+    if SETTINGS["create_tiles"]:
+        create_tiles(SETTINGS)
 
-    if run_migrations:
+    if SETTINGS["run_migrations"]:
         _django_cmds()
 
-    if upload_data:
+    if SETTINGS["upload_data"]:
         bulk_upload(SETTINGS)
         upload_tiles()
 
@@ -108,10 +112,20 @@ if __name__ == "__main__":
         default=False,
         help="Actually upload data to S3/Database",
     )
+    parser.add_argument(
+        "--skip-tile-creation",
+        "-s",
+        action="store_true",
+        default=False,
+        help="Don't generate Mapbox tilesets",
+    )
     args = parser.parse_args()
-
+    SETTINGS = load_settings(
+        args.config, args.run_migrations, args.upload_data, args.skip_tile_creation
+    )
     setup_source(args.clean_source, args.upload_data)
-    SETTINGS = load_settings(args.config)
+
     generate_geo_data(
-        SETTINGS, args.jurisdiction, args.run_migrations, args.upload_data
+        SETTINGS,
+        args.jurisdiction,
     )

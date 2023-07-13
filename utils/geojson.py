@@ -46,7 +46,7 @@ def convert_to_geojson(SETTINGS: dict) -> None:
                 ],
                 check=True,
             )
-        _merge_ids(newfilename, SETTINGS)
+            _merge_ids(newfilename, SETTINGS)
 
 
 def _merge_ids(geojson_path: str, settings: dict) -> None:
