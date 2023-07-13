@@ -49,22 +49,22 @@ There are several steps, which typically need to be run in order:
 
   - `poetry install`
 
-2 ) Make sure `DATABASE_URL` is set correctly in the environment (pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`)
+2 ) Make sure environment variables are set correctly:
+
+  - `DATABASE_URL`: pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`
+  - `MAPBOX_ACCESS_TOKEN`: a API token for Mapbox with permissions to upload tilesets
+  - `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`: AWS credentials to upload bulk versions of geo data
 
 3) Download and format geo data:
 
-  - `poetry run python generate-geo-data.py`
+  - `poetry run python generate-geo-data.py --run-migrations --upload-data`
     - Note that this script does not fail on individual download failures. If you see failures in the run, make sure they are expected (e.g. NE/DC lower should fail)
-
-4) Currently, we have to manually upload the resulting tilesets to [Mapbox Studio](https://studio.mapbox.com/tilesets/).
-
-  - We'll need to upload `data/sld.mbtiles` and `data/cd.mbtiles`.
 
 ### Running within Docker
 
 Instead of setting up your local environment you can instead run using Docker. Using Docker Compose will still allow you to access all intermediate files from the processing, within your local `data` directory.
 
-Build and run with Docker Compose. Similar to running without Docker, the `MAPBOX_ACCOUNT` and `MAPBOX_ACCESS_TOKEN` must be set in your local environment.
+Build and run with Docker Compose. Similar to running without Docker, environment variables must be set in your local environment.
 
 ```
 docker-compose up make-tiles
@@ -108,4 +108,3 @@ This contains data, including shapefiles, about State Legislative Districts in U
 [2022](https://www2.census.gov/geo/tiger/TIGER2022/CD/)
 
 This contains data, including shapefiles, about Congressional Districts.
-
