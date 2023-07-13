@@ -5,7 +5,6 @@ services:
     build:
       context: .
       args:
-        - MAPBOX_ACCOUNT
         - MAPBOX_ACCESS_TOKEN
         - DATABASE_URL
     volumes:

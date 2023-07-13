@@ -110,7 +110,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    setup_source(args.clean_source)
+    setup_source(args.clean_source, args.upload_data)
     SETTINGS = load_settings(args.config)
     generate_geo_data(
         SETTINGS, args.jurisdiction, args.run_migrations, args.upload_data

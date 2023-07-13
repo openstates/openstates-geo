@@ -79,13 +79,10 @@ def create_tiles(settings: dict):
     )
 
 
-def _upload_tile(tileset: str, filepath: str) -> None:
+def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
     """
     Actually upload a tileset to mapbox
     """
-    mapbox_token = os.environ.get("MAPBOX_TOKEN")
-    if not mapbox_token:
-        raise Exception("Missing MAPBOX_TOKEN.")
     params = {"access_token": mapbox_token}
     resp = requests.post(
         "https://api.mapbox.com/uploads/v1/openstates/credentials", params=params
@@ -123,9 +120,10 @@ def upload_tiles() -> None:
     """
     Following the pattern in https://docs.mapbox.com/api/maps/uploads/
     """
+    mapbox_token = os.environ.get("MAPBOX_ACCESS_TOKEN")
     tilesets = {
         "sld": f"{ROOTDIR}/data/sld.mbtiles",
         "cd-diwr39": f"{ROOTDIR}/data/cd.mbtiles",
     }
     for tileset, filename in tilesets.items():
-        _upload_tile(tileset, filename)
+        _upload_tile(tileset, filename, mapbox_token)

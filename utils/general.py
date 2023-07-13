@@ -25,7 +25,7 @@ def find_jurisdiction(jur_name: str):
             return jurisdiction
 
 
-def setup_source(clean: bool = False):
+def setup_source(clean: bool = False, upload_data: bool = False) -> None:
     """
     simple function to clean up our source data
     if we're completely retrying
@@ -34,6 +34,17 @@ def setup_source(clean: bool = False):
         if not shutil.which(cmd):
             print(f"Cannot find {cmd} in PATH. Cannot continue.")
             exit(1)
+
+    if upload_data:
+        token = os.environ.get("MAPBOX_ACCESS_TOKEN")
+        if not token:
+            raise Exception("Trying to upload data without MAPBOX_ACCESS_TOKEN set")
+        access_id = os.environ.get("AWS_ACCESS_KEY_ID")
+        if not access_id:
+            raise Exception("Trying to upload data without AWS_ACCESS_KEY_ID set")
+        access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
+        if not access_key:
+            raise Exception("Trying to upload data without AWS_SECRET_ACCESS_KEY set")
     if clean:
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
