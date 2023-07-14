@@ -24,11 +24,10 @@ COPY pyproject.toml .
 COPY poetry.lock .
 RUN poetry install --only=main --no-root
 
-COPY scripts scripts/
+COPY utils utils/
 COPY configs configs/
 COPY djapp djapp/
-COPY manage.py .
-COPY make-tiles.sh .
+COPY generate-geo-data.py .
 
 RUN poetry install --only=main \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
