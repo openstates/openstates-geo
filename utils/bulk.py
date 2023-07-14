@@ -45,12 +45,10 @@ def bulk_upload(settings: dict):
 
     # all geojson files processed...now to upload
     print("Uploading division files to S3")
-    access_id = os.environ.get("AWS_ACCESS_KEY_ID")
-    access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
     s3 = boto3.resource(
         "s3",
-        aws_access_key_id=access_id,
-        aws_secret_access_key=access_key,
+        aws_access_key_id=settings["aws_user"],
+        aws_secret_access_key=settings["aws_password"],
     )
     bucket = settings["bucket"]
     prefix_path = f"{ROOTDIR}/data/boundaries"
