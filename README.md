@@ -28,6 +28,16 @@ See Appendix A below on Geographic Data Sources for more context.
 
 You'll probably want to remove any cached files in `./data/`. The download tool may try to re-use cached files from the wrong year if they still exist. (We don't manually remove these files because you may need to re-run the scripts, and skipping downloads is useful)
 
+### National Boundary Update
+
+`config/settings.yml` holds the `BOUNDARY_YEAR` config. This setting defines what to apply to our US boundary template link:
+
+```python
+f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
+```
+
+We should verify/update this setting to the most recently available boundary year whenever we run geo data.
+
 ### Note on file naming
 
 You'll see many files with names like `sldu`, `sldl` or `cd` during this process. Here is a quick layout of what those file name abbreviations mean:
@@ -51,7 +61,7 @@ There are several steps, which typically need to be run in order:
 
 2 ) Make sure environment variables are set correctly:
 
-  - `DATABASE_URL`: pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis:/<user>:<password>@<db_host>/geo`
+  - `DATABASE_URL`: pointing at either the `geo` database in production or to a local copy, e.g. `DATABASE_URL=postgis://<user>:<password>@<db_host>/geo`
   - `MAPBOX_ACCESS_TOKEN`: a API token for Mapbox with permissions to upload tilesets
   - `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`: AWS credentials to upload bulk versions of geo data
 
@@ -82,8 +92,13 @@ button in the toolbar, and then select a district. Metadata should appear in the
 
 ### Redistricting
 
-"We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans
-for the 118th Congress and year 2022 state legislatures" [US Census CD/SLD note](https://www.census.gov/programs-surveys/geography/technical-documentation/user-note/cd-sld-note.html)
+During the next major sessions after a Census (e.g. 2022 was the major session for _most_ jurisdictions after the 2020 Census), the TIGER data we rely on may b
+e significantly "behind" reality as the example note from 2022 indicates:
+
+> "We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans
+> for the 118th Congress and year 2022 state legislatures" [US Census CD/SLD note](https://www.census.gov/programs-surveys/geography/technical-documentation/user-note/cd-sld-note.html)
+
+As of 2022, TIGER was still the most consistent data source for district boundaries we were able to find.
 
 ### US Census: TIGER
 
