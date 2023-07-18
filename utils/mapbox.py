@@ -137,8 +137,8 @@ def upload_tiles() -> None:
     """
     mapbox_token = os.environ.get("MAPBOX_ACCESS_TOKEN")
     tilesets = {
-        "sld-test": f"{ROOTDIR}/data/sld.mbtiles",
-        "cd-diwr39-test": f"{ROOTDIR}/data/cd.mbtiles",
+        "sld": f"{ROOTDIR}/data/sld.mbtiles",
+        "cd-diwr39": f"{ROOTDIR}/data/cd.mbtiles",
     }
     for tileset, filename in tilesets.items():
         _upload_tile(tileset, filename, mapbox_token)
