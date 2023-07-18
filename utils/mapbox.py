@@ -114,6 +114,7 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}", params=params, json=data
     ).json()
     upload_id = resp["id"]
+    print(f"Starting processing of {tileset} within Mapbox")
     resp = requests.get(
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
     ).json()
@@ -128,7 +129,7 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
         if resp["complete"]:
             break
         if checks and checks % 6 == 0:
-            print(f"Still checking on {upload_id}")
+            print(f"Still waiting on {tileset}")
 
 
 def upload_tiles() -> None:
