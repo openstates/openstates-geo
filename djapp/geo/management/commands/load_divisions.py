@@ -1,10 +1,11 @@
 import glob
+from pathlib import Path
 from django.core.management.base import BaseCommand
 from django.contrib.gis.gdal import DataSource
 from django.contrib.gis.utils import LayerMapping, LayerMapError
 from ...models import DivisionSet, Division
 
-
+ROOTDIR = Path(__file__).parent.parent.parent.parent.parent.absolute()
 GEOJSON_MAPPING = {
     "id": "ocdid",
     "state": "state",
@@ -25,7 +26,7 @@ class Command(BaseCommand):
         DivisionSet.objects.get_or_create(slug="sldu")
         DivisionSet.objects.get_or_create(slug="cd")
 
-        filenames = options["filenames"] or sorted(glob.glob("data/geojson/*.geojson"))
+        filenames = options["filenames"] or sorted(glob.glob(f"{ROOTDIR}/data/geojson/*.geojson"))
 
         for filename in filenames:
             print(f"processing {filename}...")

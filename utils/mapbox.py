@@ -62,7 +62,7 @@ def create_tiles(settings: dict):
         )
     sld_file = f"{ROOTDIR}/data/sld.mbtiles"
     if os.path.exists(sld_file):
-        print(f"Existing CD tiles. Remove {sld_file} to re-generate")
+        print(f"Existing SLD tiles. Remove {sld_file} to re-generate")
     else:
         print("Generating SLD MBTiles file")
         subprocess.run(
