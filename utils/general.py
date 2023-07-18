@@ -69,7 +69,7 @@ def load_settings(
     settings["upload_data"] = upload_data
     settings["create_tiles"] = not skip_tile_creation
     settings["aws_user"] = os.environ.get("AWS_ACCESS_KEY_ID")
-    os.environ.pop("AWS_ACCESS_KEY_ID")
+    os.environ.pop("AWS_ACCESS_KEY_ID", None)
     settings["aws_password"] = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    os.environ.pop("AWS_SECRET_ACCESS_KEY")
+    os.environ.pop("AWS_SECRET_ACCESS_KEY", None)
     return settings
