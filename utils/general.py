@@ -2,7 +2,7 @@ import glob
 import os
 from pathlib import Path
 import shutil
-from openstates.metadata.data import STATES_AND_DC_PR as JURISDICTIONS
+from openstates.metadata.data import STATES_AND_TERRITORIES as JURISDICTIONS
 import yaml
 
 """

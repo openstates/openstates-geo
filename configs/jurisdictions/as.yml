@@ -7,3 +7,6 @@ id-mappings:
     sld-match: 'sldu-6000(\d)'
   cd:
     sld-match: 'cd-60(\d+)'
+ignored_chambers:
+  - sldl
+  - sldu

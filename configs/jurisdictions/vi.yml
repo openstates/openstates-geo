@@ -1,9 +1,8 @@
 name: Virgin Islands
 os-id-prefix: "ocd-division/country:us/territory:vi"
 id-mappings:
-  sldl:
-    sld-match: 'sldl-780(\d+)'
-  sldu:
-    sld-match: 'sldu-780(\d+)'
   cd:
-    sld-match: 'cd-780(\d+)'
+    sld-match: 'cd-78(\d+)'
+ignored_chambers:
+  - sldl
+  - sldu

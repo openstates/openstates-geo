@@ -136,6 +136,7 @@ def upload_tiles() -> None:
     Following the pattern in https://docs.mapbox.com/api/maps/uploads/
     """
     mapbox_token = os.environ.get("MAPBOX_ACCESS_TOKEN")
+    # tileset names are set for historical reasons
     tilesets = {
         "sld": f"{ROOTDIR}/data/sld.mbtiles",
         "cd-diwr39": f"{ROOTDIR}/data/cd.mbtiles",
