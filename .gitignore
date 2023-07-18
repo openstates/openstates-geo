@@ -6,3 +6,4 @@ final-geojson
 endpoint/*.zip
 endpoint/awslambda-psycopg2
 .idea/
+testing/divisiondata

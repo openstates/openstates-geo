@@ -25,4 +25,7 @@ class Command(BaseCommand):
             raise Exception("Found more objects to delete than expected objects")
 
         # delete command to remove old divisions
-        Division.objects.exclude(id__in=ocd_ids).delete()
+        # don't delete when there aren't any additional divisions
+        if len(to_delete):
+            print(f"Deleting {len(to_delete)} divisions from DB")
+            Division.objects.exclude(id__in=ocd_ids).delete()
