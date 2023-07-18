@@ -8,9 +8,8 @@ import os
 from .general import ROOTDIR
 
 
-def _make_boundaries():
+def _make_boundaries(year: str) -> None:
     os.makedirs(f"{ROOTDIR}/data/boundaries", exist_ok=True)
-    year = datetime.now().date().year
     for file in glob.glob(f"{ROOTDIR}/data/geojson/*.geojson"):
         with open(file, "r") as f:
             obj = json.load(f)
@@ -51,8 +50,9 @@ def _make_boundaries():
                 json.dump(obj, f)
 
 
-def bulk_upload(settings: dict):
-    _make_boundaries()
+def bulk_upload(settings: dict) -> None:
+    year = datetime.now().date().year
+    _make_boundaries(year)
 
     # all geojson files processed...now to upload
     print("Uploading division files to S3")
