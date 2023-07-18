@@ -10,8 +10,6 @@ ROOTDIR = Path(__file__).parent.parent.parent.parent.parent.absolute()
 class Command(BaseCommand):
     def handle(self, *args, **options):
         ocd_ids = []
-        path = f"{ROOTDIR}/data/geojson/*.geojson"
-        print(path)
         for filename in glob.glob(f"{ROOTDIR}/data/geojson/*.geojson"):
             obj = json.load(open(filename, "r"))
             ocd_ids.extend(div["properties"]["ocdid"] for div in obj["features"])
