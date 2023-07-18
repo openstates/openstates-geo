@@ -72,7 +72,7 @@ def generate_geo_data(
         upload_tiles()
 
 
-if __name__ == "__main__":
+def main():
     parser = ArgumentParser(
         description="Download and process shapefiles for defined jurisdictions",
         formatter_class=ArgumentDefaultsHelpFormatter,
@@ -129,3 +129,7 @@ if __name__ == "__main__":
         SETTINGS,
         args.jurisdiction,
     )
+
+
+if __name__ == "__main__":
+    main()

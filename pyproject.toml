@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "openstates-geo"
-version = "2.0.0"
+version = "3.0.0"
 description = ""
-authors = ["James Turk <dev@jamesturk.net>"]
+authors = ["James Turk <dev@jamesturk.net>", "John Seekins <john@pluralpolicy.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
