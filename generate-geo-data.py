@@ -27,6 +27,7 @@ def _django_cmds() -> None:
     django.setup()
     call_command("migrate")
     call_command("load_divisions")
+    call_command("clean_divisions")
 
 
 def generate_geo_data(
