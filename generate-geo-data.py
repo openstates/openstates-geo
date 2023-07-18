@@ -122,9 +122,13 @@ def main():
     )
     args = parser.parse_args()
     SETTINGS = load_settings(
-        args.config, args.run_migrations, args.upload_data, args.skip_tile_creation
+        args.config,
+        args.run_migrations,
+        args.upload_data,
+        args.skip_tile_creation,
+        args.clean_source,
     )
-    setup_source(args.clean_source, args.upload_data)
+    setup_source(SETTINGS)
 
     generate_geo_data(
         SETTINGS,

@@ -9,7 +9,7 @@ from .general import (
 )
 
 
-def download_from_tiger(jurisdiction, prefix, settings):
+def download_from_tiger(jurisdiction: str, prefix: str, settings: dict):
     """
     URLs are somewhat hard-coded here...
     Generally...download three files for each jurisdiction:
@@ -23,9 +23,11 @@ def download_from_tiger(jurisdiction, prefix, settings):
     jur_name = settings["FIPS_NAME_MAP"].get(
         fips, jurisdiction.name.upper().replace(" ", "_")
     )
+    # should end up like cd118
+    session = f"cd{settings['congress_session']}"
     url_root = f"{TIGER_ROOT}/TIGER_{prefix}/STATE/{fips}_{jur_name}/{fips}"
     urls = {
-        "cd": f"{url_root}/tl_rd22_{fips}_cd118.zip",
+        "cd": f"{url_root}/tl_rd22_{fips}_{session}.zip",
         "sldu": f"{url_root}/tl_rd22_{fips}_sldu.zip",
         "sldl": f"{url_root}/tl_rd22_{fips}_sldl.zip",
     }

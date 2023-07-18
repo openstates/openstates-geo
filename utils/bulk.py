@@ -8,7 +8,7 @@ import os
 from .general import ROOTDIR
 
 
-def bulk_upload(settings: dict):
+def _make_boundaries():
     os.makedirs(f"{ROOTDIR}/data/boundaries", exist_ok=True)
     year = datetime.now().date().year
     for file in glob.glob(f"{ROOTDIR}/data/geojson/*.geojson"):
@@ -26,22 +26,33 @@ def bulk_upload(settings: dict):
             folder = "/".join(subpath.split("/")[:-1])
             os.makedirs(f"{ROOTDIR}/data/boundaries/{folder}", exist_ok=True)
             gdf = gpd.GeoDataFrame.from_features([feature])
+            bounds = gdf["geometry"].bounds
+            centroid = gdf["geometry"].centroid
             obj = {
                 "shape": feature["geometry"],
                 "metadata": feature["properties"],
                 "division_id": feature["properties"]["ocdid"],
                 "year": year,
-                "extent": [],
+                "extent": [
+                    bounds.minx[0],
+                    bounds.miny[0],
+                    bounds.maxx[0],
+                    bounds.maxy[0],
+                ],
                 "centroid": {
                     "coordinates": [
-                        gdf["geometry"].centroid.x[0],
-                        gdf["geometry"].centroid.y[0],
+                        centroid.x[0],
+                        centroid.y[0],
                     ],
                     "type": "Point",
                 },
             }
             with open(full_path, "w") as f:
                 json.dump(obj, f)
+
+
+def bulk_upload(settings: dict):
+    _make_boundaries()
 
     # all geojson files processed...now to upload
     print("Uploading division files to S3")

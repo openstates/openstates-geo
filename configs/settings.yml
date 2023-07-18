@@ -16,7 +16,10 @@ FIPS_NAME_MAP:
   "78": "UNITED_STATES_VIRGIN_ISLANDS"
 
 bucket: data.openstates.org
+# you may not want to change this frequently. It is the congressional session marked when the files are created, not necesarily the current session
+congress_session: 118
 
 run_migrations: False
 upload_data: False
 create_tiles: True
+clean_source: False

@@ -25,7 +25,7 @@ def find_jurisdiction(jur_name: str):
             return jurisdiction
 
 
-def setup_source(clean: bool = False, upload_data: bool = False) -> None:
+def setup_source(settings: dict) -> None:
     """
     simple function to clean up our source data
     if we're completely retrying
@@ -35,17 +35,15 @@ def setup_source(clean: bool = False, upload_data: bool = False) -> None:
             print(f"Cannot find {cmd} in PATH. Cannot continue.")
             exit(1)
 
-    if upload_data:
+    if settings["upload_data"]:
         token = os.environ.get("MAPBOX_ACCESS_TOKEN")
         if not token:
             raise Exception("Trying to upload data without MAPBOX_ACCESS_TOKEN set")
-        access_id = os.environ.get("AWS_ACCESS_KEY_ID")
-        if not access_id:
+        if not settings["aws_user"]:
             raise Exception("Trying to upload data without AWS_ACCESS_KEY_ID set")
-        access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
-        if not access_key:
+        if not settings["aws_password"]:
             raise Exception("Trying to upload data without AWS_SECRET_ACCESS_KEY set")
-    if clean:
+    if settings["clean_source"]:
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
     os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
@@ -53,7 +51,11 @@ def setup_source(clean: bool = False, upload_data: bool = False) -> None:
 
 
 def load_settings(
-    config_dir: str, run_migrations: bool, upload_data: bool, skip_tile_creation: bool
+    config_dir: str,
+    run_migrations: bool,
+    upload_data: bool,
+    skip_tile_creation: bool,
+    clean_source: bool,
 ) -> dict:
     """
     Load all yaml files (settings) recursively from the defined config_dir
@@ -68,6 +70,7 @@ def load_settings(
     settings["run_migrations"] = run_migrations
     settings["upload_data"] = upload_data
     settings["create_tiles"] = not skip_tile_creation
+    settings["clean_source"] = clean_source
     settings["aws_user"] = os.environ.get("AWS_ACCESS_KEY_ID")
     os.environ.pop("AWS_ACCESS_KEY_ID", None)
     settings["aws_password"] = os.environ.get("AWS_SECRET_ACCESS_KEY")

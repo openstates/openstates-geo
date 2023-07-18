@@ -107,9 +107,9 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
         aws_secret_access_key=access_key,
         aws_session_token=session_token,
     )
-    s3.Object(bucket, key).put(Body=open(filepath, "r").read())
-
-    data = {"tileset": f"openstates.{tileset}", "url": url}
+    print(f"Uploading {tileset} to Mapbox (starts with upload to S3)")
+    s3.Object(bucket, key).put(Body=open(filepath, "rb").read())
+    data = {"tileset": f"openstates.{tileset}", "url": url, "name": tileset}
     resp = requests.post(
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}", params=params, json=data
     ).json()
@@ -117,12 +117,18 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
     resp = requests.get(
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
     ).json()
+    checks = 0
     while not resp["complete"]:
         time.sleep(10)
+        checks += 1
         resp = requests.get(
             f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}",
             params=params,
         ).json()
+        if resp["complete"]:
+            break
+        if checks and checks % 6 == 0:
+            print(f"Still checking on {upload_id}")
 
 
 def upload_tiles() -> None:
@@ -131,8 +137,8 @@ def upload_tiles() -> None:
     """
     mapbox_token = os.environ.get("MAPBOX_ACCESS_TOKEN")
     tilesets = {
-        "sld": f"{ROOTDIR}/data/sld.mbtiles",
-        "cd-diwr39": f"{ROOTDIR}/data/cd.mbtiles",
+        "sld-test": f"{ROOTDIR}/data/sld.mbtiles",
+        "cd-diwr39-test": f"{ROOTDIR}/data/cd.mbtiles",
     }
     for tileset, filename in tilesets.items():
         _upload_tile(tileset, filename, mapbox_token)
