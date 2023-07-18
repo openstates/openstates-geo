@@ -36,47 +36,54 @@ def create_tiles(settings: dict):
                 check=True,
             )
 
-    print("Combine to CD MBTiles file")
-    subprocess.run(
-        [
-            "tippecanoe",
-            "--layer",
-            "cd",
-            "--minimum-zoom",
-            "2",
-            "--maximum-zoom",
-            "13",
-            "--detect-shared-borders",
-            "--simplification",
-            "10",
-            "--force",
-            "--output",
-            f"{ROOTDIR}/data/cd.mbtiles",
-        ]
-        + cd_filenames,
-        check=True,
-    )
-
-    print("Combine to SLD MBTiles file")
-    subprocess.run(
-        [
-            "tippecanoe",
-            "--layer",
-            "sld",
-            "--minimum-zoom",
-            "2",
-            "--maximum-zoom",
-            "13",
-            "--detect-shared-borders",
-            "--simplification",
-            "10",
-            "--force",
-            "--output",
-            f"{ROOTDIR}/data/sld.mbtiles",
-        ]
-        + sld_filenames,
-        check=True,
-    )
+    cd_file = f"{ROOTDIR}/data/cd.mbtiles"
+    if os.path.exists(cd_file):
+        print(f"Existing CD tiles. Remove {cd_file} to re-generate")
+    else:
+        print("Generating CD MBTiles file")
+        subprocess.run(
+            [
+                "tippecanoe",
+                "--layer",
+                "cd",
+                "--minimum-zoom",
+                "2",
+                "--maximum-zoom",
+                "13",
+                "--detect-shared-borders",
+                "--simplification",
+                "10",
+                "--force",
+                "--output",
+                f"{ROOTDIR}/data/cd.mbtiles",
+            ]
+            + cd_filenames,
+            check=True,
+        )
+    sld_file = f"{ROOTDIR}/data/sld.mbtiles"
+    if os.path.exists(sld_file):
+        print(f"Existing CD tiles. Remove {sld_file} to re-generate")
+    else:
+        print("Generating SLD MBTiles file")
+        subprocess.run(
+            [
+                "tippecanoe",
+                "--layer",
+                "sld",
+                "--minimum-zoom",
+                "2",
+                "--maximum-zoom",
+                "13",
+                "--detect-shared-borders",
+                "--simplification",
+                "10",
+                "--force",
+                "--output",
+                f"{ROOTDIR}/data/sld.mbtiles",
+            ]
+            + sld_filenames,
+            check=True,
+        )
 
 
 def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
