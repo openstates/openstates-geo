@@ -1,6 +1,8 @@
 name: Northern Mariana Islands
 os-id-prefix: "ocd-division/country:us/territory:mp"
 id-mappings:
-  sldu:
-    key: SLDUST
-    sld-match: 'sldu-1100([\d])'
+  cd:
+    sld-match: 'cd-69(\d+)'
+ignored_chambers:
+  - sldl
+  - sldu

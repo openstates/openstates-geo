@@ -1,1 +1,8 @@
 name: Guam
+os-id-prefix: "ocd-division/country:us/territory:gu"
+id-mappings:
+  cd:
+    sld-match: 'cd-66(\d+)'
+ignored_chambers:
+  - sldl
+  - sldu

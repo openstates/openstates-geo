@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.9-slim
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -13,8 +13,8 @@ RUN apt-get update -qq \
       libsqlite3-dev \
       zlib1g-dev
 RUN pip install --disable-pip-version-check --no-cache-dir wheel \
-    && pip install --disable-pip-version-check --no-cache-dire crcmod poetry
-RUN git clone https://github.com/mapbox/tippecanoe.git && \
+    && pip install --disable-pip-version-check --no-cache-dir crcmod poetry
+RUN git clone https://github.com/felt/tippecanoe.git && \
     cd tippecanoe && \
     make -j && \
     make install
@@ -24,14 +24,17 @@ COPY pyproject.toml .
 COPY poetry.lock .
 RUN poetry install --only=main --no-root
 
-COPY scripts /opt/openstates-district-maps
-COPY djapp .
-COPY manage.py .
-COPY make-tiles.sh .
+COPY utils utils/
+COPY configs configs/
+COPY djapp djapp/
+COPY generate-geo-data.py .
 
 RUN poetry install --only=main \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
+    && DEBIAN_FRONTEND=noninteractive apt-get remove -yqq build-essential libsqlite3-dev zlib1g-dev git \
+    && DEBIAN_FRONTEND=noninteractive apt-get autoremove -yqq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["bash", "/opt/openstates-district-maps/make-tiles.sh"]
+# We use --clean-source here to ensure we don't accidentally run against messy data somehow
+CMD ["poetry", "run", "python", "generate-geo-data.py", "--run-migrations", "--upload-data", "--clean-source"]

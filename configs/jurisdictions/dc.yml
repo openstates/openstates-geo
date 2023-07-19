@@ -8,3 +8,5 @@ id-mappings:
     sld-match: 'ward-1100(\d)'
   cd:
     sld-match: 'cd-11([\d]+)'
+ignored_chambers:
+  - sldl

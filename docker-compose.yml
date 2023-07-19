@@ -5,8 +5,9 @@ services:
     build:
       context: .
       args:
-        - MAPBOX_ACCOUNT
         - MAPBOX_ACCESS_TOKEN
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
         - DATABASE_URL
     volumes:
       - ./data:/opt/openstates-district-maps/data

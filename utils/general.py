@@ -2,7 +2,7 @@ import glob
 import os
 from pathlib import Path
 import shutil
-from openstates.metadata.data import STATES_AND_DC_PR as JURISDICTIONS
+from openstates.metadata.data import STATES_AND_TERRITORIES as JURISDICTIONS
 import yaml
 
 """
@@ -25,7 +25,7 @@ def find_jurisdiction(jur_name: str):
             return jurisdiction
 
 
-def setup_source(clean: bool = False):
+def setup_source(settings: dict) -> None:
     """
     simple function to clean up our source data
     if we're completely retrying
@@ -34,14 +34,29 @@ def setup_source(clean: bool = False):
         if not shutil.which(cmd):
             print(f"Cannot find {cmd} in PATH. Cannot continue.")
             exit(1)
-    if clean:
+
+    if settings["upload_data"]:
+        token = os.environ.get("MAPBOX_ACCESS_TOKEN")
+        if not token:
+            raise Exception("Trying to upload data without MAPBOX_ACCESS_TOKEN set")
+        if not settings["aws_user"]:
+            raise Exception("Trying to upload data without AWS_ACCESS_KEY_ID set")
+        if not settings["aws_password"]:
+            raise Exception("Trying to upload data without AWS_SECRET_ACCESS_KEY set")
+    if settings["clean_source"]:
         shutil.rmtree(f"{ROOTDIR}/data/", ignore_errors=True)
     os.makedirs(f"{ROOTDIR}/data/source_cache/", exist_ok=True)
     os.makedirs(f"{ROOTDIR}/data/geojson/", exist_ok=True)
     os.makedirs(f"{ROOTDIR}/data/boundary/", exist_ok=True)
 
 
-def load_settings(config_dir: str):
+def load_settings(
+    config_dir: str,
+    run_migrations: bool,
+    upload_data: bool,
+    skip_tile_creation: bool,
+    clean_source: bool,
+) -> dict:
     """
     Load all yaml files (settings) recursively from the defined config_dir
     """
@@ -52,4 +67,12 @@ def load_settings(config_dir: str):
         with open(file, "r") as f:
             jur_settings = yaml.safe_load(f.read())
             settings["jurisdictions"][jur_settings["name"]] = dict(jur_settings)
+    settings["run_migrations"] = run_migrations
+    settings["upload_data"] = upload_data
+    settings["create_tiles"] = not skip_tile_creation
+    settings["clean_source"] = clean_source
+    settings["aws_user"] = os.environ.get("AWS_ACCESS_KEY_ID")
+    os.environ.pop("AWS_ACCESS_KEY_ID", None)
+    settings["aws_password"] = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    os.environ.pop("AWS_SECRET_ACCESS_KEY", None)
     return settings

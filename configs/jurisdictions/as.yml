@@ -1,1 +1,8 @@
 name: American Samoa
+os-id-prefix: "ocd-division/country:us/territory:as"
+id-mappings:
+  cd:
+    sld-match: 'cd-60(\d+)'
+ignored_chambers:
+  - sldl
+  - sldu
