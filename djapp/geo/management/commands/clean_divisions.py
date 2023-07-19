@@ -28,4 +28,4 @@ class Command(BaseCommand):
         # don't try to delete when there aren't any additional divisions
         if to_delete:
             print(f"Deleting {len(to_delete)} divisions from DB")
-            # Division.objects.exclude(id__in=ocd_ids).delete()
+            Division.objects.exclude(id__in=ocd_ids).delete()
