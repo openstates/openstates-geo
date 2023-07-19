@@ -70,6 +70,27 @@ There are several steps, which typically need to be run in order:
   - `poetry run python generate-geo-data.py --run-migrations --upload-data`
     - Note that this script does not fail on individual download failures. If you see failures in the run, make sure they are expected (e.g. NE/DC lower should fail)
 
+### Setting up environment variables
+
+There are plenty of ways to set environment variables, but quick way to manage many environment variables is with an "environment file". e.g.
+
+```bash
+AWS_ACCESS_KEY_ID="user"
+export AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY="test"
+export AWS_SECRET_ACCESS_KEY
+MAPBOX_ACCESS_TOKEN="token"
+export MAPBOX_ACCESS_TOKEN
+DATABASE_URL="postgis://openstates:openstates@localhost:5405/openstatesorg"
+export DATABASE_URL
+```
+
+After that, we can easily load the file:
+
+```bash
+. env-file
+```
+
 ### Running within Docker
 
 Instead of setting up your local environment you can instead run using Docker. Using Docker Compose will still allow you to access all intermediate files from the processing, within your local `data` directory.
@@ -89,11 +110,9 @@ button in the toolbar, and then select a district. Metadata should appear in the
 
 ## US Census
 
-
 ### Redistricting
 
-During the next major sessions after a Census (e.g. 2022 was the major session for _most_ jurisdictions after the 2020 Census), the TIGER data we rely on may b
-e significantly "behind" reality as the example note from 2022 indicates:
+During the next major sessions after a Census (e.g. 2022 was the major session for _most_ jurisdictions after the 2020 Census), the TIGER data we rely on may be significantly "behind" reality as the example note from 2022 indicates:
 
 > "We hold the districts used for the 2018 election until we collect the postcensal congressional and state legislative district plans
 > for the 118th Congress and year 2022 state legislatures" [US Census CD/SLD note](https://www.census.gov/programs-surveys/geography/technical-documentation/user-note/cd-sld-note.html)
