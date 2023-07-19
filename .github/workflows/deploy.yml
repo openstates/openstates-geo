@@ -22,6 +22,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           tags: "openstates/geo:latest,openstates/geo:${{ github.ref_name }}"
-          platforms: amd64,arm64
+          platforms: amd64
           push: true
     runs-on: ubuntu-latest
