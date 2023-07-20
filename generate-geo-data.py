@@ -111,7 +111,7 @@ def main():
         "-u",
         action="store_true",
         default=False,
-        help="Actually upload data to S3/Database",
+        help="Actually upload data to S3/Mapbox",
     )
     parser.add_argument(
         "--skip-tile-creation",

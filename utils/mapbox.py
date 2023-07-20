@@ -86,7 +86,7 @@ def create_tiles(settings: dict):
         )
 
 
-def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
+def _upload_tile(tileset: str, settings: dict, mapbox_token: str) -> None:
     """
     Actually upload a tileset to mapbox
     """
@@ -107,14 +107,14 @@ def _upload_tile(tileset: str, filepath: str, mapbox_token: str) -> None:
         aws_secret_access_key=access_key,
         aws_session_token=session_token,
     )
-    print(f"Uploading {tileset} to Mapbox (starts with upload to S3)")
-    s3.Object(bucket, key).put(Body=open(filepath, "rb").read())
-    data = {"tileset": f"openstates.{tileset}", "url": url, "name": tileset}
+    print(f"Uploading {tileset} to Mapbox")
+    s3.Object(bucket, key).put(Body=open(settings["path"], "rb").read())
+    data = {"tileset": f"openstates.{tileset}", "url": url, "name": settings["name"]}
     resp = requests.post(
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}", params=params, json=data
     ).json()
     upload_id = resp["id"]
-    print(f"Starting processing of {tileset} within Mapbox")
+    print(f"Starting processing of {tileset} ({settings['name']}) within Mapbox")
     resp = requests.get(
         f"https://api.mapbox.com/uploads/v1/{mapbox_user}/{upload_id}", params=params
     ).json()
@@ -139,8 +139,14 @@ def upload_tiles() -> None:
     mapbox_token = os.environ.get("MAPBOX_ACCESS_TOKEN")
     # tileset names are set for historical reasons
     tilesets = {
-        "sld": f"{ROOTDIR}/data/sld.mbtiles",
-        "cd-diwr39": f"{ROOTDIR}/data/cd.mbtiles",
+        "sld": {
+            "path": f"{ROOTDIR}/data/sld.mbtiles",
+            "name": "sld",
+        },
+        "cq8nw57b": {
+            "path": f"{ROOTDIR}/data/cd.mbtiles",
+            "name": "cd-diwr39",
+        },
     }
-    for tileset, filename in tilesets.items():
-        _upload_tile(tileset, filename, mapbox_token)
+    for tileset, settings in tilesets.items():
+        _upload_tile(tileset, settings, mapbox_token)
