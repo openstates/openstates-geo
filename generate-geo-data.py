@@ -79,14 +79,6 @@ def main():
         formatter_class=ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
-        "--jurisdiction",
-        "-j",
-        type=str,
-        nargs="+",
-        default=JURISDICTION_NAMES,
-        help="The jurisdiction(s) to download shapefiles for",
-    )
-    parser.add_argument(
         "--clean-source",
         action="store_true",
         default=False,
@@ -132,7 +124,7 @@ def main():
 
     generate_geo_data(
         SETTINGS,
-        args.jurisdiction,
+        JURISDICTION_NAMES,
     )
 
 
