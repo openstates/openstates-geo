@@ -7,8 +7,8 @@ id-mappings:
   sldu:
     key: DISTRICT
     sld-match: 'sldu-51(\d+)'
-    url: https://www2.census.gov/geo/tiger/TIGER2020/SLDU/tl_2020_51_sldu.zip
+    url: https://www2.census.gov/geo/tiger/TIGER2023/SLDU/tl_2023_51_sldu.zip
   cd:
     key: DISTRICT
     sld-match: 'cd-51([\d]+)'
-    url: https://www2.census.gov/geo/tiger/TIGER2020/SLDL/tl_2020_51_sldl.zip
+    url: https://www2.census.gov/geo/tiger/TIGER2023/SLDL/tl_2023_51_sldl.zip
