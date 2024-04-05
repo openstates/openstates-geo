@@ -4,9 +4,11 @@ id-mappings:
   sldl:
     key: DISTRICT
     sld-match: 'sldl-380(\d+[A-Z]?)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/38_NORTH_DAKOTA/38/tl_rd22_38_sldl_whole_block.zip
   sldu:
     key: DISTRICT
     sld-match: 'sldu-380([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/38_NORTH_DAKOTA/38/tl_rd22_38_sldu_whole_block.zip
   cd:
     key: DISTRICT
     sld-match: 'cd-380(\d)'
