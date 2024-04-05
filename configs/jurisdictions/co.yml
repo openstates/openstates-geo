@@ -4,9 +4,12 @@ id-mappings:
   sldl:
     key: DISTRICT
     sld-match: 'sldl-080([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/08_COLORADO/08/tl_rd22_08_sldl_whole_block.zip
   sldu:
     key: DISTRICT
     sld-match: 'sldu-080([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/08_COLORADO/08/tl_rd22_08_sldu_whole_block.zip
   cd:
     key: DISTRICT
     sld-match: 'cd-080(\d)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/08_COLORADO/08/tl_rd22_08_cd118_whole_block.zip
