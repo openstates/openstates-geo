@@ -5,9 +5,11 @@ id-mappings:
     key: DISTRICT
     sld-match: 'sldl-27(\d+[A-Z])'
     match-type: str
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/27_MINNESOTA/27/tl_rd22_27_sldl_whole_block.zip
   sldu:
     key: DISTRICT
     sld-match: 'sldu-270([\d]+)'
+    url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/27_MINNESOTA/27/tl_rd22_27_sldu_whole_block.zip
   cd:
     key: DISTRICT
     sld-match: 'cd-270(\d)'
