@@ -62,11 +62,30 @@ def download_boundary_file(boundary_year: str):
     if os.path.exists(output):
         print("Boundary file exists. Skipping download.")
         return
+    # 2024 boundary year files do not exist as of 1/27/25
+    # so try changing to last known good year
+    original_boundary_year = boundary_year
+    if int(boundary_year) > 2023:
+        boundary_year = "2023"
     url = f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
     print(f"Downloading national boundary from {url}")
     _ = urllib.request.urlretrieve(url, output)
+    directory = f"{ROOTDIR}/data/boundary/"
     with zipfile.ZipFile(output, "r") as zf:
-        zf.extractall(f"{ROOTDIR}/data/boundary/")
+        zf.extractall(directory)
+    # Rename all files replace boundary_year with intended/original boundary year
+    # this is done so later code doesn't break (expecting boundary_year in filename)
+    for filename in os.listdir(directory):
+        if '2023' in filename:
+            # Create the new filename by replacing '2023' with intended boundary year
+            new_filename = filename.replace('2023', original_boundary_year)
+
+            # Define the full file paths
+            old_file = os.path.join(directory, filename)
+            new_file = os.path.join(directory, new_filename)
+
+            # Rename the file
+            os.rename(old_file, new_file)
 
 
 def _download_and_extract(url: str, filename: str):
