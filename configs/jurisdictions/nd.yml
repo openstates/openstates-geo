@@ -1,6 +1,7 @@
 name: North Dakota
 os-id-prefix: "ocd-division/country:us/state:nd"
 id-mappings:
+  # ND TIGER_RD18 SLDU/SLDL files are split between whole_block and split_block versions
   sldl:
     key: DISTRICT
     sld-match: 'sldl-380(\d+[A-Z]?)'

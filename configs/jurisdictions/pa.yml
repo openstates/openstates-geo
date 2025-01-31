@@ -1,6 +1,7 @@
 name: Pennsylvania
 os-id-prefix: "ocd-division/country:us/state:pa"
 id-mappings:
+  # PA TIGER_RD18 SLDL files are split between whole_block and split_block versions
   sldl:
     key: DISTRICT
     sld-match: 'sldl-42([\d]+)'

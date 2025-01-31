@@ -1,6 +1,8 @@
 name: Colorado
 os-id-prefix: "ocd-division/country:us/state:co"
 id-mappings:
+  # CO TIGER_RD18 files are split between whole_block and split_block versions
+  # so some override must take place as expected/generated zip URL does not exist
   sldl:
     key: DISTRICT
     sld-match: 'sldl-080([\d]+)'
