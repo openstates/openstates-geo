@@ -1,12 +1,15 @@
 name: Montana
 os-id-prefix: "ocd-division/country:us/state:mt"
 id-mappings:
+  # TIGER2024 maps are up to date with changes effective 1/6/25
   sldl:
     key: DISTRICT
     sld-match: 'sldl-30([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_30_sldl.zip'
   sldu:
     key: DISTRICT
     sld-match: 'sldu-300([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDU/tl_2024_30_sldu.zip'
   cd:
     key: DISTRICT
     sld-match: 'cd-300(\d)'

@@ -4,7 +4,10 @@ id-mappings:
   sldl:
     key: DISTRICT
     sld-match: 'sldl-26([\d]+)'
+    # TIGER2024 files are up to date with state house maps effective 1/1/25
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_26_sldl.zip'
   sldu:
+    # new maps not effective for senate until Nov 2026 supposedly
     key: DISTRICT
     sld-match: 'sldu-260([\d]+)'
   cd:

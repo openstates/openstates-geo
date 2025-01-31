@@ -1,9 +1,11 @@
 name: New York
 os-id-prefix: "ocd-division/country:us/state:ny"
 id-mappings:
+  # TIGER2024 is up to date with NYC Assembly changes effective Jan 1 2025
   sldl:
     key: DISTRICT
     sld-match: 'sldl-36([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_36_sldl.zip'
   sldu:
     key: DISTRICT
     sld-match: 'sldu-360([\d]+)'
