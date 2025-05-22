@@ -21,7 +21,7 @@ jobs:
     - name: install Poetry
       uses: snok/install-poetry@v1.3.3
     - name: install dependencies
-      run: poetry install
+      run: poetry install --no-root
     - name: flake8 check
       run: poetry run flake8 .
     - name: black check
