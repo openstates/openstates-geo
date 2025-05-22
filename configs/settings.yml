@@ -1,4 +1,4 @@
-BOUNDARY_YEAR: "2022"
+BOUNDARY_YEAR: "2024"
 
 SKIPPED_GEOIDS: []
 #  cd-6098: American Samoa
@@ -17,7 +17,7 @@ FIPS_NAME_MAP:
 
 bucket: data.openstates.org
 # you may not want to change this frequently. It is the congressional session marked when the files are created, not necesarily the current session
-congress_session: 118
+congress_session: 119
 
 run_migrations: False
 upload_data: False

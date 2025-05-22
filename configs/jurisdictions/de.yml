@@ -7,6 +7,7 @@ id-mappings:
   sldu:
     key: DISTRICT
     sld-match: 'sldu-100([\d]+)'
+    # DE TIGER_RD18 SLDU files are split between whole_block and split_block versions
     url: https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/10_DELAWARE/10/tl_rd22_10_sldu_whole_block.zip
   cd:
     key: DISTRICT

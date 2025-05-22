@@ -1,12 +1,15 @@
 name: Ohio
 os-id-prefix: "ocd-division/country:us/state:oh"
 id-mappings:
+  # TIGER2024 files are up to date with maps effective 1/1/25
   sldl:
     key: DISTRICT
     sld-match: 'sldl-39([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_39_sldl.zip'
   sldu:
     key: DISTRICT
     sld-match: 'sldu-390([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDU/tl_2024_39_sldu.zip'
   cd:
     key: DISTRICT
     sld-match: 'cd-39([\d]+)'

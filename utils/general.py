@@ -15,6 +15,13 @@ TIGER_ROOT = "https://www2.census.gov/geo/tiger"
 JURISDICTION_NAMES = [s.name for s in JURISDICTIONS]
 
 
+def print_script_progress(annotation):
+    length = len(annotation)
+    print("_" * length)
+    print(annotation)
+    print("‾" * length)
+
+
 def find_jurisdiction(jur_name: str):
     """
     Return a github.com/unitedstates/python-us style

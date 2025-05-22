@@ -1,12 +1,16 @@
 name: Georgia
 os-id-prefix: "ocd-division/country:us/state:ga"
 id-mappings:
+  # https://www2.census.gov/geo/tiger/TIGER_RD18/STATE/13_GEORGIA/13/ is wrong
+  # so we override to TIGER2024 files to get correct maps as of late 2024
   sldl:
     key: DISTRICT
     sld-match: 'sldl-13([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_13_sldl.zip'
   sldu:
     key: DISTRICT
     sld-match: 'sldu-130([\d]+)'
+    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDU/tl_2024_13_sldu.zip'
   cd:
     key: DISTRICT
     sld-match: 'cd-13([\d]+)'
