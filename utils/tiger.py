@@ -57,9 +57,13 @@ def download_from_tiger(jurisdiction: str, prefix: str, settings: dict):
             try:
                 _download_and_extract(url, fullpath)
             except Exception as e:
-                print(f"Couldn't download {jurisdiction.name} {filename} :: {e} :: {url}")
+                print(
+                    f"Couldn't download {jurisdiction.name} {filename} :: {e} :: {url}"
+                )
         else:
-            print(f"skipping download of {jurisdiction.name} {filename}, already exists locally")
+            print(
+                f"skipping download of {jurisdiction.name} {filename}, already exists locally"
+            )
 
         # Extract source file to source_cache
         try:
@@ -77,7 +81,9 @@ def download_boundary_file(boundary_year: str):
     """
     source_file = f"{ROOTDIR}/data/cb_{boundary_year}_us_nation_5m.zip"
     if not os.path.exists(source_file):
-        url = f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
+        url = (
+            f"{TIGER_ROOT}/GENZ{boundary_year}/shp/cb_{boundary_year}_us_nation_5m.zip"
+        )
         print(f"Downloading national boundary from {url}")
         _ = urllib.request.urlretrieve(url, source_file)
     else:

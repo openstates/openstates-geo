@@ -31,7 +31,6 @@ def _django_cmds() -> None:
     call_command("clean_divisions")
 
 
-
 def generate_geo_data(
     SETTINGS,
     jurisdictions,
