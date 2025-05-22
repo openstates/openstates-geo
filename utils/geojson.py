@@ -9,9 +9,14 @@ import subprocess
 from .general import (
     JURISDICTIONS,
     ROOTDIR,
+    print_script_progress,
 )
 
-FIPS_KEYS = ("STATEFP", "STATEFP20")
+FIPS_KEYS = (
+    "STATEFP",
+    "STATEFP20",
+    "STATEFP"  # Used in shapefiles from https://www2.census.gov/geo/tiger/GENZ2024/shp/
+)
 GEOID_KEYS = ("GEOID", "GEOID20")
 MTFCC_KEYS = ("MTFCC", "MTFCC20")
 
@@ -27,13 +32,14 @@ def _find_key(district_properties, keys):
 
 
 def convert_to_geojson(SETTINGS: dict) -> None:
+    print("convert_to_geojson: find source_cache/**/*.shp")
     files = glob.glob(f"{ROOTDIR}/data/source_cache/**/*.shp", recursive=True)
     for file in files:
         newfilename = file.replace(".shp", ".geojson")
         if os.path.exists(newfilename):
-            print(f"{newfilename} already exists, skipping")
+            print(f"convert_to_geojson: {newfilename} already exists, skipping")
         else:
-            print(f"Converting {file} => {newfilename}")
+            print(f"convert_to_geojson: Converting {file} => {newfilename}")
             subprocess.run(
                 [
                     "ogr2ogr",
@@ -50,6 +56,7 @@ def convert_to_geojson(SETTINGS: dict) -> None:
 
 
 def _merge_ids(geojson_path: str, settings: dict) -> None:
+    print_script_progress(f"convert_to_geojson: _merge_ids for {geojson_path}")
     with open(geojson_path, "r") as f:
         rawgeodata = json.load(f)
     geodata = {k: v for k, v in rawgeodata.items() if k not in ["features"]}
@@ -57,22 +64,34 @@ def _merge_ids(geojson_path: str, settings: dict) -> None:
     for district in rawgeodata["features"]:
         fips = _find_key(district["properties"], FIPS_KEYS)
         if not fips:
+            print(f"_merge_ids: {fips} not defined in metadata. Skipping")
             continue
         """
         Find the matching jurisdiction based on FIPS code
         """
+        # print(f"_merge_ids: Find the matching jurisdiction based on FIPS code {fips}")
         for j in JURISDICTIONS:
             if fips == j.fips:
                 juris = j
                 break
         else:
-            print(f"{fips} not defined in metadata. Skipping")
+            print(f"_merge_ids: {fips} not defined in metadata. Skipping")
             continue
         state_meta = metadata.lookup(abbr=juris.abbr)
-        res = _find_key(district["properties"], MTFCC_KEYS)
-        if not res:
-            continue
-        dt = settings["MTFCC_MAPPING"][res].lower()
+        mtfcc_type_from_mtfcc_property = _find_key(district["properties"], MTFCC_KEYS)
+        if mtfcc_type_from_mtfcc_property:
+            dt = settings["MTFCC_MAPPING"][mtfcc_type_from_mtfcc_property].lower()
+        else:
+            # See if we can fallback to getting district type from filename
+            if "sldl" in geojson_path:
+                print(f"_merge_ids: got district type 'sldl' from filename {geojson_path}")
+                dt = "sldl"
+            elif "sldu" in geojson_path:
+                print(f"_merge_ids: got district type 'sldu' from filename {geojson_path}")
+                dt = "sldu"
+            else:
+                print(f"_merge_ids: failed to find district type in geojson district properties {district['properties']}")
+                continue
         mappings = settings["jurisdictions"][juris.name]["id-mappings"]
         if "sld-prefix" in mappings[dt]:
             district_type = mappings[dt]["sld-prefix"]
@@ -81,7 +100,7 @@ def _merge_ids(geojson_path: str, settings: dict) -> None:
         ocd_prefix = settings["jurisdictions"][juris.name]["os-id-prefix"]
         geoid = _find_key(district["properties"], GEOID_KEYS)
         if not geoid or geoid in settings["SKIPPED_GEOIDS"] or geoid.endswith("ZZ"):
-            print(f"Skipping bad geoid: {geoid}")
+            print(f"_merge_ids: Skipping bad geoid: {geoid} in {juris.name} file {geojson_path}")
             continue
         census_id = f"{district_type}-{geoid}"
         ocd_id = None
@@ -95,11 +114,11 @@ def _merge_ids(geojson_path: str, settings: dict) -> None:
             try:
                 di_match = re.compile(mappings[district_type]["sld-match"])
             except Exception:
-                print(f"Missing any way to classify {census_id}")
+                print(f"_merge_ids: Missing any way to classify {census_id}")
                 continue
             sld_id = di_match.search(census_id)
             if not sld_id:
-                print(f"{census_id} doesn't match any districts with {di_match}")
+                print(f"_merge_ids: {census_id} doesn't match any districts with {di_match}")
                 continue
             sld_id = sld_id.groups()[0]
             ocd_id = f"{ocd_prefix}/{district_type}:{sld_id.lstrip('0')}".lower()
@@ -119,11 +138,10 @@ def _merge_ids(geojson_path: str, settings: dict) -> None:
                 district_name = f"{juris.abbr.upper()}-{cd_num}"
         else:
             # Jurisdictional boundaries we can look up in OpenStates
-            output_filename = f"data/geojson/{juris.abbr}-{dt}.geojson"
             if not mappings[district_type].get("split_districts", False):
                 district_meta = state_meta.lookup_district(ocd_id)
                 if not district_meta:
-                    print(f"Couldn't find metadata for {ocd_id}")
+                    print(f"_merge_ids: Couldn't find metadata for {ocd_id}")
                     exit(1)
                 district_name = district_meta.name
 
@@ -144,6 +162,6 @@ def _merge_ids(geojson_path: str, settings: dict) -> None:
             geodata["features"].append(district)
 
     output_filename = f"{ROOTDIR}/data/geojson/{juris.abbr}-{dt}.geojson"
-    print(f"Writing data from {geojson_path} => {output_filename}")
+    print_script_progress(f"_merge_ids: Writing data from {geojson_path} => {output_filename}")
     with open(output_filename, "w") as geojson_file:
         json.dump(geodata, geojson_file)
