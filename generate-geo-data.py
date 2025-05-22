@@ -16,6 +16,7 @@ from utils import (
     load_settings,
     setup_source,
     upload_tiles,
+    print_script_progress,
 )
 
 
@@ -28,6 +29,7 @@ def _django_cmds() -> None:
     call_command("migrate")
     call_command("load_divisions")
     call_command("clean_divisions")
+
 
 
 def generate_geo_data(
@@ -44,6 +46,7 @@ def generate_geo_data(
     """
     Download shp files from TIGER
     """
+    print_script_progress("Download shp files from TIGER")
     for jur in jurisdictions:
         if jur not in JURISDICTION_NAMES:
             print(f"Invalid jurisdiction {jur}. Skipping.")
@@ -55,20 +58,25 @@ def generate_geo_data(
 
         jurisdiction = find_jurisdiction(jur)
         download_from_tiger(jurisdiction, "RD18", SETTINGS)
+    print_script_progress("Download boundary file")
     download_boundary_file(SETTINGS["BOUNDARY_YEAR"])
 
     """
     Convert downloaded shp files to geojson
     """
+    print_script_progress("Convert downloaded shp files to geojson")
     convert_to_geojson(SETTINGS)
 
     if SETTINGS["create_tiles"]:
+        print_script_progress("Create tiles")
         create_tiles(SETTINGS)
 
     if SETTINGS["run_migrations"]:
+        print_script_progress("Run migrations")
         _django_cmds()
 
     if SETTINGS["upload_data"]:
+        print_script_progress("Upload data")
         bulk_upload(SETTINGS)
         upload_tiles()
 
