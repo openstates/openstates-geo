@@ -5,7 +5,10 @@ id-mappings:
     key: DISTRICT
     sld-match: 'sldl-26([\d]+)'
     # TIGER2024 files are up to date with state house maps effective 1/1/25
-    url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_26_sldl.zip'
+    # url: 'https://www2.census.gov/geo/tiger/TIGER2024/SLDL/tl_2024_26_sldl.zip'
+    # HOWEVER as of 250516 the above URL returns an error
+    # so falling back to this GENZ shape that seems to match MI source as well
+    url: 'https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_26_sldl_500k.zip'
   sldu:
     # new maps not effective for senate until Nov 2026 supposedly
     key: DISTRICT

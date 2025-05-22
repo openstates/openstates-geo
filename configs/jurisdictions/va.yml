@@ -11,4 +11,3 @@ id-mappings:
   cd:
     key: DISTRICT
     sld-match: 'cd-51([\d]+)'
-    url: https://www2.census.gov/geo/tiger/TIGER2023/SLDL/tl_2023_51_sldl.zip
