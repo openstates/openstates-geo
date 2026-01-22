@@ -45,6 +45,10 @@ To upgrade the Python version/runtime of the function:
 NOTE: these instructions for the psycopg2 layer did NOT work in 2026 (worked in 2024). Leaving here for posterity
 as another resource just in case.
 
+NOTE 2: for the record, error in AWS logs was:
+
+> [ERROR] Runtime.ImportModuleError: Unable to import module 'lookup': No module named 'psycopg2._psycopg'
+
 To build and create a new layer:
 
 * I used the `aws-psycopg2` package to obtain a version of psycopg2 compiled for the AWS environment
