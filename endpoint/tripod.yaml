@@ -1,13 +1,13 @@
 functions:
   - name: v3-district-geo
     description: "API v3 District Geo Endpoint"
-    runtime: python3.7
+    runtime: python3.11
     files:
       - lookup.py
     role_arn: "arn:aws:iam::189670762819:role/v3_lambda_exec_role"
     handler: lookup.lambda_handler
     layers:
-      - py37-psycopg2
+      - py311-psycopg2
     environment:
       DB_USER: geo
       DB_NAME: geo

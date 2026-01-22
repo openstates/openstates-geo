@@ -14,13 +14,17 @@ Occasionally the Python runtime needs to be upgraded. This also involves updatin
 the [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/packaging-layers.html)
 that the function depends on to provide its psycopg2 dependency.
 
-To build and create a new layer:
+NOTE: the prior instructions (kept below) did not work, despite producing a zip/file structure that looked very
+similar to what was previously there (for the python 3.9 layer). So googled a bit and found another resource.
 
-* I used the `aws-psycopg2` package to obtain a version of psycopg2 compiled for the AWS environment
+* I used the [awslambda-psycopg2](https://github.com/jkehler/awslambda-psycopg2) repo to obtain a version of psycopg2 
+  compiled for the AWS environment
+* Checked out a copy of the repo (somewhere)
 * Change directory to the `endpoint` directory
 * Create a folder called `python`
-* Install the dependency to the folder: `pip install --target ./python aws-psycopg2`
-* Package up the folder as a zip: `zip -r python39awspscycopg2.zip python`
+* Copied the **contents** of the `psycopg2-3.11` subfolder of the `awslambda-psycopg2` repo into the `python` folder
+  `cp -R ~/repo/rand/awslambda-psycopg2/psycopg2-3.11/* ./python/`
+* Package up the folder as a zip: `zip -r python311awslambda-psycopg2.zip python`
 * Use
   the [AWS console to upload the new layer](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/layers)
   (or add it as a new version to an existing layer)
@@ -35,6 +39,22 @@ To upgrade the Python version/runtime of the function:
 * Change the python version
 * Now go back to the Layers section and use Add a Layer to associate the layer that is compatible with that python
   version
+
+### FAILED in 2026 instructions re: creating psycopg2 layer
+
+NOTE: these instructions for the psycopg2 layer did NOT work in 2026 (worked in 2024). Leaving here for posterity
+as another resource just in case.
+
+To build and create a new layer:
+
+* I used the `aws-psycopg2` package to obtain a version of psycopg2 compiled for the AWS environment
+* Change directory to the `endpoint` directory
+* Create a folder called `python`
+* Install the dependency to the folder: `pip install --target ./python aws-psycopg2`
+* Package up the folder as a zip: `zip -r python39awspscycopg2.zip python`
+* Use
+  the [AWS console to upload the new layer](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/layers)
+  (or add it as a new version to an existing layer)
 
 # Open States Geography Processing & Server
 
