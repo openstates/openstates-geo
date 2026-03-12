@@ -1,5 +1,6 @@
 import os
 import json
+import math
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
@@ -23,13 +24,12 @@ def response(body, status_code=200):
 
 
 def geo_query(lat, lon):
-    cur = conn.cursor(cursor_factory=RealDictCursor)
+    with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        GEO_QUERY = """SELECT id, state, name, division_set_id as division_set FROM geo_division
+        WHERE ST_Contains(shape, 'POINT(%s %s)'::geography::geometry);"""
 
-    GEO_QUERY = """SELECT id, state, name, division_set_id as division_set FROM geo_division
-    WHERE ST_Contains(shape, 'POINT(%s %s)'::geography::geometry);"""
-
-    cur.execute(GEO_QUERY, [lat, lon])
-    return cur.fetchall()
+        cur.execute(GEO_QUERY, [lat, lon])
+        return cur.fetchall()
 
 
 def lambda_handler(event, context):
@@ -38,6 +38,12 @@ def lambda_handler(event, context):
     try:
         lat = float(params["lat"])
         lng = float(params["lng"])
+
+        # Ensure we don't let float('NaN') slip through
+        if math.isnan(lat):
+            error = f"{params['lat']} must be a number, got {params['lat']}"
+        if math.isnan(lng):
+            error = f"{params['lng']} must be a number, got {params['lng']}"
     except KeyError:
         error = "Must provide lat & lng parameters."
     except ValueError:
