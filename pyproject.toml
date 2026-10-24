@@ -6,7 +6,7 @@ authors = ["James Turk <dev@jamesturk.net>", "John Seekins <john@pluralpolicy.co
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.13"
 requests = "^2.23.0"
 django = "^3.2.11"
 psycopg2-binary = "^2.9.2"
