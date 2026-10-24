@@ -6,18 +6,18 @@ authors = ["James Turk <dev@jamesturk.net>", "John Seekins <john@pluralpolicy.co
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.13"
 requests = "^2.23.0"
 django = "^3.2.11"
 psycopg2-binary = "^2.9.2"
 dj-database-url = "^0.5.0"
 boto3 = "^1.26.69"
-geopandas = "^0.13.2"
-openstates = "^6.16.7"
+geopandas = "^1.0"
+openstates = "^6.26.4"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
-flake8 = "^5.0.4"
+flake8 = "^7.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
