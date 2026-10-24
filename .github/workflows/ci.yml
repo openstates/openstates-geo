@@ -19,7 +19,7 @@ jobs:
       with:
         python-version: "3.13"
     - name: install Poetry
-      uses: snok/install-poetry@1.4.2
+      uses: snok/install-poetry@v1.4.2
     - name: install dependencies
       run: poetry install --no-root
     - name: flake8 check
