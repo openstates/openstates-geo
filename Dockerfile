@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.13-slim
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -29,7 +29,7 @@ COPY configs configs/
 COPY djapp djapp/
 COPY generate-geo-data.py .
 
-RUN poetry install --only=main \
+RUN poetry install --only=main --no-root \
     && rm -r /root/.cache/pypoetry/cache /root/.cache/pypoetry/artifacts/ \
     && DEBIAN_FRONTEND=noninteractive apt-get remove -yqq build-essential libsqlite3-dev zlib1g-dev git \
     && DEBIAN_FRONTEND=noninteractive apt-get autoremove -yqq \
